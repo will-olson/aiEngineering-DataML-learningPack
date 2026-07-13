@@ -1,0 +1,415 @@
+<html>
+IntroToLinearDynamicalSystems-Lecture11
+<p>
+</p><p><b>Instructor (Stephen Boyd)</b>:Let me make a couple of announcements.  I guess the first announcement is that the midterms are actually graded.  So those are done and they’ll be available for pickup in Packard after class today.  And Denise, if she’s in, you’ll get them from Denise’s office; her daughter was sick yesterday so I’m not sure if she’ll actually be in today.  If not, you can get them from my office or possibly, if I’m not there, from the TA offices – or TA’s office or something like that, so we’ll figure that out.  But these are available in Packard, the midterms.
+
+</p><p>We posted the solutions, literally minutes ago.  This is in Packard for pickup.  We posted the solutions a few minutes before the lecture.  And I’ll tell you, let me just say a few things about it.  Oh, I should say that usually the way that everything gets schedules out and everything, it had to do with a shift in schedule.  By tradition, we return the midterms the day after the grade change option is – deadline has finished, that’s the tradition.  This time however, because the new schedule, we’re actually able to give you graded midterms beforehand.  That doesn’t apply to the vast majority of people but there might be a handful of people who, I don't know, whatever, decide they want to change their grading option.
+
+</p><p>So I’ll say a little bit about the midterms.  I guess we can all speak freely about the midterms now.  They were good.  I do have to apologize formally on air because it seemed like it was – I think we undershot a little bit.  Normally when people turn them in, we should see like every third person should kinda look like they just finished a marathon or something like that.  And just by the people – two people were too happy and too civilized and all that, so we really feel that we undershot.
+
+</p><p>And I mention this because, you know, it’s a very small world and I’m sure the rumors of this, this undershoot, have already made it to – they’ve – it’s already at MIT and in Chennai and all these other places where, you know, people are gonna be – they – just people are gonna be disappointed.  In fact, I already had one comment from current people who saw it – I mean, sorry, current grad students who saw it and they said, “They had that?  That’s not a midterm.  Ours was a real midterm.”  So that’s what they said, so anyway just wanted to apologize.
+
+</p><p>Nevertheless, it seemed like it provided some amusement for you, at least, so that’s good.  And you could hardly have done it and then say you didn’t do anything, so I think that’s not possible to say.
+
+</p><p>Let me make a couple of other comments about it.  Oh, if you – and by the way, we do make mistakes grading, so sometimes we add things wrong, that’s entirely possible; sometimes we’ve missed whole things or something like that.  So do feel free to come forward and ask us about things, but only do that after you have looked at our solutions very, very carefully.  And you better be prepared to defend yourself.  We saw some serious nonsense, stuff that looked kinda right but was basically wrong in some cases, and so just be prepared to defend yourself if you feel something’s not there.
+
+</p><p>By the way, we do make mistakes and so I would encourage you to look at it and in the – you should definitely do a postmortem, look at our solutions, look at yours, trying to figure out what happened, if anything.  So that’s – any questions about the midterm?  How’d you like it?  It’s okay?  Yeah, see that’s – see, we really should get a much more visceral response, you see.  That’s how we know we didn’t hit it just right.  I mean it wasn’t too far off but it wasn’t, you know, it should produce like, at this point, it should be like a major traumo or something from the weekend.  But all right, I’ll move on.
+
+</p><p>There’s another announcement.  It has to do with numbering of exercises.  I guess all of you know we went ahead and assigned the Homework 5.  It’s very short.  Covers some of the material we’re doing now.  That’s just to keep us in the loop on the homework.  There is one problem.  
+
+</p><p>In the printed readers, the – you know they’re sort of done by lecture, they’re numbered by lectured, so there’s like Problem, you know, 2.6, 2.7.  Anyway, they went up to like 9.25 or something like that, and then in the next lecture, 9.1 again.  So just a mistake, it means that the numbering, but only the numbering, in the printed readers is wrong.  So you’re – just be aware of that.
+
+</p><p>We’ve updated the – the PDF file on the website we updated.  Yeah not – I think that’s it.  But anyway, nothing else is wrong.  The problems are right or whatever.  So if you want to just look at it and please do Exercise 10.5, which Exercise labeled 9.5 in your reader it is, you’re welcome to do that.  Circle the correct 9.5 and then do it later or something.  So that’s it, okay.
+
+</p><p>That homework is gonna due Friday – is gonna be due Friday.  So and in fact, I know this is big midterm week.  Yes?  This is big midterm week so there’s an option, which would be to make it due next Tuesday.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:You’ll exercise the option?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Okay and then that’s done.  Okay, so the Homework 5 will be due next Tuesday.  But we’re gonna pipeline here, so.  Oh, now look, this is modern times, okay?  You don’t – you know you can’t sit – that’s how processes work.  We’re not gonna wait till you turn in Homework 6 before you – I mean 5 before you start Homework 6.  That’s silly, that doesn’t work that way.  So you’re gonna do – in fact, you should’ve been doing speculative execution the whole time.  You should’ve been guessing what exercise we might assign and do them ahead of time, just in case we might assign them.  I mean for speed, that is.
+
+</p><p>Okay so we’ll – you don’t have to speculative execution, but we will assign a Homework 6 on Thursday.  So and we might even back off on our natural tendencies on Homework 6, just a little bit, because of the – it’s pipelined, so.  So make the – the Homework 5 is due next Tuesday, and then Homework 6 comes out Thursday and then we’re back on a Thursday-Thursday schedule.  So how’s that sound?  Okay.
+
+</p><p>Let’s see, I’m trying to think what – oh, the email I sent out about our progress in grading the midterms yesterday, no Sunday, I can’t remember when I did it, Sunday.  I sent it to last year’s 263 class first.  Didn’t know it for two hours until somebody actually came – found us in Packard and said, “Oh, you know, thanks for letting us know about the grading but we took it last year.”  So I got a bunch of good responses from that, including some people who said that did they really have to do Homework 5.
+
+</p><p>So I sent a new email out to the entire class saying, “No, you don’t have to do Homework 5.”  I mean I told them it will be on the final so they can choose to do it or not; it’s their choice but they don’t have to do it, so.  Anyway, so if you don’t – if you know other people who are asking what – like if, I don't know, if they ask what’s wrong with your professor, I don't know, you can just say he’s lost it.  That’s all.  I guess that’s the best thing to say.
+
+</p><p>Okay, any more questions about any of these things.  Okay.  We’ll move on.
+
+</p><p>And we’re gonna do one thing today but it’s pretty cool and it’s this.  We’re gonna look at autonomous linear dynamical system X dot equals AX, and we are gonna overload.  So far, we’ve actually overloaded – that’s a scalar equation.  Everyone here knows the solution of that, that’s X of T equals E to the TA times X of zero, like that.  So we know – everyone knows this.  We are gonna overload actually all of these things to the vector matrix case.
+
+</p><p>So we’ve already overloaded this scalar, simple scalar differential equation by capitalizing A and making A an n-by-n matrix and X a vector.  So we’ve already overloaded the differential equation itself.  Later today, we’re gonna overload the exponential to apply to matrices.  So that’s our goal today.
+
+</p><p>And the cool thing – I mean the nice thing about – I mean what you want in overloading and extending notion, is you want it to suggest – you want it to connect to things you already know, so it should remind you of things you know, it should make you guess a bunch of things, only some of which are true.  So that’s how you – that’s what real overloading should do.  Right?  That’s how it should work.
+
+</p><p>If everything were true, then it’s kinda stupid.  You should’ve defined it more generally in the first place, and I don’t even really call it a real generalization.  So that’s – if you really want to do it, you want to extend it in such a way that it suggests many things, some of which are true.  So.  Okay, so the first thing we’ll do is we’ll just solve this Laplace transform and I’ll just review this very quickly, even though is a prerequisite, so here it is.
+
+</p><p>Suppose you have a function that maps R plus into P by Q matrices.  So we’re gonna go straight to matrices from scalars.  And so, Z itself is a function that maps non-negative scalars into P by Q matrices.  So it’s a P by Q matrix valued function on R plus; that’s what Z is.
+
+</p><p>Now the Laplace transform, that’s written several ways.  One is to actually have a calligraphic or script L, which is an operator.  And it takes as argument a function of this form and returns the Laplace transform which is another function.  It’s a function from some subset of the complex plane into complex P by Q matrices.  So that’s what it is.  Now it turns out for us we’re not gonna worry too much about what this domain is.  I’ll say a little bit about that but not much.
+
+</p><p>So the Laplace transform is actually quite a complicated object.  It’s actually very useful, maybe just once to sit down and think about what it is.  For example, how would you declare it in a computer language, right?  So for example, C or something like that, just so you understand.  It’s very easy to casually write down, you know, little things with A-ASCII characters, which pack a lot of meaning.  So L is itself a – it is a function.  It is a function that accepts as argument something which is itself a function.  It is a function, which accepts as argument a non-negative real number and returns a P by Q matrix.  Okay?
+
+</p><p>So L returns, the data type it returns is it returns another function, this is a function, which accepts as arguments some complex numbers and returns P by Q complex matrix.  Okay?  So it’s important to sort of think about this at least once.  After a while, of course, you’d go insane if you thought about this every time somebody wrote down Laplace transform.  And so, it’s not advised that you should think of it all the time but you should definitely think of it once.
+
+</p><p>I should also add something here.  And that is that the value of things like the Laplace transform, or at least it’s shifting if not decreasing.  Because a generation ago or two generations ago, this was actually one of the main tools for actually figuring out how things work, for actually simulating things and all that sort of stuff.  It’s not now, basically is not.  So it’s mostly to give you the conceptual ideas to understand how things work and all that sort of stuff.  So things are shifting and it’s not as important, I think, as it used to be.
+
+</p><p>By the way, there are those who scream and turn red when I say that.  So.  Okay.
+
+</p><p>Now the integral – here you have the integral of a matrix and of course, that’s extended or overloaded to be term-by-term or entry-by-entry.  And the convention is that the upper – an uppercase letter denotes the Laplace transform of the signal.  This would be called maybe a signal; some people call that a time domain signal, something like that.  Obviously, T does not have to even represent time here.  Makes no difference whatsoever what this means.  It often means time but it doesn’t have to be.
+
+</p><p>Now D is called the domain or region of convergence of Z.  This probably – I mean there’s long discussions in books that are actually mostly, in my opinion, completely idiotic.  I mean there’s absolutely no reason for this discussion; it makes no sense.  It actually also has no particular use these days, other than confusing students.  So.  So I’ll say a little about this later, but.
+
+</p><p>It includes at least the – it’s a strip; it’s a right half-plane to the right of sum value A.  And that value A is any number for which this signal Z grows slower than an exponential with A here, E to the AT, something like that.  So that’s what the domain is.  It’s at least that.
+
+</p><p>Now you might ask, you know, “Why do you even care about signals that diverge?”  That’s a good question.  Actually, you need to care about signals that diverge for a couple of reasons.  First of all, that might be a pathology in something you’re making.  So if you want the error in something to go to zero, tracking error or something like a decoding error to go to zero, and you design the thing wrong, then instead your tracking error will diverge.  So it’s a pathology and you need to have the language to describe divergence.
+
+</p><p>Also, by the way, there’s lots of cases where, although it’s often bad if a signal diverges, that’s by no means universally the case.  If you’re working out the dynamics of an economy, then divergence is probably a good thing in that case.  So.
+
+</p><p>Okay so let’s look at the derivative property.  There’s only a few things you use in the Laplace transform.  It says the Laplace transform of the time derivative of a signal is S times the Laplace transform of the signal minus the initial value.  Now this is – it’s the basic property.  You know this is what Laplace – this is the whole point of Laplace transforms, essentially.
+
+</p><p>It’s actually reasonably easy to just work out why this is the case.  You look at the Laplace transform of Z dot, evaluated a function S, so that’s a P by Q complex number.  And it’s the – by definition it’s the integral, E to minus ST Z dot of TDT.  Now integrate by parts and we say that this is E to the minus ST Z of T, so this is – I guess this is UDV.  That’s UV evaluated over the interval.  Then minus integral VDU, and that’s what this is here.  Okay?
+
+</p><p>Now here, we’re gonna use the fact that the real part of S is large because that’s the domain that we’re looking at.  And that means that this goes to zero very rapidly, no swamp even if Z is expanding this is will swamp that up.  By the way, if Z is growing at some – if you don’t pick the real part of S large enough here, this integral, actually this integral has no meaning whatsoever.  It does not exist.  Okay?  So this is not sort of a convenience here; it’s because this has no meaning unless the integrand here is integralable.  And if this is diverging, this – the only thing you can say is that simply has no meaning; it’s like one over zero.
+
+</p><p>Okay, so this thing here, of course, goes – for infinity, it goes away and this becomes minus Z of zero because I plug in T equals zero here and it doesn’t matter what S is.  And this gives me S Z of S, so that’s your derivative property.  And now we can very quickly solve X dot equals AX.  That’s an autonomous linear dynamical system.
+
+</p><p>So what we’re gonna do is this.  We’ll take the Laplace transform of both sides.  And on the left-hand side, and these are all vectors, I get S capital X of S minus X of zero, and that’s A capital X of S.  X of S is the Laplace transform of X here.  And what I’ll do is I’ll collect – I’ll move this over to the other side, and I’ll write this as SA minus – SI minus A capital X of S equals X of zero.  Now I’ve isolated stuff I know, that’s this, from what I want, which is right here, and it’s appearing in the right way.  And therefore, at least formally, X of S is the inverse of this matrix times X of zero.
+
+</p><p>Now we’re actually gonna talk a lot about that but this matrix here, of course, you can’t just casually write the inverse of a matrix.  If you write the inverse of a non-square matrix that’s just terrible.  Actually as far as I know, no one did that for the midterm, which makes us very happy.  So the matrix police actually didn’t actually file any complaints, I think.  Actually, that’s true.  I don't know that but I think that’s true.  Okay.
+
+</p><p>However, SI minus A can fail to be invertible.  We’re gonna get to that later.  It turns out SI minus A is invertible for almost all complex numbers, except a handful.  And we’ll get to those – we’ll get to the meaning of those soon, but for the moment let’s just say this is for S minus A invertible, for the moment.  And now we take the inverse Laplace transform and we have the answer.  So X of T equals the inverse Laplace transform of SI minus A inverse times X of zero.
+
+</p><p>Notice here that X of zero comes out.  There’s a question?
+
+</p><p><b>Student:</b>Does it make any [inaudible]?
+
+</p><p><b>Instructor (Stephen Boyd)</b>:We are saying that, yes.  That’s exactly right.  Right.  So I’m using linearity is the other thing I’m using here which I didn’t mention but probably should have.  So I’m using linearity of a Laplace transform, and now this is the matrix vector case.
+
+</p><p>The way you can check it is very simple.  The Laplace transform is an integral, entry by entry.  So and then if you work out what a matrix vector multiply is, just write out with all the horrible indices, then stick the – the integral appears outside the sums.  Put the integral inside, and then recognize it for what it and then put it back outside and so on and so forth, and you’ll get that.
+
+</p><p>I don't know if that made any sense, but anyway.  I’m using linearity of the Laplace transform.  Okay.
+
+</p><p>So you get this.  Okay, now actually a bunch of things appearing here are very famous; they come up in zillions of problems.  This matrix SI minus A inverse comes up all the time.  Lots and lots of fields, and it’s called – so the mathematical – in mathematics it’s called the resolvent of A.  Notice it’s a function of S, this complex number.  So it’s a function, it’s a complex square matrix valued function.  It’s the resolvent, SI minus A inverse.
+
+</p><p>Now it’s defined, of course, whenever this is invertible.  If it’s not invertible, of course, this inverse has no meaning here.  So the places where it has no meaning are actually called the eigenvalues of A.  And these are complex numbers for which det SI minus A is zero, so these are the eigenvalues of A.  We’re gonna say an enormous amount about this.  There’s only N of those or fewer, and we’ll talk about that later.
+
+</p><p>So when you see SI minus A, you really have to – you have to understand when you write this – SI minus A inverse, sorry.  When you see SI minus A, there’s just no problem at all.  When you see SI minus A, you have to have the understanding here that this – what you mean is, this expression, you don’t want to put a little star or something like this and have a little footnote down here that says provided, “S is not an eigenvalue of A,” or something like that.  It gets silly.  It’s basically like if you write down a function like this: S plus two squared over S minus one.  Okay?
+
+</p><p>And you don’t want to write – you know every time you write this, you don’t want to have a footnote that says, “Define for all S except S equals one.”  So after a while you get used to it and you just write this.  By the way, you can get into trouble by forgetting that, in fact, there is in fact, a footnote there for this one.  There’s a footnote and the footnote says: whatever form, you know whatever you’re doing, you plus in S equals one here and all bets are off.  Okay?  So there is that footnote.
+
+</p><p>But as long as you just remember that that footnote is in place, everything is okay.  And the same thing is true here.  So we’ll write SI minus A inverse, that’s the resolvent of A, and it should just be understood that there are up to N complex numbers for which this is not invertible and you shouldn’t be writing the inverse.  Okay.
+
+</p><p>Now when you take this inverse Laplace transform here, this thing, that is a matrix valued function of time.  It’s gonna have a name real soon, but it’s got a name – first of all, we’re gonna give it a general name.  And it’s the state transition matrix, and it’s denoted as phi of T.  Okay?  That’s just – it’s called the state transition matrix and it looks like this.  It says – it’s actually already – we already have an interesting conclusion.  We see that the state at any given time is a linear function of the initial state.  So not surprising, it’s a linear differential equation but there it is.
+
+</p><p>And if it’s a linear function’s initial state, it’s given by matrix multiplication.  There’s some matrix – in effect, the matrix is the state transition matrix.  Okay?  So we get that.  We’ll be able to – I mean you can actually work this out.  This is nothing but this – you know everything here in principle.  You can take a matrix A, you can calculate SI minus A inverse, at least in principle, you can take the Laplace transform of that if the entry’s a rational functions, you can go get some Laplace transform table, take the inverse.
+
+</p><p>So in some sense, it’s done.  You now know the dynamics of linear dynamical systems – I mean of autonomous linear dynamical systems.  You know everything now, in some weird theoretical sense.  Okay.
+
+</p><p>So this is called the state transition matrix, so let look at some examples real quick.  First one is this one.  It’s harmonic oscillator, is the name of the system.  And it looks like this.  It says X one dot is X two, X to dot is minus X one.  Okay?  Now if you plot the vector field, it looks like this.  And here it’s certainly plausible that the trajectories are circular, plausible but it’s not quite – I think it’s not quite circular.  Sorry.  Scratch that.
+
+</p><p>Actually, I just had a discussion this morning with the people doing the video production.  And so I said, “I’d like you to just remove – when I say things like that, just remove, so it never happened.”  And then they said, “Oh no, no.  There’s huge, huge expenses associated with that, so I can’t remove these now.”  But that’s the kind of thing, by the way, I’d like to remove.  All right, so let’s just pretend – let’s just rewind, pretend I didn’t say that and go back.
+
+</p><p>When you look at this, you can imagine, with your eyeball I guess, that the trajectories are circular or nearly circular, something like that.  Now it turns out they’re actually circular.  We’ll get to that.  Let’s see how this works.
+
+</p><p>So we form SI minus A, well the inverse, this is the one inverse you should’ve kinda know by heart, certainly.  Well there’s a few special cases but two by two inverse everyone should know.  It’s one over the determinate and then you – I guess you switch these and negate these, so that’s one thing – that’s reasonable to know.
+
+</p><p>And so SI minus A inverse, that’s the resolvent, is this.  And notice that this matrix makes perfect sense for all complex numbers except plus minus J.  But J is just because this – in this course is officially listed in electrical engineering.  This should be I.  So you really – the truth is, in mixed company, you shouldn’t use J because it’s very – outside electrical engineering, it’s very – it’s a dialect so you shouldn’t really use J.  
+
+</p><p>And my feeling is you shouldn’t use J in mixed company.  Okay?  So that’s – but because the course is in EE, I’m gonna use J, so.  But I’m making it explicit.  That’s this is not the high BBC mathematical phrase that would be used.  That is absolutely universal in all fields, except electrical engineering where you have this.  Okay?
+
+</p><p>And the reason, I think it goes back 100 years, an I apparently represented current.  Now how I got connected to current, I do not know but nevertheless, it got – the two got stuck together in the late 19th century and then here we are 120 years later with J.  So.  Sad but – okay.  I might change that someday because it’s a bit weird but not this quarter, so.  Okay.
+
+</p><p>Now the state transition matrix is you simply take the inverse Laplace transform of this.  No problem.  You go look up in some table or something like that, and you’ll find that the inverse Laplace transform of entry-by-entry is cosine T sine T minus sine T cosine T.  And you saw this matrix before.  That is a rotation matrix of minus T radiants; that’s what it is.  Okay?  So that – it simply rotates.
+
+</p><p>What that means is this state transition matrix, and let’s remember what it does, it maps initial states into the state T seconds later.  This matrix here, it simply – it takes a vector, the initial vector, and rotates it negative T radiants.  Okay?  So that’s what it does.
+
+</p><p>So we’ve actually now verified that the motion in this system is a – is perfect periodic motion.  You simply take a state vector, the initial vector, and you just rotate it at a constant angular velocity, in fact, of one radiant per second here.  So that’s our complete time domain solution.
+
+</p><p>Now by the way, I want to point something out right off the bat.  We are generalizing this.  That’s a scalar differential equation.  Now the solutions of this look like E to the AT – oops TA.  You’ll know why in a minute, I keep writing TA.  So that’s the solution, okay?  Now qualitatively the solutions of a first order scalar linear differential equation are pretty boring.  Basically, there’s only three qualitative possibilities.
+
+</p><p>No. 1, if A is positive you get exponential growth.  If A is negative, you get exponential decay.  If A is zero, you get a constant.  Okay?  There is no way out of this thing you can get an oscillation or any other kind of qualitative behavior, other than growth, exponential growth, exponential decay, or constant.  Well this is X dot equals AX.  A is two by two.  And we just got something out of a first-order linear differential equation that you are not gonna get out of a scalar one.  We got oscillation.  Okay?
+
+</p><p>So when you generalize, when you go to vectors and you look at a first-order, when you look at the vector version, X dot equals AX, you get solutions that don’t just have exponentials in them, they can have cosines and sines.  Okay?  So.  I mean this is kind of obvious but I just want to point it out that our generalization here has already – you’ve already seen behavior you could not possibly see in the scalar case.
+
+</p><p>Okay, next case is double integrator.  So for double integrator, you have X dot is zero one zero zero X, like that, so X one dot is X two, and X two dot is zero.  And the reason it’s called a double integrator is the block diagram would look something like this.  And this is gonna be maybe X one and maybe that’s X two.  Everyone agree with that?  Because X two dot – this is zero going in.  X two dot, is over here, is zero.  And X one dot, that’s what went into the integrator, is X two.  And I think that’s this.  So that’s the block diagram.
+
+</p><p>In fact, when you saw this matrix, you should have had an overwhelming urge to cause a block diagram.  Come to think of it, that should’ve happened here too.  So let’s just do this one for fun.  Here’s X one and, oh, I’m gonna try to do this right, that’s the output, that’s X two.  Okay?  And that’s one over S.
+
+</p><p>So let’s read this one.  It says X one dot is X two, so I’ll just connect up this wire here like that.  Okay?  And this one says X one dot is minus, so I’d put a minus one like that.  There you go.  So that’s our block diagram for this thing, so that’s the picture.  So it’s basically two integrators hooked into a feedback loop with a minus one in the feedback loop.  That’s what it is.
+
+</p><p>Okay.  Double integrator, that looks like this.  And the solution, you know, is totally obvious.  You don’t need to know anything.  I mean you certainly don’t need to know anything about matrices and things like that to solve this.  If X two dot is zero, X two’s a constant, but if X one dot is a constant, X one grows linearly.  It’s a constant plus the second constant times T.  So the solution, we could just work out immediately, but let’s just see if all this Laplace and other stuff works.
+
+</p><p>So, oh, here’s the vector field, which shows you what it is.  If you start here, depending on your height, that tells you how fast you’re moving to the right, or if you’re down here you’re moving to the left, and so on.  Let’s work it out.
+
+</p><p>SI minus A is equal to S minus one zero S.  That’s a two by two invertible – sorry, upward triangular matrix; you should be able to invert that.  SI minus A is this, one over S, one over S squared, zero, and one over S.  Now this is defined for all S except for one complex number, which is zero.  You can list either zero or a pair of zeros, that’s – we’ll see why that is in a minute, but I should really say something like the only eigenvalue is zero.  At this point, I should say that.
+
+</p><p>Okay.  So that’s that.  Inverse Laplace transform is this: phi of T, that’s the state transition matrix, it’s one T zero one.  Okay?  By the way, you’ve now seen something else that is just absolutely impossible in the scalar case.  In the scalar case, if the solution of X dot equals AX grows, it grows exponentially; it cannot grow linearly in time.  That’s for a scalar.
+
+</p><p>And yet, in the matrix case, you can have the solution of X dot equals AX grow linearly in time.  Look at that.  Okay?  So I just – it’s very important to point out that you’re seeing qualitatively different behavior than you could possibly see in a scalar differential equation.  This is not a big deal.  If you worked out what this is, this says X two of T is X two of zero.  We knew that because it was constant.  And then it says X one of T is equal to X one of zero plus T times X two of zero.  That’s obvious because that’s the derivative of X one.  So it all works out and makes sense.
+
+</p><p>Okay, so let’s – let me just have some quick questions here about this matrix phi of T.  We’ll get to this.  Let me ask the following.  What does the first column of phi of T mean?  What does it mean?  What’s the first column of phi of T?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It says what?  It’s what?  X one –
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Correct.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Okay, so what does the first column of phi mean?  It has a meaning.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Yeah, it says the following.  The first column of this matrix tells you what the state trajectory is if the initial condition was E one.  That’s what it tells you.  Okay?  What does the first row of phi of T tell you?
+
+</p><p>All right, let’s write down this.  Phi of ten equals zero, zero minus one, 30, 5, and, of course that’s got to be a square matrix, there you go.  Strange placement but anyway let’s live with it.  What does that mean?  That’s phi of ten.  There’s a very specific meaning.  What does it tell you?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Which state at ten?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:All of them?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Thank you.  This tells you this row is what maps the entire vector X of zero into X sub one of ten.  That’s what it does.  So otherwise, I agree with your interpretation.  So now, give me your interpretation again.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Exactly.  So these two tell you, well at least to the precision I’ve written them down.  It says that X one of ten doesn’t depend on the first two components of the initial state.  Okay?  This says it depends a whole lot and positively on the fourth component of the initial state.  Everybody got this?  So.  Okay.  And this says the first component of the third state actually has sort of an inhibitory affect on X one of ten.
+
+</p><p>By the way we’re gonna see interesting things where when you plug in ten you get one thing, and when you plug in 100 or 0.1, you get something totally different.  So now, you can actually say things talk about when something has an affect, when an initial condition has an affect.  Okay?  So all right.  Okay.
+
+</p><p>So let’s talk about the characteristic polynomial.  This is also very, very famous.  The determinate of SI minus A comes up all over the place and it’s called the characteristic polynomial of the matrix A.  Sometimes you put a subscript here to determine this.  This is absolutely standard language, so this is not some weird strange dialect from electrical engineering or something.  
+
+</p><p>So it’s called the characteristic polynomial.  And it’s a polynomial of degree N and it’s got a leading coefficient of one.  So by the way, some people call that it’s a monic polynomial.  Not some people actually, actually just people; it’s called a monic polynomial, which means its leading coefficient is one.
+
+</p><p>And you can check that, I don't know, over here for example.  Det SI minus A, it’s the determinate of this thing, and it’s just S squared.  Well that’s about as simple as characteristic polynomials go.  Let’s see let’s do this one.  This is gonna be – that is the same one.  We’ll do this one.  So the characteristic polynomial of the matrix, which is zero one minus one zero, the characteristic poly is det of this thing, which is of course S squared plus one.  So that’s the characteristic polynomial of this thing.
+
+</p><p>Okay, so that’s the characteristic polynomial.  And the roots of this polynomial, basically by definition, these are the eigenvalues of a matrix A.  Okay?  So how many people have seen this somewhere else?  Okay.  So this is the – yeah, this should be review.  So the roots are simply defined to be the eigenvalues of the matrix A.
+
+</p><p>Now this matrix has real coefficients here; I mean assuming A is.  By the way, sometimes you look at complex linear dynamical systems, they do come up, they come up in communications, they come up in, for example, in physics, and they come up in all sorts of places.  But generally speaking, we look at the real case, and then on an exceptional basis we’ll look at what happens in the complex case.  All right?  So A is, if I don’t say anything else it’s real.
+
+</p><p>So this has real coefficients.  Now, the polynomial – a polynomial with real coefficients has a root symmetry property.  It says that the roots are either real or they occur in conjugate pairs.  In other words, if lambda is a root and it’s complex of this characteristic polynomial, so is lambda bar, it’s conjugate.  Okay.  So now, you can see why people talk about N eigenvalues.  
+
+</p><p>When you have a polynomial of degree N, maybe the correct way to say it is something like this.  You can have anywhere between one and N roots of an Nth order polynomial.  Okay?  It could be a full N and it could be just – it could actually just be one root.  And a good example would be S to the N.  The only zero of this polynomial is S equals zero.  Okay?
+
+</p><p>Now what people do is they actually – in order to make the aesthetics of the fundamental theorem of algebra that says that a polynomial degree N has N roots, to make that, you know, that statement have no footnote, you have to agree to count the multiplicity of the roots here.  And so this, here would count N of them, and then you can actually make the beautiful statement that an Nth order polynomial has N roots.  Of course, they might all be the same but that’s dealt with elsewhere.  Okay.
+
+</p><p>Now if we resolve it, which is SI minus A inverse, it is likely I guess, that you were at some point tortured with something called Cramer’s rule.  Is that correct?  This was his method for inverting matrices where you crossed out rows and – you cross out a row and a column, took the determinate of what was left, and then you divided by something else and sometimes you put a minus one in front of it.  Is this – yeah, how many people actually saw that?  Okay.  How many people know how useful that is?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Do you know how useful it is?
+
+</p><p><b>Student:</b>Yeah, it solves equations.  [Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It solves equations.  Yeah.  It was useful only for you to take that class.  It has no use of any kind.  Well, other right now, briefly, we’re gonna use it but not really.  No, it has absolutely no practical use whatsoever.  No, under no circumstances are linear equations solved using this method, at least after the late – mid to late 1820s.  So no, no, no, that’s not true.  People maybe all the way up into the ‘40s or something, but only because they didn’t know what was going on.  And yet, there it is in the curriculum.  There it is; might as well teach people how to do long division with Roman numerals.  That would actually be more useful, come to think of it.  So anyway, all right.
+
+</p><p>Sorry, pardon me.  Okay.
+
+</p><p>So this rule basically said this that it said take SI – to calculate this matrix, you cross out a row and a column or something, like the Jth row in the Ith column, of this matrix.  Calculate the determinate, that’s this thing.  Divide by the term of the whole thing.  Well at least we have a name for that, that’s the characteristic polynomial here.  And then you put a minus one to the I plus J in front, and that gives you the –
+
+</p><p>Now I don’t actually care to do this.  This is computationally completely intractable in any case because the number of turns in this is growing hugely and the whole thing is silly.  There’s one thing I want out of this, and that’s this: that every entry in the resolvent is rational function and they have all the same denominator, which is the characteristic polynomial.  The numerator is another polynomial.  It’s the determinate of SI minus A when you cross out the, I, whatever, one row and one column, and take the determinate of what’s there.  That’s what that is.  Okay?
+
+</p><p>Now when you do that, the degree of this numerator polynomial is less than N.  So what that says is that every entry of the resolvent looks like this.  It looks like a polynomial of degree less than N, divided by this polynomial whose degree is definitely N.  Because this thing, the coefficient of S to the N is one, in chi of S here, that’s one.  Okay, so they all look like that.
+
+</p><p>Let’s see.  There’s a name for that.  If you have a rational function, which is a ratio of two polynomials, and the denominator has a bigger degree than the numerator, it’s called strictly proper.  So again, don’t need to know this but that’s just what it’s called, so every entry of the resolvent is strictly proper.  
+
+</p><p>One way to say that is as S goes to infinity, the entries of SI minus A all go to zero.  Okay?  Which is kind of easy to see – well is it?  I don't know.  It sort of makes sense.  As S goes to infinity, you get sort of like, you know, huge numbers times I minus A inverse.  And it’s plausible, at least, that that should be a matrix that’s small.  Okay.
+
+</p><p>Now comes the tricky part.  It turns out that not all eigenvalues of A are gonna show up as poles of each entry.  Because although each entry looks like this, here’s what’s gonna happen.  In some cases, the numerator polynomial will also have some of the eigenvalues, the roots of chi, and those actually will cancel.  Okay?  So you’ll actually not get the – I think this will be clearer with examples and things like that.  Let me see if I have one here.  Oh, I did have one; aha, yes, we have one.  A perfect example, if I can find it.  Here’s our perfect example.  Great.  Okay.
+
+</p><p>Eigenvalues are zero and zero.  Here is the resolvent, okay?  That’s the resolvent right there.  Now I’ll ask you about the poles of each entry of the resolvent.  What are the poles of the one-one entry?  Zero.  Well sure, they’re the eigenvalues.  Okay.  You could say the poles here is – you could say zero and zero for this.  Right?  You can say zero and zero and those are the eigenvalues, no surprise here.  But now I ask you about this entry, the two one entry.  What are the poles of the two one entry of the resolvent?  There are none.  Okay?  So the two one entry is a case, where there’s an entry in the resolvent that does inherit a pole from the set of eigenvalues.  
+
+</p><p>Now what if this had looked like this, like that?  What would you have said?  Well if I’d asked what the poles of the two one entry now, what would you say?  One.  And then what would you say?  You’d say it’s impossible because the entries here, the poles have to be among the eigenvalues but it doesn’t have to include all of them, as this zero entry shows.  Okay.  The significance of that, I think just take only examples and fiddling around is gonna make it – with these things, is gonna make it clear.  Okay.
+
+</p><p>Next topic is this.  We are now going to overload.  Oh, by the way, we have overloaded this.  If you didn’t remember how to solve that, but that’s the scalar case, but for some reason you didn’t know how to solve this but you did remember all about Laplace transforms.  I’ve always found that a little bit implausible but anyway let’s just go with the story; let’s go with that story.  You would’ve said oh, you know, S capital X of S minus X of zero equals A, you know, X of S.  And you would’ve gotten a formula that looks like this.  X of S is X of zero divided by S minus A.  Did I do that right?  Something like that, you would’ve got that.  Right?
+
+</p><p>And I’m allowed to write this because these are scalars.  Okay?  I mean you now know you would write this – you know that’s – that is the scalar version of that.  Okay?  But this is what it looked like when you took an undergraduate class.  And then someone would say, “Well what – so what X of T?”  And you’d say, “Well it’s the inverse Laplace transform of this.”  Okay?  So we’ve just worked out all of that.  We’ve overloaded it now to the matrix case.  And the only thing is that what had been a fraction like this, this SI minus A, I mean pretty – look, it couldn’t really – really couldn’t have worked out many other ways.  It came out in front as SI minus A and has its own name, which is the resolvent.
+
+</p><p>Okay but now we are going to overload the exponential.  All right?  So we’ll start with a series expansion of I minus C inverse.  This is actually the matrix version of the scalar series you’ve seen.  So I minus C inverse is I plus C plus C squared plus C cubed.  And that’s if the series converges, actually quite soon we’ll know exactly when it converges.  But it certainly converges when C is small enough.  It’s small enough that the powers of the Cs are getting smaller fast enough.  Then this for sure converges.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:I said we’ll get to it later.  
+
+</p><p><b>Student:</b>Oh.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:So it’s in a sense actually that in one lecture I’ll be able – you’ll know exactly what it is.  I don't mind.  I’ll tell you.  The absolute values of the eigenvalues of C, which are – have magnitude less than one.  That’s the exact condition.  Okay?  So.
+
+</p><p>Okay so let’s look at this.  And, you know, how would you show this.  You’d show this by terminating the series at some point and then multiplying, you know, telescoping the series.  You’d multiply this by that and finding out that what would be left over would be C to the N, where N is where you truncated it.  And then if C is going to – if C to the N then gets bigger goes to zero then you’d get this.  So you have that, that’s your series thing.  And we could just take this as formal.
+
+</p><p>Now let’s look at SI minus A inverse and let’s do this.  Let’s first pull out S out of this and we get I minus A over S inside.  And we pull the S out which becomes a one over S outside, looks like that.  It’s a scalar.  And you get I minus A over S, now that’s this formula here.  And I’m gonna use this power series expansion, here, of I minus C inverse.  And if anyone bugs me about convergence, I’ll wave my hands and say, “Oh, yeah.  Right.  This is only valid for S large.”  Okay?  That’s how this is gonna – if anyone bugs me about it, that’s what I’m gonna say.
+
+</p><p>Okay?  Because if S is large A over S is small, and then in the way in which I didn’t say if C is small enough this will converge.  Okay, so we get this.  And this is simply I plus A over S plus A over S squared plus A over S – oh by the way, of course that’s slang.  Right?  Everybody recognizes that?  That’s considerable slang but a lot of people write it.  Maybe the correct way to write that is this, but then you get too many parentheses and it starts looking really unattractive and stuff like that.  So but I figure now, post-midterm, I can be little bit more informal, so that’s slang, just wanted to mention it.  So.
+
+</p><p>I still, I don't know that I can actually still take things like this.  That just looks weird for some reason.  You know maybe I’ll get used to it or whatever, but.  And this looks kind of sick and I just like why would you do that.  I don't know it just seems odd, anyway.  So.  But for some reason this just – the S, this seems to flow, so.  And it sure beats that because it’d be a lot of parentheses otherwise.
+
+</p><p>Okay so I write it this way.  Oh, that’s slang too.  There we go.  See?  Right there.  That’s a lot of slang but that’s okay.  You know what’s meant by it.
+
+</p><p>So you take this series expansion, and now let’s take the inverse Laplace transform term by term.  Well if I do that, the inverse Laplace transform I over S, that’s easy, that’s I.  A over S squared, that’s easy, that’s TA.  Then A squared over S cubed, that’s TA squared over two factorial, and so on.  So I get a power series that looks like that, okay?
+
+</p><p>Well that’s interesting because that looks just like this, E to the AT, like that.  Except I’m gonna start writing these as the E to the TA.  You’ll see why in a minute.  E to the TA; looks just like that.  So here’s what we’re gonna do.  We’re simply going to define.  All of that was just sort of little background.  We’re simply gonna define the matrix exponential this way.  E to the M is I plus M plus M squared over two factorial plus M cubed over three factorial, and so on.  Okay?
+
+</p><p>Now just the way the series for – the power series for the ordinary exponential for a scalar real or complex number converges for any number.  Right?  Any number, even a big number, what happens is these terms get way big.  It will – they will converge though, okay?  Same way.  It’s true for all – so this series converges for any matrix M.  How does the – how well does the series do for non-square matrices?  X of a two by three matrix, what is it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Yeah, it just – it makes no sense.  And, in fact, where would be the – where in the syntax pass would you halt?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Here?  You’d stop already right here.  I’d stop by the minute I parsed, when I got to – when I pulled the token M off and then asked somebody somewhere to add a two by three matrix with an identity, that’d be the problem.  But you’re right, I could say, “You know what?  I’m gonna let one go.  Just keep going.”  And then the M squared –
+
+</p><p>Yeah, it’s like, “No problem.”  Right?  No, that’s actually what compilers do, right?  They try to get through as much as possible because the more they can get through, maybe the more informative their description of the exact kind of idiocy you suffer from they can describe.  So, you know, you’d say, “Okay, fine.  This person is adding an identity with a two by three matrix.  No problem.  Let’s just keep going.”  And then, indeed, you’d get the M squared and you’d say, “All right, I know what we’re dealing with here.”  And then you return with a nice message.  Okay.
+
+</p><p>So yeah, so matrix exponentials don’t – they don’t exist, but for any square matrix they exist.  By the way, when you do an overloading, we’ve now just overloaded the exponential.  It takes as argument a square matrix.  Okay?  Whenever you do an overloading, you want to check that in any context where the two different contexts overlap, they better agree.  So for example, if someone walks up – you know if someone says XA, and that’s a scalar, I mean there’s this weird thing where you could say, “No, no, no.  It’s a one by one matrix.”  And you have to make sure it’s the same thing.  But of course, it is the same thing, so everything’s cool here.  Okay.
+
+</p><p>All right, so that’s the matrix exponential just defined for any matrix, and now it turns out that’s just what – that’s what the state transition matrix is.  It’s E to the TA.  And so what we’ve done is we’ve come around and we’ve figured out the following.  The solution of X dot equals AX is this: it’s X of T equals E to the TA X of zero.  And I’m gonna try to do this.  You know the problem is I guess if you learn, or teach in my case, you know, the undergraduate classes, they are all – they always looks like this.  It’s always E to the AT.  Did people see that?  Is that what you saw?
+
+</p><p>You know it’s kind of like cosine omega T.  Right?  There’s nothing wrong with a person writing this but it’s just weird and kinda – it goes against convention and I don't know what.  Does everyone know what I’m talking about?  Okay, so for some reason, I have no idea why, you put the T like this.  So that was so ingrained in me from teaching undergraduate classes that for a long time I wrote E to the AT.  And actually, a lot of people will do that.  But that’s kind of – you know that’s weird.  That’s that the post – the scalar post multiplication of a matrix.
+
+</p><p>It’s cool in some – you know depending on the social situation it can be okay to post multiply a matrix by a scalar.  Certainly among friends, on weekends, I don’t see any problem with it.  But it just somehow it’s not right, so I’m now retraining myself to write this as E to the TA.  I don't know, just so that when I then teach this class I have that.  So that’s the – so anyway, I’ll slip up a few times and that’s fine.  Okay.
+
+</p><p>So there you go.  Now we have a name and we know that the solution of X dot equals AX is E to the TA – is X of T equals E to the TA X of zero.  Feel free to have – when A is a scalar, this goes back to your undergraduate days, there’s nothing here you didn’t know about, when A is a matrix, that’s the matrix exponential.  Okay?  So it’s not and it’s the solution.  So okay, there you go.
+
+</p><p>So the solution of that is this.  Now that – as I just said, that generalizes the scalar case; note written here is TA.  Now a couple of warnings here, and in fact this is what this makes this fun.  If in fact everything just worked out, it wouldn’t really be fun.  And it wouldn’t – if it didn’t really require like outer cortical activity, I mean if it was just notate, it’s not interesting.  So here’s the idea behind this.
+
+</p><p>The matrix exponential, it’s meant to – of course, it’s meant to look like the scalar exponential.  That’s absolutely by design it’s supposed to look like it.  Okay?  Now what that means is that things you would guess, some things you will guess from your knowledge of the scalar exponential, hold.  Okay?  I’ll show you one right now.
+
+</p><p>So for example, E to the minus A is, in fact, E to the A inverse.  That’s true, okay?  But there’s lots of things from your undergraduate scalar exponential knowledge base which doesn’t go – doesn’t actually extend to – it absolutely does not extend to the matrix case.  So here’s an example.  You might guess that E to the A plus B is E to the A E to the B.  That is absolutely the case if A and B are scalars it is false.  In general, in fact for almost if you randomly pick and A and B, it will be false.
+
+</p><p>By the way, you will know soon why, when you understand the dynamic interpretation of what E to the A means and you thought about it carefully, other than as a – as opposed to notationally, you would not even imagine that this would be the case because it’s making a very strong statement.
+
+</p><p>Anyway, this is false.  Quick, we’ve actually worked out explicitly two matrix exponentials so we’ll use that work.  If A is this thing, E to the A is whatever that – it’s a one radian – that’s a one radian – negative one radian rotation matrix.  E to the B is this thing.  That’s just straight from our formula.  You work out what E to the A plus B is.  We did not work that out but I worked it out to a couple of significant figures, and it’s not equal to the other way around.  Okay?  So it’s just – they’re just way different animals.  Okay?  So be very, very careful with the matrix exponential, and with actually a bunch of the other stuff that we’ve overloaded.
+
+</p><p>By the way, you know this is not – it’s not like you haven’t seen this before.  And I show you an example.  You know, for example, that if these are scalars and I say something like AB equals zero, you know that either A or B is zero.  That’s true.  But if A and B are matrices, this is – it is false that either A or B is zero, just false.  Now it becomes true with some assumptions about A and B, and their size and rank and all that stuff.  But the point is, it’s just not true that that implies A equals zero or B equals zero.  And you kinda – you know after a while you get used to it and that’s kind of – same thing for the matrix exponential, so it’s not like you haven’t seen stuff like this before.  Okay.
+
+</p><p>However, if A and B commute, so if AB is BA, if matrices commute, then in fact this formula holds, okay?  And that’s easy to do.  You just simply work out the power series.  You take the powers and then you’re free to rearrange the As and the Bs and you can make this power series look like that.  Okay?  So, and that tells you immediately the following.  If you have two numbers, T and S, then E to the TA plus SA is actually E to the TA times E to the SA, like that.  Okay?  And if S is minus T, you get E to the TA times E to the minus TA that’s zero.  Okay?
+
+</p><p>So that says that the exponential of TA is non-singular always and it has inverse E to the TA, inverse it just says E to the minus TA.  This’ll make a lot of sense in just a – momentarily.  All right.
+
+</p><p>So how do you find the matrix exponential?  Well let’s take zero one zero zero.  There’s lots of ways to find it.  You can start by – we already worked out E to the TA so that’s kinda silly; we just plug in T equals one and we get this.  But we can also do it my power series.  So by power series, we just take I plus A plus A squared over two.  What is A squared for this A?  It’s zero because this matrix is – oh okay, all right.  Someone give me the English for what that does, give a name for that matrix, what it does.  What does it do to a two vector?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What does it do?  I think I heard it.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Shift up.  Okay, let’s call is the upshift matrix.  So that’s the upshift matrix.  It takes a two vector, pushes the bottom entry up to the top, and fills in with – and zero pads, so fills in a zero for the bottom entry.  That this – that’s the – so if you do that twice to a vector, there’s nothing left.  So A squared is zero, any vector; A cubed is zero.  And actually, now this something you don’t see this in the scalar case.
+
+</p><p>In the scalar case, when you work out the infinite series for the exponential, it’s infinite, oh, except for one case, when the argument is zero.  But other than E to the zero, that series is infinite.  Here, for a non-zero matrix, the series was finite.  It only looked like an infinite series.  It was finite.  So that’s one way to get this matrix exponential.  Okay.
+
+</p><p>Now the interpretation – how many people have seen the matrix exponential, by the way?  I’m just sort of curious as to how many.  Some were.  Okay, so.  All right.
+
+</p><p>Now here – oh and I should say – let me say a little bit – let me just give you one warning about this and that’s this.  If you type XA in MATLAB, for example, but actually in many systems, what you’ll get actually is it’s not what you think.  What you’ll get here is actually a matrix that looks like this.  It’s E to the A one one, E to the one two.  It’s basically exponentiating all the entries.
+
+</p><p>Now let’s forget the fact that there’s probably one out of 100 million possible cases where you’d ever want to do such a thing.  Okay?  But nevertheless, that’s what happens.  Just to warn you.  So in fact, the way this is – it’s actually XM of A.  And that means the matrix exponential.  So that’s how – that’s what people call this.
+
+</p><p>So just be aware of this when you start – you will be fiddling with this, so just be aware of it.  And you’ll make this mistake.  There’ll be many ways to check what you’re doing.  By the way, the two would agree in, I think, in almost no cases or something like that, so.  But the worst part is it could – you might get something that’s like plausible or – that’s the worst part, so you just have to check and be aware of this.  Okay.
+
+</p><p>By the way, the way to compute the matrix exponential, it is not done by any of the methods.  Nothing is computing a Laplace transform, I assure you.  You’ll know soon a little bit how it’s done.  
+
+</p><p>It turns out it’s actually not that easy to calculate the matrix exponential.  And there’s some – there’s a wonderful paper about computing the matrix exponential.  And the title is 19 Dubious Methods for Computing the Matrix Exponential.  And they go through, it talks about 19 methods that people have used, shows how each one can, in the wrong circumstances with the wrong A, give you like totally wrong results and things like that.  So that’s it, so.  But for paper titles, I thought that was – that’s right up there, I think.
+
+</p><p>Okay so we’ll be able to finish today.  And actually, it’s very important to actually, I mean know what is the meaning of the matrix exponential, and this is extremely important.  It’s this.  So far, it has a very specific meaning.  E to the TA is an n-by-n matrix.  It maps the initial state of X dot equals AX into the state at time T.  So I think of it as a time propagator; it propagates from initial time, to time T.  Okay?
+
+</p><p>Now it turns out, actually – it – you can actually work out the following.  That X of T tau plus T is equal to the E to the TA times X of tau for any tau here.  So in fact, the matrix E to the TA is a – it propagates a state, forward in time T seconds.  It propagates X of zero into X of T.  But for example, it will propagate X of 17.3 into X of 17.3 plus T.  Okay?  This times E to the TA is gonna equal that because this propagates a state of linear system forward T seconds.
+
+</p><p>By the way, with a minus sign it works just as well here.  You can check that.  It works just as well for a minus sign.  So E to the minus A is a matrix that propagates the state backwards in time one second.  That’s what it means.  Okay?  So these are kind of basic facts.  That’s what the matrix exponential means, right?  So it’s gonna mean all sorts of interesting things.  And from that, you can derive all sorts of interesting facts about linear dynamical systems, how they propagate forward, backward in time, and things like that.
+
+</p><p>Okay, so now the interesting thing here is you have – if you know the state at any time, any time, you actually – fixed one time, you know it for all times because you can now propagate it forward in time with this exponential and you can propagate it backward in time.  So for example, I can go to some chemical reaction or some bioreactor described by X dot equals AX.  I can take a measurement of X at time 12, and then from that I can infer what X of zero was even if I didn’t measure it.
+
+</p><p>Why didn’t I measure it?  Maybe because it was too – the numbers were so small the colonies hadn’t grown yet, and I could only measure them when they got to the billions or trillions, or something like that.  Everybody see what I’m saying here?  So in fact, how do you get X of zero if I tell you what X of 12 is.  What do you write here?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:E minus 12 A, that’ll do it.  Okay?  So E to the minus 12 A is the matrix that actually goes back – it’s a – goes backwards in time 12 seconds, okay?  So that’s what it is.
+
+</p><p>Now we can actually connect a few things up now that’s kind of cool.  We looked earlier at a forward Euler approximate state update.  Now the forward Euler approximate state update said if you want to know what is X of T at time tau plus T.  What am I doing?  
+
+</p><p>If you want to know what X of T tau plus T is, you’d say, “Well that’s about equal to X of tau plus,” and this requires T small and it’s an approximation, so I squigglize these.  There we go.  It’s a new verb.  X of tau plus T times X dot of tau, like that, okay?  Now that’s an approximation and it’s based on – basically this is, some people call it – by the way, this is called dead reckoning in a lot of – because basically say you’re going in that direction, you check your watch, check the elapsed time and say, “Where are you now?”
+
+</p><p>We’re like that bearing times the time, that’s where we are.  So that’s the approximation.  Now this thing is AX of tau and so this is I plus TA times X of tau, like that.  So this is an approximate.  It’s an approximate T second forward propagator.  It’s the forward Euler propagator, is what people would call it.  But now we know the exact T second forward propagator.
+
+</p><p>The exact T second forward operator is the exponential.  And look at this, this thing is merely the first two terms in the Taylor series.  Okay?  So now you can see forward Euler is basically just one term in the exponential series.  You could take two and three, and all that kind of stuff.  So that’s the idea.  Okay.
+
+</p><p>So let’s take a look at this and let’s talk about the idea of sampling.  There’s a lot of – actually already there’s a lot of applications of what you see, just simple ones immediately.  So if someone says, “I’ve got some measurements of X of T, you know, at different times, but I didn’t know what it was in between,” how would you do that?  What if you – how would you do that?  In fact, let’s talk about that.  Let’s talk about that.
+
+</p><p>You have X dot is AX.  Let’s make it a bioreactor; we talked about that before.  And suppose you make an assay, you measure the thing.  And like X of 13.1, X of 15, you know, X of 22, like that, and someone comes along and says, “What is – what was the state?”  And the state might be, by the way, the volume of different colonies or concentrations or whatever.  Okay?  And they want to know what’s that.
+
+</p><p>And the first answer is sorry we didn’t do an assay at T equals ten hours.  What do you do?  Let’s say you measured at eight, too.  What do you do?  Give me some methods.  Give me a method.  You know A.  You’ve measured X of 8, X of 13.1, X of 15, X of 22, and I want to get X of 10.  Don’t worry; so far, the measurements have been perfect.  They’re absolutely perfect.  A is not a lie.  What do you do?
+
+</p><p><b>Student:</b>You measure [inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Perfect.  So here’s one.  Ready?  Reconstruction Formula No. 1, tell me what to write please.  What do I write here?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:E to the two A.  And the comment is propagate forward two seconds, oh hours, or whatever we said, whatever the unit is.  Right?  How about this, you said you could – we could take this one, X of 13.1, E to the what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Okay.  And this is propagate backwards – no, no, no, come on.  That’s not right.  This is E to the minus 3.1.  Okay great.  I said that before, that reflects on you, you know, not me.  So it’s the length between I write something idiotic and you correct it.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Thank you.  I knew that, I was just testing you.  Okay.  Fine, so we have that.  All right.  Oh by the way, which of these is better?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Hmm?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:They’re what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:This one.  You like that one.  Why?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:You think the – so we got two – two people over here say the former.  They like propagating forward.  But you – oh, because you propagated forward two hours, is that it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Oh you have the – okay.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Ooh, okay.  All right.  So –
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:All right.  Could you have calculated it from X 15?  Sure, no problem.  E to the minus five A times X of 15.  Okay, so which of these is better?  Well if there’s no noise and A is exactly what you think it is, they’re all exactly the same.  So this could actually be an assertion here.  And if it’s not – by the way, if these are not – if you calculate these and you get two different answers, it means you’re gonna have to do something more sophisticated.  Okay?
+
+</p><p>And just for fun, just given this state in the course, what would you do, if someone gave you all this data?  Just a quick thing, quick what would you do?  
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:You might do some Lee squares, exactly.  You might – I mean first of all, you might propagate all of these two time ten.  Okay?  If they’re like all over the map, you would say – you’d go back to the person and you’d say, “Can we talk?”  Okay, that’s what you’d do here.
+
+</p><p>Now if they’re not all over the map but just sort of you know, one is estimating one thing, one’s a – they’re a little bit different and they’re not like, you know, weird numbers, you know, varying by factors of ten, if that’s the case – that’s gonna come out really, really nicely by the way on the tape.  That was me talking while inserting this thing back into its – okay.
+
+</p><p>What you might do is take all those things back and then do some kind of Lee squares fit.  That’s what you might do.  Right?  And by the way, that’d be a very, very good method.  That would be a perfectly practical method.  Actually, methods like that are used plenty.  So.  Okay.
+
+</p><p>So we will – we’ll quit here and continue next time.  And let me, for those of you who came in late, the midterms actually are graded.  Solutions are posted.  They’ll be available, I guess if you follow me up to Packard.
+</p><p>
+[End of Audio]
+</p><p>
+Duration:  77 minutes
+</p><p>
+
+</html>

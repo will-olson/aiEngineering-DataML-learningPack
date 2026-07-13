@@ -1,0 +1,368 @@
+<html>
+IntroToLinearDynamicalSystems-Lecture12
+<p>
+</p><p><b>Instructor (Stephen Boyd)</b>:A couple of announcements – I don't know – it depends on how frequently you read email.  If you read it very frequently, you'll know that I sent out a panicked message.
+
+</p><p>Actually you can turn off all amplification in here, if you don't – which was that – the CC3 AFS Directory disappeared this morning.  So it's not unusual to have like AFS episodes where full swabs of AFS disappear for a little bit.  And I've learned in the past if you kind of be calm, and just wait a little while then they come back.  And I probably should've done that in this case, but it was very strange to see – to list EE class slash EE star, and to see EEQ61, EEQ62, nothing, EEQ64 – little bit strange.  But anyway, so I put in multiple panicked calls, and I did finally – right before class I got a hold – some of you said, in fact, "Yes, there was an incident."  And as – he said, "As we speak file systems are rebuilding themselves."  So – and apparently they just came right back up online.  So apparently our website's down, but oh well.
+
+</p><p>Okay.  Any questions about last time or anything else?  Midterm?  No.  Okay.
+
+</p><p>So I do want to say for the midterm make sure if we – I don't know – if we – if for example, we took a bunch of points off – let's say for example, problem 2 on the band limiting thing, please make sure – read our solution, look at yours, and it shouldn't be one of these things where you say, "I don't know.  I mean theirs is okay, but mine's pretty good too."  It shouldn't be one of those.  So if you're anything remotely near that cognitive state, look at it again, and come to talk to one of us.  By the way, we also do make mistakes, so that's fine, I mean if you actually find something where you – if you're cognitive state converges to, "Hey, mine is fine," then definitely come, and talk to us.,
+</p><p>
+</p><p>Okay.  Let's continue then.  You can go down to the pad.  Last time right at the end, we looked at – well, this is really what – this is what an exponential is.  This is – in fact, this is really one of the – a [inaudible] exponential is nothing but a time propagator in a continuous autonomous linear dynamical system.  That's what it is.  It is nothing else.
+
+</p><p>So here's what it tells you.  It says that to get this state at time Tau plus T from the state at time Tau – first of all they're linearly related.  That alone is – well, it's not unexpected, but they're linearly related.  They're related by an end-by-end matrix that maps one to the other.  And that matrix is simply E to the TA.  So E to the TA is a time propagator.  It propagates X dot equals AX forward T seconds in time.  If T is negative it actually runs time backwards, and reconstructs what the state was some seconds ago.
+
+</p><p>So we looked that – actually that alone is enough for you to actually do a lot of very interesting things, and we'll look at a couple of examples here.  One is sampling a continuous time system.  Suppose we have X dot as AX.  I have a bunch of times.  We'll call these the sample times.  And I'll let Z of K be X of TK.  So Z of K is the sampled version of X at the sample times TI.  The fact is they just don't even have to be monotone increasing.  It's totally irrelevant.  Everything we're gonna work out now has nothing to do with that.  Times can actually be [inaudible] go backwards, and it makes no difference.
+
+</p><p>Here's the important part.  This says that to get Z of K plus 1, which is X of TK plus 1, from X of – Z of K, which is X of TK, you simply multiply by E to the time difference times A.  Okay.  That's matrix exponential of force here.  So this is what propagates you from TK to TK plus 1.  If uniform sampling, then that's says that difference between these is some number H, which is the sample period, and basically you get this – you get Z of K plus 1 is E to the HA Z of K.  And that's actually just – this is sometimes called the discretized version of this continuous time system.  But this one is exact.  There are no approximations of any kind here.  This basically says if you want to know how the state propagates forward H seconds into the future, you multiply by this constant matrix E to the HA, and that'll probably get you forward H seconds.  So that's what this is.
+
+</p><p>Okay.  So there's a lot of things you can do that are interesting now.  Here's one.  These things really come up actually in lots of cases.  So if you have time varying linear dynamical system, that's X dot equals A of TX.  These do come up.  In some cases it's much more common to find the time in variant case, but these do come up.  And there's a bunch of things you need to understand about this.
+
+</p><p>For example, the simple solution, which is a generalization of the solution of X dot equals little A of TX when these are scalers, is wrong, and I believe that's a problem on your current homework – or current homework.  Oh, it is current.  It's Thursday, I can say that.  I forgot to announce that.  We did post homework 6, and not only that, there's an M file which you can actually get to now that AFS has graced itself – graced us with its presence yet again.  So we've assigned homework 6.  Homework 5 is still pending or something like that.  I think originally we said it was due Monday or something, and we decided that was weird.  So it's just due Tuesday.  Is that how it all converged?
+
+</p><p><b>Student:</b>That's due the [inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It's due Tuesday.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It was never due Monday.  Well, okay.  Fine.  Like I said, "Don't trust me."  I used to say, "Trust the website."  That's why it was so upsetting when it was gone this morning.  But it didn't bother any of you, right?  Did – actually how many people here actually even noticed it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:When?
+
+</p><p><b>Student:</b>This morning.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:This morning.  Okay.  Because we were mucking around at around 11:00 or midnight or something, and it was fine.  So did it bother you?
+
+</p><p><b>Student:</b>No.  [Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:You just – you're like totally cool about it?  You're like, "No problem.  It's just not there."
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Oh, you must have done it right before class.  Okay.  Jake was doing the follow up.  He did the same thing rather.  He was fiddling around.  It wasn't there.  He did something.  It was there.  And he said, "I fixed it."  I think – he may have.  We don't know.  Anyway, it's back.  So – okay.
+
+</p><p>Back to piecewise constant systems.  Okay.  So here if you have a piecewise constant system, it means that the dynamics matrix here is constant for certain periods of time.  These come up all the time.  Oh, by the way, there's a wonderful name for this.  This is called sometimes a jump linear system is one name for it.  And before we get into how you analyze them, I'll just give you an example.
+
+</p><p>So a very good example that I know about or heard about is people working on, for exam – well, power systems would be one.  So a very good model for – at least for small perturbations in a power distribution network is linear.  Actually that's not a good model for huge perturbations, but for small ones, very good model.  And what happens is people will analyze something like this: A0 will sort of be the nominal dynamics, the dynamics of the system when everything's working.  So this state is kind of – presumably going to zero.  That's what – zero means everything's the way it should be.  Zero means ever – all the phases are in line or whatever they're supposed to be, like this.
+
+</p><p>Then what happens is at some time – and that might be called something like TF for fault time.  So at TF basically some – the lightening strikes or something happens, and some circuit breaker, for example, shorts or something like – some of the line shorts.  There's an over current situation.  And then they have another name, I remember this as TC, which is the clearing time.  The clearing time means that a breaker opens now.
+
+</p><p>Now, by the way, then you would have things like A nom would be the original dynamics matrix, that's when everything's cool.  Then you'd have AF, that's the dynamics matrix when this short is there.  Then you'd have AC, is a different matrix still, which is the dynamics matrix when the circuit breaker's opened – something like that.
+
+</p><p>And so you want to fi – you want to ask questions now about what happens to the state in this time varying linear system.  You might ask, for example, "How far – how big does the state get?"  One hopes that it then gets smaller again – maybe we can answer it this way.  So these are the types of questions you can answer, and you can do studies where you could vary – you could say, "Well, if the circuit breaker is opened in five cycles maximum, what happens?  What if that were three?  What if it were seven?  How much trouble can the Western U.S. grid get into?"  And these would be the kind of – the questions – the types of things you could answer.
+
+</p><p>Okay.  That's just an example.  Let's see how this works.  So to get the state at a given time here's what you do from the initial state.  You start with the initial state, and you propagate it forward T1 seconds in time.  What is the stuff between my fingers there?  What's that?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:That's X of T1 because we just propagated it forward.  Now, by the way, you can – if someone says, "Oh, wait a minute.  You're using a matrix exponential.  This is a time varying system.  Everyone knows you can't use matrix exponentials for a time varying system."  What would you say?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Thank you.  You'd say, "That's true, but over the interval zero T1 it's a time invariant system.  The matrix A does not change."  Okay.
+
+</p><p>Now, you take this matrix, which is X of T1, and you propagate it forward T2 minus T1 seconds.  And what does this give you?  That's X of T2.  And you keep going until the very – until the last instant before T occurred, and then you propagate forward the remaining time.  That's this.  Okay.  So this is the picture.  And you should read that exactly that way.  When you see it you should know what every single piece is, and so on.  Okay.
+
+</p><p>So this – by the way, this matrix here is called – that is actually called the state transition matrix for the time varying system.  And in fact some people write it this way.  Phi of T and zero, meaning it is the matrix that propagates X of zero into X of T.  So that's the name for that.
+
+</p><p>Okay.  So we can also analyze things like the qualitative behavior of X of T.  This will actually make a connection to things you know from undergraduate, and scaler stuff.  So let's take X dot equals AX like this.  Then X of T is E to the TA times X of zero.  The Laplace transform of X is this resolvent SI minus A inverse times X of zero.  Now, every component of the state Laplace transform is an entry of this, but that each one of these looks like this.  Every entry of this matrix is a rational function with a numerator of degree less than N, a dominator which is exactly N, multiplied by then some numbers here.  So the result is each of these entries in this Laplace transform of the state vector is a polynomial of degree less than N divided by the characteristic polynomial.  Okay.
+
+</p><p>Now, this is just a scaler, and we know a lot about the qualitative behavior of a function like little xI of T now – based on it's Laplace transform here.  So what you see here is that the only pulls that capital XI of S can have are among – are the eigenvalues of A.  So that tells you that the only terms you're gonna see when you work out the solution – right?
+
+</p><p>Well, I guess we'll first assume the eigenvalues are distinct.  That's the simple case.  Then the solution looks like this of course.  It's simply a sum of exponentials.  Now, these can be complex here.  Okay.  So in this case you get a sum of exponentials, and the exponentials here determine of course the qualitative behavior.  But these exponentials here are the eigenvalues of A.
+
+</p><p>So what that means is the following.  The eigenvalues of the matrix A give you the exponents that can – and I’m gonna emphasize that's not can – it is not do, it's can occur in exponentials.  Okay.  And the reason it's not do is that some of these betas can be zero.  Okay.  A real eigenvalue of course, it corresponds either in exponentially decaying or growing term, and if it's – it's either the exponential in decaying, if it's negative or it's growing.
+
+</p><p>Now, a complex eigenvalue corresponds to decaying or growing sinusoidal term.  So now, at this point you can say that you know qualitatively what all solutions of X dot equals AX look like.  And here's the cool part.  It's no different – what's interesting about it is this: you know already that you get much different behavior in a matrix of vector linear differential equation than a scaler one.  In a scaler one the only thing you can have is exponential growth or decay.  That's it.
+
+</p><p>Here, we've already seen weird stuff.  We've seen oscillations.  We've seen things growing like T, not exponentially.  So we've seen some pretty weird stuff.  And you ask the question, "How weird can it be?"  Now, we know the answer.  The answer is, "We'll get to the T's later."  But for the moment it says that basically the solutions of X dot equals AX – if the eigenvalues are distinct basically are damped or growing sinusoids.  They're exponentials multiplied by sinusoids.
+
+</p><p>And you know what that is, by the way?  That's this.  It's this.  It's a – well, I'll put it all together.  It doesn't matter.  So what it basically says is that the types of behavior you see in second order linear differential equations or scaler – sorry – scaler second order of differential equations – because these equations of course will give you exponentials multiplied by sinusoids.  And it basically says, "That's it."  So you're not gonna see anything different from second order systems like that.  That's not quite true, but for the moment it is as long as the Lambda I are distinct.  [Inaudible].  Okay.  So that's what that says.  Okay.
+
+</p><p>So you get a famous picture, which you've probably seen.  I don't mind showing it again.  It's something like this.  If you plot the eigenvalues of the matrix in the complex plane they occur in complex pairs.  In other words whenever something is here its conjugate is here as well.  Like that.  And this tells you something immediately.
+
+</p><p>If the eigenvalues – oh, by the way, what's the size of the matrix here in this case?  What's the size of A?  Six by six.  So it's six by six matrix.  Here are the six eigenvalues.  And it says that if this what – if these are the eigenvalues of A, it's say that when we look at the solutions we should expect a growing exponential here with – actually that grows at a rate given by that.  This is sort of an oscillating – this one gives you an oscillating solution that's oscillating, but also decaying.  And these things are just rapidly decaying things.  That's rapidly decaying.
+
+</p><p>By the way, this one is a decaying exponential.  Would you see the – sorry – a decaying exponential multiplied by a sinusoid.  By the way, for this one, if I showed it to you, would the oscillations scream out at you?  No.  You wouldn't even see it.  You'd be hard pressed to say it oscillates.  And the reason is, although the solution looks like E to the minus Sigma T time cosine Omega T – something like that, in terms of E to the minus T has already – E to the minus Sigma T is already gone down by some huge factor by the time one cycle has gone over.
+
+</p><p>So technically the term associated with this goes through many infinitely number of zero crossings, you won't see it.  So for all practical purposes this thing would just look like a bump – sort of something that goes like that, and down.  So – okay.  All right.  So that's the picture.  All right.
+
+</p><p>Now, let's suppose that A has repeated eigenvalues.  Now, we'll do the complicated case.  In this case the Laplace transform could have repeated pulls – by the way, it might not, and soon we'll see exactly what that means.  So if you express the – if you write the eigenvalues as Lambda 1 through Lambda R these are distinct with multiplicities N1 through NR.  So these add up to N.  Then X looks like this: the solution's the inverse Laplace transform of a rational function with repeated pulls.  And those look like this.  It's an exponential that's complex.  So that's both got a sinusoidal term, and a decayer growth rate factor – exponential multiplied by a polynomial.
+
+</p><p>Now, actually you've seen everything.  So you get – and now you remember one of our examples we saw before was a system where the solution actually grew like T, right?  And that's exactly this.  That's where Lambda was zero, and you had a T in here.  So that's all that is.  Okay.  That's basically it.  That's the only kind of solutions you can see for X dot equals AX.  That's the whole story qualitatively.  Okay.
+
+</p><p>So we can answer a very basic question, which is stability.  So that – it's a very old term.  Actually in some ways it even started a lot of the study of this.  I'll say why in a minute.  So you say that X dot equals AX is stable if the exponential – if this matrix exponential or state transition matrix goes to zero as T goes to infinity.  Let me just quick syntax scan check.  What's the size of zero here?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What is it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It's N by N.  That's the zero matrix.  That say's if every entry of this exponential goes to zero – now that has a meaning that basically says this – it says that since X of T is this matrix [inaudible] every entry of this matrix goes to zero as T goes to infinity.  It says that no matter what X of zero is, X of T goes to zero period.  That's what it says.
+
+</p><p>Another way to say that – I guess it's the same story, but it's in a more flowery language or something.  It says that basically any solution of X dot equals AX – there's lots of them – all of them have the property that as T goes to zero, X goes to zero, so all trajectories converge to zero.  Okay.  So that's stable.
+
+</p><p>Now, they are – you will hear other definitions of stable often – hopefully with some qualifier in front.  Just ignore them.  So that's my advice because they're just silly, and you'll hear things like neutrally stable, and – anyway, just not only ignore the terms, but avoid those people.  They just make things complicated when they don't need to be.  So they're – it's not good enough just to have one idea of like stability, so they have to have 14 different ones.  Okay.  So they can hold forth about when – one implies to the other.  All right.
+
+</p><p>So we can now say when this occurs.  It's very simple.  You can say X dot equals A stable if, and only if all the eigenvalues may have negative real part.  We'll get the only if part actually later today, but the if part we can get right now.  Actually how do you know that?  I mean it's simple.  Every solution looks like this – it looks like a polynomial times E to the Lambda T.  If the real part of Lambda is negative, E to the Lambda T here is complex number, it sure goes to zero as T goes to infinity.  Actually doesn't matter what the order of T is because an exponential will eventually swamp out any polynomial, and so you get zero.
+
+</p><p>The only if we'll get very soon, but in fact this is very, very unsophisticated this – it's very – this is very qualitative to say stability.  So for example, already much more interesting, and much more useful is the following observation.  If you take the maximum of the real part of the eigenvalues of a matrix, it actually tells you the maximum asymptotic logarithmic growth rate of X of T if it's positive – if it's negative it tells you that.  So merely saying stability is pretty much totally of no interest.  It's qualitative.  It has no use.
+
+</p><p>So if you're designing something – if you're designing some kind of protocol that – where a filter or a control system or something like that, and you come back, and say, "That's it.  I'm done."  They say, "Yeah?"  Then go, "Well, yeah, how does the aerodynamics work?"  And the aerodynamics might be – X might describe some error that you're trying to drive to zero, and you say, "Oh, it's stable.  Yeah, it's stable."  But that's of no practical – there's not practical situation where mere stability is of interest.  It's of no interest whatsoever.
+
+</p><p>You have to ask the time scale in which it's stable.  If you make an altitude hold controller, and the aerodynamics is stable, but the smallest eigenvalue is just barely, barely, barely less than zero, so that basically on an entire flight you won't have actually converged to your altitude, it's not relevant.
+
+</p><p>So – I might add that goes the other way around.  So I remember talking to some people once, and I remember asking about stability, and they're like, "No.  We don't."  But I had to – I have to tell you what they did.  They made missiles.  And they – so I said, "Well, what – " I said, "I remember some of [inaudible] stability."  And they said, "Stability?  What's that?"  They're like, "Well, surely, surely the error as this thing moves can't diverge."
+
+</p><p>And he goes, "Why not?"  He said, "These things have only set – they ten seconds worth of fuel.  We don't – all we care about is E to the TA, which would magnify an initial error – E to the TA times initial error should not be too big when T equals ten."  So they said, "We couldn't care less."  These are the cases actually where you have – no, I wasn't working them.  Is that what you're thinking?  I can tell.  I wouldn't do that.  Okay.
+
+</p><p>Okay.  Now, we're gonna actually tie this all to linear algebra, which is kind of the cool part.  This should be review, I guess, for – you've probably seen all this.  I guess – how many people have actually seen – heard about eigenvalues and eigenvectors or – so.  And in how many cases was the discussion comprehensible?  Cool.  Great.  Where was that?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:With – oh, that part.  You mean just compared to the rest of the class, which was abysmal?  I mean did you actually – did it actually say what eigenvalues and eigenvectors meant?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:No.  Anybody can say that.  I mean that's – here debt Lambda I minus A is zero.  Okay.  There I just said it.  No.  No.  I mean like do you have a feel for it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Yeah, okay.  So that's the classical one.  And for the record, that was the good experience.  No one else raised their hand.  So – okay.  All right.  That's fine.  That's – okay.  We'll fix that.
+
+</p><p>So a complex number's an eigenvalue if debt Lambda I minus A is zero.  I mean that's the same as saying, "Lambda I minus A, which is a square matrix of course, is singular."  Lots of ways to say that – of course, an end by – a matrix is singular if it has non-zero element, and a null space.  That means Lambda I minus A times V is zero.  If you multi – work this out, that's Lambda I times V equals A times V.  That's AV equals Lambda V.  Like that.  Oh, by the way, later we're gonna see – there's a really good reason to write this as AV equals V Lambda.  Even though that's slang, but there's a way in which this is slightly cooler.  But we'll get to that later.  But it's traditional to write AV equals Lambda V.  Okay.
+
+</p><p>Now, any V that satisfies AV equals Lambda V, and is non-zero, is called an eigenvector of A associated with eigenvalue Lambda.  So that's what you call that.  And obviously if you have an eigenvector you can multiply it by three or minus seven, and it's still an eigenvector.  And in fact, these are complex, so I can multi – they may be complex.  I can multiply V by minus three plus J, which is I.  So – okay.
+
+</p><p>Now, another way to say that this matrix is singular, Lambda I minus A, is to say the following – it's to say that it has a left eigenvector.  This is essentially saying that the rows are dependent – sorry.  This is the columns.  This says that the rows of Lambda I minus A.  Now, this – if you expand this out says, "W transpose A equals Lambda W transpose."  And – oh, by the way, what is the dimension – what equals is that?  It's equals between what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Row vectors.  Exactly.  One by end matrices are row vectors here.
+
+</p><p>Some people write this around the other way.  They write it A transpose W equals Lambda W.  There – they write it that way.  So in fact you can see now that this is – in this case this is the right eigenvector equation for the transpose.  So if you have something that satisfies this, it's a left eigenvector of A.
+
+</p><p>And actually how many people have heard about left eigenvectors?  Cool.  No one.  Fine.  You didn't hear about it, and you're just like holding back or something?  Okay.  All right.  Fine.  That's a left eigenvector.  These will all get clear hopefully soon.  All right.  So these are eigenvectors.
+
+</p><p>Now, if V is an eigenvector of A with [inaudible] Lambda then so is – obviously you can multiply it.  That's fine.  Now, even when A is real, the eigenvalues can be complex.  They have to occur in conjugate pairs in this case, and the eigenvector can also, of course, be complex.  And in fact, if the eigenvector is real then Lambda has to be real because A times V is real, and that's got to be Lambda V, so it doesn't work unless Lambda's real.  Now, when A, and Lambda are real, you can always find a real eigenvector associated with Lambda.  So you don't need to – of course you can also find complex eigenvectors associated with a certain eigenvalue.  And we've already talked about that.
+
+</p><p>There's conjugate symmetry, but there's more you can say about that.  You can say the following.  If A is real, and V is an eigenvector associated with Lambda, then it's conjugate is an eigenvector associated with Lambda-bar.  That means roughly if you find one eigenvector – one that's complex, the truth is you really just got two in a sense – you just got two because you could conjugate that eigenvector, and it would also be an eigenvector of A – the conjugate would be an eigenvector of A, and it would be associated with the eigenvalue of Lambda-bar.  Okay.
+
+</p><p>Now, we're gonna assume A is real, although, it's not hard to change the things we talked – to modify this to handle a case when A is complex.  All right.  So – there's a question.
+
+</p><p><b>Student:</b>[Inaudible]?
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Sorry.  How do I define what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Oh, the conjugate of a vector?  I'm sorry.  Let me explain that.  So a conjugate, of course, of a complex number – what do think?  Should I switch to I like right now?  Yeah, let's do it.  That J step is – that's weird.  Okay.
+
+</p><p>There's a complex number, and its conjugate is actually this.  Okay.  Looks like that.  So vector is just the conjugate applied term by term.  But actually I'm glad you brought that up because of something called the Hermitian conjugate of a vector, and that does two things.  It transposes, and it conjugates.  And that's often written this way: V star.  That's one way.  You will also say VH.  Like that.
+
+</p><p>And you will also see this, and I disapprove, but anyway – that's what – this is the notation in MATLAB.  In MATLAB, watch out – prime, which until now has meant transpose.  In the case of a complex vector or matrix is actually gonna also take the conjugate, and that's called the Hermitian conjugate.  So just a little warning there.  Right.  So you can – that's what this is.  Okay.  So that's the conjugate.  Okay.
+
+</p><p>So let's look at the scaling interpretation.  I think that was the one interpretation I heard.  It's something like this.  We're gonna take Lambda to be real.  So if V is an eigenvector, the effective A is very simple – just scaling.  Okay.  I mean well, sure, AX – AV equals Lambda V, and so the picture would be something like this.  Here's a vector X, and then here's AX unrelated.  But here's an eigenvector, and AV comes out in the same – on the same line.  By the way, what's Lambda for this picture?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Negative what?  Let's see.  One – negative what?  Two point something.  I don't know – I know what it is.  It's negative 2.3.  I don't – it's something like that, right?  Okay.  So – by the way, this is the interpretation given normally when – if you take a math class, and the only one.
+
+</p><p>Now, of course it sort of begs the question like basically who cares.  I mean so what if you multiple a matrix by a vector?  Well, you can imagine cases where it would have some interesting applications.  But anyway – okay.  So that's what it says.  It says, "You have an eigenvector.  The effect – it's a special vector for which the effect of A on it is very simple, it just scales."  So actually I used to say something like all the components get magnified by the same amount – something like that.  Okay.
+
+</p><p>And you can say some obvious things here.  For Lambda – if Lambda's real – if it's positive, it says the V and AV point in the same direction.  If Lambda is real, and it's negative, they point in opposite directions.  That's like our example here.  If the eigenvalue has magnitudes less than one, AV is smaller than V, and so on.  And we'll see later how this is related to stability of discreet time systems – actually all of these things.
+
+</p><p>But now here's the real interpretation of an eigenvector.  This is it.  It's this.  Let's take an eigenvector – so AV is Lambda V, V is non-zero, and let's take X dot equals A of X, and let's say the initial condition is V.  So let's start a linear dynamical system autonomous at an eigenvector.  Okay.  Then the claim is this.  The solution is embarrassingly simple.  It is simply – basically it's – that's a constant vector V.  You stay on V, and all that happens is you either grow or you shrink with time, and each one exponentially – very simple solution.
+
+</p><p>Lots of ways to see it.  Here's one.  We could say, "Well, look X of T is E to the TAV."  E to the TA I write as the power series.  This is slang, of course.  Matrix divided by scaler.  And then we multiply that out.  We say, "Well, I times V, that's V."  TAV – now, AV is Lambda V, so I write it this way.  If AV is Lambda V, then what is A squared V?  What am I doing?  My God.  A squared is A times AV, which is this.  AV is A times Lambda V.  The Lambda pops outside.  You get Lambda times AV.  I reassociate, and I get Lambda squared AV.  There we go.  Okay.  So –
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:You don't like what I did?  Oh, A goes away.  Thank you.  You're credibility is slowly growing actually.  That's good.  That's fine.  [Inaudible].  Okay.  Good.  That's what you should be doing.  All right.  Of course it'd help if I wrote it legibly, but I think this – I don't know.  This just makes it more of a challenge.  That's good.  It means you really have to be watching.  Okay.
+
+</p><p>So if you look at this thing, these are now all scalers multiplied by V, and if you pull the V out on the right you get a scaler here, but that scaler is the power series for E to the Lambda V.  Okay.  So that's it.
+
+</p><p>So now this is really in fact what an eigenvector is.  An eigenvector is an initial condition for X dot equals AX for which the resulting trajectory is amazingly simple.  If it's a real eigenvector, it just – it stays on a line.  It just grows if it's positive, shrinks if it's negative.  It stays where it is if it's zero.  So that's it.
+
+</p><p>Now, if Lambda is complex, right, we'll interpret that later.  We'll get to that later because it's a separate case.  So what it says is if you have – if you start in eigenvector, the resulting motion is incredibly simple.  It's always on the line spanned by V.  And that's actually called a mode of the system.  So that's what you call that is a mode.  And it's a word that's used kind of vaguely, and by – in lots of different areas, but it's what it is.  It means it's a really simple solution.  Okay.
+
+</p><p>So this brings us to a topic that's related to this, which is very interesting.  It's the idea of an invariant set.  So if you have a subset in our end, you say it's invariant under X dot equals AX.  If – whenever you're in it at time T, you will be in it forever after.  Okay.  So that's what it says.
+
+</p><p>And the picture is something like this.  You have a set like that, and it basically says, "If these are the trajectories of X dot equals AX, what you're allowed to do is you can cut into the set, but you can't exit."  That's what it means to be invariant.  Okay.
+
+</p><p>So that's the picture.  It may not look as clean because often S is something simple.  Let me ask you a question.  What is – could you ever have an invariant set that is a single point called X zero?  What would it mean to have a single point that is an invariant set?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What is it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:That's exactly what it is.  That's a very pedantic way of saying, "You're in the null space."  Is that – let's check if that's right.  It's an equilibrium point.  It's a point for which – if you're in there, well, you can't go anywhere.  If you can only be one point, it means you're constant therefore you're derivative is zero, and therefore it just means AX equals zero.  Right?  So basically this is sort of if, and only if, X zero is in the null space of A.  Those are the equilibrium points.  That's just a – that's a silly example, but – so this is the idea.
+
+</p><p>By the way, the idea of an invariant set unlike the idea of stability, which is actually really only of conceptual help – whatever that means – conceptual use, the idea of invariant sets is extremely useful in practice.  It's amazingly useful.  It's real, and actually very – not many people know this or appreciate it.
+
+</p><p>That's real because if I say, "I just designed the altitude hold control system on a 747."  And if your initial altitude is between plus – if I give you a box that's real that says, "From 29,500 feet to 30,500 feet," I give you another – I give you a box on other things involving things like your pitch rate, and all sorts of other stuff, and I say, "That box is invariant."  That is extremely useful, and very practical.  It says, "Basically if you start in that box – you might start in that box because there's a big down burst of wind."  It says, "If you start in that box, you're gonna go settle back up to your equilibrium point without leaving it."  That's really useful.  It's quantitative, and everything else.  So I just comment on that.  Okay.  That's the idea of an invariant set.
+
+</p><p>Well, we just saw one.  If you have an eigenvector, what we just found is that the line is invariant, and that's kind of obvious.  It basically says if you're here, and X dot – I mean if Lambda's positive, it means if you start here, you actually go along this – along the line.  And in fact, you can even say the ray is invariant.  So if you start in the positive part it's invariant.
+
+</p><p>And if it's – if Lambda's negative, it basically says you're gonna be on this line segment between here, and here because you start at this point, and all that happens is you decay.  You can't get out.  By the way, can you get – can you enter this set?  Actually we haven't got there yet, but you can't.  You can neither enter nor leave it – a set like this.  So – but anyway, it's invariant.  Okay.
+
+</p><p>Now we can talk about complex eigenvectors because the best way to understand it is with invariant sets.  So let's suppose you have AV equals Lambda V, V's non-zero, and Lambda is a com – so you have complex eigenvector.  Well, then we have A E to the Lambda T.  For any complex number A that is a complex solution of X dot equals AX.
+
+</p><p>Now, typically when someone says, "We're looking at X dot equals AX.  A is real.  We're only interested in real solutions of X dot equals AX.”  So – typically you're only interested in that.  Nevertheless, for what it's worth, that thing – A E to the Lambda TV is a complex solution of X dot equals AX.  But that means that actually both its real, and its imaginary parts separately are solutions.  Right?
+
+</p><p>So let's look at the real part.  X of T is  the real part AE to the Lambda T times V.  And now we're gonna do this very carefully here.  E to the Lambda T, I'm gonna pull out the E to the real part, E to the Sigma T.  Sigma is the real part.  Here Sigma is the real part of Lambda.  I'm gonna pull that out in front, and I'm gonna write the rest of this thing out this way.  There's – of course there's a cosine T, and sine T, and so on in there.  And you get this expression in terms of Alpha, and Beta, where Alpha and Beta are the components – the real, and imaginary components of A.
+
+</p><p>So – and you could just multiply this out, and check me, but the point is now you should actually see some things here that you recognize.  That's just some vector that depends on this A.  That's some – any old vector there.  This matrix should be a friend of yours by now.  That's a rotation matrix with angular velocity Omega.  So it take this vector, and R2, and it rotates it.  Okay.  I'm not sure which way it rotates, but it doesn't matter.  It's one way or the other it rotates with an angular velocity of Omega radiance per second.
+
+</p><p>So this produces – this takes your initial vector, and it rotates it.  This says you then – you get two numbers, and you use – those are the two numbers that you mix the real, and the imaginary parts of that eigenvector with.  So you form a real, and imaginary part, and then you can add the growth factor later.  You could put the growth factor anywhere you like.  It's a scaler.  So that's it
+
+</p><p> And we see the most amazing thing.  We see the following.  It says that if you have AV equals Lambda V where V is – where Lambda's complex – V is complex, it says the following – it's says – basically says you stay in the plane, and I'm talking about real solutions.  The real solutions stay in the plane spanned by the real, and imaginary parts of that eigenvector.  That's what it says.  Okay.
+
+</p><p>So when you get an – a complex eigenvalue, you get a complex eigenvector, you look at the real, and the imaginary parts.  Those are two vectors in our N.  They span a plane.
+
+</p><p>Oh, let me just ask one question here.  What if they were dependent?  How do I know it spans a plane?  That's a good question.  Let's answer it.  I'm just saying these two vectors are – one is not a multiple of the other, right?  That's what it means for – [inaudible] – what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Well, I don't know.  Let's see.  What – let's just say – suppose VM were the same as V real.  So the real, and imaginary parts of the eigenvector are the same.  What does that mean?  Is there a law against that?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Precisely.  So let's suppose the imaginary, and the real parts are just – they're equal, right?  And you say, "Ha!  There's no plane here.  You got two vectors, but they're in the same line.  They span a line."  Okay.  Or as you might say now, pedantically, "Huh, that N by two matrix there, it's not full, right?"  Okay.
+
+</p><p>So what happens in the – if this is equal to that, you would say, "Well, wait a minute then.  The whole – the eigenvector is really – it's V re times one plus I."  There.  See I made the switch.  Well, on the page I have J, so I'll switch to J.  There.  It looks like that.  If that's the eigenvector, so is that.  And it says that V – the real eigenvector alone is eigenvector.  And that says that Lambda is real – oh, by the way, which is not contradicted here, so I should say something like not real.  Like that.  So – to be technically right.  But it's okay.  It's fine.  Okay.
+
+</p><p>So what happens – so now here Sigma gives you the logarithmic decay factor, and Omega gives the angular velocity of the rotation in the plane.  So now you should be getting actually a – actually you want a picture of this.  So basically you have X dot equals AX, a complex eigenvector, a real eigenvector that's easy.  It's a direction where if you start the system anywhere along that line, it will stay along that line.
+
+</p><p>A complex eigenvector, you look at the real, and imaginary parts that spans a plane in our N.  And it says if you start anywhere on that plane, you will stay – number one, you'll stay on the plane, but the motion of the plane is very – roughly kind of simple.  Basically it rotates on that plane with an angular velocity of Omega.  That's the imaginary part of the eigenvalue.  As well, it decre – it grows or shrinks depending on the real part of the eigenvalue.  That's what it means.  Okay.  So we're gonna look at some examples, and stuff, and so will you separately.  So – all right.
+
+</p><p>Now, let's look at the dynamic interpretation of left eigenvectors.  So here suppose W transpose A is Lambda W transpose, and W's non-zero.  Then let's look at DD – let's let any solution of – well, let's look at this.  DDT of W transpose X – let's let X dot equal AX, but now X is any solution.  It's not started from an eigenvalue – eigenvector – nothing – just any solution.  If I look at DDT of W transpose X, I get W transpose X dot.  But X dot is AX.  I get W transpose AX, but W transpose A is Lambda.  So I get this.  If you look at the beginning – if you just get rid of this, you see that is W transpose X satisfies a scaler differential equation, and therefore – linear differential equation, therefore the solution is this.  Okay.
+
+</p><p>Now, what this says is really cool.  It says that a left eigenvector gives you the coefficients in a recipe or a mixture.  Okay.  Because that's what a row – that's what W transpose is.  W transpose is a linear function – a scaler value of linear function of X called linear functional of X.  So it's W transpose X.  And it says if you get those coefficients just right this thing will undergo a very, very simple motion.  Even if X is going crazy, if X is in our 100 by 100 there's hud – there's a hundred eigenvalues – all sorts of crazy motions, and modes, and growths, and oscillations going on.  W transpose X will have only the pure Lambda – E to the Lambda T component in it.  Okay.
+
+</p><p>So – and you can say lots of cool things now.  Now, here's something of actual use.  It's this.  If Lambda isn't R, and Lambda's negative, then the half space – the set of Z such that W transpose Z is less than A is invariant.  Okay.  The reason is this.  Because W transpose Z does – it just decreases.  That's all it does with time.  Now, if you decrease, it says basically something – so let's draw a picture.  It basically says that if W points this direction – it says that if you – N Lambda is negative, and W transpose A equals Lambda W transpose – like that.
+
+</p><p>It says basically the following.  It says if you start here – oh, by the way, in the general case not – I mean here this region is a strip.  You call this a strip in R2.  In RN you would call it a slab.  Okay.  So that's a – basically it's a – this is a half space.  It's everything in between two parallel planes – hyperplanes is a slab.  So what it says is that in the general case this slab is invariant.  What it says is if you start in that slab – and by the way, now you can enter a slab.  If you start in the slab, you will stay there forever.  That's what it says.
+
+</p><p>In fact, what it says is actually quite interesting.  It says that in the – in this art – in this case in two dimensions, it says that when a – if you start here, and I draw whatever the trajectory is, I can tell you this.  If you only look at a sort of component in this direction, that is just nicely exponentially decaying to zero.  Now, by the way, this thing can be shooting off to the left or right or going to zero.  All sorts of crazy stuff can happen in that slab.  But sort of – if you look at the slab coordinate – that's this thing – it's just very happily decaying.  So that's the picture.  And this is already something very useful.  This is already useful.  It tells you there's an invariant – there's – you get an invariant perhaps [inaudible] tells you you're in there, you keep going.
+
+</p><p>Okay.  Hey, Jacob, make a note.  We should – let's construct a problem out of that.  We'll edit that out of the – actually looks like I'm not gonna be able to edit the – these videos.  It's too bad.  I could get rid of things like that.  Maybe I'll figure out a way.  Okay.  Okay.
+
+</p><p>Now, if you have a left eigenvector corresponding to a complex eigenvalue, then it says that both real, and imaginary parts of W transpose X, it gives you two planes, and they both have these – a sinusoid.  Okay.  So now we can – let me give a summary.  Oh, by the way, it's examples that will kind of make all this clear.
+
+</p><p>So here's the summary.  A right eigenvector – that's at a very special initial condition in a linear dynamical system.  That's what it means.  It's a point for which if you start the system there, you will get a very simple motion, either a decaying exponential, a growing exponential or a decaying – exponentially growing or decaying sinusoid.  Period.  That's it.  Well – yeah, we'll leave it that way.  That's what a right eigenvector is.
+
+</p><p>And by the way, if you just stick a random point, and then look at the solution of X dot equals AX, you're gonna see everything in it.  You'll see all the modes, all the frequencies, and everything.  You'll get a very complex behavior.  Okay.
+
+</p><p>A left eigenvector has nothing to do with initial conditions.  It basically – it's a recipe.  It says if – in a left eigenvector, it says that if you form a certain – if you take any trajectory of the system – now, in general a trajectory system is gonna have all the modes, all the frequencies in it, all sorts of oscillations, growth, decays all added together.  This says if you make very special linear combinations of the states, and those combinations are given by left eigenvectors, then what is – what looks like a fantastically complicated trace or trajectory will just simplify, and you'll be looking right at something real simple – a decaying exponential or a growing exponential or a sinusoid or something like that.  That's what a left eigenvector is.  Okay.
+
+</p><p>So the different – it's actually very important to understand which is – what they are, and that'll also come.  Let's see.  Okay.  Let's do this.  All right.
+
+</p><p>So let's look at an example.  It's a stupid example.  It's simple.  It's X dot equals minus one minus ten ten one zero zero – I don't know – whatever.  Now, all these ones, and zeros you should have an overwhelming urge to draw a block diagram.  So this is the block diagram.  Uncontrollable urge to draw – that's it.  So you see that's like a – that's a change of integrators.  By the way, the chain of integrators in here corresponds to this – the ones on the lower triangle, which corresponds to a up or down shift – one or the other or something like that.  I think it's up shift.  Yeah, something – whatever it is.  Down shift – it's a down shift in this case.  Okay.  It's a down shift.  So you get the chain of integrators then these numbers here go in here like that.  Okay.
+
+</p><p>Well, let's look at the eigenvalues.  Well, it's easy – by the way, matrices like  this that have kind of a lowered – ones on the lower diagonal, and then a row that's non-zero, they're called companion matrices.  There's a bunch of different kinds.  You could put this row here.  You could put it at the bottom.  That's called a top companion matrix.  And you have a bottom companion matrix.  You could have a left or a right.  It goes on, and on.  And, I guess, in a classical course like this, you would be tortured possibly for up to a week on just companion matrices.  I have no idea why, but this would be the case.  Just to let you know.  Okay.
+
+</p><p>So that's a companion matrix, and the cool thing about them is it's extremely easy to work out the characteristic polynomial.  Well, it makes sense.  A lot of zeros, and ones there, that's on your side, and so on.  So actually it usually turns out the coefficients are these guys up in the top.  But it's better since I never remember what it is, I just work it out myself.  So basically you have to work out the determinant of this.  Ten ten – that's minus one zero zero zero minus one zero.  And you have to calculate that determinant – except I should put some S's here.  There we go.
+
+</p><p>And I don't know – you can start where ever you like.  You can start with the – it's S plus one times the determinant of this thing.  There's a zero there which saves you from at least one of the terms.  So – and you just get an S squared.  And then you say minus ten times the determinant of, I guess, what you crossed – how does it work?  You cross this, and this out.  The determinant of that, again, there's a couple of zeros there saving you at least one multiply or something, and you get the S.  And then you get plus ten times the determinate of that.  And, once again, everything's – the determinant is one or something like that.
+
+</p><p>So these are not bad.  I mean that's about my speed.  That's about three or four floating point operations.  That's about the number I can do without making a mistake.  So I don't recommend doing more than that by your self.  So – okay.
+
+</p><p>So that's the characteristic polynomial, and we just factor that, and that's S plus one times S squared plus ten.  So the eigenvalues are minus one, and plus minus J times square root ten.  Okay.  That – these correspond to these.  Now, by the way, immediately you should know what to expect.  You should know that when we look at the solutions of this third order linear autonomous dynamical system you should see things that look like E to the minus T, and you should see pure sinusoids, which look like cosine squared ten T, and sine cosine ten T – that kind of thing.  If you see anything else – if you see a growing exponential, you see anything with like a growing – like T or something, it's wrong.  It can't be.  So immediately when you see this you should be primed for what you're gonna see when you run a solution of this.
+
+</p><p>Let me say a couple more things.  There are not – there's no one as far as I know who can look at a matrix, and give – and kind of look at the eigenvalues.  I'm gonna tell you what the – I have a feel for the eigenvalues.  Two by two – no problem, that can be learned – maybe three by three.  Actually that's not true.  No.  Not even – this one I could fake it because I know it's a companion one.  I could quietly factor that in my head, and if I distracted other people, it could like I looked at that, and go, "Yeah, well, you're gonna get some oscillations or I think some oscillations.  Yeah, they're gonna be around – I'd say on the order of about three is my feeling.  It's gonna be the three radiance per seconds.  The periods gonna be around one – two I mean – something like that."  You could do that.
+
+</p><p>And [inaudible] someone will say, "That's amazing.  How'd you do that?"  And you go, "Well, you know, it's just you work with these enough, and see the minus ten here?  That kind of – see when X2 is going up, and X3 is going down, these kind of cancel, and then the minus one here, that kind of goes around."  This is complete nonsense.  I –actually what I'm saying is that while it's entirely reasonable if some one walks up to you on the street, and says, "You have Y equals AX."  You look at Y for ten seconds.  You should have a – I mean there's some details you won't know.  But things like if there's zeros in that matrix, you have a rough idea of what doesn't depend on what.  If you see huge entries, negatives, positives, you should know.  No excuses.  Okay.
+
+</p><p>X dot equals AX.  This is wrong.  There's no one who can look at A, and say, "That's good."  I mean there's special cases, but you can't – that in general.  And that's actually an interesting thing because it means it's not obvious.  There's no one who can look at one of these things – and all this is, if you think about what X dot equals AX is, it's not much.  It's – basically it's a bank of integrators.  The outputs come out, and they run through a matrix, which kind of mix – blends everything around, and they get plugged back into the integrators.  How hard can it be to understand what that does?  Anyway, the answer is, "It's really hard."
+
+</p><p>Well, I mean it's not.  Once you know about eigenvectors, eigenvalues, matrix exponentials, it's not hard.  But the point is you don't know about those things, there's absolutely no way you will have a clue what happens to a system here.  So you can't look at something, and say, "Here's how it work – here's how my – here's my model of my economy."  And you have a five by five matrix.  I mean with five sectors in the economy.  That is tiny.  You can not look at that, and say, "Wow.  We're gonna have some business cycles.  I'm also seeing some pretty – I'd say we're gonna get an overall growth rate about 5 – 6 percent."  Nobody can do that.  Nobody can look at 25 numbers, and tell you that.
+
+</p><p>I just want to emphasize this, right?  It's like lead squares.  You can't do lead squares in your head.  Good thing you don't have to, but still – I'm not sure why I'm telling you this, but it's probably important to say.  I'm not – I don't know why it's important, but it seems like it's important.  Okay.  All right.
+
+</p><p>Back to this thing.  So here we are.  We're expecting decaying exponentials, and we're expecting oscillations with a period of two.  That is to say if you followed my intuitive argument about how all the interactions came in, and then the signal – you could – for oscilla – if you want to explain an oscillation, you could say something, "Oh, yeah.  No, I can see it because it kind of goes like – but then it comes around again, and again, and again.  Takes about two seconds to go around about, so that's how you do this."  Okay.  All right.
+
+</p><p>So here's just some initial condition we selected.  Here's the solution.  And maybe I'll actually say something real quick.  You'll be doing this, and there's some things I should mention.  I think I mentioned last time – I'll mention it again.  It's very important.  Please, please, please don't be the pru – don't be a victim of this.  In MATLAB, and indeed in several other higher level languages, if you write X of a matrix, you're gonna get an element wise.  Okay.  This is – it's – I don't know what that is, but it is nothing that has anything to do with the matrix exponential.
+
+</p><p>And actually for that matter X of A works if A is non-square.  Okay.  And that would be true in lots, and lots of languages – higher level constructs.  Okay.  You have to say XM of A – and I guess that's the matrix exponential to actually get the matrix exponential.  You try XM of A with a non-square, and you will prob – I pres – I hope – pray that – no, I know that you will get a stern warning about what can be matrix exponentiated.  Okay.
+
+</p><p>So to make a plot like this, you just – I mean it's the easiest thing in world.  You could actually even just do this.  There's absolutely no harm in writing out stuff like this times X0 or something.  There's just no harm in that.  And then putting a four loop around this or whatever you like.  None.  No dishonor.  Nothing.  Okay.  There's faster ways to do it, and so on.
+
+</p><p>By the way, there are some built in ways to actually find the solution of a linear differential equation.  I actually do not recommend that you use them.  Okay.  One of them – and they've got stupid names like initial.  That's supposed to be like an initial condition problem or something like that, and I – God only knows.  It's like X, and A0 – unless you know about these, don't use them because this one you look at it, you know exactly what it does, and there's no mysteries, and this isn't just some stupid – some guy sitting in Walva – whatever – wherever  they are – in Massachusetts decided some intact – what to do in some cases here.
+
+</p><p>This – in this case it's transparent.  You know exactly what's going on.  So that's what I recommend.  So that was just a weird to the side.  I don't use these.  I think some – actually some of our solutions, maybe even some of the exercises may have some old references to this.  Ignore them.  So we'll clean those out.  All right.  I mention this just in case you're curious how I created this block.  That's how I did it.  All right.
+
+</p><p>Back to the story.  So this shows you X1, X2, and X3 versus time.  Everything is consistent.  We don't see any growing exponentials.  In the first one you see mostly just a sinusoid, and sure enough – let's see what the period is.  Hey, wow, my intuition was excellent.  So my intuition was that the period would be around two, and indeed it is around two.  You don't see a decaying exponential in here too much.  This one – there is a decaying exponential, but I guess it's kind of going up towards zero.  That's fine.  It's just got a negative term in front of it.  And here in the third component of X, you see less – you see more of the decaying exponential, and less of these things.
+
+</p><p>By the way, just for fun, there is something you can see here.  X1 is quite wiggly.  X2 is less wiggly.  And X3 is less wiggly still.  Want to see my – see if you're gonna for this.  It's kind of cool.  So X1 – what happens is these things repeatedly go through integrators.  That's what happens.  And so when you go – push something through an integrator, it gets less wiggly.  So that's why you'd expect – let's see if I can get this right.  X3 should be the least wiggly because it came through three integrators.  X2 should be more wiggly, and X1 most wiggly.  You buying it?  No.  Why not?
+
+</p><p>Now, did I make the like opposite conclusion?  Sometimes you make an excellent interpretation that supports the opposite conclusion.  What you should do in a – how come you're not buying it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Well, didn't you understand my explanation before about how X2, and X3 come out, and then they interact?  They kind of cancel, and then they slosh around like every two – I thought that was pretty clear.  Okay.  I don't know – I thought it was clear.  Now, come on.  If you integrate a signal, it gets less wiggly.
+
+</p><p><b>Student:</b>Why is [inaudible]?
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Oh, between integrating a signal, and it gets less wiggly?  Oh.  Well, I don't know.  Let's just do it.  That's fine.  No problem there.  Are you in electrical engineering?
+
+</p><p><b>Student:</b>Yes.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Knew it – cool.  Okay.  So it's – okay.  Let's – well, let's just do it.  Here's a signal.  Ready?  Here's this signal.  What's the running integral of that guy look like?  Well, it's – if I – why'd I make it so complicated?  Anyway, it doesn't matter.  I don't know.
+
+</p><p>So look.  The point is these things, they kind of go up, and down.  As you integrate, you're sort of averaging everything up to that point.  And so the integral of – the running integral of this thing is something much smoo – it's much smoother.  It kind – I don't know what it does, but it kind of goes down a little bit, and then – I'm making this up.  Totally making this up – just for the record.  There you go.  Okay.  It looks like that.  So – buying it now?  Yeah, and that is exactly the integral at that, by the way, but I'll just [inaudible].
+
+</p><p>That – by the way, that's not easy to do.  You have to train for a long time to be able to do hand integrations like that in real time under pressure.  And you'll see it's dead on if you check.  Okay.  All right.  All right.
+
+</p><p>Let's look at a couple of things here.  Let's do the following.  Let's take the left eigenvector associated with the eigenvalue minus one.  Well, that's this.  It's G – it turns out to be point one zero one.  That's the left eigenvector.  And before we do anything, you have to interpret what this means.  This eigenvector wha – this is telling you a recipe.  That's what it's saying.  This says if you were to mix point one of X of T – point one of X1 of T with one of X3 of T – if you were to add those two together, what will come out will be pure exponential – okay – which is to say it's a filter – it gets rid of the oscillatory component.  Just gets rid of it.  And indeed it looks like that.
+
+</p><p>And really – I swear the source code that generates figure really does do this.  I could've just drawn an exponential, but – and hey, I didn't.  I mean probably the source code really does this.  And there it is.  You see if you take 10 percent of the first component added to the last, all oscillation goes away, and you get a pure decaying sinusoid.  Let's see if we can eyeball that.  Ten percent of this – all right.  So do that in your head.  That gets scrunched – this gets scrunched way down to kind of a small oscillation like that.  And then it says apparently you added to this, and – oh, yeah, I'm seeing it.  I'm – no, I am sort of seeing it, right?  Because look, see they're almost like anti-phase, right?  That's kind of up here when that's down there.
+
+</p><p>So – anyway, never argue with a left eigenvector.  It's right.  You can see that's what it does.  So if you scale this down, add it to that, oscillation goes away, and you're left – in fact, you would say that – the English description of this is you'd say by multiplying by G or forming these weights, you have – let's see.  What would you say?  Forgot the word now.  It was a good one.  It was really a nice one.  You – I guess you have filtered out, or you have brought out the exponential or something like that.  That's what you've done.  You filtered out the sinusoid.  You have revealed the exponential.  I don't know.  Something like that.  Okay.  So that's a left eigenvector.
+
+</p><p>Now, let's look at the eigenvalue assoc – the eigenvector associated with this eigenvalue.  Now, that eigenvector says it's complex – has to be because that's pure complex.  Now, what that says is the following.  There's an invariant plane that spanned by these two vectors, like that.  And it basically says if you start on that plane – now, this is an R3.  So you're actually gonna – in fact, I'm gonna ask you to visualize this.  In fact let's do that.  Let's – take R3 the – you should be looking at R3.  Make a plane going through it.  That's the – spanned by these two.  You don't have to get the angle right.  Just put some stupid plane through it in your mind.  Okay -- in R3.
+
+</p><p>Basically, it says if you start in that plane, the motion is really simple.  You – first of all, you stay on the plane.  So imagine this tilted plane, and initial condition, you just – actually, in this case because it's pure imaginary, it actually – you just oscillate.  Everybody got that?  And every – roughly two seconds, you come around.  You stay on that plane.
+
+</p><p>Now, if you're off the plane, what happens?  Now, you have that decaying exponential.  So, the decaying exponential, it – you – in fact – well, we'll get to that in a minute, but that's the point.  Oh, by the way, this G – that happens to be the outward normal of this plane, and you can check me.  If you multiply G transpose times that you get zero.  G transpose times that you get zero.  And you know what that means?  It means G is the normal to this plane.  Okay.
+
+</p><p>So now, I think we can do the visualization exercise.  Yeah, let's do it.  Here we go.  You ready?  So you start it like this.  Take R3, picture a plane.  Okay.  Now, in that plane – if you start in that plane, your trajectory is beautiful.  It just os – it just undergoes a perfect – it's not a circle, it's an ellipse in that plane, so it just oscillates.  So everybody got this?  Okay.
+
+</p><p>Now, we're gonna do the following.  The normal to that plane actually is the left eigenvector associated with minus one.  Okay.  So that means take that plane – if you're off that plane, and if you actually just study your height above or below that plane, that's G transpose Z.  That simply goes down as an exponential.  Okay.  So I can see this is – no one gets anything.  Okay.  So we're gonna try it – so now, we're gonna throw it all together, and I think we have a perfect visualization of the whole thing.  Here we go.
+
+</p><p>You have your plane.  If you're on that plane, you oscillate.  Okay.  If you're off the plane, then your height above or below the plane simply goes like a negative exponential, E to the  minus T, and you head towards that plane.  So if you start – if this is the plane, and you start up here, you're – by the way, you're rotating the entire time like this.  So you're rotating, same angular speed, but what's happening is your height above that plane is exponentially decreasing.  So the solutions look like this.  Is that – that's never gonna come out on the camera or any – it doesn't – in fact, I don't even understand – no.  That's – this – is this making any sense?
+
+</p><p>If you start below the plane, you wind in the same direction, but you wind up to the plane.  And so in fact, what would you call this linear dynamical system?  It's got a name.  It's an oscillator.  And basically when it starts up after five seconds, if that's what the units of T are – is, you're on that plane, and oscillating.  It's an oscillator.  And in fact, you'd refer to that first bit – the first part when you're zooming into that plane or – that's called the startup dynamics of your oscillator.  That's the way it works.  Everybody got the picture?  So – and that's it.  And the normal is the left eigenvector, and so on, and so forth.  So that's the picture.
+
+</p><p>Well, here's an example of it showing that it actually works.  If you take X of zero – if you start in this real thing, and then propagate the solution, you indeed get an oscillation.  I mean we knew that.  So that's the picture.  Okay.  So that's the idea.  Okay.
+
+</p><p>We'll look at one more example, and then we'll move on.  By the way, this mystery about the left, and the right eigenvectors, and how they're connected, and weirdly one is orthogonal to – we're gonna get to all of that later.  By the way, it's related to this mystery involving – which isn't a mystery.  It's a mystery involving the – it's the inver – the rows, and columns of inverses or something like that.  So in fact, let me go back to that because we're gonna need that, and we'll skip on – I want to talk about this.
+
+</p><p>If you have a matrix – if I take V1 up to VN – actually I won't take these because that's – that always – in the context of eigenvalues, those sound like eigenvectors, so I won't use those.  Instead I'll call them T1 through TN.  And I'm gonna make these – these are independent vectors.  Okay.  And if you take the inverse of this, and I call the rows S1 transpose down to SN transpose like that – okay.  Then – I don't know if you remember, but we called these S's – that's the rows of the inverse matrix – right – which was formed by putting – concatenating a bunch of columns.  We called this the dual basis here.
+
+</p><p>And actually – you remember what the interpretation of the S's are.  Is says that when you express a vector in the T expansion, S3, for example, is the thing that tells you the recipe.  It tells you how much of T3 to show – to put into your recipe to recover your vector X.  That's what it does.  That's what these S's are.
+
+</p><p>And then we found out this.  SI transpose TJ is equal to what?  It's not complicated.  I mean it looks mysterious, and complicated, but it's not.  Basically this thing – if I take this matrix – if I plug in on the left here T1 up to TN – I'll insert it there, and I'll put T1 up to TN here.  What's the right-hand side?  That's I.  And now, if I take this matrix written out by rows, and another matrix written out by columns, and I multiply them, I get I, but there's a very simple way to interpret a row – a col – a matrix viewed as rows multiplied by a matrix viewed by columns.  It's – basically it calculates all – the one one entry, for example, of this mat – of this product is S1 transpose T1.  So what's S1 transpose T1?
+
+</p><p><b>Student:</b>One.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It's one.  What's S1 transpose T2?
+
+</p><p><b>Student:</b>Zero.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Precisely.  This is Delta IJ.  Okay.  So that's the idea.  So – and these are called dual basis, and things like that.  And it looks – I mean when you first encounter it, it looks like it's kind of mystical, this strange thing that like – and you have to be very careful, right, because it's – I am not absolutely not saying that SI's are orthogonal.  What do you know about this or this?  Absolutely nothing whatsoever.  Okay.  So it's this weird thing where the S's are orthogonal to the other T's.  The T's are orthogonal to the other S's.  So there's this weird thing where one group is orthog – anyway, it's com – it's this.  It's just that.  Okay.
+
+</p><p>So we're actually gonna find out that the left, and the right eigenvectors satisfy exactly the same relation.  So that's – but we'll get to that next time, and we'll quit here.
+</p><p>
+[End of Audio]
+</p><p>
+Duration: 76 minutes
+</p><p>
+</html>

@@ -1,0 +1,349 @@
+<html>
+IntroToLinearDynamicalSystems-Lecture15
+<p>
+</p><p><b>Instructor (Stephen Boyd)</b>:Some announcements.  Actually, you can turn off all amplification in here.  Thanks.  And you can down to the pad.  I’ll make a couple of announcements.  The first is today’s lecture, we’re gonna finish just a few minutes early because I have to dash over to give a talk at 11:00 a.m. in CISX.  In fact, you’re all welcome if you wanna come.  I don’t know why you would, but it’s a talk on circuit design and optimization.  That’s in CISX auditorium.  So remind me, actually, if we get – if I’m not out the door and walking towards CISX at 10:45 a.m., you can do something like wave your hands or anyway, that kind of thing.
+</p><p>
+</p><p>As a result of that, I’ll be canceling my office hours today.  A little bit late notice, but I will, and I’m moving them to Thursday.  That doesn’t really work really well with like, for example, Homework 7, but I’ll also be around sort of on and off in the afternoon today, so if there is something you really thought you needed to get me today for, you’d be able to find me some time in the afternoon probably.  Or you can send an email.
+
+</p><p>One other announcement is I got one inquiry.  I think it had to do with someone planning to go away or something like that over the next week, and they asked could I possibly be so cruel as to assign Homework 8 this Thursday.  What do you think the answer is to that?  I’m just sort of curious.
+
+</p><p>Anyway, I don’t even have to answer that.  Of course we’re gonna have a Homework 8.  That was never in question, so we will indeed assign a Homework 8 on Thursday and it’ll be due like maybe the Tuesday after the Thanksgiving week, something like that.
+
+</p><p>I saw someone – are you okay?
+
+</p><p><b>Student:</b>I’ll live.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:You’ll live?  Okay.  Her head kind of listlessly fell backwards.  That’s okay.  All right.  Okay, any other questions about this?  No?  I guess the people coming in now will be shocked when I get up and leave at 10:40 a.m.  Okay, any questions about last time’s material?  Otherwise, we’ll finish and then, actually, later today we’ll get on to the essentially final topic in the class.  We’re gonna spend a good deal of time on it, but it will in fact be the last actual topic, so.  
+
+</p><p>All right.  We’re studying linear dynamical systems with inputs and outputs, so systems of the form x dot is Ax + Bu and y = Cx + Du, like this.  The transform matrix, if you plug in s = 0, is, of course, you just plug in C(si) – a inverse b, and you plug in s = 0 and you get minus C(A inverse) B + D.  It’s a famous matrix.  It’s one you’ll see arising often and this is called – I guess the more descriptive term for this would be the static gain matrix is what this would be.  
+
+</p><p>But kind of a rather cool retro term to use is it’s the DC Gain matrix.  That’s direct current, so this goes back to like, I don’t know, 1910 or something like that, but it’s kind of – I use this, but mostly just to irritate people and stuff like that because it’s so retro.  All right.  And I’ll say a little bit in a minute about what happens if A happens not – if A is not invertible.
+
+</p><p>So what this describes is it actually describes the system, what relates the inputs to the outputs under static conditions.  That is exactly what this does, so if you have static conditions, that means u, y, and x are all constant.  Then of course, you have x dot and in that case is zero; x is constant.  See if zero = A + Bu, y = Cx + Du and if you eliminate x from these equations by solving for x = minus A inverse Bu here and you plug that in here, you get this.  Okay?  So this is assuming A is invertible here, so this is what it describes.
+
+</p><p>Now, if A is not invertible, what it says is that there are inputs for which you cannot solve this equation here for any u, so it says there actually are no – there are u’s, or there can be u’s, for which there is no static equilibrium.  You don’t have to worry about that, but that’s the meaning of that.
+
+</p><p>Now, if the system is stable, this is the integral of the impulse response, and this just follows from the Laplace transform, that the integral of a function is – well, this is e to the –s(t), so h of s is integral either the –h times this, 0 to infinity.  You plug in s = 0 and it’s the integral. 
+
+</p><p>Now, that of course, requires h of t, this integral, to make sense and that would be the case if h of t decays.
+
+</p><p>Okay, it’s also the same as the limit as t goes to infinity of the step response matrix, and the step response matrix here is, of course, the integral from 0 to t, and that’s again, follow just from that’s what the definition of the integral is.
+
+</p><p>Okay, and if you wanna know sort of what does the static or DC transfer matrix tell you, it basically tells you this.  It says if the input vector converges to some constant u infinity, so the inputs can wiggle around, they can do whatever they like, but if they converge to a constant value, then the output will also wiggle around, but it will converge to a constant value and that constant value is obtained by matrix multiplication h of 0.
+
+</p><p>So h of 0 is very important.  It’s the thing that tells you, roughly, how the input affects the output when all the transients and so on have settled out.  And if you work out – we can work out some examples and they should make perfect sense.
+
+</p><p>For a mass spring system, the DC gain matrix – our mass spring system is right here.  Our DC gain matrix, and let’s think about what it’s gonna do – it’s gonna map the two tensions you apply here into the displacements of these three masses.  So that’s what it’s gonna do.  That’s what the DC gain matrix is.
+
+</p><p>So, of course, it’s a 3x2 matrix and it would tell you, for example, the first column is obtained by pulling one Newton on this tension, letting the whole thing come to equilibrium and then recording the offset of the three masses.  And it’s kind of obvious what happens if you pull a Newton here, this thing displaces to the right, this displaces to the left.  This displaces to the left a bit less.  This one probably a bit more to the left than this one goes to the right.  I’m making that up and I will change my story if we look at the actual numbers now and it’s different.  
+
+</p><p>And let’s see.  Did I get my story right?  Yes, I did get my story right, so this says that if you apply one Newton, the left mass – that’s the first position – moves a quarter meter to the left.  The next one moves minus a half; that’s twice the displacement, and the other one moves minus a quarter.  And then you get a similar thing over here.  There’s a symmetry.
+
+</p><p>And this you can work out.  Well, it’s horrible, but I don’t recommend doing it by hand, but for example, if you took this thing and C and worked out C times si minus this thing inverse times that, you would indeed get this matrix.  
+
+</p><p>Now for the circuit, the DC gain matrix is actually quite simple.  Again, you can work it out, but let’s see what it means.  I have to find it somewhere.  Here we go.  
+
+</p><p>So the circuit, the DC gain matrix, has the following interpretation.  It basically says apply one volt here, wait for all the transients to settle, and then look at the mapping from the voltage here to the voltage at all the nodes, and of course, it’s one, right?  Because if you put a volt here, if everything is static, there’s no voltages changing anywhere, no current disflowing, this is an equi- potential here.  So these all have to be the exact same voltage.  So that’s the DC transfer matrix.  Actually, in this case, that’s literally the DC transfer matrix from that input to those outputs, it’s like that.
+
+</p><p>Now, these are silly cases.  Obviously, if you have something more complicated, it’s interesting immediately.  I mean it tells you immediately how something works in static conditions.
+
+</p><p>We’re gonna cover a couple more topics on systems with inputs and outputs.  So the first is dyschronization with piecewise input, so here you have your system x dot A + Bu, y = Cx + Du and I put in a sequence I’m gonna call that use of D, D is for discreet or something like that.  And what we’ll do is, well, the input is going to be – the continuous time input, that’s the input to this system here, is going to be equal to – I’m going to index into the sequence and that’s going to be over the time interval from kH to k + 1H.
+
+</p><p>So by the way, many people call it – there’s all sort of names for this.  This is sometimes called zero order hold is one name you’ll hear for it.  It just means the input is piecewise constant.  There’s probably some other names.  I’m just not thinking of them at the moment, but that’s basically what it is.
+
+</p><p>Okay, and now, we’ll define sequences, so x[D], x of D, that’s for discreet, that’s a sequence.  So in other words, it takes as argument an integer and it’s gonna be x at kH.  So x is this function from R + Rm; x[D] is a sequence.  That’s a function from z + to RN.  That’s what x[D] is.  And the system came by sampling here, so these would be – you can call this a perfect sampling or something like that.
+
+</p><p>So here you’ve referred to h as the sample interval.  Actually, that’s for x and y.  Up here, it would be very common to call it the update interval.  So that would be very common to just use a different name for it.  And in fact, it turns out that in many systems, the update and the sample intervals are different.  We’ll get to that in a minute.
+
+</p><p>So this would be the update interval.  So for example, you’d say, oh, the update frequency is 50 hertz.  The sample frequency is 400 hertz.  U hertz did the same, but that’s the idea.  
+
+</p><p>Okay.  All right, so you can just think of these as sample versions of x and y.  Let’s work out how they’re related.  Well, the x[D] of k + 1 is x of k + 1H, but we can get that because we can propagate forward.  This is what the state was at kH.  This propagates it forward h-seconds.  So this tells you how the state would propagate, actually, if there were no input over that interval.
+
+</p><p>Then this convolution here tells you what the effect of the input is, but it’s only over that interval.  Here u only refers to between kH and k + 1H.  Now over that time period, this thing is a constant and therefore, comes out of the integral.  These are matrices.  I obviously can’t pull it out on the left.  I have to pull it out on the right.  It’s the only correct place to put it and it goes here.  B is also a constant; that goes out, and so you get something like this.  I shouldn’t say that.  You don’t get something like this.  You get this.
+
+</p><p>So the terms make perfect sense.  This is basically what would – this is what the state would be if there were no input applied.  This, that’s complicated, but this thing here, that’s a matrix here and it just multiplies what the input is, its constant value over that interval and it’s an update, and in fact, if you look at this closely, you can write this this way.  It’s a discreet time dynamical system.  It says x[D] k+1 is AD, x[D] + BD times uD, and everything works this way.  D is the same, C is the same.  These don’t change, but A and B are given by this.  And some people call this the discreet time system, so that’s what this is.
+
+</p><p>This is simple enough.  This integral, by the way, can be evaluated numerically, but in fact, there’s lots of cases where it can be analyzed or you can actually just give an explicit formula for it from this thing.  And I’ll give a case like that in a minute.
+
+</p><p>So A is invertible, which, by the way, need not be the case.  There are plenty of interesting cases where A is not invertible.  You can express that integral as this, and this makes perfect sense if someone walks up to you on the street and A for example was a number, you would know that the integral, either the TA between zero and h is something like it’s one over A times e to the HA minus 1.  So you would guess at a formula like this would hold.  And the questions would be – now, that’s still just a guess.  That’s how these overloadings should work.  You should just figure out what would this be if they were scalars.  Then you have to put things in the right place.  
+
+</p><p>Actually, it doesn’t tell you whether the A inverse should go on the left or the right here.  That it doesn’t tell you.  That’s the first thing.  And then there’s the bigger question as to whether or not it’s true because arguing from analogy from a scale of formula will often give you the right answer, but in a large number of cases, it just will give you something that’s completely wrong.  
+
+</p><p>So here, I can tell you why you’re okay, or actually, maybe someone can tell me why.  What is it about the terms here that actually gives us – what makes this safe?  By the way, safe means you should still go and check it, but what makes this safe?  What do you imagine makes this safe?
+
+</p><p>Everything commutes here.  You imagine this as a power series in A.  Everything commutes.  A commutes with A inverse, obviously, because A-A inverse is A inverse A is i.  When everything commutes, that’s actually kind of the safe time.  That’s exactly when your scalar formulas are gonna actually correctly – they’re gonna lead you to correct results.  So that’s how that works.
+
+</p><p>And if you wanted to show this, it wouldn’t be hard.  You’d actually just write out the power series for e to the Tau-A, integrated term by term, look at the new power series you have and say, hey, what do you know.  That’s the power series for this.  Now, you might not wanna do that because of the A-inverse there, but still.  Well, anyway, that would be that.  So you have this.
+
+</p><p>Now, and interestingly, we can actually now point out something quite interesting here is that stability is preserved by discretization.  So if Eigen value of A, that’s an x dot = A + Bu lambda N, the Eigen values of AD are e to the H lambda 1 up to e to the H lambda N.  
+
+Did we put that on like some additional – I have a vague memory we made an additional homework problem on this or something.  Spectral mapping theorem.  Well, I have a vague memory of it.  Maybe you have or – a few people nodded.  You weren’t just being polite, right?  You actually saw Spectral Mapping Theorem in this course sometime?  Okay, good.  All right.
+
+</p><p>So here you would know that the Eigen values of AD, which are given by just the exponential like this, would be e to the H lambda 1 up to e to the H lambda N.  And that’s interesting because it turns out that if you have the real part of a complex number is less than 0, that’s if, and only if, the magnitude of its exponential is less than 1.  And the reason is very simple.  It’s the magnitude of e to the – well, here – u, if u is a complex number, is exactly equal to e to the real part of u like that.  So that’s almost by definition.
+
+So if this here has a negative real part, then the magnitude of this is less than one.  Now, this is just the simplest form, but there’s all sorts of horrible little things.  They’re mostly horrible in bookkeeping, but you could actually, in principle, work out all of them now.  Here are the kind of horrible things that could happen.  You could have offsets.  You could say, well, you know, we measured the state at these times, which are offset.  They’d give you some horrible timing diagram, and then they would say the whole thing operates at 50 hertz, but the state sample and the update are offset by 8 milliseconds, or something insane like this.  It’s not hard.  You just plug in the right e to the 8 milliseconds A in the right places and you could work out what happens and all that sort of stuff.  It’s not fun, but it can be done.
+
+</p><p>Very, very common is multi-rate and so here you could actually have different inputs updated at different times, different outputs sampled at different intervals.  They’re usually multiples of a common interval, so that’s extremely common.  So, for example, a jet engine controller on an airplane might run at 400 hertz and then something wrapped around that, the update might be at only 100 hertz, but the sampling might be 50 hertz.  Your nav update, your navigation update might be running at 10 hertz.  Your radar altimeter might be running at 2 hertz and all this kind of stuff, and it’s just a lot of horrible exponentials flying around and it’s not fun, but somebody has to do it.  And I claim, in principle, you could.
+
+</p><p>Okay, the next topic, which is dual system, I’m gonna actually skip over because I decided I wasn’t – I’m feeling slightly pressed for time, but only just slightly.  So don’t worry.  You’ll know when I get panicked.  I’m not going there.  I control it by the number of espressos I have before coming here.  I’m at two right now, but I can go up to four if I need to.  We don’t yet.
+
+Next topic, causality.  So I’ll just say a little bit about this.  Now, one interpretation as you write the state is this.  It’s basically the state of time, T; the state propagated forward T seconds.  That’s what this term is.  Plus, that’s if you do nothing, so some people call this the zero input term, or I don’t know, something like that.  This thing is the zero initial state input.  This is the effect of the input.  Now notice that the state of time, T, depends on the initial state and the input only over the interval between zero and T, time.  
+
+So you would say something like this.  The current state and the current output depend only on the past input.  Well, that’s what causality is.  Causality says that the things you do now affect the future, not the other way around.  
+
+Now it’s a bit strange because you look at x dot = Ax + Bu, y = Cx + Du and I don’t see any asymmetry in time in these equations.  I don’t see anything that would make things running backward in time look any different than running forward in time.  I don’t see any asymmetry here.  Actually, the asymmetry is right here, in fact.  That’s the asymmetry, so it’s a subtle point.  It’s probably worthwhile to mention.
+
+So the asymmetry doesn’t come from these equations.  These equations are very happy.  They run backwards in time.  They run forwards in time.  No problem.  It’s actually our assigning – our considering an initial value problem.  That’s a problem in which the initial state is fixed, which makes it appear causal to us.  For example, suppose you fixed the final state, x of T.  Well, then I can write another formula that looks like this.  It says that the current state is equal to the final state, propagated backwards in time to the current value, plus, and then an integral that has to do only with the future.  So this is an integral.  And I mean you can just check this formula.  It’s absolutely correct.
+
+</p><p>So in this case, if you fix the final state, the system is, in fact, not only is it not causal, it’s anti-causal, or something like that.  I mean this had to be.  So these are both related to the concept of state, which we, so far, have used only to mean x of T in x dot = Ax + Bu.  But in fact, there’s an idea that when you say state, it ties into a much bigger idea and let me say what that is.
+
+So first, let me just say what state is abstractly.  How many people have seen the concept of state, like in a computer science course, some very abstract computer science course or something like that?  Actually, [inaudible] theory where you have to know that, right?  You have to know the state of a processor.  So in fact, the state of a processor, now that’s not abstract.  That’s quite not abstract.  The state of a processor or something like that is very simple.  It’s all the values of the registers and all the stuff like that.  It’s basically whatever you would need to do in that processor so that, if you restored the state and ran it forward in time from there, its behavior would be absolutely identical.  That’s what the state is.
+
+So for example, when you call a function, you push the state on some stack or something, and when you finish calling the function, you pop the state and the idea now is, aside from side effects that happen during the function call, it should actually continue absolutely as if nothing happened.  
+
+By the way, if you forget to set a register, if you forget to restore a register or something like that, you’re in deep, deep trouble, and that’s because you failed to restore the state.
+
+There’s also an abstract idea of state.  Abstract idea of state is something like this.  It is this and this is worth thinking about and understanding.  This is gonna be abstract, so you don’t have to worry about it.  It’s just for fun.  The state is what you need to know about a dynamical system at a given time so that, if you knew the inputs in the future, you could perfectly predict the future behavior.  That’s what it means.  So other ways to think of it is that it is a sufficient statistic for what has happened in the past in order for the purposes of predicting the future.  So that’s what state is.
+
+Okay, so for example, if you have a model of how prices are dynamically changing, they depend on certain other things, like interest rates and things like that, you would say that the state in that process is sort of everything you need to know so that moving forward you can make prediction of these prices correctly, given the future inputs.  Have a question?
+
+</p><p><b>Student:</b>So this would work for like a time invariant system?
+
+</p><p><b>Instructor (Stephen Boyd)</b>:No.  No, it works perfectly well.  The question was does it work for time variances.  It works perfectly well for – the same concept works for time variance systems.  And by the way, discrete systems as well.  So that’s the idea. 
+
+</p><p>So there’s lots of ways to think about it.  You’d say something like this.  The future output depends only on the current state and future input.  Or you could say the future output depends on the past input only through the current state.  Or you could the state summarizes the effect of the past inputs of future.  These are all ways to sort of say the same concept.  
+
+And another way to say it is the state is actually the link or the bridge between the past and the future.  So another way to say it, you say this in machine learning, you’d say something like this, that the past and the future are conditionally independent given this state.  Again, if you don’t know what I’m talking about, that’s fine.  These are vague ideas, but that’s okay.  It’s a very useful one to know about.
+
+</p><p>Okay.  Okay, so that’s the concept of state and that’s just to sort of point out what it means.
+
+</p><p>Another topic is change of coordinates.  We’ve already done this for an autonomous system.  For a system with inputs and outputs, a non-autonomous system, the same sort of thing happens, except you’ll see that some things don’t transform.  So if we choose to change the state to x ~, we write x is tx ~, so x ~ are the co-efficients of the state in the ti expansion of the state.  Then you’ve got x ~ dot is.  You get your familiar term here.  That’s the T inverse AT, that’s the similarity transform, times x ~ + T inverse Bu.  That makes perfect sense because Bu was the effect on the state derivative, but in the original coordinates, and that’s what it is in the new coordinates.
+
+</p><p>Now, the linear dynamical system then looks like this:  x~dot is A~x~+B~u, y to C~x~+D~u and here A is the familiar similarity transform.  B gets transformed by this T inverse.  C gets transformed on the right and D doesn’t change at all.  But these make perfect sense, absolutely perfect sense.  And the reason is this.  You’re only changing the state coordinates, so there’d be no reason that D would change because D maps input to outputs.  That’s how you do the state.
+
+</p><p>This is a read-out map and this basically says how do you map x~.  The T here transforms for the new coordinates to the state coordinates to the old ones, and so on.  Now, when you do this, the transfer function is the same.  In fact, the input and output have not changed at all here, have not changed at all, and you just work out what happens here.  If you form C~si minus A~B – by the way this means the impulse response, for example, is the same.  So you can check that C e to the TAB – well, I guess you’d say plus delta of T times D, that’s the impulse response.  This is the same as if I put tildes all over these things.  It will be identical because in fact, u and y haven’t changed.  So this will be the same.
+
+</p><p>Okay, so you get this, and again, you have to work this out.  This is not immediately.  You have to throw T’s and T inverses and then the usual tricks with T and T inverses help, for example, i you write as T, T inverse, for example, or something like that.  You pull things out, mess with a few inverses and things, then there’s a lot of smoke, a lot of cancellations, and in the end, you get this.  So it’s the same.
+
+</p><p>Okay, this allows you to have ideas like standard forms for linear dynamical systems.  So you can change coordinates to put A in various forms, like you can put diagonal real modal Jordan.  I’ll say a little bit about the use of this.  It actually has a huge use, which I’ll say about in a minute.
+
+</p><p>So here if you put it in certain forms, then you get very interesting block diagrams because, for example, if A is diagonalized, you get something like this, and that is the so-called diagonal form of a linear dynamic system.  That’s the diagonal form, just as an example.  
+
+</p><p>Now, you might ask why would you want to change coordinates like this.  Well, you might wanna change coordinates of a real system just to understand how it works.  So for example, this might be a modal – this would be a modal expansion in the middle, and then if one of these numbers were really small, you’d say something like, well, the input doesn’t really strongly drive the third mode.  That would be it.  Or you’d say something like you look at a number over here, it might be small, or if there’s a scalar, or if you know this is a matrix, it’s small.  You’d say the output doesn’t particularly see a large contribution from the second mode.  That would be the types of things you’d say.
+
+</p><p>Now, there’s another real use of changes of coordinates and this is real, and it is absolutely not – you do not change coordinates in the purpose I’m gonna describe now, to things like Jordan canonical form or diagonal or anything like that.  It’s this.  
+
+</p><p>If this represents some sort of signal processing system that you need to implement, for example, this might represent your equalizer, let’s say, in a communication system, and you have to implement it.  This change of coordinates is your friend.  It is a degree of freedom because basically it’s a knob.  It says down here, the point is I can choose any T I like and I will have implemented the same signal.  It has the same input/output properties, so I can change coordinates anyway I like.  
+
+</p><p>I could do this for lots of reasons.  I could change coordinates to get an A, for example, that has a lot of zeros in it.  That might be very useful because when I implement this, it means it’s much simpler to implement, for example.  And there’s actually forms you would use. 
+
+</p><p>You might also, if this was actually some kind of analogue implementation, you would actually change coordinates to make the resulting system one that was less sensitive to perturbations in the parameters, just for example.  These would be the types of things you would do.
+
+</p><p>Okay, that was just for fun, but it’s important to know that the change in coordinates actually has real use beyond merely sort of understanding how a system works, which is the most obvious application.
+
+</p><p>Okay.  So we’ll finish up with discrete time systems.  They’re pretty simple because there’s not even any differential equation.  They’re just linear iterations.  This is xT + 1 is Ax of T + Bu of T.  The block diagram looks like this.  This is sometimes called – you can call it a register or a memory bank or something like that.  That’s what it is.  Or a single unit delayer or something like that; a single sample delayer.  Well, one over z, z inverse would be a typical one.
+
+</p><p>That means that’s the output sequence.  What goes into it is actually the sequence advanced in time because if you’re looking through a delayer at a signal, what went in is something that was advanced in time on unit, so that’s what this is.  That’s the block diagram.
+
+</p><p>You’ll notice it’s exactly the same, except the z is replaced with s, so there’s really nothing here.
+
+</p><p>Oh, I should – I guess I’ll also mention if you know about digital circuits and things, you can also imagine that there’s a latch so that this thing doesn’t – like you do two-face clocking or something like this, or there’s a small delay or something like that so that on each – this thing doesn’t race around and come back.  It’s basically there’s a one-sample delay there.
+
+</p><p>Now, here the analysis is well, I mean it could’ve been done on Day 1.  It requires nothing more than the knowledge of like matrix multiplication and that’s about it.  So x of 1 is this; x of 2 is that.  You multiply this out and you get that.  And the pattern is very simple.  The state is A to the Tx of 0.  That’s basically what A to the T for a discrete time system, that’s the time propagator operator.  That’s what that is.  That’s time propagation, A to the T. 
+
+</p><p>So this propagates for the initial state and this is actually discrete time convolution.  It’s nothing more.  This is just discrete time convolution here.  And you can write it this way:  Cy is CA to the Tx of 0.  That’s the input contribution from the initial state, plus H convolved with u starts discrete time convolution, and the impulse response in this case is D at T = 0 and then C, A to the T minus 1, B for T positive.  So that’s the impulse response.  It’s D, CB, CAB, CA2B and so on.
+
+</p><p>Okay.  Now, suppose that you have a sequence – and we’ll just cover the z transform very quickly.  There’s not much here.  It’s mostly just a review.  Suppose you have a sequence.  We’ll just make it matrix value to cover all cases right off the bat and we’ll make it a sequence defined not as a double-sided sequence, but a sequence defined from 0, 1, 2 on these indexes.  Then the z transform is simply this function here.  And this maps, this makes sense, and depending on how violently w diverges.  You have a divergence no faster than an exponential, then this is guaranteed to make sense for large enough complex number z because if z is large enough in magnitude, these things are falling off here quickly.
+
+</p><p>So you referred to this as the domain of w and as with Laplace transforms, it’s not a big deal; you don’t really need – all that can happen there is things can get complicated.
+
+</p><p>Now, if you define a new signal, which is time advanced like this, so it’s the same as another signal, but it’s what the signal will be one sample later.  You work out what the z transform is.  It’s again, it’s like baby algebra.  You multiply this out.  I’m gonna change T to T bar, whatever, T + 1, and I’ll write it this way where the z comes out, and then you can write that as zw of z minus zw of 0.  It looks like the same thing for the derivative formula for Laplace transform.  That’s the only difference right there, is that z.  But otherwise, there’s no – it doesn’t matter.
+
+</p><p>Okay.  Discrete time transfer function is simple.  You just take the z transform.  I mean there’s a big difference here.  We don’t need this to get the solution.  We already know the solution.  We just worked it out by multiplying matrices, so this is, in a sense, not particularly needed.  I just wanna show you how this works.  And there actually are people who are more comfortable in the frequency domain; so just from there, depending on their cultural upbringing, personality type, things like that, there are just people more comfortable.  That’s fine.  No problem.  And so this is addressed to them.
+
+</p><p>By the way, if you’re perfectly comfortable with matrix multiplication, then I think everything we did over here, this described exactly what happens in a discrete time system.  But anyway, all right.
+
+</p><p>So you take the z transform here.  You get the usual thing.  This is the analog of sX of s minus x of 0, except we have this extra z in there.  You get this and you solve for the z transform of the state to get this formula here.  And the only difference is there’s an extra z here and you get the Laplace transform of the output is gonna look like this.  It’s h of z, u of z.  H of z is Czi minus A inverse B + D.  That’s the discrete time transfer function.  Got a question?
+
+</p><p><b>Student:</b>Yes, [inaudible] rotation of that extra z?
+
+</p><p><b>Instructor (Stephen Boyd)</b>:That’s a good question.  I think the answer is yes.  I can defend its existence, at least this way.  Or I can’t argue for it, but I can tell you why you shouldn’t be shocked to see it there.  If you sample something faster and faster and faster, this is, basically, -- where is it?  I lost it.  Here it is.  Okay, that one.  This basically says you’re off by one sample in calculating the effect of the output, the effect of the initial state, for example, on the output.  That’s kind of what this says.  
+
+If you sample faster and faster, the z has no effect because you’re sort of moving something close.  It’s a smaller and smaller time interval, so it’s okay.  It would be like saying, well, no problem.  I’m just using x at the end of the interval as opposed to the beginning, and as the interval gets small, the effect goes away.  
+
+So that’s not an argument as to why it should be there.  It’s an argument as to why it shouldn’t bother us that it’s there.  That is just an additional argument because the main argument, why it shouldn’t bother you that it’s there, is correct, which is a strong argument.  Not always completely persuasive, but that’s it.
+
+Okay, so this finishes up a section of the course and we’re now gonna enter the last section of the course, and in fact, we’re gonna do essentially one more topic and then the course is over.  It’s gonna take a lot.  We’re gonna do a lot of stuff on it.  It’s very useful.  It’s really cool stuff.  It has to do with singular value decomposition.  You may have heard this somewhere, somebody.  Actually, how many people have heard about things like singular value decomps?  That’s very cool.  Where did you hear about it?
+
+</p><p><b>Student:</b>Linear algebra.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:A linear algebra class, so it’s gotten there.  It’s funny.  It’s only 100 years old.  Traditionally, material hasn’t gotten into – that was taught in the math department?
+
+</p><p><b>Student:</b>No, actually, [inaudible], but under them.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Oh, taught in the math department?
+
+</p><p><b>Student:</b>No, it’s EE.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Oh, okay, sorry.  It was taught in an EE department.  Okay.  So you know, I think actually, it’s about time.  It’s been around for about 80 years now, so it’s about time you might see its appearance in math, linear algebra courses.  Did anyone here actually hear it in a linear algebra course taught in a math department?  Cool.  Where?
+
+</p><p><b>Student:</b>At the University of Maryland.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Aha.  Cool.  So that was, by the way, one hand in a sea of – for those watching this later or something.  Okay, all right, fine.  So we’ll look it up.  How about in statistics?  Anyone hear about this principle component analysis?  There’s a couple, okay.  What’s that?
+
+</p><p><b>Student:</b>We used it in machine learning.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:P – so Machine Learning, you know about it through PCA?  But other than that, I guess people in like CS never heard of this.  Okay.  Cool.  I’m trying to think of some other areas where it’s used.  Okay, all right.  
+
+</p><p>So we’ll do the last topic.  We’ll start in with some basic stuff.  You know, it’s actually quite basic and I’ll explain that in just a minute.  We’re gonna look at first, the special case about the eigenvectors of symmetric matrices, what you can say, and then we’ll get to quadratic forms.  That’s actually a bit different.  Actually, it’s the first time – so far, a matrix has always meant the same thing to you.  This is actually be a different – it’s gonna mean something different here.  We’ll see that soon.  
+
+We’ll look at some of the qualities, the idea of we’re gonna overload inequalities to symmetric matrices.  We’re gonna overload norm to matrices.  These are not gonna be simple overloadings.  These are not – they’re gonna be overloadings in the sense that some things you’d guess are true would be true, and a bunch of things you would guess are true are false.  And these are not simple overloadings.  They’re not what you think they are and they’re really useful.
+
+And this will culminate in the singular value decomposition or principle component analysis, depending on your background. 
+
+Okay.  Let’s start with the Eigen values of symmetric matrices.  So suppose you have a symmetric matrix, obviously it’s gotta be square.  And here’s the first fact.  The Eigen values of a symmetric matrix are real.  Oh, by the way, whole groups of people, for example, if you do physics, depending on what kind of physics you do, what happens is all the matrices you see are real.  By the way, they could be either symmetric – there’s another one where it’s self-adjoint is what you’d call it.  And it means that all the Eigen values you’d ever encounter would be real. 
+
+</p><p>Or, by the way, sometimes there’s an I in front, in which case, all the Eigen values are purely imaginary or something like that.  
+
+So if you’re in one of these fields, what happens is, after a while, you get the idea that all matrices are symmetric or self-adjoint.  Then you actually start imagining things, like all of these, and they lose – even people who have done this for years and stuff like that, they get very confused then when you go back to matrices that are non-symmetric.  Or they’ve even completely suppressed it and forgotten it.
+
+Okay, but for you – I should say this – for symmetric matrices, they’re very special things that obtain, in terms of the Eigen values, eigenvectors, all that.  It’s very useful to know.  Just don’t spend all your time off dealing with these.  If you’re one of the other types, make sure you know what happens when matrices are non-symmetric.  But anyway, let’s look at it.
+
+Let’s see how this works.  Suppose you have AV as lambda V.  V is non-zero, so V is not eigenvector and V is complex here.  Let’s see what happens here.  I’m gonna look at V conjugate transpose.  By the way, that’s an extremely common thing.  People write that as VH or V* and I should mention, although it’s – I don’t know – anyway, in Matlab if you type V prime, like that, and it’s complex, you will get this.  You will get the conjugate transpose.
+
+So this is V conjugate transpose and if you’re very slow with these arguments, because they look – just one little mistake and – in fact, arguments when you first look at them, they look like it can’t be, like you missed something or whatever.  They look magic.  But let’s take a look at it. 
+
+We’re gonna say V conjugate transpose AV as V conjugate transpose – I mean a parser as AV here.  But AV we know is lambda V, so I’m gonna write this as – the lambda comes outside.  I’m gonna write lambda V conjugate transpose V.  V conjugate transpose V is the sum of the absolute values of the complex numbers lambda i because that’s what, well, because A conjugate A is magnitude A2 for a complex number.  
+
+Now we’re gonna do the same calculation, but we’re gonna do it a little bit differently.  I’m gonna take this thing here and I’m gonna replace these two with that expression, and that’s fair.  And let’s see why.  Well, we can do the transpose first.  This is the same as AV – well, you can do either one.  This is V conjugate transpose A conjugate transpose.  That’s what this is.
+
+Now, V conjugate transpose, that’s what I’ve got here.  A conjugate transpose is A transpose because I’m assuming A is real.  So I get that.  And AV is lambda V.  I plug that in here, but there’s still the conjugate up top and that comes out as lambda bar times this.  Now these two are equal, so that’s equal to that.  This is a positive number and they’re equal; that’s equal to that, and the only conclusion is lambda is lambda bar.
+
+You can go over this and look at it yourself to check that I am not pulling a fast one on you because if you first do this calculation, and I would assume no problem, I just lost a conjugate somewhere.  But in fact, no.  These are two valid derivations.  That’s equal to that and therefore, lambda is lambda bar.  It’s the same as lambda is real, same thing.
+
+Now, we get to a basic fact about symmetric matrices and it’s important to understand the logic of it.  It’s quite subtle.  It says this.  There is a set of orthonormal eigenvectors of A.  That’s what it says.  
+
+Now, in slang, you would say things like this.  You might say the eigenvectors of A aren’t orthonormal.  In fact, that’s how you’d say it informally.  But that is wrong.  Okay?  This is the correct statement, so as with many other things, you might want to practice thinking and saying the correct statement for a while, and after a while, when you realize people are looking at you weirdly and they’re like why would you sound like that, then when it’s actually causing social troubles, then you switch.  People start thinking you’re a [inaudible].  And then you switch to the slang and the slang is the eigenvectors of a symmetric matrix are orthonormal.
+
+That’s wrong in so many ways if you parse it.  It’s sad.  We’ll go over the ways in which that’s wrong in a minute.
+
+So let’s see what that says.  It says I can choose eigenvectors Q1 through QN, which are eigenvectors of A with Eigen values lambda i, and the Qi transpose Qj are delta ij.  That’s the same as saying there’s an orthogonal matrix Q for which Q inverse AQ, which is the same Q transpose AQ, is lambda.  So another way to say it is you can diagonalize A with an orthogonal matrix if A is symmetric.  That’s the condition.
+
+Okay, now, that says you can express A as Q lambda Q inverse, but Q inverse is Q transpose.  Now this I can write lots of ways, but here’s one.  I can write this in a dyadic expansion here.  This is the sum lambda i times Qi, Qi transpose.  We’re gonna look at this and it’s a beautiful thing.  These are end-by-end matrices.  Some people call these outer products, so it’s a sum.  They’re also called dyads.  And so this is sometimes called a dyadic expansion of A because you write A as a linear combination of a bunch of matrices or dyadic expansion.  
+
+Now we have seen that matrix before.  It is projection onto the line that goes through Qi, so this is A.  You express A as a sum of projections onto these – in fact, they’re orthogonal projections, these matrices.  And I think – I have another vague memory of a homework assignment problem or something like this.  Maybe not.  Okay.  Some of my vague memories are, well, wrong or something.  Okay.
+
+So these are projections, so there can be a lot of interpretations of what this means.  Before we go on, though, let’s talk about the slang statement.  So here’s the slang statement.  This is what you would say.  The eigenvectors of a symmetric matrix are orthonormal.  There’s your statement.  This is among friends, casual get-together; this is what you would say.  You’re just fooling around doing research, no one’s looking, this is what you’d say. 
+
+Actually, you could even say this at a conference.  There’d be some social cues, though.  When I hear someone and people like me hear someone say this, we get a little bit on edge and we listen for a little while to figure out either they have no idea what they’re talking about or they know exactly what they’re talking about and they’re choosing to use informal language.  It’s usually clear very quickly.  Okay.
+
+This doesn’t make any sense and any sense that you could assign to this is completely wrong.  First of all, you can’t talk about the eigenvectors of a matrix, even though everyone does, because it doesn’t make any sense.  There’s zillions of eigenvectors.  Take any eigenvector; multiply it by any non-zero number, that’s an eigenvector.  So you don’t talk about the eigenvector because that doesn’t – let’s start with that.  That doesn’t make any sense.  Okay.
+
+So if I have a matrix – here’s one – i, that matrix is quite symmetric.  What are its eigenvectors?  So what are the eigenvectors of i?  
+
+</p><p><b>Student:</b>All the non-zero vectors.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:All non-zero vectors are eigenvectors of i.  So let’s make it two by two and I could say, okay, here’s my choice of eigenvectors for i:   1 1 and 1 2.  There, that’s my choice of eigenvectors.  That’s V1 and that’s V2.  It is now false that these eigenvectors are normalized.  They don’t have norm 1.  That has norm square root 2, that has norm something else, squared 5.  So that’s false.  They’re not normalized and they’re most certainly not orthogonal by any means.  Okay?  
+
+</p><p>And in fact, if someone said get me the eigenvectors of i, and i returned these two things, no one can complain.  These are eigenvectors of i, period.  Okay?  So it’s absolutely the case that i times this is 1 times this, i times that is 1 times that.  So that’s fine. 
+
+</p><p>Okay.  Now, there’s actually a situation in which you can actually say when something is close to this, so let’s forget the normal because that’s silly.  Can you say the eigenvectors of a symmetric matrix are orthogonal, and this case shows the answer’s no because it’s not true.  Here’s a matrix in symmetric.  That’s an eigenvector, that’s an eigenvector; they’re independent and they’re by no means orthogonal.  I think that’s enough on critiquing this thing.
+
+</p><p>So the right semantics is, the right statement is you can choose the eigenvectors to be orthonormal, and that statement is shrewdly true for i because, for example, I could choose 1 0 and 0 1.  For that matter, I could choose 1 1 divided by square of 2 and 1 minus 1 divided by square of 2, and that would also be an orthonormal set of eigenvectors for i.  Okay.
+
+</p><p>Let’s interpret this formula.  This is A is Q lambda Q transpose.  Now remember, Q transpose is Q inverse.  So let’s look at some formulas.  Let’s look at some interpretations.  So the first is to look at three matrices separately and it says that if you wanna operate by A on a vector, here’s what you do.  The first thing you do is you multiply by Q transpose.  So the first thing you do is the x comes in, you multiply Q transpose x and you get Q transpose.  
+
+</p><p>And now we know what Q transpose x does.  We know exactly what it does.  That’s essentially Q inverse.  Q transpose x actually resolves x into the Qi coordinates.  That’s what it means.  It resolves x.  So this vector is the coordinates of x in the Qi expansion.
+
+</p><p>Now we multiply by symmetric matrix – I mean, sorry, a diagonal matrix.  That’s very simple.  It’s very simple to visualize what multiplying by a diagonal matrix is because you’re actually just scaling each coordinate.
+
+</p><p>By the way, if it’s a negative Eigen value, you’re flipping.  You’re switching the orientation.  Okay?  That’s here.
+
+</p><p>Now, when we multiply by Q, we know exactly what that is.  That’s actually reconstituting the output.  So if you like, you can think of this as a coding, a scaling, and a reconstruction.  Your question?
+
+</p><p><b>Student:</b>Yeah, sorry, still don’t have any [inaudible] orthogonal eigenvectors.  Why is it that for a symmetric matrix you can find orthogonal eigenvectors, but if a matrix is not symmetric, you can’t necessarily find orthogonal?
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s a great question.  I haven’t answered it yet.  But I’m going to.  I think I am.  Might be Thursday, but I’m gonna get to it.  So we’re just gonna push that on the stack and we’ll pop it later maybe.  
+
+</p><p>So the question was why and I haven’t said so.  So first, we’re just gonna look at – I said it as a fact and we’re gonna look at what does it mean?  What are the implications?  Then we’re gonna come back and see why it’s true, but we’ll see why in a minute.  Now, by the way, I have shown why the Eigen values should be real.  I have not shown that you can choose the eigenvectors to be orthonormal. 
+
+</p><p>Oh, by the way, one implication of this, it says that a symmetric matrix, the Jordan form is really simple.  It’s always diagonal.  You cannot have a non-trivial Jordan form for symmetric matrix.  So we’re gonna get to that later, I hope.  I hope we are.  I think we are.
+
+</p><p>Okay.  Now, this is actually a very interesting interpretation.  Oh, and by the way, it’s worthwhile knowing this; this comes up all the time.  This is, well, roughly, actually, this exact operation is carried out, for example, in the current standard for DSL.  It’s also done jpeg.  So jpeg, you do a DCT transform on an 8 x 8 block of pixels.  You don’t have to know this.  I’m just saying this is not those blog diagrams of abstract things.  This type of thing is done all the time in all sorts of stuff all around you.  
+
+</p><p>In jpeg, at least in one of the older standards, you take 8 x 8 blocks of pixels, you form a DCT transformation, and then, in fact, you don’t multiply here.  In fact, what you do is you quantize in the middle and then you transmit these and then it’s reconstituted when you decode the image.  Okay?  So pictures like this actually are all around you, widely used, and so on.  It comes up in signal processing, compression, communications.  I mentioned one in communications.  It comes up all over the place.
+
+</p><p>So that’s the picture is you resolve into the Qi coordinates, you scale, flip of lambda is negative, and you reconstitute.
+
+</p><p>Now, geometrically, there’s a beautiful interpretation because we know an interpretation of orthogonal matrix geometrically is it’s an isometric mapping.  So it’s something that preserves lengths and it preserves angles, and it preserves distances.  
+
+</p><p>Now, it can flip.  For example, you can have a reflection through a plane and roughly speaking, you should think of these as rotations or reflections.  So this basically says – I’m gonna call it a rotation even if it’s a reflection – it says rotate the input by, for example, round some axis by 30 degrees.  Scale in that new coordinate system and then it says undo it, and that means rotate around the same axis 30 degrees the other direction.  So that’s the idea.
+
+</p><p>We’ve already mentioned this.  Oh, by the way, when you diagonally real scale a vector, there’s lots of ways to say it.  There’s, well, I found both dilation and dilatation, so somehow there’s two.  I thought for a while dilation was the only correct one.  No, it also turns out, it’s also English to say dilatation and I tried to blame it on some weird people in some field.  I couldn’t identify the field that committed this crime.  Or country of origin; I also tried to pin it maybe like on the British or something like that.  That seemed like a good, promising – that would be the kind of thing, that extra syllable, just have that Britain there.  But couldn’t blame it on them.  Couldn’t chase it down. 
+
+</p><p>So you’ll see dilatation.  There’s also another thing you should – so you’ll also see this.  And by the way, on a couple of occasions, I have had students and people say that actually these mean different things and one or two of them tried to explain it to me.  They seemed – the distinction seemed very clear to them, but it never sunk in with me.  There may be.  There may be a difference, but if there is, I for one haven’t got it.  That might be my – probably me.  So there might even be a distinction.  There could be some field where they say, no, no, no, totally different things.
+
+</p><p>This is where you multiply each component in the vector by lambda i.  So this is the picture.  Now this is decomposition like this, we’ve already talked about.  This is a dyadic expansion.  You can call it – oh, by the way, some people call this simply the spectral expansion.  This is a spectral expansion of A, that’s what this is.  This thing over here.
+
+</p><p>And these are called projectors and sometimes they even – in fact, a very common way to see this would be this.  This would be very familiar, but actually, in a lot of cases, there would be an infinity here.  In a bunch of fields, this would be very, very – you’d see things like that and you’d also see the same thing with an integral and all sorts of stuff, but it would look just like that.  And they’d call that the spectral expansion of the operator A, depending on what field you’re in.  Okay.
+
+</p><p>So let’s look at – this is just a stupid example, but just to see that something happens here.  So here’s a silly matrix.  You clearly don’t need anything to figure out what this matrix does to a vector.  But as usual, with the examples, the boys and I even do this for a 2x2 matrix.  The boys even do this for a 30x30 matrix, or for that matter, 3,000 x 3,000 matrix, where it is by no means obvious what a 3,000 x 3,000 matrix does symmetric at all.
+
+</p><p>So here you work it out.  The eigenvectors turn out to be 1 1, 1 minus 1 – oh, did you hear that?  That was slang, big time slang.  So let me wind back and say it again without slang.  But then I’ll stop after this lecture and I’ll go back to slang.  Okay, so I’ll say it precisely.
+</p><p>
+</p><p>For this matrix, I chose the eigenvectors 1 and 1 divided by square 2, 1 minus 1 divided by the square root of two, which are orthonormal.  Actually, that involved a small slang because I shouldn’t say the vectors are orthonormal.  I should say I chose the set of two eigenvectors consisting of 1, first eigenvector, 1 1 divided by square of 2; the second eigenvector, 1 minus 1 divided by the square of 2; end of set.  And that set of eigenvectors is orthonormal.  There, that was formal.  
+
+</p><p>That’s why people don’t talk this way and why, if you see people who do talk this way, it’s weird.  But you should think that way, so you should speak casually.  But maybe you don’t know when the right time is to, but you should never think casually.  That’s called sloppy or something.  Okay.  All right.  Or you could do it; you should just do it in private.  You shouldn’t write it down or something.  And not think that it’s clear thinking.
+
+</p><p>So here’s the picture.  There’s Q1 and Q2, and here’s some x that comes in.  Here’s x and so the first thing you do is resolve it until you project it onto the Q1 line and the Q2 line.  That’s orthogonal projections; that’s these and these.  Then you scale these by the eigenvectors.  I guess let’s see what happens. 
+
+</p><p>This first guy, nothing happens.  And the second one gets multiplied by two and flipped in orientation, so this guy gets flipped over here and doubled, and so you get something like that, and then that’s the output.
+
+</p><p>Now, you sure did not need to do a spectral decomposition to find out what this 2x2 matrix does to a vector, but it’s just to show an example.
+
+</p><p>Okay, now we’re gonna show what I said I was gonna show, except we’re not gonna do the full case.  We’re gonna do the case where lambda i is distinct.  In this case, when the Eigen values are distinct, there is a statement that can be made somewhere in between the nonsense slang and the correct formal statement.  There’s actually a true statement that lies in between them.  So we’re gonna do the case of lambda i distinct and in this case, I can say the following – all right, let me see if I can get it right.  
+
+</p><p>All right, it’s gonna come out right.  Here we go.  I have to concentrate.  Here it goes.  If the Eigen values are distinct for a symmetric matrix, then any set of eigenvectors is orthogonal.  Independent eigenvectors – oh, I was close.  I was close.  All right, let me try it again.  If a matrix is real and symmetric, then any set of N independent eigenvectors is orthogonal.  Yes.  It came out right.  I think that’s correct.
+
+</p><p>So that’s a different statement from the original that I made.  Just the quantifiers were in different places or something like that.  Notice I didn’t have – so in this case, you don’t have to choose.  There is no choice.  
+
+</p><p>And the slang reading of that would be – in slang, you would say this, in abnormal speech you would say the eigenvectors of a real matrix with the state Eigen values are orthogonal.  And then if you simply choose to normalize them, then you could say “and therefore could be normalized to be orthonormal” or something like that.
+
+</p><p>So AVi is lambda Vi.  Norm Vi is 1.  Well, let’s see what’s gonna happen here.  So here, notice I didn’t have to choose the Vs in any special way.  I just chose them to be the eigenvectors period.  I have asked you to normalize them.  That seems entirely reasonable.  The eigenvectors are non-zero.  You can obviously divide them by their norm and get something which is still an eigenvector and has norm 1.
+
+</p><p>So we’ll work out Vi transpose AVj, this thing, and we’ll do that two ways.  I’ll first parse it, I’ll associate it AVj.  That’s gonna leave you lambda j transpose Vj, but I’m also going to rewrite it this way as AVi transpose Vj.  Now you have to check.  AVi quantity transpose is Vi transpose A transpose, and that’s why I use the fact that A = A transpose and then that’s the same as this.
+
+</p><p>Here, I get lambda i.  Now when you do things like this, you have to be very careful.  It’s just like the calculation we did before.  It’s probably that you’ve made a mistake, but you can check here.  There is no mistake and you see the following.  It’s actually quite interesting.  If i is not equal to j, you get this statement.  Just by saying this is equal to that, you get this.  Now there’s only two possibilities.  I mean if i equals j, this is a non-statement because it says 0 = 0.  If i is not equal to j, this is a number which is non-zero.  That’s our assumption that the Eigen values are distinct.  Therefore, that has to be zero and we’re done.
+
+</p><p>So in this case, you can actually say the eigenvectors, with a small bit of slang, you can say the eigenvectors of a symmetric matrix with distinct Eigen values are orthogonal.  And then therefore, can be normalized easily to be orthonormal, so it’s something like that.  There’s a little bit of slang.
+
+</p><p>Okay, now the general case, the distinction is this.  You have to say the eigenvectors can be chosen to be orthogonal.  An example would be the identity matrix where, of course, you could choose an orthonormal set of eigenvectors, but if you’re just weird and perverse, you could choose any set of independent vectors and say, what?  Those are my eigenvectors.  Don’t like them; they’re independent; what’s your problem?  So that’s that.  Okay.
+
+</p><p>So let’s look at some examples of this.  The first example is a RC circuit.  So here I have a resistive circuit.  I pulled the capacitors out on the left like this and the state of this dynamical system’s gonna be the – I can take the voltage on the capacitors and I can take the charge just as well, and the dynamics of this is CVk.  CkVk is the charge on a capacitor k.  CkVk is the current flow and that’s the current flow into the capacitor, which is the negative of the current flow into the resistive circuit.  So that’s the dynamics of that.
+
+</p><p>And I have i = gV; g is the conductance matrix of this circuit and its maps, the voltage appearing at these ports to the currents that flow into the ports.  So it’s a conductance matrix like that.
+
+</p><p>So this describes the dynamics of the system and you can write that this way.  V dot is minus C inverse gV and so we have an autonomous dynamical system.  There’s A like that.  
+
+</p><p>Now, by the way, g is symmetric, the resistive circuit.  That’s actually a basic principle from physics, basically says that if this is an arbitrarily complicated thing with the resistors and things like that, just your terminal resistors, then in fact, this g matrix is symmetric.  And you get similar things in mechanics and other stuff, and economics, too.
+
+</p><p>Okay, however, this matrix is not symmetric.  But we’re gonna change coordinates to make it symmetric and to change coordinates to make it symmetric, we use a rather strange state.  It’s the square root of the capacitive times the voltage.  Now that’s kind of weird because that’s a reasonable choice of state.  That’s voltage.  That is an entirely reasonable choice of state, this measure in volts.  That’s the charge, to use the charge.  This is in Coulombs; that’s in volts, but, in fact, you’re using something that’s halfway in between because this is Ci to the 0Ci.  You’re using square root CiV.  
+
+It doesn’t look right.  These are very – I forget, I mean the physical units of these – this is really quite bizarre.  I guess it’s volts times square root farads, which you could write out all sorts of other ways.  Whatever it is, it’s weird.  It seems odd.
+
+When you change coordinates like this, this is scaling.  You actually end up with x dot is minus C minus half, gC minus half, so this is actually now a symmetric matrix here.  
+
+We can conclude that the Eigen values of actually this matrix, which, however, is similar to this matrix, are real.  So we recover something you probably know from undergraduate days or intuition or something like that.  An RC circuit has real Eigen values period, so you can’t have oscillations.  Okay?  Cannot.  So for example, in an interconnect circuit, if it’s well modeled by resistance and capacitous, you cannot have oscillations period.  Okay?  You have to have inductance to have oscillations. 
+
+Okay, that’s that.  I will say a little bit about this.  I quit in a minute literally, and I’ll tell you why in a second.  I should say there is, if you really do wanna know why you would use coordinates like this, there is actually something interesting here and I’ll tell you what it is.  What is norm x2 for this thing?  For this?  Well, it’s sum square root CiVi quantity2, which is what?  It’s sum CiVi2 and somebody in EE tell me what this is.  It’s the electro statically stored energy in the capacitors times 2.  Thank you.  
+
+I was just hanging on that last thing.  That is twice the electro statically stored energy.  So these coordinates might look sick and indeed, they are sick, I think.  However, these are coordinates in which the norm now corresponds exactly to energy, so if someone said defend that, you could say, well, it’s quite natural from the energy point of view.
+
+I have to quit a few minutes early today.  I told people at the very beginning because I have to rush over and give a talk at CISX auditorium, so we’ll quit here.
+</p><p>
+[End of Audio]
+</p><p>
+Duration:  72 minutes
+</p><p>
+
+</html>

@@ -1,0 +1,403 @@
+<html>
+IntroToLinearDynamicalSystems-Lecture10
+<p>
+</p><p><b>Instructor (Stephen Boyd)</b>:Great.  It looks like we’re on.  Let me make a couple of announcements to start.  You can turn off all amplification in here.  So if you go down to the pad, I can make a couple of announcements here.  
+
+</p><p>First, let me remind you – here we go – that today I’m gonna have extra office hours from 1:00 p.m. to 3:00 p.m. today, and the other – this is important, announcement, is that next Monday’s section is gonna be cancelled, so we’ll let you rest from – I’m sure I don’t have to mention this, but of course, the midterm is tomorrow, or – it’s either tomorrow or tomorrow after Saturday or Saturday to Sunday.  Your choice.  And of course, all the information is on the web.  Any questions about the midterm or anything like that before we continue to material?
+
+</p><p><b>Student:</b>Where do we go to pick it up?
+
+</p><p><b>Instructor (Stephen Boyd)</b>:That’s on the website announcement.  It’ll be – it’s actually Bytes Café.  It’s just the ground floor of Packard building, is where you’ll go.  I hope that’s there.  It should be there.  Yeah.  
+
+</p><p>Okay, for the – the only thing I would maybe make an announcement – I should report we – an alpha tester took the exam.  He survived, and he’s recovering steadily, so no big deal.  Just some extra fluids and some light antibiotics.  He’ll be fine.  He’s gonna be just fine.  And we got a beta tester taking it now, and as of last night around midnight, he was okay too.  So it looks like – and they did, by the way, you can thank them, because they got a couple of bugs and we – a couple of bugs and typos, and we rephrased a few things to make them clearer.  So they’re suffering for you, just so you know.  All right.  Any questions?  Any other questions?  Are you ready?  Okay.
+
+</p><p>Just remember, we put a lot more time into it than you will.  Okay, we’ll continue.  
+
+</p><p>So we’re looking at examples of autonomous linear dynamical systems.  This is not – basically systems of the form x dot is a x.  Maybe zoom out a bit here so we can get the whole page in there.  There you go.  
+
+</p><p>So we’re looking at examples of autonomous linear dynamical systems, the systems that look like this, and it basically just says that the derivative of each component of the state is a linear function of the state itself. 
+
+</p><p>So here’s a very standard model.  It looks like this.  It’s a reaction where some species, a, converts or decays to species b which, in turn, decays into species c, and this looks something like this.  Its x dot is minus k one zero zero, and we can actually work out what that means.
+
+</p><p>This is basically x one dot equals minus k one x one.  So here x one is the amount of species a present, and this says that, basically, the amount by which – the rate at which that decreases is proportional to the amount.  Something like that.  So k one is this reaction constant here.
+
+</p><p>The second one is actually very interesting, the second row.  So as with looking at y equals a x, you should never look at x dot equals a x and actually just kind of say, yeah, okay, that’s fine.  You need to actually understand exactly what everything is here. 
+
+</p><p>So the second row says x two dot equals k one x one minus k two x two, and how would you explain it?  What is – what is that term?  It’s – what is it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:This one is minus x one dot, but how do you – how would you explain, just in words, what is the meaning of this term?  
+
+</p><p>It’s – this is a buildup of x two coming from the decaying of x one or – actually, I said it wrong.  It’s a buildup of species b, because that’s a byproduct of the decay of species one, and this is actually then – is actually the decay of x two, of – well, whatever it is, it’s the decay of x two because some of species b is turning into species c.  And the final one is this, which is x three dot equals k two times x two, meaning that species c, here, only comes from the decay of species two.  That’s this, and this – that’s this bottom row.  Okay?
+
+</p><p>And what if I were to put something like this?  Minus k three.  What would that mean?  Where k three is another positive constant.  It would have a meaning.  What would it mean?  
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Student:</b>Yeah, x three decays, and where does it go?  Right.  To vacuum, to somewhere not on our – where we don’t account for it, to the environment.  Somewhere else.  Everybody see what I’m saying here?  So we put a zero here and that’s fine.   
+
+</p><p>Let’s see, there’s a couple of interesting things about this matrix.  One is that the row – the column sums are zero here.  So that has a meaning, actually.  I’ll just mention that briefly.  We’ll go into this later in much more detail, but let’s see what it means that the column sums are zero – we should restore that zero there.  That the column sums are zero.  
+
+</p><p>Let’s try one thing.  Let’s – what is the interpretation of one transpose x?  X of t.  One is the vector of all ones, so what is one transpose x of t?  It’s a sum.  It’s the – so what – how would you say this?  It’s the total amount of all species in your system, right?  All right.
+
+</p><p>What is this?  What’s DDT of one transpose x of t?  Well it’s one transpose times x dot of t.  X dot of t is d x d t.  Okay?  Well wait a minute.  X dot of t is a x of t.  Now for this a here, the column sums are zero.  What is this?  In fact, more specifically, what is that?  It’s zero.  Exactly because the column sums are zero, that’s zero.  What does all this mean?  
+
+</p><p>This says that the time derivative of the total amount of material in the system is zero.  That – you know what that says?  That says that one transpose x of t is actually equal to one transpose x of zero.  It’s constant.  So you know what the column sum zero means in x dot equals a x?  It’s actually conservation of the sum.  Conservation of the total.  Okay, so there’s a name for systems like this.  I’m just mentioning this, because it’s very important, as when you see y equals a x, to not – to look at it, understand what every entry means, what every feature means.  They all have meanings.  
+
+</p><p>In this case, the column sums are zero corresponds precisely to conservation of mass or material, whatever you wanna call it.  Okay?  That’s just on the side.  
+
+</p><p>Well let’s see what happens here.  Here’s an example, where we start with one zero zero.  So we start with one unit of species a, and you can actually – what happens here, I think, is kind of – is obvious.  By the way, you will very shortly know how to actually work out what the solution of x dot equals a x is, but here what happens is kind of obvious.  X one immediately starts decaying.  In fact, what is the initial slope, right here?  If this is in t, at point zero one, what is the amount of x one present? 
+
+</p><p>What is it?  Well what’s – what is x one dot of zero?  
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s minus k one, okay?  K one is one, so what is this initial slope here?  It’s minus one.  So if I ask you, after, for example, ten milliseconds, how much of – how much of x one has decayed, the answer is point zero one.  That’s how much. 
+
+</p><p>So at point zero one, this thing is very, very close to point nine nine, is the amount of – is x one.  It’s not actually point nine nine, but it’s very close.  Okay?  That’s the initial slope.  
+
+</p><p>Now what happens is, this decays – by the way, as this one decays, x two builds up and, in fact, if you were to add x one and x two together, you would get something that, at first, is almost constant, but it’s not quite constant, because x two is further decaying into x three.  So as x one decays, that corresponds to x two building up.
+
+</p><p>Now, by the way, as x two builds up here, here, once x two is high, actually, x one – you can see that x one slows down here – no, sorry, it doesn’t.  What I just said was wrong, so scratch that.  When we get the ability to edit the videos, that’ll be fine, so I can just like cut those things out, and I’ll claim I never said them.  Okay.
+
+</p><p>All right, so x two builds up, and x three doesn’t really start appearing, because the only way you can get x – species c – the only way x three can go up, is for x two to first build up, and then a significant amount of x two to today.  So if you kind of look at this, everything looks the same.  And by the way, as you sweep along here and add x one, x two, and x three, what you’d find, of course, is that the sum is constant and it’s one.  That’s what we just worked out with conservation of  mass here.  Okay?
+
+</p><p>I mean – this is a stupid little problem.  You could do this with undergraduate methods.  It’s not a big deal.  The important part – actually, in all of the things I’m looking at here, the important part is to understand the following.  The same way least squares is not used to combine four arranged measurements to get two positions.  Least wares is used, and least wares methods are used, to do things like to blend 1,000 sensor measurements, to make an estimate of 100 parameters.  That’s the real thing.  So these are just little vignettes.
+
+</p><p>This is called a compartmental model, so this whole book is written on models like this.  It’s used in – obviously, it’s used in chemistry.  It’s actually used in economics, with the flow of – to describe flow of materials and goods.  It’s used also in, I guess, pharmacokinetics, is where you see this used a lot, where you trace things moving from one place to another.
+
+</p><p>Some of those models are not linear, but linear ones are sort of the basic ones.  What’s nice about our abstraction is that, if you look at the source code I wrote to simulate – to draw this plot, it defines a, and a is this thing, but it would just – the same code would work just as well if a were 1,000 by 1,000. 
+
+</p><p>Now, I promise you, if I gave you a compartmental system with 1,000 species and different things leaking into other things, and making multiple byproducts, and things like that, what happens is not obvious at all.  Same as least squares.  Least – you know, if you have, give me four range measurements, anybody can kind of make a good guess as to what your position is.  If I give you 1,000 samples of a signal or tomographic projections, and ask you what the image is, there’s no way.  So same as here.  I just mentioned that.
+
+</p><p>Next example is a – is actually a discreet time linear dynamical system.  So a discreet time linear dynamical system.  Of course, that’s just an iteration.  It’s just this.  It’s x of t is a x of t, right?  For which, by the way, the solution I can write out right now.  It’s no problem, I’ll just write out the general solution.  It’s a to the t times x of zero.  There.  That – by the way, this formula even works because one convention is that a matrix to the zeroth power is the identity, so this will even be valid for t equals zero, but it doesn’t matter.  So, there’s the full solution of that, but let’s look at an example.
+
+</p><p>The example here is a discreet time Marvok chain.  By the way, you don’t – I mean, probability is not a prerequisite for this course, so – but in any case, these are just examples.  So these are just examples to show you that these things do come up.  Actually, you really should know it.  I can’t imagine not knowing about Marvok chains.  It would be a mistake in pretty much any field I can think of, but okay.
+
+</p><p>So if you have the background to understand what I’m – this example, great.  If you don’t, don’t sweat it, but maybe you can get the idea.  So here’s what happens.  You have a random sequence, but the values in the sequence – it’s just a finite number of values.  It can only be one, two, three, up to n.  Okay?  And, generally, these are called states or something like that, and we’ll look at an example shortly, but – so the states could be thing – this could either be states, like a system is up, down, it’s in standby mode – it’s also called modes of a system.  These could – it could be in standby mode.  Something – you could have admission block in a network or something like that.  This can also give a q length, so this could – this state could be the number of jobs waiting to be processed.  This could be the number of packets queued in a communications system to go out on some outgoing link, for example.  So that would be the type of place where you’d see this.
+
+</p><p>Now what we’re given is this.  If you know what z of t is – that’s one of these numbers.  It’s one of these states or modes.  You actually don’t know what z of t plus one is, but you have a conditional probability, so here’s what you know.  You know that, given that you’re in state j at time t, the probability that you’re in state i at the next step is given by some numbers p i j.  I should warn you here that people who do Marvok chains use the transpose, and they use row vectors.  Okay?  
+
+</p><p>So what you see here is not what you’d see in – this whole course is on Marvok chains, but you will not – they’ll use a different notation.  Actually, it’s just transpose.  Everything is transpose.  Probability vectors are row vectors, and the i and the j are switched.  So, for us, p i j is the transition probability from state j to state i.  Why?  Well, because that’s kind of – for us, if someone walks up to you and says y equals a x, and you say what is a i j, you say, well that’s the gain from input j to output i.  So we’ll keep our standard.  They do it the other way around.  For them, p i j is the transition probability from i to j, but this is just to warn you.
+
+</p><p>Okay.  So this is a given matrix of transition probabilities, and that means, for example, that the column – that the – for us, not in probability, but for us – or statistics, a column is a – the first column, actually, is gonna be a probability vector.  It’s actually – it’s a bunch of numbers that add up to one, and it tells you, if you’re in state one, these are the probabilities of where you’ll be at the next step.
+
+</p><p>So, for example, if it was this, right?  If that was the first column of p, you would say, if you’re in state one, then with 100 percent probability, at the next time, you will be in state three.  Okay?  If it looked like this, point five and point five, and zero, zero and so on, this says, if you are in state one at time t, then at the next step there’s a 50 percent chance you’ll still be in state one and a 50 percent chance you will move up to state two.  
+
+</p><p>By the way, if the state represented some q length, it would be something like this.  It would say that, with 50 percent chance, the q length will remain one, and with a 50 percent chance it’ll go up to two, which means maybe a new packet or a new job arriving, for example.  Okay.
+
+</p><p>So the way you analyze these is, you represent a probability distribution of z of t as an end vector.  As I said, in probability, in statistics, and in OR, people represent these as row vectors.  Some.  Some people also do this.
+
+</p><p>So you make it a row vector, like this, and this is a vector that adds up to one and all the entries are positive, and it basically tells you the probability.  Okay.  Now if you wanna calculate something like the probability that something is one, two or three, you would simply – that’s a linear combination.  It’s simply the sum of the first three entries, and so you’d have a row vector here times your probability vector.  
+
+</p><p>Now if you simply work out – if you write out what this is in matrix form, it is – it’s just nothing more than this.  It basically says that the next probability distribution on states is capital p times the current probability distribution on states, so that’s what it was, and so this is a discreet time linear dynamical system.  So you’d say, for a Marvok chain, the probability distribution propagates according to a discreet time linear dynamical system.
+
+</p><p>Now the p here is often, but not always, sparse, and a Marvok chain is often depicted graphically, and I’ll give you an example.  I’ll show – here’s – I’ll just jump to an example.  So here’s a baby, baby example, but here it is.  
+
+</p><p>I have three states, and let’s say they even have – I’ve been – we’ve added a meaning or a comment to each one.  So state one is something like, the system is working.  State two is the system is down, and state three is the system is being repaired. 
+
+</p><p>This is the Marvok chain.  Now, of course, you could go through it and look at rows and columns, and figure out exactly what each one means.  These zeros have various meanings, for example.  That point nine has a meaning.  But let’s look up here.  This is the way you would draw it.  So you imagine a particle sort of sitting at one of these states.  You flip a coin.  Actually, a coin that has a 90 percent probability – anyway, you flip a coin or whatever.  You get a random variable that has a 90 percent chance of coming up heads or whatever.  So what this is, is if you’re in state one, which means that the system is okay, it is – there’s a 90 percent chance that at the next step it will also be okay.  There’s a 10 percent chance that it will go into state two, which is the system down.  If the system is down, there’s a 70 percent chance that, at the next step, it will up again and running.  There’s a 20 percent chance it will remain down, and there’s a 20 percent chance it will – it’ll go into – there’s a 20 percent chance you’ll actually have to call in somebody and repair it, or something like that.
+
+</p><p>However, if it’s repaired, this one point zero says that the repairs are infallible.  They always work, okay?  So this is – that’s a – and this is a silly little – this is even not so silly, because there’s some very interesting things you can do.  You can take this linear dynamical system and you can do all sorts of interesting things.  You can run it for a long time, to see what happens.
+
+</p><p>Now, in general, of course, you don’t know what’s gonna happen here.  Does anyone have a rough idea of what would happen here, if you run this for a long time?  You can just guess.  By the way, if you know about Marvok chains, don’t answer.  So I want someone’s who’s just intuition.  What – let me ask you this.  If I run this like 10 steps, do you think you can tell me intelligently what the state was 10 steps ago?  100.  Suppose it had been running 100 times.  What would you say?  What would you say about where do you think the state is? 
+
+</p><p>Let me – let’s just answer that question.  We’ll start it off in this state, so it started off in the state one zero zero, and I run this 100 times.  What do you think the probability distribution looks like?  This is pure intuition.  I just want intuition, but I claim you have the intuition. 
+
+</p><p>Well what do you think is the probability that you’re in this state?  Obviously, I don’t want a number to four significant figures here, right?  I want a number between zero and one, and, in fact, all you have to do is say, small, large, zero, one? 
+
+</p><p><b>Student:</b>It’s small.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s small.  Okay.  So, good, fine, small.  And for this one – it’s what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s larger, but maybe – but still relatively small, and for this one it should be, I don’t know.  In fact, you wanna guess some numbers?  Go ahead and guess the number on that.  What is it?
+
+</p><p><b>Student:</b>Point nine five.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Point nine five?  I don’t – really? 
+
+</p><p><b>Student:</b>It’s large. 
+
+</p><p><b>Instructor (Stephen Boyd)</b>:No, no, no, because this basically says that one in 10 times it goes here, okay?  If it – actually, if it always went back, if this was a one point zero here, it would be point nine exactly, wouldn’t it?  Because one in 10 times it would be here, but the point is sometimes it actually goes a couple of times here, and a couple of times it goes over here, so it’s gotta be less than point nine, I think.  Are you buying this?  Yeah.  
+
+</p><p>So it’s – I don’t know what it is.  I’ll make up a number.  It’s point eight five or – hey, Jacob.  You wanna calculate the steady state probability distribution on this guy?  Only if your laptop is on.  Is it?  Okay.  We’ll – don’t worry, we’ll – take your time, and we’ll come back to it. 
+
+</p><p>It’s the – I guess, in this case, it’s not the left, it’s the right eigenvector.  Okay, so – all right, so what’ll – what happens is, actually, you’ll be able to see, you’ll be able to do this immediately.  You’ll – within two or three weeks, you’ll be able to say very cool things like this.
+
+</p><p>Someone can take a – this system, and say things like, by the way, when something – when the system goes down, what’s the average number of time periods it takes before it comes back up again?  And that has an – I mean, it’s some number.  Well we could – you maybe – you could calculate it.  These are incredibly useful.  You could ask, what fraction of the time is this machine up and running?  That’s very important.  That will tell you your throughput or whatever, and if the machine cost $14 million, that’s very important to know what the throughput is, because, well, the throughput is gonna be the – it’s gonna be the denominator. 
+
+</p><p>Okay.  All right, so this is the type of thing.  By the way, once again, this is a baby problem.  We can get it.  If I put 10 states here, if I put a little queuing system with 10 states and, maybe 50, 80 transition probabilities, I guarantee you, you have no idea what the probabilities are gonna converge to and all that.  What is it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:And point what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Thank you.  Great.  There you go.  So here it is.  If you run this for a long time – not even a long time, probably 10, 15, 20 steps will do the trick, the probabilities will go to this.  Okay?  These are extremely important numbers in practice.  They tell you that, actually, after a little while, this thing, 88 percent of the time, the system is up and running.  .1 percent of the time, it’s actually down, and .2 percent of the time – what’s that?  Thank you.  It’s exactly 10%.  What did I say?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:I said .1 percent.  Well, you know what I meant.  When I say .1 percent, I mean 10 percent.  Sometimes.  Right.  No, you know, look, come on.  This is a – that’s a graduate class, that’s allowed, so that’s fine.  Undergraduate class, you have to distinguish between .1 percent and 10 percent.  Not here.  That’s – you can check, that’s in the official rules.  Okay.
+
+</p><p>So these are the numbers, and that’s what it looks like.  So – I mean you’ll be able to look at these.  These are interesting things.  So now we know the answer.  The system is under repair – it’s under repair 2% of the time.  Now, by the way, you can estimate your repair bill.  Yeah, by the way, you could do things like say, I don’t know, maybe I can get – I can upgrade to a fancier machine or whatever, and these probabilities change, and you might – someone can put a price tag on it and ask, how long would it take to pay for itself?
+
+</p><p>By the way, if that’s like – if it’s infinity or a negative number, it probably means you shouldn’t buy it or something like that.  I guess not a negative number.  If it’s infinity, you shouldn’t buy it.  So – I mean these would be the types of questions you should answer, so – you would be able to answer.  Okay.  All right.
+
+</p><p>Next topic is – or next example.  These are just examples.  Let’s look at a numerical method for calculating x dot equals a x.  Hey, I was just involved in something like just this two weeks – three weeks ago.  Okay.  You have x of zero is – we’re gonna – we have x dot equals a x, x of zero equals x zero – by the way, within about a week you’re gonna have the exact solution of this.  I mean, exact means sort of in an analytical sense, and you can – you’ll be able to compute it and all that sort of stuff very, very, soon.  You’ll be able to work out the solution of this, and you’ll know a lot about it.
+
+</p><p>But here’s a method for approximately solving x dot equals a x, and the idea is this, is you take a small time step h, right, and the hope is that x – the state should not change much in h seconds, and this is the simplest possible way to approximate – to get an approximate solution of a differential equation is this.  It’s really simple.
+
+</p><p>Basically it says this.  You’re at x of t at time t, that’s your current state, and someone says, where will you be h seconds in the future where h is this small number?  Well, a very good approximation is this.  Where you will be is where you are plus where you’re going, roughly, your speed, multiplied by the timing from an h.  Now this is, of course, this is an approximation.  It is not actually equal except in certain special – very special cases, but it’s not equal.  The reason is, the minute, the instant you move away from x of t, your velocity vector changes, and this sort of assumes, instead, that your velocity vector is gonna be the same for all h seconds or something like that.
+
+</p><p>So this is that of x of t plus h is about equal to x of t plus h x dot of t, but that’s a x of t, and so this is, basically, a plus h a, i plus h a – that’s – I could say that too.  If I point to i and say a, you should interpret it as i, unless what I’ve written is wrong, in which case, you should interpret it as a.  That’s clear, isn’t it?  Good, okay.
+
+</p><p>So x t plus h is i plus h a x of t, and this, if you – if we change the indexing, right, this gives you a discreet time linear dynamical system, and it means you can actually work out an approximate solution.  That’s an approximate solution.  That’s what it looks like, so that’s the idea.  That’s x of k h.  By the way, we can actually have some – well no, I won’t do it.  I’ll keep with – I’ll keep at this thing for now. 
+
+</p><p>Now, actually, this method is never used in practice, because – for a couple of reasons.  The first is this.  When you’re doing this, you sort of – you start at one place, you make an approximation as to where you’ll be next step.  Now you make an approximation based on that approximation, and so on and so forth, and although this can actually work, the error can and does build up in lots of systems.
+
+</p><p>Actually, you’ll later be able to do a perfect analysis of when the error – what types of system the error would build up, and also where it doesn’t, and there are also much better methods, but this is just the simplest method.  Okay. 
+
+</p><p>So those are just a bunch of examples, just to show you that these things do in fact come up.  So let’s look at – let’s get one thing out of the way.  We are looking at x dot equals a x.  That’s a first order vector, linear, differential equation.  It’s nothing more.  Depending on how you count it, it’s – let’s see, one, two, three, four, five – it’s five ASCII characters or, I don’t know, however you want to count that.  Very compact.  But what about second order, and third order, and fourth order, and all those sorts of things?
+
+</p><p>By the way, second order systems come up constantly in mechanics and dynamics.  Basically everything is second order.  Lots of other systems, lots of things are second order.  Actually, for discreet time systems, you have the same thing.  A lot of things, your next state depends not just on your current – sorry, your next value, I shouldn’t call it the state.  The next value of something depends not just on the current value, but actually on the previous one as well.  So that would be higher order recursion.
+
+</p><p>Okay, so let’s take a look at this.  This is x differentiated k time, so this is a kth order linear dynamical system, like that.  Lucky for you, we can reduce these to first order, otherwise there’d have to be another class after this one on – this would just be the first order one, then you’d have second and third, and it would get very boring anyway.
+
+</p><p>So here it is.  There’s a standard trick – by the way, this doesn’t work in the scalar case.  So this is actually a payoff of taking the abstraction of matrices.  So when you’re an undergraduate and study that, hopefully for not too long, and then someone comes along and says, yeah, but you know, I have to satisfy this equation or something like that, unfortunately you gotta dig in and solve this separately or something like that, right?  Because there’s no way you can reduce this to that, because these are scalars.
+
+</p><p>Now the cool part is, once you have passed that boundary and become – and grown in sophistication, and overloaded this equation so that these are vectors and a is a matrix, then it turns out you don’t have to worry about higher order stuff ever again, because it comes for free in this higher level of abstraction.  So this is a very standard method.  It works like this.  
+
+</p><p>We’re gonna take the new variable.  We’re gonna stack the derivatives here.  So we stack x of what – by the way, you cannot call x the state here.  So I might accidentally say it, but if I do, it’s wrong.  So you take the variable, the vector variable x, and you stack x, its derivative, second derivative, all the way up to the penultimate derivative, so that’s this guy here.  The k minus one derivative.  And now I wanna work out what is z dot.  I’m gonna call that z, and that’s the state of this system.
+
+</p><p>So I take z dot.  Well, if I differentiate all of these, that’s easy.  The first one, differentiated, is just x dot, but that means – that’s the second block of elements in the vector, all the way down to the bottom one, and when I differentiate this bottom one, I get x differentiated k times, and now I use my formula here.  So if you look at this matrix, you will see that it faithfully reproduces this thing here.  
+
+</p><p>This first row, for example, says that x one – no, sorry.  It says that x dot, that’s x differentiated one time, is equal to – you’re gonna multiply this by – over here, by x, x dot, x dot dot, and so on, it – we just across here and down here.  These are block multiplication, and it’s just x dot, so it’s correct, and the bottom one tells you what x differentiated k times is.  That’s this thing, okay?  By the way, you’re gonna see matrices like this coming up a lot.  You should already have some ideas about what this matrix is.  
+
+</p><p>This is called a block companion matrix.  You don’t need to know this, but its pattern, you should already have a feel for what it does, and let me ask you this, just for fun.  Let’s just make sure.  If I showed you a matrix that looks like this – yeah, that’s good.  There we go.  Okay.  And I asked you – everything I haven’t shown is zero, okay?  Tell me what it does.  Just describe it.  If I said – if we looked at this, can you please explain to me what y is, as a function?  Just in words, what does it do?  It’s an up – is it an up shift?  Or is it a downshift?  No, it’s an up shift, sorry.  You take the vector x, like this, and you simply shift it up.  And what do you do at the bottom?  Yeah, okay. 
+
+</p><p>So here’s how you would say – the slang for this on the streets is, you up shift x and you zero pad.  So up shift is kind of obvious.  The zero pad means that when you go up, you have some spaces where there was nothing – you can’t – well unless you’re the kind of person who likes indexing out of bounds of arrays, which we frown on here, you don’t do that, so you zero pad.  That’s just what to do when your formula for shifting indexes is outside the array bounds.  Everybody see what I’m saying?  
+
+</p><p>So it basically – I shouldn’t even – I mean you should – when you see that matrix, you should say, that’s an up shift and zero pad.  Actually, when I fill this in with a bunch of matrices here, it’s actually really cool.  It’s actually an up shift, an up shift, and then, down here, you pad with a linear combination of all the things, or fill in.  It’s not – I guess padding is usually used with a zero pattern.  Okay.  Yeah.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Why – yeah, it would work.  I’ll show you.  Yeah, no problem.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:So – no, it does work, and that’s why I think the whole thing is silly.  So let’s go back to that and say, I really wanna solve this like that, okay?  So we can write this out this way.  It’s no problem.  We write it this way, that’s the state, dot equals, and then this is easy, that’s zero one, and then let’s see if I can get this right.  Maybe that’s b and a times x x dot.  Did I do it right?  Bear in mind, this reflects on you, collectively, as a class.  If I write something down and it’s like totally and completely wrong, and you just passively sit there and go, yeah, sure, it’s fine, because, basically, I don’t care, so – I – it doesn’t bother me.  I don’t mind, but it will reflect on you if I say something really stupid and wrong, and you don’t collect – correct it. 
+
+</p><p>Actually, I once yelled at a class – well, by email, after it was over, because it turns out those class email lists, they persist, because I found some horrible area in a homework problem or something like that or whatever, or in a lecture, and I collectively held the class responsible.  Well I got some responses, actually.  I said, you know, you took this class last year.  This was completely wrong, and you – I remember seeing that, and I remember all of you looking at me like, yeah.  Yeah, it’s totally clear.  I got various responses for that.  What’s that?  What’s not right?  
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Here?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Down here?  Good.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:This is x dot – let’s do it together, and we’ll see, but no, no – 
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:You think – no, no, this is what I want. 
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Yeah, it’s the – dot is the whole thing.  Here, watch.  There we go, there we go.  No, this – listen, this is what we want.  That’s what we want, see.  That’s good.  In fact, better – I mean for your collective – I mean what you really want, is you want that, is you wanna raise some things and say, is that right?  And then you want me to go on and give a long – and say, yeah, at first it looks like this should be a minus, but in fact, it should be a plus.  I should give you the story about it and every – and then it can turn out wrong.  Then I’m the one that looks bad and not you, but your honor is preserved then, because you protested.  Okay.  No, good, so let’s – keep being honest.  All right.  
+
+</p><p>Back to the question, why can’t we do this?  Well we can do it, it’s fine.  Here’s the problem, is that when you first learned about this, no one had told you about matrices yet, or at least, that was the case.  So that’s the problem.  It’s basically why people should be taught linear algebra a lot earlier than they are now, because it just short-circuits a lot of really stupid and painful and idiotic material such as, for example, multiple, multiple weeks studying second order equations. 
+
+</p><p>So – but I’ll stop.  So a block diagram – by the way, when you see x dot – no, sorry, z dot equals a z, and a was big – or z dot equals big a z, and it’s got – that it like structure crying out at you.  You should have an overwhelming, uncontrollable urge to draw a block diagram.  So here’s the block diagram, it’s this, and you can check that this is right.
+
+</p><p>This – by the way, this shift business, you can see immediately here, because actually when you – when we’re actually calculating a z, and we’re shifting z, we’re actually getting the derivative.  So that’s right, that corresponds exactly.  By the way, people, there’s a phrase for this.  It’s called a chain of integrators.  So you’ll find that very frequently.  It comes up in lots of things, and it’s quite beautiful. 
+
+</p><p>It says something like this.  It says – by the way, the arrows, if you can look here, you’ll see that all the arrows go down, so you’ll see that, in fact, that’s just a chain of integrators.  They don’t do – each of these things simply – so, in fact, you can even say, if that’s x k – if that’s the input signal, this is – it integrated once.  That’s double integrated, triple integrated, and so on.  That’s what these are, okay?
+
+</p><p>It says take these things, which are integrated, form a linear combination, and feed that back into the input, so that’s what this picture is.  I mean, not that this matters, but – although, this should maybe look like – if these were z minus ones, this might look like some horrible filter you might have encountered in some stupid class on signal processing, right?  No?  Yes?  I don’t know, hopefully – are you still tortured with these signals?  This has some stupid – what name do – what do they call this?  It’s like an IIR direct form blah blah blah?  Is that it?  It’s what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:No, no, no.  That would be FIR – no, I’m sorry.  If I did this, and then pulled this off, that would be FIR, but with this guy here, that’s an IIR.  By the way, if some of you don’t know what we’re talking about, you’re very lucky.  Okay.  All right.  You should aim to keep it that way.  All right.
+
+</p><p>Mechanical systems, there’s a huge number of – I mean, this is a perfect example of a higher order system, so mechanical systems.  So a lot of mechanical systems.  Again, by the way, this is a beautiful example where, once you have matrix notation, a lot of stuff works out very, very cleanly and beautifully.  
+
+</p><p>You have m.  So q is a vector of generalized displacements in some system.  That means, basically, a displacement in a certain direct – each q three, for example, might be the horizontal displacement of some point on a system, but it can also be like an angular displacement or something like that.
+
+</p><p>So you get m, q double dot, that’s the – this is the acceleration vector, m is like the mass vector, plus d q dot, that’s a damping matrix, here, plus q k.  And by the way, this is nothing more than – here, I’ll draw it.  It’s the matrix analogue of this, so there’s a spring with a stiffness constant k, a mass, here, of – with mass m, and then, of course, we have the famous dashpot.  This is one of my favorite things.  It’s damping, but it’s drawn like that.  I guess – and it has been since the early, like, 19th century.
+
+</p><p>I don’t know, maybe – have people seen this?  Like a figure like this?  You have.  Did you ever actually – except for maybe a shock absorber in a car, have you ever – I mean, so you don’t see these?  It’s sort of – they actually – they look like this because they – you know, in the early 19th century, when they built all these machines and things like that – actually, even earlier, they actually added damping and there would be things like this.  They would add a little piston, a little nozzle, and some oil or something like that that would be circulating, and it looked just like that, and it’s called a dashpot.  Don’t ask me why, but that’s the history of it, so there it is, and that’s d.
+
+</p><p>And what this is, is – you know, this is basically m a.  That’s the force, and the force is equal to minus d q dot minus k q.  Now k – we’ll go back to this one, is simply the displacement, so the units of k would be in newtons per meter, so it’s a stiffness, and d is in newtons per meter per second, okay?  Or newtens per leftbren meters per second rightbren, right?  That’s what the unit of d r – and mass is kilograms, say.  Okay.
+
+</p><p>Now what’s actually kind of cool about this is it’s the same thing.  This is sort of the – there’s your high school version, here, and all you do is you capitalize things and everything, and you – this describes a lot.  I mean, a whole lot.  So same number of ASCII characters as you saw this thing in some physics class for children, okay?  This thing describes a whole lot here.  I mean, like, this could be hundreds – in fact, typically are hundreds or thousands of – the dimension of q can be thousands, and then this would be, for example, a model of a bridge, for example, undergoing small motions, or a building or something like that, and that would be described by this.  
+
+</p><p>So m is called the mass matrix, k is the stiffness matrix, d is the damping matrix, and you do the same – this so-called phase variable trick that we just did, and you take a state is x is q and q dot, so – and you get – so you get positions and velocities, and you have x dot is q dot and q double dot, but q double dot I can get from here with – by putting m inverse through here, and I get this.  And I think this is maybe on Homework 1 or something anyway, except you didn’t know about it then. 
+
+</p><p>So there’s some actually rather interesting things here, and just for fun, I would like you to explain to me, what is the meaning of k one two?  The units, newtons per meter, and I want you to tell me, what is k one two in a mechanical system?  What is it? 
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It has a very specific, physical meaning.  Wanna help us?  No.  You gotta – 
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:That is it exactly.  It’s something like a cross stiffness or – there probably is some name for it, like a trans-stiffness or something.  I mean I know what you’d call it in circuits, but I don’t know what you’d call it mechanically, but something like a trans-stiffness.  It says, basically, it’s the force – this tells you the – it says that, when you displace the thing, a node two in some structure, you feel a force at node one, and it’s proportional to this, so this is the trans-stiffness.  It’s the number of newtons of force you feel at node one when node two moves one meter.  That’s what it is.
+
+</p><p>Whereas, in general, k one one, for example, is basically what you think of as a stiffness.  It’s basically, if you grab node one, push it a meter – that might not be the right unit, but nevertheless, I guess you can grab the top of a building and push it a meter, a big tall building, but you grabbed it – you grab it, and you move it a meter, and it pushes back with some number of newtons.  That’s k one one.  Okay.  
+
+</p><p>So let’s look at – we should also mention linearization.  That’s as a general source of autonomous linear dynamical systems.  So some systems actually really are – really look like – actually have – the modeling of x dot equals a x is actually pretty good.  There are a number of cases where that’s true.  There’s a bunch of others where it’s less true.  
+
+</p><p>So let’s – in general, you get things that look like this.  X dot is f of x.  That’s an autonomous, time invariant, differential equation, and this could – this comes up all the time.  This could describe an economy that’s propagating, it could describe the dynamics of a vehicle or something like that, or anything else, or a circuit.  This would describe – essentially all circuits would have a description like that. 
+
+</p><p>And, here, f is simply a function from r n to r n, and, in fact, the meaning of f is simple.  It basically maps where you are to where you’re going.  It’s a vector field.  Okay. 
+
+</p><p>Now, an equilibrium point of a general, time invariant, differential equation is simply a point in state space where f is zero, and what that means is interesting.  It says, if you’re at one of these points, your derivative is zero, and that means you stay there.  So it says that the constant solution x e satisfied the differential equation, because x e dot is zero, x e is a constant, and, on the right hand side, you plug in f of x d.  That’s zero too.  So an equilibrium point corresponds to a constant solution of a differential equation.  That’s an equilibrium point. 
+
+</p><p>Now suppose you’re near an equilibrium point, but not exactly at it.  Then you write, x dot, well that’s f of x, but you’re near this equilibrium point, so we’ll use a first order Taylor expansion.  By the way, to connect to a discussion we had last week, it would – you’d probably do better if you knew the approximate range of x wiggling around.  You might, instead of using this matrix, use one that you got from sort of a particle filter method, which would be to say the – do a bunch of – evaluate a bunch of points and then fit a least squares model, but let’s just move on. 
+
+</p><p>So we’ll just take the derivative, the Jacobian here, and this says that your f is about equal to the f where you are plus the Jacobian where you are multiplied by the deviation from where you are, like that.  Okay?
+
+</p><p>Now we’ll put this – this is zero, right here, like that.  This is x dot, but I could just as well write this – I can subtract, if I like, x dot minus x equilibrium dot, because x equilibrium dot is zero, so I can do that.  Very – a traditional term for that is delta x.  That’s, by the way, to be interpreted a single token.  The question?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:I didn’t say that.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:That was true, so I – but it’s true.  What I said was true this time, really.  What I said was, if you start an equilibrium point, you will stay there, period.  That is a true statement.  You’re getting onto our next topic.  The question you’re asking is exactly what we’re gonna start looking at very soon, is what happens if you’re not exactly at the equilibrium?  What if you’re a little bit off?  And there’s is actually, roughly speaking, two dramatic things that could happen.  Actually, there’s three, qualitatively.  
+
+</p><p>One is that you – if you’re a little bit off, you could actually sort of start moving back towards the equilibrium point.  That would be stability.  
+
+</p><p>Another one is that, if you’re a little bit off, you actually start veering away the wrong direction.  You move farther away.  That would be an unstable equilibrium point. 
+
+</p><p>And then there’s weird stuff in the middle like, for example, it could just sit there happily and stay there.  That’s stability.  Now what you would say then is, had I not made a mathematical statement, but had I made a practical statement, in general, you don’t see – you will not see, if I have a mechanical system in front of me here or something like that, you won’t actually physically observe a system in an unstable – sitting in an unstable equilibrium for obvious reasons, because the formula – the actual – the derivative – it’s not really this, it’s this.  Right?  Plus something like w of t, where w of t is tiny little noises acting on it.  It really doesn’t matter what they are.  They could be even just from thermal noise or minor things.  
+
+</p><p>If it’s an unstable equilibrium and there’s a little bit of extra noise here, the – you move off immediately.  Once you’re off, you start diverging, and you don’t stay there.  That was a very long and weird answer, but I go back and I say that I – what I said was correct.  If you stay in a – start in an equilibrium position, you stay there.  
+
+</p><p>Now we’re gonna talk about what happens if you start very near an equilibrium position, let’s see what happens – equilibrium point.  So, here, delta x is this deviation, and you can write it this way.  Delta x dot is d f, that’s the Jacobian times that, and that’s a – that is exactly what we have been calling a autonomous, linear, dynamical system, right?  
+
+</p><p>By the way, a lot of people get bored with the deltas, and they drop it.  So, for example, if you ask somebody who is studying aircraft dynamics, they’ll just say, here’s the system, and you’ll say, what’s x, and they go, well that’s the roll angle, that’s the roll rate, that’s the angle of attack, the angle of attack rate, and all that kind of stuff, and you’ll say, really?  And they’ll say, well no, no, no, it’s phi.  These are the deviations around level flight of a 747 at 40,000 feet and 580 miles an hour, something like that.  That would be what the – so a lot of people just drop these.
+
+</p><p>I guess in electrical engineering, what do you call these little delta xs?  What are the delta xs?  It’s called small signal, right?  What do you call an equilibrium point?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Bias.  So you call it a bias, I think, right?  Is there any – do they call it equilibrium point ever?  I don’t think so.  No, I think you have a – well you have a little transistor circuit, and you figure out – they call it the DC?  Something – DC operating point?  That’s a really old one, that there.  So you can call it DC operating point or bias condition, and – let’s see, and what do you call it in Aero Astro?  I know there’s people in here who are in that department.  Isn’t it called like the trim condition?  I think it’s called the trim condition, but anyway.  You can – someone will correct me if I’m wrong.
+
+</p><p>So you’d be – I mean, all sorts of fields have their own names for an equilibrium point and things like that, but it’s just that equilibrium point.  That’s sort of the high language, to describe this as an equilibrium point.  These other ones are all just dialects.  Okay.
+
+</p><p>So when you approximate a differential – when you approximate the right hand side of a differential equation, this is like forward oiler approximation.  It’s very – if you just approximate a function, you can say intelligent things about it like, well, you know, if you don’t – if you – if delta x is smaller than such and such a thing, your error is no more than 3 percent.  You can make specific claims. 
+
+</p><p>When you approximate the right hand side of a differential equation, you might be in trouble, because in a – when you approximate the right hand side of a differential equation, you’re really sort of – I mean, when you look at the trajectory, you’re really building approximations on approximations, because you’re really saying, where am I going right now?  And I go, well you’re going about in that direction, that’s what d f of x e times delta x is.  And then you go, great, so you step over here, and you say, where am I going now?  And I go, well you’re about in that direction.  So the point is you’re building up approximations on approximations on approximations, and so you might be lucky and you might not be.
+
+</p><p>So the best verb to describe how delta x dot equals d x of x e delta x, in what way that approximates the actual trajectory is – the best verb would be hope, so – and that’s – which – actually that expresses it later, and we’ll talk about that a bit – actually a bit later today.
+
+</p><p>Okay.  So let’s look at an example, is a pendulum, so we have a pendulum here and the angle it’s hang – it’s at an angle of theta, and that’s gonna put a torque on it of minus l m g sine theta, so that’s the torque.  G is whatever, nine point eight meters per second squared or whatever gravitational acceleration, and that’s the rotational inertia.  So this is basically rotational inertia times the angular acceleration is equal to the torque on it.  And the minus is that – it means it’s a restoring torque, so it means that if you’re this way, that appears to be how I drew theta positive, it says that the toque actually acts – it twists this – you can’t see that.  It twists that way, okay?  So that’s a restoring toque here. 
+
+</p><p>Now we can write that as a first order differential equation, non-linear.  This way its x dot is x two.  X one dot is x two, x two dot is minus g over l sine x one, so it looks like that, okay?
+
+</p><p>Now the first thing you do when you see something like this is you need to do – the first thing you do is you analyze the equilibrium points.  I mean, unless it’s obvious, unless someone gives it to you and says, we’re interested around this point.  But here, so let’s figure out what the equilibrium points are.
+
+</p><p>Equilibrium point says that this is f of x, here, and the question is, when does that vanish?  Well if this vanishes, x two is zero.  By the way, x two is the angular acceleration, so that says, at an equilibrium point, you’re not moving.  The pendulum’s not moving.  The second one says g over l sine x one is zero.  That means that x one is a multiple of pi, and so that means, in fact, there’s an infinite number of equilibrium positions, okay?
+
+</p><p>So you could have zero, and that’s actually pendulum down, that’s like this, like that.  You could have pi, and that’s pendulum up.  You could also have two pi, but that’s basically the same as pendulum down again, so it’s kind of silly, but it’s an equilibrium position.  Okay. 
+
+</p><p>Now, actually, we’re gonna get to your question of like stability and things like that.  You probably have a very good idea of how that – of how this works.  
+
+</p><p>If a pendulum is hanging down, and you poke it a little bit and let go, it will just oscillate.  There’s no damping in this, so it’ll just oscillate forever.  On the other hand, what happens if you a pendulum straight up, and then maybe just give it a little – just knock it a little bit?  What would happen, with no damping?  I want you to integrate the differential equation by intuition, so – anyway, you know what happens.  What happens?  What? 
+
+</p><p>Well it goes down here.  It has a high velocity at the bottom.  In fact, at the bottom, its potential energy is as low as it can get, so its kinetic energy – all of the potential energy up here has now been converted to kinetic, and it’s moving fast, and then it goes all the way up to the other side and then – it depends how I hit it and all that kind of stuff, but if I hit it at a velocity like that, it will arrive with just enough to keep going and do it again, and it’ll just oscillate like that.  Right?
+
+</p><p>Had I done something like released it stationary one degree at 89 degrees from – 89 degrees, so – well from vertical – from horizontal.  What would have happened is it would’ve gone like this, would’ve gone all the way around, slowed way, way down, got to one degree in the other direction, stopped for an instant, and then gone back, and it would just keep making a long oscillation like that, okay?  So that’s what would happen.
+
+</p><p>So let’s look at the linearized approximation near these two equilibrium points.  If you linearize in your equilibrium point, all I have to do is go back over here and take the Jacobian of this, so I take the partial derivative of this first row was vector x one, that’s zero.  The partial derivative of this is vector x two, that’s one, here, and I fill in this matrix, and at the bottom, I take the partial derivative of this thing, with respect to x one, that turns this into a cosine, and I plug in x one equals zero, and I get minus g over l over here, like that, and then the partial derivative of this vector x two, that’s zero, and I get this.
+
+</p><p>Now, actually, you’ll know soon enough that this, in fact, defines an oscillation, and this one would be a pretty good approximation of what actually happens.  
+
+</p><p>By the way, let’s calculate the linearized system near x e equals pi.  So let’s do the pendulum up.  In this case, delta x is – nothing happens up here, it’s the same.  That’s a zero.  And what’ll happen here is, I take the derivative again, it’s cosine, but I plug in pi now, and I’m gonna get the following.  I’m gonna get plus g over l, and that’s it.  That’s the difference between the two linearized versions of a pendulum in up and down position.
+
+</p><p>Now, actually, this is kind of interesting, because this one corresponds to a restoring torque.  That’s what this is.  If you just simply work out what it means, it means that the second derivative is as proportional to your displacement, but with a negative sign.  So if you’re displaced two degrees – however you displaced, the torque is a restoring torque.  
+
+</p><p>Do you see that?  That is not a restoring torque, it’s a – I’ll just say it in English.  What’s the opposite of a restoring torque?  That is a not restoring torque.  That’s what this is.  It’s a not restoring torque, meaning that once – if you move off, it’s like, no problem.  It puts a torque on it, but it puts a torque that exacerbates your deviation, okay? 
+
+</p><p>And so you’d actually see it kind of all actually all makes sense.  This predicts exactly what you pointed out, what happens if you’re near there.  It tells you if you’re in the bottom, if you’re in this mode, and you different – and you move a little bit, it’s actually gonna have a restoring torque on it.  Up here, you’re gonna have, actually, a torque that pushes you away.  
+
+</p><p>Okay, so this brings up the question, which we will look at later, I think, actually – no, I can’t remember.  Might be in a different class.  Does linearization work?  And the basic answer is, yes, but with some – there’s some footnotes, and there is some – there are some legal – you have to kind of sign a release when you do a linearization, so there are some conditions.
+
+</p><p>So here it is.  The answer is this.  A linearized usually, but not always, gives a good idea of the system behavior near an equilibrium point, and to give an example where it fails, here’s one.  Let’s take x dot equals minus x cubed.  Well, it’s a scalar differential equation.  By the way, that’s sort of a restoring – it’s restoring.  If x is positive, it says your derivative is negative.  It pushes you down.  
+
+</p><p>But it’s quite interesting what this looks like, and forget the solution with – this is one of the 13 differential equations you can actually solve analytically.  That’s not relevant.  It’s much more important to understand what this says.  
+
+</p><p>So x dot equals minus x cubed says this.  If x is big and positive, what is x dot?  If x is big and positive.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Okay, really big and negative.  I like your answer very, very much, except for one thing.  Let’s be a little more precise about it.  Ready?  Instead of really big, I would say it’s really, really big and negative.  You know why that?  Because it was big cubed.  So big is big, really big is big squared, and really, really big is – so I – your answer was right, but I – a slightly more correct answer would be, if x is big and positive, what is x dot?  The answer is really, really big and negative.  So it means if you’re big, you are shooting towards the origin very quickly.  
+
+</p><p>What happens if x is – you will – as you approach the origin, right, so x gets small, what is x dot?  
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What is it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Thank you.  If x is small and positive, x dot is really, really small.  So we can already predict what this differential equation does.  Compared to x dot equals minus x, which gives you a solution which is e to the minus x, we can say, this thing, when x is big, this gets smaller way faster than an exponential.  It shoots towards the origin, when – as x sort of passes through one.  Once x gets small, this thing decays way slower than an exponential.  Okay?  So we got the qualitative behavior a very simple way. 
+
+</p><p>If x is negative, it repeats, but you’re – the point is, you’re always moving towards the right place.  Okay.  And indeed, the solution looks like this.  It grows – it falls like what – you know, one over a square root or something like that.  One over square root t, which is very slow.  
+
+</p><p>Okay.  Now let’s flip the sign, and study z dot equals z cubed.  Now, here what happens is it’s the same story, except, if you’re big, your velocity – your actually derivative is positive and it’s really, really big, so once you’re big, you start accelerating upward – sorry, you really, really accelerate upwards.  Okay?
+
+</p><p>So this one is actually sort of gonna be wildly – you can predict, just by looking at it, it’s gonna be wildly unstable.  Actually, this is so unstable it has a phenomenon called a finite escape time.  What actually happen is the solution goes like this.  It actually goes like this.  And actually, at a finite time, it just goes to infinity.  Okay?  So – which is a fairly dramatic form of instability, which we, by the way, haven’t formally defined.  We will later, but that’s – okay.
+
+</p><p>Now we know how the system really behaves, let’s look at the linearization.  If you linearize x dot equals minus x cubed near a zero, here’s what you get.  You get delta x dot equals zero.  Why?  Because you say, what is – you say, what’s f of x when x is near zero?  And the answer is, it’s really, really small, but someone says, yeah, but first order what is it?  Really, really small is zero, so it’s this.  
+
+</p><p>So it basically says, the linearization would predict that x is sort of constant.  Actually, for this one and for this one, so, in a sense, neither is right.  Actually, they’re – neither of these – neither linearization predicts the correct long-term behavior, but actually, if we were to zoom way in on this, way down here, you’d actually see that both of them are correct in the following sense.  For short times, they both give excellent predictions, because, actually, both the wildly unstable and the stable system once – when x is small, they, in fact, both are moving really, really slow.  I said it right.  Really, really slow near the origin.  One is moving really, really slow, and increasing, and that’s the one that, at some point, is gonna go through – is gonna get big and then go through a finite escape time.  The other one is moving really, really slow towards the origin, and it’s just gonna keep going and, very slowly, move to the origin.
+
+</p><p>However, most of the time, it makes good predictions.  Actually, later, we’ll find out exactly when linearization makes a good prediction.  
+
+</p><p>Another version of this is linearization along a trajectory.  So linearization along a trajectory – something like this, a linearization around an equilibrium point.  This would come up if you’re designing a circuit, if you are looking at something like vehicle stability or something, or vehicle dynamics, you wanna find out how does a vehicle do, what happens if there’s a wind burst under an airplane or a wind shear or something like that, it’s off a little bit.
+
+</p><p>By the way, it would also come up in bigger things like a – something like a big healing system or something like that.  So you’d say you’d have a big network, and you could say, what if I – or a big – just take a big network, and you’d say, what happens if, all of a sudden, 10,000 packets arrived at that node destined for this one?  I mean, that’s supposed to be a small number, right?  Compared to – but whatever.  It would – so you could actually work out the changes in the queues and everything.  It would be just – linearization would work quite well.
+
+</p><p>But now we’re gonna talk about linearization around a trajectory.  So linearization around a trajectory goes like this.  I have a trajectory, and now I’m actually gonna consider a time varying differential equation here.  So I have x dot equals f of x and t, and I have a trajectory.  I have something that actually satisfied that differential equation. 
+
+</p><p>So this could be, for example, the – give you the dynamics of a rocket, or something like that.  It doesn’t matter.  Something like that, okay?  So that’s what it does. 
+
+</p><p>Now suppose – and, in fact, this could be, here, some sort of – I – proposed trajectory – I – it doesn’t matter.  Some calculated trajectory.  And what you want is you wanna take another trajectory, which is nearer the original one.  I don’t wanna be vague about what that means.  It means, basically, at all times, you’re never too far away.  And we wanna work out what happens now.
+
+</p><p>So here you have DDT of the difference, that’s x minus x trajectory.  That’s of x t minus f of x trajectory t, and that’s about equal to the derivative – the Jacobian of f, or the derivative of f with respect to x of this times x minus x trajectory, and this gives you a time varying, linear, dynamical system.  It looks like that.  And that’s called a linearized or variational system along a trajectory, and this is used constantly, always, constantly used to, for example, evaluate trajectories.
+
+</p><p>Here you have an idea like stability for an equilibrium point.  So you would ask – you’d say, I just calculated a trajectory for a vehicle, and you’d say – then you’d ask a question like this.  What if you just sort of get slightly off?  What if there’s a little wind gust, and you’re slightly off?  What will happen?  And the question is, there’s the trajectory you want, like this, and then the things that have been blown off, and so now it’s small, and the question is, will the trajectories diverge?  That would be one possible behavior.  If they diverge, by how much will they diverge before this goes where it’s supposed to go, or will, for example, the trajectories converge, for example?  That would be something like a stability, and we’ll see things like that.
+
+</p><p>So here’s just a classic example is a linearized oscillator.  So an oscillator is a differential system, a differential equation, a nonlinear dynamical system, which has a t periodic solution, so that’s a – that’s an oscillator with frequency one over t, and there’s a solution which is t periodic, like this.  
+
+</p><p>Well the linearized system is delta x is a of t delta x, and a of t here is actually periodic, because you – it’s the Jacobian of this thing plugged in along the trajectory.  By the way, there’s a whole name – I mean there’s a whole field for studying perturbations of periodic systems.  It comes up all the time.  It’s called flow k theory.  You don’t have to know this, this is just for fun.  It’s called flow k theory.
+
+</p><p>So here a of t is t periodic, and so you have a t periodic linear system, and you would use this to study all sorts of things, and I gave you an example.  The one that’s actually quite important would be in circuits.  So you might design, for example, an oscillator.  It could be an LC oscillator, or it could a ring oscillator, or something like that.  If you don’t know what I’m talking about, it really doesn’t matter for this – for the purpose of this example.  You might built a ring oscillator, or something like that, and then you’d be – you’d ask a question like this.  You’d say, what if – what happens in this thing if there’s like thermal noise?  Or what if some other circuit on the chip draws a lot of power and the voltage – the supply voltage to the oscillator drops 30 mV, for example.
+
+</p><p>That actually is gonna give you – it’s gonna knock you off this trajectory, and now the trajectory – let’s imagine the trajectory sort of looks like this, right?  You’re going around like that.  You get knocked off, and one of two things happen.  Well several things could happen.  You might converge back in to this trajectory, or you might go – you might diverge.  If you diverge, it’s what we call a bad – it’s a nonfunctional oscillator, right?  Although you could ask interesting questions like this.  How big a hit can you take here and actually reconverge to the solution?  Okay?  Actually, generally speaking, real oscillators will recapture from a huge range, but you can ask all sorts of cool questions like, when you – as you go back here, when you come back, you’ve actually – the time it took you to go around changed a little bit, that’s called timing jitter, and so you might ask, how much does a 30 mV step in VDD change – affect the timing jitter.  And in fact, that would be exactly analyzed by a linear dynamical system like this.
+
+</p><p>But is there anyone who knows what I’m talking about?  Because, if not, I’ll just stop talking about these things.  That’s no.  For those of you watching this on TV, that’s like, no.  Okay, fine.  So you don’t care about circuits, right?  No.  There we got an actual, explicit – there we got a response, which is people shaking their heads no.  Okay, fine.  No problem.  I’m not wedded to them either.
+
+</p><p>Okay, so this finishes up – maybe this is a good time to quit.  If anybody has any last questions about the midterm?  I’ll take that as a no.  So have fun.  We’ll see you tomorrow, or we’ll see some of you tomorrow.  
+</p><p>
+[End of Audio]
+</p><p>
+Duration:  74 minutes
+</p><p>
+
+</html>

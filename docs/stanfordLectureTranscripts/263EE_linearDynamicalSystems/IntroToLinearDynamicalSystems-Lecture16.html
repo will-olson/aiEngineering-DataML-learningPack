@@ -1,0 +1,685 @@
+<html>
+IntroToLinearDynamicalSystems-Lecture16
+<p>
+</p><p><b>Instructor (Stephen Boyd)</b>:That’s it.  I should make a couple of announcements.  The first is homework eight – we actually worked out last night.  I wanna say two things about homework eight is – the first is when you look at it, you’ll be horrified.  It looks long.  It’s not short.  However, a lot of those are just, like, quick little things – just basic stuff you should know about, actually, the topic we’re doing now.  So – and also, we got a big timely request from a student who suggested that homework date should be due not Tuesday after the break, but in fact Thursday.  And we decided to take his advice.  So it’ll be due Thursday after the break.  That’s two weeks, so it’s actually kind of a light homework set for two weeks.  Or at least that’s the way we see it.
+
+</p><p>And then we’ll have one more – we’ll have a homework nine, as well.  And then that’s it.  So – make sense?
+
+Any questions about last time?  Otherwise, we’ll just jump into it.
+
+Okay.  Last time, we looked at an RC circuit as an example.  And we ended up with – if we chose the coordinates in this really weird way – and it was kinda weird that there wasn’t – there was – I mean because it has really strange units, right?  It’s square root of capacity – farads times voltages – times volts.  Very strange units.
+
+But these units actually are natural because a norm squared is actually an – it’s electrostatic stored energy, so that’s – this is not completely bizarre.
+
+In these coordinates, the system – the A-matrix – is actually diagonal.  Sorry, symmetric.  So the A-matrix in these weird coordinates are – is symmetric.  
+
+That means lots of things.  It means that the eigen values are real.  They’re actually real and negative.  That’s another story, but they’re real and negative.  And the eigen vectors actually can be chosen to be orthogonal.  So if you express them in the voltage coordinates, the eigen vectors are not orthogonal, but they are what people would call C-orthogonal.  So if you put the capacitants matrix in here, you get this.  And that’s the same as saying that SI transpose SJ is zero if I is not equal to J.  That’s what this statement is.  Okay.
+
+So that’s just an example of a lot of other uses of this.  But now we’re gonna start up the idea of quadratic forms.  
+
+So this is actually a big break in the class.  Up until now, a matrix generally was associated with something – with some concept like this.  And this could be something like a measurement setup – something that maps your actions to the results.  And even, in fact, when you write it this way, it sorta has that flavor because here it maps the state to the state derivative.  So it still has the flavor of a mapping from one thing to another.
+
+We’re actually, now, gonna use – well, in some ways, sadly – the – well, in some ways it’s good – the same data structure, which is, say, a matrix, to represent something completely different from a transformation or linear function.  It’s a quadratic form.  So a quadratic form is something that looks like this, and it’s supposed to just generalize the idea of the square of something.  So that’s what it’s supposed to be.  And as the form X transpose AX – and if you work out what that is, it’s some AIJXIXJ.  So it’s a sum over all possible products of pairs of the components of a variable like that.  So that’s what it means – and then times AIJ.
+
+Now one thing you notice right away is something like this.  Of course, X3X4 is equal to X4X3.  So the coefficient A34 that goes here and the A43 that goes here – they sorta do the same thing.  So we’re gonna see that.  
+
+But this is what a quadratic form is.  And this means, actually, you have to relearn a lot of things.  Like for example, when you see a matrix that represents a quadratic form, and you see that the two-three entry is large, it used to mean, in something like this, that the gain from X3 to Y2 is large.  Now, it means something – in the context of a quadratic form, if A23 is large, it means something very different.  It means, somehow, that variable two and variable three are strongly coupled.  If they’re both large, you’ll get a very huge – you’ll get a large contribution to a quadratic form.  So that’s what it means.  Okay?
+
+So again, you’ll have to sorta relearn – I mean, it’s not a complete relearning, but you’ll have to relearn what it means that way.  
+
+Now, you might – you can just as well assume that A is A transpose.  In other words, if you have A34 and A43, these are the two contributions from I equals three, J equals four and I equals four, J equals three.  You can see that these numbers are the same.  So I can pull them out and make it A34 plus A43.  And I might as well replace both of those with the average of the two.  It doesn’t change anything.  
+
+So in matrix language, you write it this way.  You say that X transpose AX – and let’s do a quick calculations this first.  Let’s take X transpose AX, and that is a scaler.  That’s a scaler.  Let’s transpose it.  Well, I get X transpose – that’s this one transposed.  I get A transpose, and then I get X transpose transpose, otherwise known as X.  What this shows is that A and A transpose give you the exact same quadratic form.  Okay?
+
+So if you have two quadratic forms, they are the same if, for example, they are transposes of each other.  Okay?
+
+Now inparticulus means the following: it says that if I have any quadratic form, I can write it this way.  I can write it as a quadratic form with A plus A transpose over two.  Now A plus A transpose over two – that’s got a name.  That’s called the symmetric part of a matrix, and it’s extremely easy to describe what it does to a matrix.  If you form A plus A transpose over two, you replace each entry in the matrix with the average of itself and it’s transpose – associated transpose element.  So that’s what it is.
+
+So you replace A34 with A34 plus A43 divided by two.  Okay?
+
+Now I’ll say something about this.  It turns out now it’s unique.  It turns out if two quadratic forms are equal for all X, and if the matrices defining them are symmetric, then A is B.  And that’s a homework problem, but I don’t mind going into that a little bit to explain what it means.  And I can say a little bit about what this – and you have to be very careful understanding exactly what it means.  
+
+What it means is this.  It does not mean that every time you see a quadratic form it will be symmetric.  That’s actually not the case.  You will encounter expressions of the form X transpose AX where A is not symmetric.  Okay?  And you have to be very, very careful because some formulas for symmetric forms are gonna assume A is symmetric.  And they will be absolutely false when A is not symmetric.  Okay?
+
+Now, politeness suggests – I mean, when you’re messing around with quadratic forms, it is polite to pass to others other methods or functions that consume quadratic forms.  You pass out symmetric matrices because otherwise, it creates confusion.
+
+By the way, another method is – another standard is you could also assume, for example, another canonical form is to assume that all matrices in using quadratic forms will be upper triangular.  That’s also very common.  It’s not that common, but it’s another standard form.  Okay?
+
+When – if you’re working on a project with someone or something like that, and they produce a quadratic form, if they’re – in my opinion, politeness requires that the A should be symmetric if there’s not storage issues or something like that.  They should produce a symmetric A.  And if you want to write sort of bombproof code, the first thing you might do when you get a quadratic form is to symmetrize it.  Just replace – if a matrix is already symmetric, symmetrizing it has no effect.  But now you’ve made your code safe against – or your algorithm or whatever you wanna call it – it’s now safe against somebody passing you a quadratic form that was not symmetrized.  Okay?  
+
+So – and let me just – I mean, let me just point out what I’m saying here.  Here’s a quadratic form.  There.  And let’s actually – in fact, somebody tell me what is that quadratic form?  Just write it out in terms of Xs.  It’s X1X2.  It’s nothing but the product of X1X2.  That’s what it – that’s the quadratic form associated with that matrix.  Okay?
+
+Here’s another one.  I mean, it doesn’t really matter, but you can have three halves and minus one half zero zero.  Okay?  What’s that?  Have I done it right?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What is it?  I think I did it right.  What’s that?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:That’s X1X2.  Okay?  Even though this looks different, right? 
+
+</p><p>So canonical form – reason – the canonical form for this would be one half, one half.  That would be a standard form.
+
+</p><p>By the way, there are cases where quadratic forms come up in – naturally, in non-symmetric ways.  But then you have to be very careful because a lot of stuff we’re gonna do is gonna depend on the matrix being symmetric.  Okay?
+
+</p><p>So I think I’ve said more than enough about that.  Let me ask you a couple of questions, here.  Just – what is – if A is diagonal, what does that mean about the quadratic form?
+
+</p><p>You know what A – it means if A is a square matrix, and it’s diagonal, and you have Y equals AX, we know what it means.  It means YI depends only on XI.  Yet somehow, there’s no cross coupling from inputs to outputs.  What does it mean in a quadratic form to say A is – A is diagonal?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What’s that?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Correct.  It has only squares.  So it’s a sum – it’s a weighted sum of squares.  That’s what a diagonal matrix in the context of a quadratic form means.  It’s a diagonal sum of squares.  You don’t have these cross-terms – these XIXJ terms where I is not equal to J.  Okay?  So that’s kind of the idea. 
+
+</p><p>Okay.  Let me talk about – let’s talk about this uniqueness, even though it’s a homework problem.  It’s not hard, but it’s actually interesting.  First of all, let’s make sure we understand the concept of uniqueness.  Let’s make A symmetric – I’m sorry, not symmetric – square.  And let’s take Y equals AX.  And you remember from day one, day two of the class, we said the following: that if you have a mapping that’s linear, it’s given only by one matrix A.  There’s no way two different matrices can produce – if A is not equal to A tilde, then for sure AX and A tilde X differs for some X.  That’s how we did it.
+
+</p><p>And how did we show that?  Well, it was kind of easy.  We plugged in X equals EI, and that gave us the I column of A.  Therefore, if two people have two matrices, which are different and yet had the same mapping – in other words, for any X, they both – AX is A tilde X, it can’t be because you can just go column by column and check.  
+</p><p>
+</p><p>So let’s just talk about this.  Yes, we’re doing one of your homework problems, but that’s okay.  And I’m not gonna do it all the way anyway.  I’ll do it part way.  Well, who knows.
+
+</p><p>Okay.  Let’s say we have two matrices A and B, and for any X, X transpose AX is A transpose BX.  Now you know right away that does not mean A equals B unless we assume they’re symmetric.  So we’re gonna assume they’re symmetric.  Okay.
+
+</p><p>Give me some candidate Xs to throw in, please.
+
+</p><p>EI, great.  So let’s find out what is EI transpose AEI.  Now remember, if you wanna contrast this to your other model of a matrix, AEI gives you the Ith column of A.  That’s what it is as a mapping.  But this is a scaler, and what is this?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s AII.  Okay.  So this tells us immediately if two – if there are two quadratic forms which agree for all X, it’s as the diagonals of those two matrices have to be the same.  That’s because – just – if you evaluate the quadratic form AEI, you get the diagonal.  Okay?
+
+</p><p>Now, how do you show – how would you show, now, that A12 is equal to B12, assuming X transpose AX equals S transpose BX holds for all X?  How would you show this?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What do you wanna add?  What do you wanna put in?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:You wanna put in E1 plus E2.  Okay.  Let’s try.  If you plug in E1 plus E2 transpose A E1 plus E2, what comes out?  Four terms.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s A11 – that’s this one – plus A – maybe what is that?  Is it A21 or something?  A21 plus A12 plus A22.  And if we believe that this is equal to the same thing with B there, we’ve gotta get B11 plus B21 plus B12 – oops – plus B22.  Everybody cool on that?
+
+</p><p>Now because – if we plug in E1 and E2 separately, we find out that these are equal, and we find out that these are equal when we plug in E2 separately.  So these go away, and you can see we kind of have it here.
+
+</p><p>So in a quadratic form, for example, if I gave you a method or a black box that calculates a quadratic form, it’s not that easy – or it’s not instantaneous for you to be able to get the matrix A that represents it.  Or at least it’s not something like with a matrix.  If I gave you a black box with four BNC connectors on the left labeled X1 through X4 and five BNC connectors on the right labeled Y1, Y2 up to Y5, it’s extremely easy to get the matrix.  You apply one volt in turn to each of the inputs, and you measure the voltage on the outputs.  Period.  And you’re reading off the columns.  It’s very easy.  Okay?
+
+</p><p>Quadratic form – that’s a different thing.  You actually have to do a little bit of kind of signal processing and thinking to pull out – to figure out what A12 is.  You’ll have to actually first apply one signal, like E1, then E2, then put them together, and you’re gonna kinda from the cross-coupling terms, you’re gonna back out what A12 is.  Okay?
+
+</p><p>All right.  So let’s move on.
+
+</p><p>Let’s look at some examples of quadratic forms.  Here’s one – is the norm of A – B can have any dimension.  B has any dimension.  It does not have to be square.  So if I take BX – that’s some vector – and I form the norm squared of that, I just multiply out with that.  It is X transpose B transpose BX, and if you’d like, I can finally rewrite that this way.  Like that.  And this is – that’s the matrix that represents your quadratic form.  
+
+</p><p>Does this matrix have to be symmetrized?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Well, yeah.  I suppose you – a correct answer would be yes.  Is this matrix symmetric already?  I should have asked that question.  It’s symmetric already.  So you don’t have to symmetrize it.  All right?
+
+</p><p>Okay.  How about this one.  
+
+</p><p>First of all, you have to get the feel – you have a very good feel of what a linear function looks like.  You see any products of X1 and X6.  You see a cosine or a sine of X1.  It’s all over.  You have a – I promise you without – before you even step down and start doing math and all that kinda stuff, you know what a linear function looks like.  Okay?  You need to learn what a quadratic form looks like.  And the things you’re gonna wanna look for are things like squares.  Now unfortunately, this does not fit immediately into the definition of quadratic form.  But it has the sense and feel of a quadratic form, and in fact, it is one.  
+
+</p><p>And so the question is what is this – by the way, it’s a very interesting function.  Can someone tell me what that function measures?  I mean, just in English, some word that would describe it.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s something – exactly.  It’s something like – let me think of a good term.  How about this – the wiggliness of the signal?  It is the sum of the squares of the differences between the components of the vector and the previous one.  
+
+</p><p>So actually, could this ever be zero?  When would it be zero?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:If X in constant, this is zero.  And what kind of vectors – for what kind of vectors would this be huge?
+
+</p><p>Vectors that – well, I mean, roughly high frequency ones.  Ones that change sign every time. 
+
+</p><p>So this is a – it’s either – I was gonna say smoothness.  It’s a roughness measure or a wiggliness of the signal.  That’s what it is.  So this has a use.
+
+</p><p>How – let’s see.  How are we gonna write that as a quadratic form?
+
+</p><p>You can just multiply this out, and you get XI plus one squared plus XI squared minus two XIXI plus one – something like that.
+
+</p><p>Now you do the matrix stuffing.  Okay?  And it’s a little bit more subtle than matrix stuffing for finding – for writing a linear function.  So a little more subtle.  It’s just – it’s not too hard.  Let’s go through here and figure out what goes where.  Or I’ll do it.  I don’t know.  I’ll do a couple of these.  No, let’s just do three because I’m lazy.
+
+</p><p>X1, X2, X3.  Okay?  And this is X1, X2, X3 – sorry – transposed like that.  Let’s get this one-one term.  What goes here?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What is it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:One.  Okay?  Is that right?  I think it’s right.  Okay.  And then maybe you get – what’s here?  Two.  And that’s one, I think.  Is that right?  All right.  I’m just winging it here. 
+
+</p><p>What’s this entry up here?
+
+</p><p><b>Student:</b>Zero.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Zero.  And what’s the justification for that?  How do we know that’s zero?
+
+</p><p>Because the one-three entry in the quadratic form corresponds to a product between X1 and X3.  There is no product of X1 and X3 here.  Okay?  And in fact, I believe – are these minus ones, maybe?  Okay.  I’m trusting you.  Remember this reflects on you, not me.
+
+</p><p>Okay.  So it looks like that.  And by the way, if you make this bigger, you get this tri-diagonal matrix down here.  And the tri-diagonality also has this very strong meaning.  
+
+</p><p>It says, “This is a quadratic function.”
+
+</p><p>But it says that, for example, X5 and X8 do not appear – there’s no product.  There’s no interference between them.  X5 interacts with X4, and it interacts with X3.  But it doesn’t interact with X8.  So that’s what the tri-diagonal means.  Okay?
+
+</p><p>So this is – that’s how you write this out.
+
+</p><p>After a while, you get used to this, and you’ll even look at this – in fact, there are many fields where this matrix has a name or something like that, and they’ll just look at it, and they’ll say, “Oh, that’s the –” 
+
+</p><p>This one actually has a name.  It’s called the Laplacian or something like that on a line.  But the point is, you would look at this and immediately know it’s that.  In fact, people would just go back and forth without saying anything.
+
+</p><p>Okay.  Here’s another one.  Norm squared of A – this is norm squared of some linear function minus norm squared of another linear function.  That’s gonna work because you’re gonna get F transpose F minus G transpose G like that.  It’s just that.  And that’s your – that’s what you need there.  Okay?
+
+</p><p>Okay.  Well, I should mention – and another way to fill this out here is you might wanna fill this out without worrying about symmetry.  In fact, that might even be how this would be more natural or something like that.
+
+</p><p>So you work it out not worrying with symmetry, then symmatrize it.  Then check because you can see here – you’re actually doing – when you fill this matrix in in a quadratic form, you’re actually doing operation – I mean, you’re doing operations.  It’s not, like, blindly sticking in E1 and then reading off the output and filling that into a row – a column of a matrix.  You’re actually doing real operations here.  You better – you should check your quadratic form.  Just for safety, check it.  So, okay.
+
+</p><p>All right.  So there’s a norm squared – by the way, we’re gonna later see every quadratic form has this form.  We’ll probably even see that later today.  Okay?  Or we can – we could see it later today if I pointed it out, but maybe I didn’t.  
+
+But anyway – so this is more than a mere example.  It’s – in fact, it’s all examples.  Okay.
+
+Now there’s a couple of things that you define by quadratic forms.  If you have a level set, that’s the set of points where a quadratic form is equal to a constant.  That’s called a quadratic surface.  And these would have things like – these would be things like in R2 and R3, this would be the horrible quadratic surfaces, like the – I guess the hyperbole and whatever they are and all these types of things.  That’s what these are.  Some are interesting.  I’ll write down some of them.  
+
+And a sublevel set is actually a quadratic region.  And there’s some important ones that come up, like a ball is this.  This is the set of X for which X transpose X is less than one.  That’s the unit – that’s called the unit ball NRN.  
+
+What’s the A matrix here?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:I.  So in fact, I – which means something like a unit operator in Y equals AX – in the context of a quadratic form, I is simply sum of squares – norm squared.  That’s what I is – I represents.  Okay?
+
+</p><p>Let me ask another question here.  What’s this?  Some people confuse the English, including even some people who should know better.
+
+</p><p>That is the unit ball, and that is a unit sphere.  But you’ll see even people who should know better kind of referring to these the other way around.  They might claim that they have a – I don’t know – that they have some scheme.  But I doubt it.  Okay.
+
+</p><p>So what we’re gonna do now is get a feel for quadratic forms.  This is gonna be unbelievably useful.  The same way you get a feel for Y equals AX, you’re gonna get a feel for – well, we’re gonna get another feel for Y equals AX very soon, but you’re gonna get a feel for what does X transpose AX do?  What does it look like?  And we’re gonna answer that.
+
+</p><p>Well, if A is A transpose, then you can write – you can diagonalize it with an orthonormal basis of eigen vectors.  So that’s – you can write A is Q lambda Q transpose, and we’ll sort the eigen values so that they come out as the largest to the smallest.  
+
+</p><p>By the way, it only makes sense to sort eigen values if it’s known that they’re real.  But if a matrix is symmetric, its eigen values are real.  So this is okay.  But you have to watch out for that because in general, of course, the eigen values of a real matrix do not have to be real, and it would make no sense whatsoever to sort them.
+
+</p><p>Okay.  So let’s look at X transpose AX.  We’re gonna plug in X transpose Q lambda Q transpose, and I’m gonna reassociate this as Q transpose X lambda Q transpose X.  Now the same way a diagonal matrix in Y equals AX is very easy to understand is basically you independently scale each component.  But a quadratic form that is diagonal is also very easy to understand.  It is nothing but a weighted sum of squares.  There’s no cross-terms.  We just talked about that.  It’s a weighted sum of squared.  
+
+So actually, this is really cool.  This says the following: Q transpose X, which is a vector – and you should even know what it means – it’s actually if you transpose X, is the vector of coefficients of X in the Q expansion?
+
+So it says it’s the resolution.  It’s a resolving X.  So this says, “Do a –.”  It says, “Resolve X into its Q components, and you get a new vector called Q transpose X.”
+
+Now it says, “Form the quadratic form with the eigen vector matrix – eigen value matrix diagonal as the matrix defining the quadratic form.”  And that’s this.  It’s got this form.  It’s just a weighted sum of squares.  
+
+Now this is cool because now we can actually do – now we can say something.  Actually, now you can really understand it a lot.  So let’s take a look.
+
+First of all, we can ask how big can that quadratic form be?
+
+Well, the answer has got to scale with norm X squared because if I double X, for example, what happens to X transpose AX?  If I double X?  It goes up by a factor of four.  If I negate X, what does X transpose AX do?  Nothing.  It’s quadratic.  Okay?
+
+So here, let’s see how big could this possibly be.  Well, look.  These numbers here, they’re all non-negative.  And I could replace them – these are all non-negative – then I can replace these numbers with the largest of those numbers – that’s lambda one by definition.
+
+Oh, I should warn you.  There are a few fields where they count the eigen vectors the other way.  So lambda one is the smallest one and lambda N is this.  This seems to be the most common, but there are other cases – for example, in physics it goes the other way around because lambda one is gonna correspond to something like a ground or energy state – the lambdas are energies.  And also in mark off chains.  So if you’re in a depart – in a statistics department, but only in a course on mark off chains, lambda one will refer to the smallest one.  Okay?  Don’t – but just normally, this is how they’re sorted.  So – but you may have to ask somebody.
+
+Okay.  So this is no bigger than that, but this thing here – I know what that is.  That – what’s in these parentheses here – that’s actually Q transpose X norm squared.  That is the norm of X squared.  That’s one way to think of it.  
+
+You can also say that this is something like – what do you call that?  Vessels theorem or something – I don’t know what.  What do you call it when you do an orthogonal transform on something, and – or you expand something in some orthonormal basis, and the sum of the squares and the coefficients is equal to the sum of the norms squared to the original thing?  Vessels something – is that it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Which one?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What was it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Parcival.  Thank you.  So that’s parcival there.  There we go.  Okay.
+
+</p><p>But this thing is that, and I get this:  this says that X transpose AX can be no bigger than lambda one times norm X squared.  That’s very cool.  
+
+And let me ask you this: could it be this big?  And if so, how would you choose X?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:You’d choose X to be what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Exactly.  The eigen vector says use lambda one, which here is Q1.  So if I take X equals Q1, then what you guys are saying is the following: is that X transpose AX – well, let’s just see if you’re right.  Well, what’s AX if X is Q1?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s lambda one Q.  So it’s – we go Q1 transpose AQ1 is Q1 transpose lambda one Q1, and indeed, you’re right.  I don’t know what that was.  That was a little stray dot.  There you go.  This – the lambda one comes out, and you get one.  Okay?
+
+</p><p>So now – actually, now you know something.  If you want to choose the direction in which a quadratic form is as large as possible, you’re gonna – that direction is gonna line up with Q1, the first eigen – how would you make this quantity as small as possible, given the fact that the – that this number in here has to be one?
+
+</p><p>You’re gonna line it with QN, and this thing would come out as lambda N.  So you get the same argument works the other way around.  It says that X transpose AX is bigger than lambda N norm X squared, so you have this.  Very important inequality here.  Basically says that the quadratic form is no bigger than the norm squared times lambda one, but it’s bigger than lambda N X transpose.  And not only that, these inequalities are sharp, meaning that there is an X for which you get equality on the right, and there’s an X for which you get equality on the left.  Generally, those are different Xs.
+
+</p><p>So sometimes people call lambda one lambda max, and sometimes lambda N is called lambda min – very common.  And the way you’d say that is if the maximum eigen value of A here – of course, you’d never say that unless A was known to be symmetric because then you would sound like an – idiot would be the technical term because a non-symmetric A can have complex eigen values, and then max doesn’t make any sense.  So you would never talk about the max eigen value – lambda max – like this of a non-symmetric matrix.  For a symmetric matrix, that’s fine. 
+
+</p><p>Okay.  I think we already pointed this out that you get these, so the inequalities are tight.  Okay.
+
+</p><p>Now we’re gonna do something interesting.  I should point out – just to put a signpost in the ground to let you know where we are – we’re just fooling around with quadratic forms, and let me be clear about this: so far, you have seen absolutely nothing useful you can do with quadratic forms.  Okay?  Just wanna make that clear.
+
+</p><p>That’s gonna change.  I assure you.  But for the moment, we’re going on trust.  That is your trust of me.  So – okay.
+
+</p><p>I think right after I said that, I heard the door close.  But anyway, that’s – okay.
+
+</p><p>You don’t trust me?
+
+</p><p>Well see?  He doesn’t trust me.  He knows it.  All right.  I shouldn’t have said that.  All right.
+
+</p><p>We’re overloading equality now.  We’re gonna look at positive semi-definite and positive definite matrices.  So you have a symmetric matrix.  You see the matrix is positive semi-definite if X transpose AX is big – if the quadratic form is always non-negative.  Okay?  And it’s denoted this way with an inequality like that and sometimes A with a little squiggle or something like that.  I’ll say when you might use a squiggle in a minute.  Okay?
+
+</p><p>But this is the cool overloading.  However, I have to warn you in many other contexts – in some contexts, A bigger than zero means the entries.  This is the same as AIJ is bigger than zero.  Just to warn you.
+
+</p><p>For example, in many languages if you have a high level language for doing linear algebra – like even, let’s say, matlab – and you write A bigger than or equal to zero, what is returned is a matrix of bullions that tells you which entries are positive and which is not.  And that would be true pretty much in any reasonable high-level language library for doing linear algebra.  Okay?
+
+</p><p>So sort of like the exponential, you’d have to – this is sometimes – people call this matrix inequality is what they refer to this as.  Okay.
+
+</p><p>Oh, and by the way, sadly, there are many applications where the matrix A is positive – or is non-negative.  So you have – and that’s called – what people call them is they say it’s weird.  They refer to those as non-negative matrices – those are non-negative matrices is what they – a matrix is element-wise non-negative.  And they do come up.  It comes up in economics.  It comes up in statistics.  It comes up in lots of areas, unfortunately.  
+
+And then it’s very confusing because you have to actually ask – stop people and say, “What do you mean by a non-negative like this?”  Okay.
+
+All right.  So a matrix is positive semi-definite if and only if the minimum eigen value’s bigger than zero.  So all eigen values are non-negative.  That’s the condition.  And that is absolutely not the same as the elements in a matrix being non-negative.  
+
+Now there are a few things we can say.  For example, you can – the following is true.  If A is positive – and this means in the matrix sense – then it is certainly true that it’s diagonal entries are non-negative because, after all, this is EI transpose AEI.  Okay?
+
+Converse is false.  There’s cases of all sorts – other than the diagonals, the off-diagonals can have any sign you like.  Okay?  So there’s really no connection.  Other than this, there’d be no connection.  
+
+Now, you say a matrix is positive definite if X transpose AX is bigger than zero for all X non-zero, and that’s denoted A positive or A squiggly positive, like that.  And that says that the minimum eigen value is positive.
+
+Now I do have to say one thing.  It’s important to understand.  Matrix – non-negative – being positive semi-definite or positive definite is not something a person can do.  You can get rough ideas.  
+
+You can say, “I think that’s not positive semi-definite.  It smells positive semi-definite.” 
+
+You can say all sorts.  “I’m getting a positive semi-definite feeling from that matrix.”
+
+But for a matrix like three by three and bigger, there is no way a person can look at it and say – you can look at it and say the matrix is not positive semi-definite in special cases.  For example, if the three-three entry is negative, I can look at it and say, “It’s not positive semi-definite.”
+
+Someone can say, “Really?  You can – without even – did you calculate the eigen values in your head?”
+
+To which, if someone asks you, the correct answer is, “I did.”  
+
+And they say, “Yeah?  What are they?”
+
+And you say, “Doesn’t matter.  One is negative.”
+
+That’s all you have to do.
+
+And they’d say, “Which one?”
+
+And you go, “Does it matter?  All you asked if it was positive semi-definite, and I said no.”
+
+Okay.  So all I’m saying is we’ve entered the place where these things are just not obvious.  I mean, this is any more the case than you can look at a matrix and say what its rank is.  Are there special cases?  Of course.  If there’s, like, a zero column, you can say something intelligent about the rank.  
+
+But you can’t look at a matrix and say, “Oh yeah.  That’s rank seven.  I’ve seen that before.”
+
+I mean, you just can’t – actually, if you can do this, please talk to me after class.  But no, I mean, you can’t do it.
+
+So this is weird that something as simple as our overloading a positive, which after all is not that hard to detect in a number, is very hard when you get to matrices.  Or at least it’s not obvious.  Okay.
+
+So all right.  So you have matrix inequalities.  You say a matrix is negative semi-definite if it’s – and you write that A less than zero.  And even cooler is this: if you have two symmetric matrices, you write A bigger than B if the difference is positive semi-definite.  And what this means is this:  to say that A is bigger than B, for example – strictly bigger – means that the quadratic form defined by A is bigger than the quadratic form defined by B for all X not equal to zero.  That’s what it means.  Okay?
+
+Oh, again.  You cannot do this.  I mean, this would imply this.  This would certainly imply that AII is bigger than BII.  But beyond that, good luck.  It’s not that easy to do.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It does, indeed.  Right.  Although you don’t have to because if you apply for X and sort of negative X here, you get the same thing in a quadratic form.  So it does.  Okay.
+
+</p><p>Now you know, you overload symbols so that, first, they’re useful.  And second that they suggest or the make, like, little neuropaths to other things that you know.  Some of which – and then it turns out some of these are true and some are not true.  So let’s look at some of these.
+
+</p><p>So you can show things like this: if A is bigger then B, and C is bigger than D, than A plus C is bigger than B plus D and so on.  And I’ll go through some of these.  Some of these are more or less hard than others to show.  We may have – I think we actually spared you an exercise on this.  I think – is that – did – I can’t remember.  I think we did spare them this.  I don’t know why we spared them this.  It was just a moment of – anyway.
+
+</p><p>So – but these are things you can pick one or two of these and show them yourself.  Okay?
+
+</p><p>However, a lot of things you’d know would be false.  And I’ll give you one, and that’s – let me give you one.  So here’s one.  If I have two numbers, A and B, then either A is bigger than B or B is bigger than A – period for two numbers.  This is absolutely false for matrices.  It’s just not true.  I think I’ve already gone back and I inserted the verb can’t – or I put the model we can.  So this should be – it’s only partial order.  You can have two matrices with not one – with two quadratic forms with one or one matrix not – or two symmetric matrices, one being – not being the other and so on.  
+
+</p><p>By the way, in terms of quadratic forms, what this means is the following.  It says that there’s at least one X for which X transpose AX is bigger than X transpose BX.  And there’s some Z for which X transpose AX – now you know what, that should be a stretch like that.  There we go.  
+
+</p><p>So basically if two matrices are incompatible – incomparable – what you’re saying is the following.  Did I do this right?  Yeah, I did.  Okay.  It says the following:
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Thank you.  It was close.  Very close.  There.  It says –
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Still wrong?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Doesn’t matter?  Just forget it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Z – okay.  Oh!  Thank you.  Thank you.  Good, good, good, good.  Okay.  Thank you.  Good.
+
+</p><p>You can’t read it now, but that’s okay.  I’ll write it Z transpose AZ – you still can’t read it – is Z transpose BZ.  There we go.  Okay, there we go.
+
+</p><p>So what this says is if they’re incomparable, then actually, the way I would describe it is this: basically, if they’re comparable, you’re saying, “This quadratic form is bigger than that one for any direction.”  That’s what it means when they’re comparable.  
+
+</p><p>To say they’re incomparable, you say, “Please compare these two quadratic forms.”
+
+</p><p>And what you’re really saying is, “Depends on the direction you look in.  You look in that direction, this one’s bigger.  You look in that direction, the other one is bigger.”
+
+</p><p>So that’s what it means.  That’s exactly what it means to be incomparable.  I can make that geometrically right now.
+
+</p><p>So ellipsoids – an ellipsoid is a sub-level set of a quadratic form.  So if you write that – hang on – a positive definite quadratic form.  So if I have a set that looks like this set of X transpose A is less than one, that’s an ellipsoid if A is positive definite.  
+
+</p><p>Oh, I do wanna mention one thing about matrix inequalities, and it’s nasty.  Okay.  So if – normally, when someone writes this, okay?  And let’s assume you’re not in the sixth week of some economics class where you’re studying matrices with non-negative elements.  So you’re not in one of these weird places where people – where this means element-wise.  This means matrix inequality.  
+
+</p><p>All right.  Let me just say a few things about it.  If the matrices A or B are not square, then this is a syntax violation.  Okay?  If they’re not symmetric – well, it really depends on the social context in which you make this utterance.  Okay?  So in many social contexts, it is considered impolite to use the matrix inequality between matrices that are not symmetric.  Okay?
+
+</p><p>But in others, people do it.  And they do it all the time.  So I see it in papers.  I actually see it in software systems and things like that where they do it.
+
+And they would say things like – if they’re writing out some horrible block matrix, they say, “Well, no.  It’s easy because I can write down the non-symmetric matrix inequalities.”
+
+But what it means here like this is it saves them the trouble of writing the lower triangular, or something like that.
+
+Anyway.  If – so if A – if either A or B is not symmetric, this is either an error – but I would call it not a syntax error.  It would be called a social error because you’ve said something that is impolite in the company where you find yourself.  Okay?  So if you do this –
+
+On the other hand, if it’s clarified that you’re in company where it’s okay to use matrix inequality between symmetric – non-symmetric matrices, this is okay.  And what it means is this.  That’s what it means.  Okay?
+
+So – and let me just show you one – I’m just gonna do one example.  Actually, what I’m saying now – I realize we have absolutely no applications of this material, so there is the question as to why you should be interested at all.  So we’ll fix – I’m gonna fix that.  I promise.  But meanwhile, let me just say something.  This trips many people up.  I predict some of you – it goes like this.  
+
+You wanna check if that matrix is positive semi-definite.  Okay?  But it came from somebody else, and they came from a culture or a place or a field where it’s okay to give quadratic forms in non-symmetric – with non-symmetric matrices.  Okay?  And there’s nothing wrong with that.  I’m not saying there’s anything wrong with it, but let’s just say that’s what happened.
+
+But you grew up in a culture where people give symmetric matrices.  Okay?  And you said, “How do you check it”
+
+And you say, “Well, I remember that guy said you can’t look at a matrix and tell.  Diagonals are all cool.  They’re all positive, so it’s a candidate for being semi-definite.  I’m gonna have to find the eigen values.”
+
+Everybody following this?  Because that’s how you do it.  That’s one way.  
+
+So you would go to matlab, let’s say, and you’d write Ig of A.  And it would come back, and it would say something like this: one two one three.  Okay?  
+
+And you would say, “Well, that’s it.  That matrix is positive semi-definite.”
+
+Okay?  Any comments on this?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:If you don’t know A is symmetric, this is completely wrong.  It is absolutely and completely wrong.  Let me show you something better that could happen.  
+
+If you ask for the eigen values, and you got that, that’s – it’s still wrong, but it’s better.  It was so wrong that your mistake – it kinda – at this point, you’d say – well, at that point, you’d say complex.  
+
+Wait.  First of all, you – then you’d – someone is asking you.  The next part is to check whether the eigen values are positive, or something like that.  And you’d – this is gonna tip you off if something’s wrong.  Everybody see what I’m saying here?
+
+But the really insidious, horrible mistake is this – is you just form Ig of A, and it comes back like this.  Okay?  Just to let you know, there are examples.  I can construct them easily where Ig of A are all positive, Ig of A plus A transpose over two, which is the symmetric part, has got a negative eigen value.  
+
+Hey, we should make that a homework problem – maybe construct such a matrix.  That would be fun.  I’m gonna write that down as a homework problem.  Not for you, don’t worry.  Future generations.  So – okay.
+
+So back to ellipsoids.  So an ellipsoid is a sublevel set of a positive definite quadratic form.  Oh – the attribute positive definite applies both to symmetric matrices – in certain cultures, it also refers to non-symmetric square matrices.  But you also use positive definite to apply to the corresponding quadratic form.  So you say a positive definite quadratic form or a negative definite quadratic form or something like that. 
+
+Okay.  So this is an ellipsoid – a sublevel set, here.  A special case is A equals I, in which case you get the unit ball.  Okay?  And this has got semi-axis.  This is kinda what an ellipsoid looks like.  In many dimensions, it looks kinda the same, except that it’s got a whole bunch of mutually orthogonal semi-axis.
+
+The semi-axis – you can actually work out here – are given by the eigen vectors of A, and the lengths are given by one over the square roots of the lambda I here.  So this is the picture.  And you can check because if you go – what it basically says is if – I can explain, at least, the monotonicity property.  
+
+If I go in the direction Q1 in X here, then X transpose AX is as big as it can be per unit length that I go.  That means I will very quickly get to a point where I hit one, and I’m at the boundary of the ellipsoid.  That means in the direction Q1, the ellipsoid is thin.  Does this make sense?
+
+So the large eigen vectors – eigen values correspond to the thin parts of the semi-axis.  
+
+By the way, there are many other people – ways people write ellipsoids.  One other very common form is something like this.  They put an inverse here.  They’re basically using the inverse of this matrix.  When you do this, large eigen values here correspond to large directions in the ellipsoid.  
+
+So – and you’ll see all sorts of different things.  There’s even other ways to describe ellipsoids. 
+
+Okay.  All right.  So now you can say a lot of things – I mean, about an ellipsoid – it’s actually very interesting.  It depends on A here.  So the square root of the maximum eigen value divided by the minimum eigen value – that’s called the – that gives you the maximum eccentricity in the ellipsoid.  It tells you the max – how – it says, actually, how non-isotropic the ellipsoid is – or non-symmetric.  An ellipsoid is fully symmetric if you go in any direction, and it kinda looks the same.  That’s true for the unit ball.
+
+If it’s just a little bit off – like a little bit – like 5 percent fatter in one direction than another, you would say the eccentricity is, like, 5 percent.  This would be like the Earth, right?  Which is a little tiny – it’s pretty spherical.  But it is not spherical.  I mean, it’s actually got a little bulge.  Okay?  I forget what the order of the bulge is, but it’s pretty small.  It’s not 5 percent, that’s for sure.  But nor is it zero.  Okay?
+
+So – but you would call that something that has low eccentricity.  If the eccentricity gets up to, like, ten, you get very interesting things.  It means that – at least in R2, it means you got a cigar.  That kinda thing.  And in R3 and R4 and R5, you can’t really say what the shape is just from the eccentricity.  You can just say that there’s – in one direction, it’s got – it’s way thinner than it is in another.  
+
+So for example, imagine in R3, an ellipsoid that looks like a pancake.  That would have there – in fact, tell me about the eigen values of an ellipsoid that looks like a pancake.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s too what?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Well, let’s see.  A pancake is big in two – it’s got two semi-axis that are long and one that’s small.  So the eigen vectors would be what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:One what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:One big eigen value and two roughly equal smaller ones.  I think.  Did I say that right?  I think I did.  Anyway, that gives you a pancake.  Okay?
+
+</p><p>How about a cigar in R3?
+
+</p><p>You laugh.  These are very important things.  You know why?  These things are gonna – ellipsoids are gonna do things like give you confident sets when you do statistical – when you do estimation.  Statistical estimation or, for that matter, even without statistics, it’s gonna give you confident sets.  And it’s a very good thing to know whether you’re talking about a tiny point, a giant thing – but then the geometry of it – are we talking cigar or are we talking pancake?  And then in R10, it’s also interesting.  
+
+</p><p>So what are the eigen values of a cigar?  
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Two big, one small.  Exactly.  Okay.  So that’s the idea.  
+
+</p><p>Okay.  Now we’re gonna – I mean, ellipsoids do come up, but we’re gonna get to the next topic.  And there’s actually a bit of an abrupt change here.  So up till now, I’ve been using A as a symmetric matrix that represents a quadratic form.  Okay?
+
+</p><p>So let’s just sort of end quadratic form for the moment.  And A – I’m restoring A to what it had been until the beginning of this lecture.  So A had been general non-symmetric, non-square matrix represents a mapping.  Okay?  
+
+So restore your old interpretation.  Pull back in your old interpretation of A – of Y equals AX.  Now we do this: we’re gonna define norm AX divided by norm X.  That’s gonna be called the amplification factor, or the gain of the matrix in the direction X.  
+
+So if you have Y equals AX, it basically says, “How big is the output, if you think of Y as the output, compared to how big is the input?”
+
+Notice that if I scale X by five, this doesn’t change because X – this goes up by five, so does this.  Even minus seven – so it’s really – it’s not a function of X.  It’s really a function of a direction.  Okay?  So that’s the amplification factor.
+
+Now sometimes it doesn’t depend on what X you choose.  For example, if A is the identity, the amplification factor is one in all directions.  I mean, that’s kind of obvious.  Okay?  
+
+But actually, the interesting part is gonna be – in general, it’s gonna vary with direction – the amplification factor of the mapping Y equals AX.  And so we’re gonna ask questions like this: what is the maximum gain of a matrix?  
+
+And for example, what would be – what input would be amplified by that maximum factor?  That would be the question.
+
+What’s the minimum gain of a matrix?  And what’s the corresponding minimum input gain direction?
+
+Okay?  And we want questions like this: how does the gain of a matrix vary with direction?  That’s what we want to know.  
+
+Now I wanna point out – actually, this looks simple.  It is extremely profound, and it is unbelievably useful.  
+
+So early on in the class, we talked about things like null space.  So let’s talk about null space.  How do – what would you – what does it mean, in terms of a gain of a matrix, to be in the null space of the matrix?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It means the gain is zero.  So the null space, in this language, is a direction in which the gain is zero.  Okay?  That’s fine.  No problem.  It’s useful.  It’s – and so on.  
+
+</p><p>We’re actually, now, gonna get the language to – what if I had a matrix which, in fact, is full rank.  Let’s say it has no null space.  Okay?  It’s – there’s zero null space, but the gain in some directions is, like, 1E minus ten.  Okay?  Of course, that depends on the context of the problem.  But let’s suppose that, for practical purposes, that’s zero.  Now you have something interesting.  You have a matrix, which actually has zero null space technically.  It has no null space because there’s no vector you can put in and have it come out zero.  
+
+</p><p>There are, however, vectors you can put in and have them come out attenuated by some huge factor – attenuated so much that, for all practical purposes in that context, it might as well have been in the null space.  Everybody see what I’m saying?
+
+</p><p>So what we’re working towards here is a quantitative way to talk about null space – in a quantitative way.  So instead – so that’s gonna be the idea.
+
+</p><p>I’m just saying this is where we’re going.  All right.
+
+</p><p>So we can actually answer a bunch of these questions, like, immediately now that you know about quadratic forms.  
+
+</p><p>So matrix norm – if you talk about the maximum gain of a matrix, that’s called the matrix norm or spectral norm.  It’s got other names.  It’s got – one other name is the – it’s not the Hilbert – is this the Hilbert-Schmidt norm?  Somebody from math?  It’s not Hilbert-Schmidt – no?  Okay.  It’s a spectral norm – oh, L2 norm.  That’s another name.  And it’s probably got other norms – names in other fields.  All right.
+
+</p><p>So maximum gain of a matrix – that’s its norm.  And guess what?  It’s overloading.  So we overload it with just two – with the norm symbol.  Okay?
+
+</p><p>So we simply write norm of a matrix this way.  Now when you overload something, you have – there’s one – there is one thing you must absolutely check.  You must check that in a context – so overloading means that you assign a different meaning to something depending on the syntactic environment or context.  That’s what overloading means.  Okay?  
+
+</p><p>So you use the symbol equals.  You use plus.  Even though in the same page in your book, sometimes it’s plus between vectors, sometimes matrices.  Okay?  But the point is, technically, those plusses mean different things because it depends on the context.  Inequalities with matrices X now means a different thing and so on.
+
+</p><p>So the norm is – we’re gonna also overload here.  Now here’s what you must check when you propose an overloading.  You must check that when there is a context which could be interpreted two ways, the two meanings coincide – extremely important.  So for example, if you have an Ig concept like vector edition – it’s just vector edition, and then you have a concept like scaler edition.  If the vector is one by one, it can be considered a scaler.  And so you better be sure that, in fact, either way you decide to interpret it, you get the same thing.  That’s very important when you do overloading.  You have to check consistency. 
+
+</p><p>So here, for example, the matrix A could be a column vector, which we would consider a column vector, in which case the norm there is very simple.  It’s the square root of the sum of the squares.  It could be a row vector.  We haven’t actually talked about that, and up until this moment for you, it was actually syntactically incorrect to write the norm of a row vector technically because we define them for vectors.  
+
+</p><p>I mean, you could wave your hands in public and get away with it or something like that, and people would know what you meant.  Now it’s actually correct, and it actually agrees with what you thought it did.  Not that any of you has ever done that, but I’m just saying had you done that.
+
+</p><p>Okay.  So you have to check that when A – let’s talk about a one – let’s talk about an N by one matrix.  So here’s A.  And let’s talk about its gain as a function of direction.  So I write this – well, everyone here knows exactly what this does.  X is a scaler.  It does nothing more.  Okay?
+
+</p><p>And the gain of this – well, it’s silly.  There’s really only one direction in R because remember, if you go one way or the other way, that’s just a negation.  It’s the same.  There’s only one direction in R.  So the gain of an N by one matrix – we can have a very short story about that.  Ready?  Here it goes.  It’s the norm of this that is interpreted as a vector.  There, that was it.
+
+</p><p>There are no two directions in R, and so discussing the gain as a function of direction is not actually really interesting.  Rather, it’s a very short conversation.  I don’t know if that made any sense, but that’s okay.  So it works.
+
+</p><p>Now, let’s figure out what it is.  If you wanna maximize the norm squared of AX, we just square that out.  You write it – it’s the maximum over X non-zero of X transpose A transpose X divided by X transpose X.  We just worked out what that is.  It is – that is exactly the maximum eigen value of the matrix A transpose A, and I actually really want to warn you here.  A – on this page, A is not square and need not be symmetric.  It doesn’t even have to be a square.
+
+</p><p>A transpose A, however, is two things.  No. 1, A transpose A is symmetric.  I should say No. 1, it’s square.  No. 2, it’s symmetric.  
+
+</p><p>By the way, it’s also positive semi-definite.  How do I know that?  Because if you form the quadratic form associated with A transpose A, that’s X transpose A transpose AX.  That’s norm AX squared, and a norm squared – always non-negative.
+
+</p><p>So A transpose A is positive semi-definite.  Okay?
+
+</p><p>And so now you have a formula.  There it is.  The norm of a matrix – also called the matrix norm, spectral norm, L2 norm – there’s one more name.  It’s gonna come later.  We’ll get to it.  One more name – maximum singular value, in other words – but this is – and it’s a square root of the largest eigen value of A transpose A.
+
+</p><p>By the way, this is a very considerable generalization of the following.  Let me just see if I can write it right.  Yeah.  Let’s try it.
+
+</p><p>For a scaler, this is basically saying it’s the square root of A squared.  There.  It’s a very considerable generalization of that formula.  Okay?  So that’s what it is.
+
+</p><p>Okay.  So that’s the maximum gain.  You can’t figure this out by looking at a matrix.  You can say a few things about it.  We’ll look at some of the things you can say about it.  You’ll look at some others in homework, but you can’t look at a matrix and say, “Oh, that’s got a gain of around three.”
+
+</p><p>Well, you can make some guesses, but you – it’s like the eigen values.  You can’t look at it and go, like, “Oh, nice eigen values.”
+
+</p><p>You just can’t do it.  You’re gonna – it requires computation.  Okay.  
+
+</p><p>Let me say a couple things about this.  Well, I should say that in matlab, if you type norm of a matrix, you will get this.  So that is actually overloaded there.  And many other systems would do the same thing.
+
+</p><p>Okay.  Well, the minimum gain is you wanna minimize that, and that’s the square root of the minimum eigen value of A transpose A.  That’s this.  Okay.
+
+</p><p>And we also now know what the directions of minimum and maximum gain are for a matrix.  And they are, in fact, the eigen vectors associated with A transpose A associated with eigen values lambda max and lambda min.  And this is pretty cool.  If A has a null space, then A transpose – if A has null space, A transpose A is singular and semi-positive definite.  So that means that it has eigen values that are zero.  Those eigen vectors that are zero – they correspond exactly to the null space.  Okay?
+
+</p><p>So now you have a method for finding out how the gain of a matrix varies with direction.  Or at least you know it’s extreme values, including zero if it’s got a null space.  So that’s fine.
+
+</p><p>Let’s just look at an example.
+
+</p><p>And by the way, we can – before we launch into the math of it – I mean, also I should add as usual, these ideas are not useful for problems with, like, N equals two and M equals three.  That’s a joke.  You don’t need any of this stuff to figure out what this does to a vector.  You do need this to figure out what a 2,000 by 500 matrix does, which has a million entries in it.  
+
+You do need it to find out what that thing does to a vector because there’s no way you can eyeball it and say, “Oh, that can have a gain up to about 20GB.  But oh, look at that.  There’s some directions where you’re gonna get minus 50.  That’s pretty uneven.  I mean, it just – you can’t do it.   
+
+This is kinda obvious, but before – actually, before we start, I wanna look at this and just say a few things.  What is the gain of this matrix in the direction E1?  Somebody tell me.
+
+You don’t have to give me an exact number.  Or you could just tell me qualitatively.  There.  Thank you.
+
+What’s the gain of that matrix in direction E1?
+
+Well, if you plug in E1, what comes out?
+
+That.  What’s the norm of that?
+
+I mean, I don’t know.  We could figure it out exactly.  What is it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Square root of 35?  I’m gonna trust you on that.  Fine.  What’s the square root of 35?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:I mean, come on.  If we’re doing this with just hand, what is it?  It’s like – I hear that.  The correct answer is almost six.  Okay?
+
+</p><p>So the gain in the direction E1 is almost six.  What is it in that direction?
+
+</p><p>Hey.  You need to do this.  I’m not gonna do it.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What is it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:The square root of what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:56?  What’s that?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What?  A little more than seven?  Seven and change?  Is that – that’s about right.  Let’s say seven and change.  Okay.  
+
+</p><p>So the gain in this direction was – what was that?  Almost six.  The gain in this direction – almost seven.  So we’re kind of – we’re actually – we’ve got this matrix, and we’re kinda – we poked it in one direction, we got a gain of, like, almost six.  We poked it in another – a little bit more than seven.  
+
+</p><p>By the way, you know what that kind of suggests, just on the basis of those two samples, is it’s kinda homogeneous, right?  Well of course, you can look and see that it’s not, but hang on.  I’m just saying based on those two samples, you might get the wrong impression.  You might get the impression that the gain is always between six and seven, okay?
+
+</p><p>Now, if I told you that the maximum gain of this matrix was 1,000, what would you say?
+
+</p><p>Well, you wouldn’t believe it from any reasons, not least which is that the maximum gain is sitting on the lectures light below you.  
+
+But you would be quite dubious because you’d look at this, and you’d say, “Now come on.  You put in two numbers here with norm one.  Okay?  That’s two numbers whose squares add up to one.  You plug it into that, and you get a matrix with three – I mean, you get a vector with three entries whose norm is 1,000.  Not seeing it.”
+
+I’m just saying just, like, having the intuition running here and all that.  Okay.
+
+All right.  Let’s just see how, if you just work out exactly what it is, you form A transpose A.  That’s this symmetric matrix.  And everything should be going – everything should be working here.  These diagonal entries are positive.  They have to be.  And just so you’re just checking everything.  
+
+Here’s the eigen values of this matrix are 90 and .265.  Okay?
+
+Obviously, this matrix is completely made up, but the point is this actually kinda shows you how these things – why these things are good.  I’ll say something about that in a minute.
+
+The eigen values of this – and that says, actually, that the maximum gain is 9.53, and actually it turns out it’s the eigen vectors associated with that – that’s that, by the way – this is T lambda T transpose.  You put in – you apply to A this vector, which has norm one, and the result comes out and has norm 9.5.  Okay?
+
+By the way, that’s consistent because we took E1 and E2.  We got a norm that was, like, a little under six – a little over seven.  We just took the first two easiest things to calculate.  So it’s not that surprising that by taking some weird combination of E1 and E2, you could actually get – scoop the gain up a factor of 30 percent higher – 20 percent or something like that.  Whatever it is – 25 percent higher.  That’s not implausible at all.  
+
+Okay.  Now let’s look at the minimum gain.  The minimum gain is gonna be, actually, the square root of this thing.  And it turns out that’s .5.  And it says if you put in this vector, then A times this thing comes out scrunched down roughly by a factor of two.  So for example, for people in electrical engineering, you would say that the gain of this matrix varies from plus 20 DB, roughly, to minus six.  Okay?
+
+Okay, so maybe it’s like minus four and plus 19 DB.  But that’s roughly what it is.  Everybody see this?
+
+Now I wanna point something out.  That’s a range of 20 to 1.  You know what?  I take it back when I said you don’t need this to understand something this simple.  You know what?  That’s not obvious.  There’s no way you could look at that matrix and say that this thing has a gain – I mean, guessing the maximum gain is to be nine.  Okay, cool.  And you could do that.  Okay?  That’s fine.
+
+Guessing that the minimum gain is .5 – I don’t think so.  Okay?  You could look at that matrix, and you could say, “One column is not a multiple of the other.  Therefore, that matrix is for sure full rank.  It’s got rank, too.  It has no null space.  There is no X that has a gain of zero.”
+
+In other words, there’s no X for which A is equal to zero.  
+
+But it is not obvious until you do this analysis that there is an X which gets scrunched by a factor of two.  Okay?  That’s what I’m saying.  
+
+And if you think it’s not obvious here, you gotta try it again in a 1,000 by 300 matrix or something.  It’s not obvious at all.  Okay.
+
+So let me say a few more things about matrix norm.  So first of all, it’s consistent with vector norm.  I mentioned that before.  If you worked out what it is, you get lambda max of this one by one matrix.  I know what the maximum eigen value of a one by one matrix is.  
+
+Of course, this holds always.  This is – this holds, and this says – it says that the norm of the output is less than or equal to the norm of the input times the maximum gain of that matrix.  That’s my reading of this equation. 
+
+By the way, you haven’t seen anything like this except sort of like – Koshi Schwartz is like the closest thing you’ve seen.  You’ve seen something like A transpose X is less than norm A norm X.  Okay?  You’ve seen something – that’d be something – the closest analogy I can think of to something you’ve seen is this.  But – okay.
+
+Scaling – if you scale a norm, it’s the same as scaling with the absolute value.  And you get the triangle inequality here.  Actually, no one would have overloaded the norm of a matrix had the triangle inequality not held.  And the triangle inequality says that if you add two matrices, it’s less than the norm of A plus the norm of B.  
+
+By the way, you can get a very good idea for this if – basically, from a sort of an operator point of view, it basically says the following: take X and apply it to both A and B, and then combine the results like that.
+
+This is the block diagram representing A plus B.
+
+What this says is let’s figure out – let’s put in an X citation here and see the result, and let’s see how big it could possibly be – the gain.  Okay?
+
+What this – norm A says that when you put something in of a norm here, then what comes out can’t possibly be more.  The maximum gain of A is norm A.  Down here, norm B.  So there’s no way that two things, each of which amplifies something by, for example, two and three separately, can amplify something by more than five.  It can be less, of course.  Okay?
+
+Definiteness means if the norm of a matrix is zero, then the matrix is zero.  You wanna watch out on these things because we’ve already seen weird things like this.  The eigen values of a non-symmetric matrix can all be zero, and yet the matrix is not zero.  We’ve seen that.  But that can’t happen for a symmetric matrix.  For a symmetric matrix, all eigen values is zero, the matrix is zero.  Okay?
+
+And you have norm of a product.  And this, again, you can figure out.  That’s a different block diagram, a very simple one.  It’s BA – it says operate with B first, then A.  And it says that the gain – in this signal processing, the maximum amount by which an input can be amplified going from here to here is definitely less than – less than or equal to the maximum amount here multiplied by the maximum gain here.  
+
+And I can ask you the following question: when would you get equality here?  
+
+And you can tell me in terms of most sensitive and blah, blah, blah input directions.
+
+You would only get equality here if the following happened: if when you probe B with the maximum gain input direction – that’s the eigen vector associated with B transpose B of the largest eigen value – what comes out, then, would have to line up exactly with the highest gain direction of A.  [Inaudible] would be further amplified by the maximum amount, and the total amplification you’d get would be norm B norm A.  
+
+Did that make sense?
+
+Okay.  So I’m gonna quit here and just say a few things.  First of all, have a good break.  Enjoy homework eight.  Feel free to read ahead.  Now come on, some of it – there’s flights involved.  You can do this on the airplane.  It’s fine.
+
+Feel free to read ahead, but also feel free to have the sense to not do problems in homework eight on material we haven’t covered, although we’ve covered a whole lot of it.  
+
+So, okay.  Well have fun.
+</p><p>
+[End of Audio]
+</p><p>
+Duration: 73 minutes
+</p><p>
+
+</html>

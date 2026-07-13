@@ -1,0 +1,486 @@
+<html>
+IntroToLinearDynamicalSystems-Lecture03
+<p>
+</p><p><b>Instructor (Stephen Boyd)</b>:Are we on?  Okay, hey, I guess we’ve started.  Any questions about last time – if not, we’ll continue.  I think they’re – I wonder if there’s some announcement.  Let’s see, one is that Homework 1 will be due Thursday.  We’re probably gonna post Homework 2 later today.  So I know some of you are very excited about that.  The reason is we had at least a couple of people who are gonna be gone next weekend and asked us to figure out Homework 2.  So we did it, and it’s figured out.
+
+</p><p>So we’ll post that.  Of course, it’ll be due a week from Thursday.  That’s how that’s gonna work.  I don’t think there are any more announcements.  Oh, there is one more – we now have a third TA, Thomas, who has a class at this time, so he’s not here, but he sneaks in for the last half hour.  So maybe if I remember, I’ll point to him and he can wave his arms when he comes in or at the end of the class, something like that.
+
+</p><p>Okay, well, let’s just continue.  I need to go down to the pad.  Last time we looked at linearization as a source of lots and lots of linear equations.  So linearization is you have a non-linear function that maps RN into RM.  And you approximate it by an affine function.
+
+</p><p>Affine means linear – sorry, that’s not linear.  There we go – that’s linear plus a constant, so that’s an affine function.  You approximate it this way.  In the context of calculus, people often talk about a linear approximation and what they really mean is an affine approximation.  But after awhile, you get used to this.
+
+</p><p>So linearization is very simple.  You simply work out the Jacobean or the derivative matrix, and what it does is it gives you an extremely good approximation of how the output varies if the input varies a little bit from some standard point, X0.  That’s the idea.
+
+</p><p>And in fact, in terms of the differences or variations measured from these standard point, X0 and F(X)0 that’s Y0, this relation is linear, so the small variations are linearly related.
+
+</p><p>Okay, so let’s just work a specific example of that.  It’s an interesting one; a very important one, too.  It’s navigation by range measurement and of course, this is roughly to give you a rough idea or is actually how, it’s part of how GPS works.
+
+</p><p>We’ll get more into detail.  We’ll see this example will come up several times during the course.  So here you have X and Y, two variables unknown coordinates in the plane and we have a bunch of beacons at locations PIQI, so these are X and Y coordinates of the beacons.  And what we measure is a range.  And a range, because the beacons can only measure range, ranges to this point, it could be of course, be the other way around, that the point can measure its distance to the range.
+
+</p><p>But for now, we’ll assume everybody has all the information, so here the beacons get the range to this point and that’s nothing but the distance and so you have a bunch of points here and each one has a range and its not hard to figure out, for example, the ranges you could figure out where the point is.
+
+</p><p>In fact, if you know the range from a beacon it means that the point lies on a circle of a fixed radius and if you have two of those, it means it’s in the intersection, now it’s ambiguous; it’s down to two points that are possible, and if you have a third beacon it’s completely determined.  This is in the plane.
+
+</p><p>So, let’s see how this works – let’s see how linearization works.  Well, here the mapping, here we have four ranges and it’s a non-linear function of the point, XY of the location of the point, and of course, it’s the square root of XI minus pi squared.  It’s the Euclidian distance.
+
+</p><p>So it’s this function, which is of course, non-linear in X and Y.  Let’s linearize around the point XY0 or in this case, you got the change in the range, that’s a four vector is equal to the change in X and, Y, multiplied by Matrix A.  The entries of the matrix A actually can give you work out geometrically exactly what they are, they are unit vectors.  They’re unit vectors – the row is a unit vector pointing from this point to the beacon, like that.
+
+</p><p>So basically it says actually it’s the other way around, it’s the negative of that, so, sorry.  So if you step in this direction, you would reduce the range.  If you step in a direction orthogonal to a beacon, actually to first order the range doesn’t change at all.  And if you step opposite direction, the range increases.  So what that says is that this Matrix A which is 4 by 2 in this example, that these entries tell you how much small changes in position translate into small changes in the four ranges like that.
+
+</p><p>And so that’s the – and in many, many applications of this, for example, if you know where X and Y is at one step, it’s now a little bit later, so it may have moved, but it hasn’t moved far in a linearized model would give you an excellent approximation for how the ranges are gonna change, okay?
+
+</p><p>So this is sort of the picture.  So that’s an example, and you’ll I guess in Homework or something, you’ll see plenty of examples sort of like this.
+
+</p><p>Let’s just work out and actually just do this intuitively for this case.  Actually for the specific case we have here, let’s estimate, just by eye, some of the entries of A.  So in fact, let’s figure out for what I have right here, I would like to know what the second row of A looks like.  So I’ll start with that entry.  What’s the number; what’s it look like?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What is it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:I'm not hearing anything clear, so I need someone to –
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Here, I'm only asking you to do a thought experiment with your eye.  The thought experiment with your eye is to move X in here, X and Y a little bit and to see what happens to the range.  If you move X a little bit, suppose you increase it.  I’ll take my coordinate system for where it goes like that, if I increase X a little bit, what happens to the range to Beacon 2?  It goes down –Okay.
+
+</p><p>And it goes down – if that were actually horizontal, it were exactly horizontal, if it moves to the right a meter, let’s say, the range is gonna go down by a meter.  Let’s assume that’s 20,000 kilometers or something like 20,000 meters, okay, as it might be in GPS.
+
+</p><p>So if it goes down – so this something like about minus 1, okay?  And now tell me this entry.  It’s about 0, okay, and that has a meaning here.  And so that’s just a quick exercise just to do it, and of course, you should always be doing this and then of course, checking it against the formulas, just checks to make sure what you think and what the formula thinks is right.  Okay.
+
+</p><p>Okay, that’s a whirlwind tour of various applications, and now I want to talk a little bit of one level above all these applications, kind of organize them.  So there are a lot of applications or models or categories of Y equals AX and in fact, you’re gonna find out that much to use, you know, the material of the first four weeks of the class, everything is gonna hinge on actually hammering or pounding with more or less, you know, sometimes with little violence, sometimes with lots of violence, hammering your problem into a form that looks like Y equals AX, okay.
+
+</p><p>So it’s gonna be that; that’s what you’re gonna be doing.  And of course, in a real application it won’t look pretty like this.  No one will ever walk up and say Y equals AX.  They’ll actually walk up to you and they’ll go on for hours and hours about their particular application and they’ll tell you about the stein model of the electron density and the troposphere.  They’ll go on; they’ll be cosines and sines flying around.  There may be some PDEs and things like this.  That’s because they’re in that field.
+
+</p><p>It’ll be your job to step back, ignore all of that and calmly step forward later and write it a Y equals AX.  So that’s the way this is gonna work, just to give you a rough idea.
+
+</p><p>Now, what does Y equals AX mean – well, one area is estimation or inversion.  I’ve already talked about that and when we looked at other examples, well when we actually get into methods, we’ll see more.
+
+</p><p>In these ideals, X is something you don’t know.  It’s something you want to guess or find out or something like that.  These could be parameters in a model.  They could be a transmitted signal in communications, something like that.  It could be something that you really want to know, but can’t go and directly measure.
+
+</p><p>Y represents what you measure.  So Y is something you do know or you can measure or something like that and from that you want to deduce X.  That would be the type of thing you would want to do.  A, in this case, is represents your measurement set up or in the communications context, it’s your channel.  So it’s what maps, what’s transmitted to what’s received.  That's what A is in that case.
+
+</p><p>All right, in a design problem, X actually is, in fact, it’s the opposite.  X is something is what we can control.  X are the knobs we can turn; it’s the design parameters; it’s the thrust; it’s the, that we can command an engine to give.  It is control surface deflections.  It’s things we can mess with, we have control over.
+
+</p><p>Y is an outcome.  So here, in this interpretation, so Y is a vector of outcomes and in a case like this, you know, the problems are obvious.  You would want to do things like this.  Please achieve this desired outcome.
+
+</p><p>That means find an X for which Y equals AX.  If you can’t achieve that desired outcome, come as close as you can.  These are the types of things you’ll do.  You’ll say, “What outcomes can I achieve?”  These are the types of questions in this interpretation we’ll see.
+
+</p><p>Now, in another interpretation, Y equals AX will be simply a mapping or transformation, so it might be a geometric transformation or just some transformation.  It might be a coding or a decoding or something like that and you think of X as an input, Y as an output.  That simple.
+
+</p><p>It could be geometric; could be anything.  Now, there actually even are combinations of all of these things, where it’s a problem that it’s partly inversion and partly involves something in design or something like that.  You can have weird applications where some components of the X are actually primers you want to know.  Other components of X are things you can mess with, okay.
+
+</p><p>That's every common, for example, when you have a system and there are two things affecting the outcome.  First of all, when what you do; that’s the part you can mess with, and the other part is what noise or other people of interference does.
+
+</p><p>So you get all sorts of variations on this, but we’ll come back to these models many, many times.  Okay.  So let’s talk about estimation or inversion.  So here YI is interpreted as the ith measurement or sensor reading, which you know.  That’s the idea.
+
+</p><p>XJ is the jth parameter or to be estimated or determined and AIJ now has a very specific meaning.  It is the sensitivity of the ith sensor to the jth parameter, okay.  So that’s the meaning of this.
+
+</p><p>A as a matrix describes the measurement setup, or if you like to think of this as a communications problem, it’s the communication channel.  Here’s some sample problems.  The most basic one is this – given a set of measurements, find X.  That’s the most obvious thing you could ask.  Then you could be more subtle and you could say, “You know what, actually find all Xs that result in Y,” and that means find the all parameter vectors consistent with the measurements.
+
+</p><p>That’s a very interesting thing to do.  For example, suppose it’s empty.  There are none, right.  The answer is there are no Xs for which Y equals AX.  Then it says this model is wrong and that could be for various reasons.  It might be that in fact, the model is not this, but actually there’s a bit of noise added, all right.
+
+</p><p>But in any case, it’s better to know that there’s some noise there than not, and the other option is that the noise really is insignificant, but a sensor has failed.  That’s another option, in which case this would be a very important thing to know that no X is consistent with the measurement you just make.
+
+</p><p>That means something is wrong with the measurements or with the model.  And that could mean one or more sensors has failed, for example.  And that’s a whole area that is widely used, fielded and so on.  Health monitoring, sometimes called – okay.
+
+</p><p>Now, if there is no X that gives you Y equals AX, and maybe that's because of noise and not sensor failure, you might say, “Find me an X for which the outcome,’ if, in fact, the parameter had been X and you believe the model, you’d get AX and you’d like that to match very closely what you observe, okay.
+
+</p><p>So that says find a set of parameter vectors, which is almost consistent with what you’ve measured, okay.  So we’ll spend a lot of time looking at that.  These are the types of problems we’ll look at.
+
+</p><p>Now, when you flip it around and look at the control or design problem, it’s quite different.  Here X is a vector of design parameters and inputs.  For example – an [inaudible] example would be the mass force example where X is a vector of forces that give you a whole program of what you’re gonna do to [a mass, for example.
+
+</p><p>It could be the input [inaudible] a vehicle over time.  Here Y is a vector of results or outcomes and the Matrix A describes how the input choices affect results.  So here’s some sample problems.  Find an X for which Y equals Y desired.  In other words, here’s desired outcome, please achieve it.  That would be one example.
+
+</p><p>The next would be find all Xs that give a desired outcome.  That’s find all designs that meet the specifications.  Now, I want to point something out.  If you’re doing estimation and the answer to find all Xs that result in Y is a big set.  Suppose there’s a lot of Xs that give you Y.
+
+</p><p>In an estimation problem, that’s not good, obviously, because it basically says you cannot say what X is given the measurements.  You can’t.  If that set is big, it says there’s a lot of ambiguity in the measurement system, okay.  Now, on the other hand, mathematically it’s the same question.  It’s identical.  It’s find all solutions of A equals Y.
+
+</p><p>If in fact, in the controller design case there are lots of Xs that reproduce Y.  That’s good.  Why?  What makes that – what is that good?  Why is it bad for estimation and good for design?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Exactly.  It means that lots of designs to choose from.  Many designs meet the specification, achieve the desired result and it means you can now start optimizing over some other objective.  For example, some costs, or the size of that.  You could say, “Find me a small X,” or if there’s an additional cost, you would say, “Find me a cheap X that achieves my goal.”  So in fact, in this case, ambiguity is good.  In fact, ambiguity in this case is design choice, is what it really is.  Okay.
+
+</p><p>And the example here would be among the Xs that satisfy Y equals Y desired if there’s many.  Find a small one.  That’s something that generally speaking has the interpretation of an efficient choice of X, okay?  By the way, what I'm saying, there’s nothing to it, so don’t imagine that what I'm saying is deeper than the say it sounds.  It’s actually less deep than what I'm saying.  I just want to point these things out explicitly once.
+
+</p><p>The third broad category is mapping your transformation.  Now you think of this as a mapping and you ask questions like this, “Is there an X that maps to a given Y?”  Find an X that maps to Y or you might say, “Find all Xs that map to a given Y.”  And you might say something like this, “If there’s only one X that maps to Y, find it.”  That means a de-code or undo the transformation.  So these are kind of ideas.
+
+</p><p>Okay, so that’s just to summarize the broad categories.  You can go back and look at the examples we did and ask yourself in each case which of these three it is.  By the say, some of them are not any of these three.  They’re just – they don’t categorize neatly.
+
+</p><p>Okay.  I want to do a little bit of review of matrix stuff.  I want to remind you to please read all of this and you can scan it very quickly, all of the notes on sort of matrix, matrix arithmetic and things like that, matrix using vectors on the website.  You’re supposed to know this material.  This is just to make sure the – this is to make absolutely certain that you know the notation and things like that.
+
+</p><p>But here I’ll review some of it very quickly.  So we’ll look at matrix multiplication.  Then we’ll interpret it out of any practical context and we’ll look at it just as ways to interpret Y equals AX, so one way to interpret Y equals AX is this; when you multiply AX, one way to think of it is you are forming a linear combination of the columns of A; that’s what you’re doing.
+
+</p><p>Because if A is written as A1 up to AN and these are the columns, then AX which is Y is nothing more than X1A1 plus X2A2.  And so in Y equals AX in this interpretation, this is –there’s many ways to say it.  It’s basically your formula, linear combination of the columns of A.  X is the mixture parameters.  It tells you how much of each column to mix in.
+
+</p><p>So if X4 is 0, it says don’t throw in any 4 in any A4 into the recipe.  Okay.  So that’s sort of the picture there.
+
+</p><p>Now, here, this is quite useful.  You should know this.  If you have X is EJ, the jth unit vector, the jth unit vector is a vector with 0s everywhere and a 1 in the jth position, I do want to warn you about one thing.  In some fields, I won’t even name them, the vector e without a subscript is meant to be the vectors of all 1s.
+
+</p><p>I think that’s weird and sick.  There’s probably some people here in those fields.  I'm not gonna name those fields.  We’re gonna use the vector, which is a bold 1, like that, and that’s gonna mean all 1s.
+
+</p><p>Now, this is sort of a transition as we move towards more overloading.  After all, we don’t write 0 and then make it bold when it’s a vector because we’ve moved to the next stage of overloading where it’s not a big deal.  So I presume in five years, I’ll come along and these bold 1s will become just ordinary 1s.  We’ll see how that works.  Hopefully, the context will disambiguate it, but for right now, that’s that.
+
+</p><p>I just mention this because there are places where E is used to represent these vectors of 1s.  Okay.  But EJ, I think everyone kind of knows what that means.  I think that’s quite standard.  These are the uni-vectors.  If you multiply the jth unit vector by A, if you take the column interpretation it’s absolutely clear what it means.  It means you are making a mixture of the columns, and what you should use is no column except the jth columns and you should use the unit amount.
+
+</p><p>So AEJ gives you the jth column of the matrix.  Surely all of you have started working on Homework 1, I guess.  Anyway, but I’ll just note that this is relevant to a problem, I think.  Did we assign that problem?  Okay, we did, yeah.  Good, all right, it is relevant to a problem.  Fine.
+
+</p><p>Okay, so it turns out there’s a duel interpretation, a row-wise interpretation.  The row-wise interpretation goes like this:  When you multiply a Matrix A by a vector, you actually write the Matrix A as rows and now when you multiply that by a vector X, what you’re really doing is you are taking the inner product of each row of the matrix with the vector X, okay.
+
+</p><p>By the way these have different interpretations if you go back to our, like, you know, control or estimation or something like that, this is basically saying that these As for example, in a measurement set up, each A is actually the sensitivity pattern of 1 – let’s see if I can get it right, or an input, it’s not the sensitivity pattern; it’s the effect on all the sensors of an input at jth input.  That’s what this is.
+
+</p><p>And this says the overall input you see is a blend of this.  In fact, you know what, these would be called signatures sometimes.  So this would be the signature of the jth input.  It’s the pattern of sensor readings you see due to that input, and this says that the overall output is nothing but the sum of the weighted signatures according for each of the inputs, okay.
+
+</p><p>Here you focus on a row, a row of a matrix in a measurement set up, a row focuses actually on a sensor and so basically this says, this explains it by saying you actually for each sensor, you calculate the inner product, this gives you the sensitivity of a sensor.
+
+</p><p>So this is just this way, so it’s a way to calculate in batch a pile of inner products, so that’s another way to interpret matrix multiplication.  Now the geometric interpretation of this again, this should be review, is something like this.  If my row is AI tilde here, then these dashed lines give you the level sets of the inner product with AI, okay.
+
+</p><p>So for example, this line gives you that line gives you the set of all vectors, orthogonal to AI tilde.  They’re the ones that have 0 angle with AI tilde.  All the ones that have an inner product of 1 are here – that’s 2; that’s 3 and in the general case, these are not lines; they’re actually hyper planes.  So for example in R3, these are planes and you can actually think of the planes as stacked up parallel and the normal to the plane is AI here.
+
+</p><p>So in this case, what it means to say if I tell you, for example, if I tell you that YI is 1, it tells you about X, that it lies on this line.  That’s the picture.  Now, if I had another column, another row pointed in another direction, that would give me another plane and I could get the intersection and so on.
+
+</p><p>So this will be useful.  Now, the stuff I'm pointing out, now these are all totally obvious things; however, you’ll see that soon you’ll start putting together obvious things, the chain of 2 or 3 or 5 or 6 and you start getting things that are then not obvious.  In fact, it’s shocking how few obvious things you can chain together and get something that is not immediately obvious.
+
+</p><p>Okay.  Now, another very useful way to think of a matrix multiplication, matrix vector multiplication is this:  when you multiply a matrix by a vector, you think of a transformation and you could write down something called the signal flow graph or block diagram.  Now, here’s an example with the 2 by 2 matrix.  You could think of it as a transformation, two input signals produce two output signals.
+
+</p><p>Notice it says you get a mixture here and what you do it you write it this way.  Now the semantics of a signal flow graph, you don’t have to know it, but it’s actually quite straightforward.  Each node is a value; in this case it’s an input value and this is delivered to something that scales by A11 and A12, and a node like this when two things come into a node and the semantics are that you should add the signals, okay.
+
+</p><p>So that’s what this is, and now you can interpret all sorts of things.  You can think of like A11, well indeed, that’s the game from X1 to Y1.  A21, you can interpret as sort of a cross game.  It’s how much the input X1 affects Y2.  If, for example, and it might have an interpretation, might – depends on the application of an interference term.
+
+</p><p>Right, if for example, these are knobs and these are outcomes, if this were diagonal or nearly diagonal, it means that Knob 1 affects Output 1 mostly and Knob 2 affects Output 2.  By the way if it’s a measurement system that’s also good because it means the first thing you’re trying to measure mostly affects the first measurement – that kind of thing.
+
+</p><p>So sometimes, not always, the cross terms have an interpretation of interference or something like that, but certainly not always.  Now it’s not interesting in general to write this out, but it becomes interesting when the matrix actually has a space, non-trivial sparcity pattern.  So a sparcity pattern is of course, a substantial set of entries that are 0 as a meaning.
+
+</p><p>By the way it’s also interesting – it’s traditional when they gain is 1, to not draw it and to simply to draw a straight line – makes sense, in fact.  So here’s an example.  A matrix is block upper triangular, so it looks like that.  What does it mean?  Actually I'm hoping sort of after this lecture or actually maybe by the end of this week, you will never, ever look at a matrix as a spark without – you’ll have an autonomous reaction that you cannot help.
+
+</p><p>When you see a matrix with a non-trivial sparcity pattern, you’ll know what it means.  You won’t just look at it and say, “Oh, yeah, sure, whatever,” or something like that.  You’ll look at it.  This has a meaning.  This 0 has a very specific meaning.  Well, it’s very easy to write it out.  If you write it out in block form, it means this and what this means if you stare at it, what’s missing here is the A21 term and it’s missing right over here.
+
+</p><p>And what it says is that Y2 depends only on X2, so the second block of outputs don’t depend on the first block of inputs; however, the second block of inputs do affect the first block of outputs and that’s what that means and you should just – when you see that, that’s what it should mean to you.  They’re the same thing.
+
+</p><p>Now, when you draw the block diagram, well it’s kind of obvious, you get this.  And you know, you look at this and your eye is now telling you what you knew anyway which is the following, X1 doesn’t’ affect Y2.  Why?  There’s no path in the signal flow diagram from X1 to Y2.  So that’s what it means, okay?
+
+</p><p>Oh, these are kind of obvious things.  Okay.  Let’s look at matrix multiplication.  You know what matrix multiplication is; if you have an M by N matrix and an N by P matrix, the inner dimensions have to agree.  You can multiply them and you’ll get a matrix which is M by P and the formula is this; it’s CIJ is the sum over K, intermediate variable AIKBKJ, like that.
+
+</p><p>Now, matrix multiplication comes up a lot.  It has lots of interpretations.  We’ve been looking at a special case where B is N by 1.  So matrix multiplication, though, has lots of interpretations.  That’s one of them.  Now, 1 is the composition interpretation.  Supposed you have Y equals CZ where C is AB.  What this really means is something like this, Y equals AX and X equals BZ.
+
+</p><p>So let’s see Y equals – did I get this?  Y equals AX and should I put a Z in there?  No, no, I have it right.  Sorry, Z is the input.  Sorry.  I confused myself.  It represents a composition and in terms of all-block diagram, you write it this way, that Z gets mapped, first it goes into B; that produces BZ, which is X.  That’s here.  And I’ve noted the dimensions of these signals here.  X then goes into A and it comes out as Y, like this.
+
+</p><p>Now, the one thing you’ll notice immediately is that block diagrams in algebra are backwards.  Sorry; it just worked out that way.  Somewhere around 1850, somebody made the terrible mistake of ordering the indices the wrong way or writing from left to right on paper or whatever.  Anyway, it just didn’t work out.  You know, it’s kind of like driving on the left or right, I guess except there’s no intrinsic difference there.
+
+</p><p>Here, it just sad that algebra – it goes backwards from block diagrams, but after awhile you get used to it and in fact, the way you can really make this really understand it is when someone walks up to you and you think of AIJ, the J indexes the input and I the output, so you can think of it this way, as input to output, so A32 is the gain from the second input to the third output, whereas had this all been done right 150 years ago, everything would have worked out.
+
+</p><p>Now, by the way, there’s weird subfields that have tried to do something about this.  A friend of mine at Cal Tech decided about ten years ago, he had some kind of religious conversion he decided that he would henceforth write all block diagrams going from right to left.  He stopped after a year or two, but anyway, it just – I don’t know.  It was fine, but I mean so what?  So he did that.
+
+</p><p>There are fields, probability is one of them, where they decided instead of using column vectors as your basic vectors, you’d use row vectors, and then everything works out again, because vectors are row vectors and you multiply and block – all your intuition works there the right way.
+
+</p><p>So and that’s even arguably kind of right, but it’s not the way other people do it, so sorry.  So anyway, you just remember this picture.  Just block diagrams and indexing in algebra as practiced by the vast majority of people who do algebra sadly are backwards.  Okay.
+
+</p><p>Now, there’s lot of other interpretations of C equals AB.  I’ll show you some.  Here’s one – you can multiply AB.  It’s actually a batch matrix vector multiply.  So basically it’s this; you take B and you write out its columns, and then it’s actually A operating on the first column and AB.  This is very useful.  It means that if you ever need to multiply a matrix by a whole bunch of vectors, you can put those vectors into a matrix and do matrix multiplication.
+
+</p><p>I'm going to say something about that in a minute.  It’s not obvious and there might only be a handful of people here who actually know what I'm gonna tell you.
+
+</p><p>Okay, now you can also write it out this way and it’s block, things like that and I’ll give one more interpretation which is an inner product interpretation and here it is.  The inner product interpretation says that when you multiply two matrices, the IJ entry is in fact the inner product of the ith row of A with the jth column of B.  That’s what it is.
+
+</p><p>And you know this because that is after all, how you think about when you multiply two matrices and you want to get some entry, you go across the ith row, like this or I don’t know how you do it, but this is how I do it and you go down the jth column like that and you go down and you’re doing a cumulative sum.
+
+</p><p>Or if you like, you just think of that as an inner product of these two vectors; okay?  So that's it, and you get all sorts of things.  If you have a bunch of vectors, this thing called the grand matrix, that calculates actually all the inner products of a set of vectors, okay?  Sop that’s the grand matrix.
+
+</p><p>So let me ask you a quick question on this right away.  Suppose that A and B are square matrices and AB equals I.  Now, you know what that means; it means that B is A inverse and it also means that A is B inverse.  A and B are square, okay?  Now, I want to ask you about this.  Tell me, what is the inner product of, let’s let AI tilde be the rows of A and let’s let BJ be the jth column of B and I would like to know, what does that equal to?
+
+</p><p><b>Student:</b>Zero.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Zero – provided I is not equal to J, okay?  So you’ve just deduced the following; the – let’s see if I can get it right.  The ith row of a matrix is orthogonal to the jth column of its inverse provided I is not equal to J.  What’s the inner product if I equals J – 1 exactly.
+
+</p><p>By the way, this fact will come up in lots lf cases and it will look totally magical and it will look like it came out of the blue and it’s totally elementary.  Okay.  Let me say something about matrix multiplication via paths.  You can – if you understand the block diagram B composition.  AB is actually, and the way to think of it, of course, is this, is when you see Y equals ABX here, you should think of it, you should immediately write that down.
+
+</p><p>In fact, of course you can associate it anyway you would like.  But this is the way, as an operator, you should interpret it first and what this means is that B is first, even those B is on the right and that’s why this diagram goes over here, like that, okay?
+
+</p><p>So this is AB and what’s very interesting here is this term, AIKVKJ; that’s the gain of a path from X1 to Y2, but it’s the path that goes via Z2.  And you simply multiply this gain and this gain, okay?
+
+</p><p>There’s one other path, by the way.  That’s this one and if you add these two path gains, you will get exactly the, now let me get it right, the 2-1 entry of C, which is the product.  So again, what I’m saying is obvious, but you put a bunch of these things together and all of the sudden, things are not totally obvious or something like that.
+
+</p><p>But in generally CIJ is the sum of the gains over all paths from Input J to Output I and in fact, specifically, when you sum over the K there, the K, if you wanted to put a comment in your code or whatever, K has a meaning.  K is the intermediary node.
+
+</p><p>In fact, you would even literally say it’s the sum over all paths from Input J to Output I via Node K.  That’s exactly what it means.  So things like this should not be just definitions.  They have a meaning, and this is the meaning.  Okay, now I'm gonna say something; maybe some of you know this, maybe not, though, because they don’t really teach this.
+
+</p><p>Supposed you have [inaudible] matrices, all right.  Everybody knows the formula, CIJ is sum on K.  AIKBKJ – here we go; there’s the formula.  All right, now supposed you were gonna write some code for that.  Doesn’t look too hard.  Looks to me like three loops or something like that for, your loops on I, you loop on J and then you run a sum on K.  So it’s like three lines of C or something like that, maybe four.
+
+</p><p>Okay, but whatever language you like, it’s like four.  Everybody understand that?  And the number of operations you do, is gonna be on the order of, let’s just make them square so I don’t have to think about it, so they’re all N by N and the number of operations you’re gonna do [inaudible] is on the order of N cubed, okay?  Okay.
+
+</p><p>Now, I'm gonna ask you some cool questions – so here’s one.  Could you do it faster – maybe some of you know.  Does anyone know?  Yeah.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:You got it.  Okay, this is totally bizarre.  There’s actually an algorithm which is order ended at 2.8, whatever and Jacob you could type in or you have a browser and find out what the current number is and the number, you know, varies.  It goes down and it goes down by small amounts.  You know, it’s a huge big deal if you make a 2.799, or I don’t even know what the number is.
+
+</p><p>It means nothing to you, I can tell.  This is a hard – you know, I remembered that from the first day.  It was like we were estimating things with the three big quantize and we were getting like, you know, six-bid accuracy and you were like, “Yeah, that’s cool.”
+
+</p><p>All right, so there is in fact, an algorithm that will multiply this out and it’s something.  I'm gonna leave it there because.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:It’s 2.41?  Wow, okay, wow – in progress.  Okay, 2.41.  All right, by the way this method actually at the moment has no practical use whatsoever.  Now, it’s an extremely interesting topic in computer science.  It doesn’t have, the reason is that the constant in front is absolutely enormous and you’d have to have matrices so big that you can’t store them all that kind of stuff but you never know, some day it might actually come up.
+
+</p><p>I’ll tell you a little bit in a minute how it’s done, although it’s related to the – now let’s go.  That’s the theory; let’s talk about the practice.  So here’s my – I have a practical question for you and it’s this.  Everyone here could write a four-line C or whatever program to multiply two matrices.  Let’s say thousand by thousand.  Everyone here could do that and it would compile and it would work fine and it would produce the product.
+
+</p><p>It would produce C, given A and B, right?  Now, the question would be, oh and everyone would be doing because no one here is gonna write the super-fancy stuff that does this while doing that formula right there.  That’s what we’re implementing.  We’d all be doing the same amount of floating point operations and the question would be could someone else, me or someone else or something like that, write a function that multiplies two 1,000 by 1,000 matrices faster than you?  That’s the question.
+
+</p><p>What do you think?  This is not exactly a complicated – it doesn’t look like a complicated thing to do, right?  It doesn’t look to me like there’s a lot of room for programming creativity here.  Anyone know the answer?  What’s the answer?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:There we go.  Okay, perfect – so I told you; I told you a few people in here would know.  Most of the people don’t.  Guess what?  Someone who knows what he or she is doing will beat you so badly you won’t even know what happened in a thing like this.  It could be if you’re lucky, you would be slow only by a factor of 4.  If you’re unlucky, you’d be slow by a factor of 100 or more, okay?
+
+</p><p>So, now that’s pretty bizarre.  You are doing exactly the same floating point, exactly the same calculations.  You’re doing 1 billion calculations, so that’s not the difference.  The difference has to do with memory and the cache hits and misses and things like that.  Let me say how that’s done, just for fun.  How many people knew this or knew about this – so certainly some.
+
+</p><p>Okay, so by the way, do you have to write this code?  No, it’s all automated; it’s all open source.  Public domain has been used for 15 years and in fact, when you go to [inaudible] lab and you type in A times B, guess what happens?  It calls this open source library; it’s called LA path, okay?
+
+</p><p>So let me tell you how that works.  The way it works it this.  It’s another interpretation of matrix multiplication.  I’ll just say a little about this because it’s fun and the stuff we’re doing now is so boring, that it seems like I should introduce things so people don’t know.  So what you do is this; suppose your matrix is, I don’t know, 1,000 by 1,000 and I block it up into, I'm gonna make it actually 1,200 by 1,200 and I block it up into little chunks of 400 by 400 matrices, okay/
+
+</p><p>If I multiply them, the same formula works.  In other words, I multiply this matrix times that one plus this matrix times that one, plus this matrix times that one and that gives me the one-one block of the product.  So you can multiply matrices in a block way.  Okay?  Everything works.  You can just; you can multiply matrices.  Now, if you add up the number of operations you just did, congratulations.  It’s exactly the same, so that didn’t change and you know, how could it have changed.  That’s kind of stupid.
+
+</p><p>Actually, if you want to know where does that 2.4 comes from, it comes from this.  It’s the observation that when you multiply two 2 by 2 matrices, there is a way to multiply them.  This is the most basic one to get less than 3 is when you multiply them, there’s some weird way to do it like you know, with 7 floating point operations, as opposed to 8.
+
+</p><p>Now, you [inaudible] that, so you take a big matrix, you divide it by block 2 by 2 and you do the 7, you do that smaller and smaller and you’re gonna actually find out you get M to the 2.  something; however, it’s the same idea that works in practice.  So the way this works in practice is why might it be faster to block a matrix than multiply it?  I know there’s ten people in here who know.  How about some of the others?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:What?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Precisely, exactly.  Right, so if for example, one of these guys fits in L1, registers or something like that, it’s gonna be way fast.  The whole thing’s gonna get pulled into L1.  All the operations will be L1 and you won’t have to wait for that, or if this is really big, disc stuff which is like an eternity.
+
+</p><p>Okay, so actually with the memory locations are adjacent.  You have a very nice memory flow and data flow and stuff like that and something like this.  So, the way this really works is this, on a processor, you run something that’s called ATLAS, which is Automatically Tuned Linear Algebra Software.  It runs on your machine and it determines optimal cache sizes for your processor, your L1, your L2 and things like that.
+
+</p><p>And when you then say in effect, in that lab when you multiply two 2,000 by 2,000 matrices, you will be using an optimized BLAST.  BLAST is Basic Linear Algebra Software and it will block it up into, I don’t know, 30 by 30 and then below that, something smaller and I don’t know.  But the point is, it will be way, way faster than if you wrote out in your four-line C program.
+
+</p><p>Okay, so, I said something that now, especially those who have a strong mathematical background, and are currently bored out of their mind, didn’t know, for the record.  How many people care?  Oh, well, that’s another story.
+
+</p><p>Okay, what I’ll do now is, this is gonna be on a review, this lecture.  We’re gonna cover a lot of stuff that you should have seen before, but every year 20% of the people in the class actually haven’t seen it before and they generally do just fine.
+
+</p><p>So I’ll define things like vector space and sub spaces, but I'm not gonna go into the horrendous detail that you would in a normal linear algebra class.  So a vector space – that’s sometimes also called a linear space over the reels, although occasionally we will look at vector spaces over other fields like the complex numbers.
+
+</p><p>We won’t look at it, but for example, bouillons are finite fields like that.  And it consists of a set of the points and they’re called points or vectors.  You have a vector sum and that’s a function that takes this argument two vectors and returns another vector.  And you have a scalar multiplication, but the vector sum is denoted – you don’t write it this way, you know.  You don’t write it as V-sum XY, although you could.
+
+</p><p>It’s actually traditional to write it this way.  But in fact, it’s really that.  And there’s a scalar multiplication that takes the scalar argument in a vector and returns a vector and again you know, you don’t write it this way, following this thing, alpha X.  You simply write it as alpha X for compact notation.
+
+</p><p>And you have a distinguished element 0 in the vector space.  That’s not the 0 number and in fact, 15 years ago, you might have made that 0 bold or something like that to sort of give you a hint that you’re overloading it and it’s not the number 0.  Now, these have to satisfy a list of properties.  They are – and I won’t go over, you know, your model for vector space is something like M vectors, and I won’t go over this in too much detail.
+
+</p><p>Has to be commutative.  Has to be associative and that means that when you add them, you can add them in any order.  Zero has to be an additive identity.  There has to exist a negative for each vector.  Scalar association is associative; there’s a right distributive rule, a left distributive rule and the scalar 1 multiplies by X has to give you X.
+
+</p><p>So it has to satisfy these properties.  And let me ask you a couple of questions, how about doubles in a, if you write just the arithmetic of I triple e floating point standard, let’s say doubles.  Is that commutative?
+
+</p><p>Everyone know what I'm talking about?  I'm talking about writing a one-line program where you add two numbers.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Okay, this is associative?
+
+</p><p><b>Student:</b>No.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:No, exactly.  It is not associative.  It’s awfully close, but it is not associative.  Okay, so you can get round-off error easily in this case, okay.  It’s not exactly, so it’s very, very close, but it’s not exactly.  Okay.  I won’t go into any of the others?  How about – is scalar multiplication associative?  Just for fun.
+
+</p><p><b>Student:</b>No.
+
+</p><p><b>Instructor (Stephen Boyd)</b>:No, it’s not because you could underflow or overflow something with these things.  There are things here that you really don’t have to worry about too much, but it’s good to know that in fact, these are already not true for doubles on a computer.  These would be true.
+
+</p><p>You can – there actually are systems for algebra and other things, which are infinite precision, in which case, all these things hold exactly.  So for example, if you store numbers, as rationals as ratios of integers, then you can arrange for all of these things to hold exactly.  And there are systems that do that.
+
+</p><p>Okay, let’s look at some examples.  Well, the [inaudible] example is just RN, so that’s the set of N vectors plus the column vectors and you have standard component wise vector addition and scalar multiplication, so that’s the standard.  Here’s another one; it’s a big silly.
+
+</p><p>It’s a single vector in RN that has all 0s in it.  Here’s one.  It’s the span of some vectors where the span of some vectors is the set of all linear combinations of them.  And these are some particular vectors in RN, and so that’s – now you have to check that these are, in fact, that these are actually vector spaces and you have to check various things.
+
+</p><p>The way people, and the way you think of this checking process is something like this.  You check that for example V3 is closed under-scalar multiplication and you check whether it’s closed under addition; that would be the thing you do, so you’d ask yourself if a vector is a linear combination of V1 through VK and another one is as well and you add those vectors, is that a linear combination?
+
+</p><p>The answer is yes it is and you can construct the linear combination from the other two linear [inaudible] by adding the corresponding coefficients, okay?
+
+</p><p>Now, a sub space is a subset of a vector space that is itself a vector space.  So that’s a sub space and it means something like, you know that it’s close under vector addition and scale in multiplication and these examples that we just looked at were sub spaces and again, this should be review.
+
+</p><p>And let me mention a few, something that you may not have seen, which are infinite dimensional vector spaces, so let’s look at here’s a vector space.  It’s gonna be this.  It’s the set of all functions that map R plus, that’s the interval of 0 infinity into RN for which X is differentiable, okay?
+
+</p><p>Now, this is quite complicated because points in V4 are themselves functions.  So actually if you like, you could think of things like a short, but complicated C declaration or something like, for something like V4, so it’s elements are themselves functions that take as argument, a non-negative real number and return a vector.
+
+</p><p>So by the way, you can think of these as trajectories if you like of something, like a trajectory of a vehicle where X1, X2, and X3 are the positions and something like that and X4, X5, X6 are the velocities or something like that; it could be anything.  It’s a trajectory.
+
+</p><p>Now, you have to – you can’t just say, “Here’s the set.”  You have to say what the sum and what the scalar multiplication is.  So how do you add two functions?  Well, we have to define that and the way we define it is this, so this plus is what plus?  Is that the plus of two scalars, two vectors, RN?
+
+</p><p>That’s not RN.  That plus is what plus.  When this is resolved by context what plus function actually does this refer to?  Is the plus in V4; it’s the plus that adds two functions because the data type of X is a point in V4 which is a function.  That is function addition.  So what’s the data type of X plus Z?
+
+</p><p>It’s a function.  It’s a function taking as argument a non-negative element and returning a vector.  You then call it with the arc T and what is the data type of that?  That's RN because that’s the return type of X plus Z.  That’s RN, okay.
+
+</p><p>That is also RN, that is RN, what plus is that?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:That’s the plus in RN and that equals what is the equals in RN, exactly.  Okay, so I won’t do that much more, but the problem is when you see things like this, you know, in fact you look at it and it just looks so innocent.  You just rearrange the same stupid, or whatever; it’s like 8 ASKII or 7 ASKII characters or 9 or whatever it is, you just rearrange these characters a little bit.
+
+</p><p>So watch out because these little rearrangements of 9 ASKII characters on the left and right-hand side to which it’s very easy to look at and go, yeah, yeah.  It can mean a lot because of overloading, so watch out.
+
+</p><p>Okay, scalar multiplication is you have to say what it means to multiply a scalar by a function, and that’s defined this way, okay.  Here’s a sub space.  If the set of differentiable functions or trajectories here that satisfied X. equals AS; that’s a linear system, so you now know that the set of linear, the solutions of an autonomous linear dynamic system is the sub space, okay?
+
+</p><p>Okay.  There’s the concept of an independent set of vectors.  You say that a set of vectors is independent if the only way to make a linear combination of 0 is by putting in all 0 in the recipe.  That’s when it needs to be independent.  Now, what I'm saying is very, very important here.
+
+</p><p>Independence is an attribute of a set of vectors.  It is not an attribute of a vector.  Okay.  So it makes no sense to say, let me tell you the slang.  On the streets, people say this is a set of independent vectors.  Anyone would understand what you just said if you said it’s a set of independent vectors.
+
+</p><p>But there’s a big difference between – you’d say that the same way you’d say this is a set of non-zero vectors.  When I say this is a set of non-zero vectors, it means it’s a set of vectors, each of which is non-zero.
+
+</p><p>If you use the same expansion, for this is a set of independent vectors, you mean something like it’s a set of vectors, each of which is independent.  I mean that has a meaning and it is absolutely not the same as what the person meant.
+
+</p><p>So we’ll try, I will slip into it.  After a few weeks, I will talk about an independent, so let’s say it right.  The correct way to say it, maybe we’ll just practice it all together is to say, to say, I can’t even get it – let me try.  I’ll try very hard.  You’re talking about an independent set of vectors.  That was correct.  You don’t talk about a set of independent vectors.
+
+</p><p>Now having said that on the streets, you’d talk about a set of independent vectors.  But I want to make very clear, it makes no sense, the argument of independent is a set of vectors; it’s not a vector.
+
+</p><p>Okay, so what does this mean?  To say that the only way you can add some vectors up and make 0 is by plugging in 0 coefficients.  It says basically that the coefficients are uniquely determined.  That’s very interesting.  It says that basically if I make a vector with one mixture of the Vs, and if I make it up with another mixture of the Vs, it turns out the recipes are identical.
+
+</p><p>That’s what it says.  How do you show that?  Well, you subtract this from this and you get sum alpha I minus beta I times a VI equals 0 and then if they’re independent, you conclude immediately by this that alpha I minus beta I is 0, so the recipes are the same, okay.
+
+</p><p>Here’s another way to say it, no vector, if you have an independent set of vectors, it’s like if you can watch me, when I slip back into the slang you can start complaining or something.  I really should just should always say independent set of vectors.  So, all right, so no vector in an independent set of vectors, can be expressed as a linear combination of the others and that’s if that’s true it’s an independent set of vectors.
+
+</p><p>Okay, and you can sort of check.  I’ll let you work out to convince yourself of these things, okay.  Basis and dimension – well you say that a set of vectors is a basis.  Basis is like independence.  It’s argument, it’s a set of vectors; it is not an attribute of a single, of the vectors individually, like for example, non-zero or normalized which means the norm is 1.
+
+</p><p>So you have a set of vectors is a basis for a vector space if they span the vector space, and what that means is anything in the vector space can be written as a linear combination of these vectors and if they’re independent and you know what that means.  It means every element in the vector space can be uniquely expressed as a linear combination of these basis vectors.  Okay, so that’s what it means to be a basis.
+
+</p><p>We’re gonna look at a lot of examples and things like that, so if this is going by too fast, basically I'm going fast because first of all, it’s review and second at this level, it’s kind of boring.  Okay, so here’s a very basic fact.  If I have a vector space, there are many bases for a vector space – many.
+
+</p><p>But it turns out there’s an invariant among those bases, so in other words, there’s one attribute of a basis that doesn’t change, and that's its cardinality.  So the number of elements in a vector space, never – it’s not the same.  You can’t find a basis with six elements where you found one with seven.  It’s impossible.
+
+</p><p>If one basis has six elements, all bases have six elements and that’s called the dimension, that unique number.  Now if there’s no basis, then we say the dimension is infinite, okay.  And I want to mention something here that’s something a bit different.  You will hear the word basis used in other contexts.  For example, you might be taking a course in Fourier transforms or something like that.
+
+</p><p>And people will talk about something like this.  They’ll say that sine, you know, KT and cosine KT where K equals you know, 0, 1, blah, blah, blah.  That’s an infinite number of periodic functions, but these form a basis for sort of periodic functions, 2 pi periodic functions.  So you’ll hear people talk about that.  That’s actually not a basis in this algebraic sense.
+
+</p><p>It’s a different concept I just mentioned.  So there’s a question?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:That’s right.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:That’s correct.  This is the definition of basis.  In other contexts, for example, in some infinite dimensional spaces, actually I'm not even sure they use the word basis there.  I actually have to go back and check.  They might hedge.  So what this is is, I guess a basis there means that any element can be written as an infinite sum.  For us that’s not the case.  That’s not what a basis means.  It means a finite sum.
+
+</p><p>And actually for someone doing just linear algebra, it means finite sum – actually just algebra, not linear algebra, just algebra.  It means a finite sum.  Just to warn you, you hear basis in different contexts.  Another weird one is this, which I find very strange, but this comes up in signal processing now.  I don’t know how they got away with this and even statistics.  Now, let me say what it is.
+
+</p><p>Suppose I have a vector space of Dimension N.  Let’s say it’s R10, okay.  So the dimension is 10.  And let’s say – if I come up with, you know, a basis V1 up to V10, just make these the unit vectors.  So there, E1 through E10.  That is a basis for R10, okay?
+
+</p><p>Now, suppose you add some other weird stuff.  Suppose someone walks up to you and says, “Here’s my basis, V55,” okay.  If I say, “Here’s my basis for R10.”  You would say, “No, no, no, come on.  That’s not a basis.  You’ve got 55 elements and the dimension is 10; it’s not a basis.”  And they go, “Oh, you’re still stuck in that old idea of basis.”
+
+</p><p>
+This is, they call this an over-complete basis.  I'm not kidding; this is not a joke.  This is actually intelligent people on this campus.  They say stuff like this.  I mean it’s weird.  There’s a name – and you say, “What the hell does that mean, over complete basis?”
+
+</p><p>For hundreds of years a basis has meant independence and spans, and they go, “Oh, yeah, that’s what it is, except they’re not independent.”  They go, “Okay, but we have a name for that; that’s called expand the vector space.”  That’s what we’ve called it the last 300 years.
+
+</p><p>And they’re like, “Oh, oh, no, this is like wavelets and blah, blah, blah.”  And you know, this is why image processing and modern this and that, and it just, anyway makes no sense.  But that’s fine; they can do whatever they like.  They can take a term that’s been used with no ambiguity for several hundred years, turn it around and use it some sick way for their stupid sub field, that’s fine with me.
+
+</p><p>So you will hear things like that, over complete basis, which is just like a joke, I don’t know what it would be.  It would be something like a non-true theorem.  It’s a new concept really and it describes a theorem.  It’s like a theorem; it makes a specific statement, but it’s false.  Or it’s not always true and so that would be a new thing, and we’d call it a theorem, but it’s like a theorem, but it’s just not always true, you see.
+
+</p><p>So but anyway, you’ll hear it there and you’ll hear it in other places, too, but I think they call it frames.  That’s another name for it in signal processing, okay.
+
+</p><p>But all of these things you’ll find a local dialect will emerge when they start using these terms and then the local dialect, it depends on how isolated it is from the rest.  You know it’s kind of like evolution in Australia or something like that.  And some of these fields are like pretty weird, right and they go out there and they go off and they have a whole theory and they make whole new names for things like basis, independent and so on.
+
+</p><p>All right, so we’re now gonna get to – we’re gonna keep going on this review of linear algebra.  And this is the part in linear algebra that really I mean I guess most people when I think back, when I talk to people and I say, “What do you remember of your linear algebra class,” most people say as little as possible.
+
+</p><p>But when, in fact, the memories come back, they remember somebody at the board droning on and on about the four fundamental sub spaces.  And I’d say, “Well, what are those,” and they’d say, “I don’t know.”  Or they’d remember some of these things; so that’s what we’re gonna talk about now.
+
+</p><p>A quick overview – I know a lot of you have seen this; this is review.  So I'm gonna emphasize is not actually the technical aspects which I presume was covered in linear algebra class you saw.  I'm actually gonna concentrate on what the meaning is.
+
+</p><p>So the null space of a matrix, of an MIN matrix is defined as this.  It’s the set of points in RN, that’s sort of the – I think of that as the input space that gets mapped to 0 by the matrix.  That’s the null space, okay?
+
+</p><p>So null space is actually itself an operator; it’s a complicated one.  It takes its argument and M by N matrix and it returns, the data structure, the data type it returns is a set.  In fact, it’s a sub space – thus its name.
+
+</p><p>It returns a sub space of the input space, okay.  So it’s easy to just look at this, but these are very complicated operators and that’s what the null space does.  It takes its argument a matrix and it returns a sub space of the dimension of the input of that matrix, if you want to call it the input.
+
+</p><p>Well, it’s obviously, it’s a set of vectors that’s mapped by 0 by Y equals AX and is also interesting.  It’s also the set of vectors that are orthogonal to all the rows of the matrix A.  Why – by the row interpretation of the matrix vectors multiplication.  Because to say AX equals 0 says the first row of A in a product with the vector, that’s gonna come up backwards for you, but you’ll – I should learn to do that backwards, but I probably can’t so is 0, and that would be true for all of them.
+
+</p><p>Now, the meaning of it is this.  It gives exactly the ambiguity in Y equals AX.  The ambiguity in X in Y equals AX, because it says this.  If you have Y equals AX and you have any element of this null space and you add that element to X, then A multiplied by X plus Z gives you, if you expend it out, AX plus AZ, but AZ is 0 and that’s AX, so you get another solution, okay?
+
+</p><p>That means if you have a solution to Y equals AX and you add to X anything in the null space, you’re gonna get another solution.  By the way, there is, the null space is never empty.  It always has the 0 vector in it, okay, because the 0 vectors is always mapped to 0, okay?
+
+</p><p>All right, so that’s the null – so it says that if there’s more than a 0 vectors in the null space, it basically says, there’s gonna be ambiguity in X if you have Y equals AX, all right.  Now, turns out it exactly characterizes it.  And that means this – suppose you have two solutions, Y equals AX and Y equals AX tilde, then it turns out that in fact, X and X tilde are related because they’re difference is in the null space.
+
+</p><p>So it basically says this idea of adding something from the null space into a vector to give you a new solution that’s completely general.  All solutions come about that way, okay.  And that’s easy to show.
+
+</p><p>But let’s think of some examples, just real quickly.  Here’s one.  Tell me this.  Let’s think of the forced mass example.  Let’s make for ten steps.  So X is the forces you apply over ten seconds, each for one second and YAX is gonna be the final position in velocity.  That’s a 2 by 10 matrix A, okay and what I would like to know, is tell me about the null space, I mean not a lot, but what does it mean?
+
+</p><p>First of all, is there any element in the null space other than 0 and what would it mean?  What’s the answer?  What is the meaning – what have I said?  This is in the null space and I told you [inaudible].  There’s like 1 minus 3 plus 5 minus 8, 0, 0 plus 4; how would you check me?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Yep.  You would think of the product with both rows, which means you would actually multiply A by – you’d take my F; you’d multiply it by A and you’d get 00.  If you didn’t get 00, you’d say, “It’s not an element of the null space.”  If you get 00, it’s an element of the null space.
+
+</p><p>Now, my question to you is what does such a forced program mean?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Okay, so I would say that my interpretation of such a forced vector is it’s a joy ride.  It means – no, the condition is this.  It’s any vector of forces that has the following property.  It acts on the mass, okay.  It can shoot off to the right.  It can shoot farther to the right.  It can shoot off to the left and go back and forth, but after ten steps, it must land exactly at the origin and with 0 velocity.
+
+</p><p>In other words, it’s a set of forces that ultimately does nothing, okay?  Now, by the way, is that a good thing or a bad thing?  Well, if you’re paying a bill for the fuel, that’s probably a bad thing, but it may not be a bad thing.  I mean it’s neutral.  Okay, so now the question is somebody give me an element of null space.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Zero – that was good.  That was, okay.  Somebody give me a non-zero element of a null space.  That was very good; that was very quick, very good, and it was correct.  How about a non-zero element of a null space?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:So you’re forced, you wanna go 1 minus – 1, and what 0s, after that?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:I don’t believe you; you know why?  Your final velocity will be 0, but your position will be 1, so that’s not gonna work.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:Another minus 1?  No, no, no, no, then your velocity – how about this, minus 1, 1, and then how about that.  Does that work?  That works.  This moves you, so you’re now stationary after two steps you’re stationary, one meter to the right and then this undoes it and moves back.  There’s an element in null space, great.  Any others – or is that it?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:5 minus 1s?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Stephen Boyd)</b>:And five 1s.  No, no, I don’t think so.  No, no, no, no.  That’s – your velocity will be 0l but you’re gonna be way, way off to the left.  So I don’t like that one.  Maybe we could shift this one.  We could put – we could shift this to the right and generate a lot, because the point is all this discussion suggests the following.  There’s lots of elements in the null space, okay?
+
+</p><p>And actually it already means something interesting.  It means this.  It says when someone says you have ten forces to apply to the mass, I want you to be at a certain position in velocity at the end of the this ten seconds, there’s a giant pile of force programs you can use to affect this; that’s what it says.
+
+</p><p>They’re characterized in fact, by the null space, along with a particular solution.  So that’s what it means, Okay.  That was just to kind of see what this looks like.  That’s what the null space means.  Okay.  All right, so if a matrix has only the 0 vector.  If the null space, right, so that means the null space is 0, by the way that’s the set consisting of the 0 element.  I probably don’t have to say that.  That is not this and it is not this, okay?
+
+</p><p>This makes no sense.  This one makes sense, but is impossible and wrong, okay?  So this is, I guess we would call this a semantic crime.  This would be a syntax crime, right, because it doesn’t even make sense.  That’s a set and that’s a single element.  So I mention this, right.  Okay.  So that’s just a little, a small syntax rant there.
+
+</p><p>So if the null space of A consists – is the set consisting of one vector.  Now, by the way, the way you say this on the streets, is you say 0 null space or the null space is 0.  Okay, that’s the correct way to way it, just so you know.  If you’re deposed or there’s lawyers present, that’s what you say.
+
+</p><p>But otherwise, you know, informally, you say, “Yeah, a null space is 0 or something like that.  That’s fine; but you would never write that.  Now, this has a huge meaning.  It says this.  It says the vector X can always be uniquely determined from Y equals AX.  Now that’s very interesting.
+
+</p><p>It says basically that if you think of this as a transformation, no information is lost.  It means we can undo it.  By the way we do not get no how to undo it.  We’ll get there, but the point is it means at least in principle, no information is lost.  It can be undone.  If I give you Y, I can reconstruct X.  We will very shortly see how to reconstruct X.
+
+</p><p>Okay, so you don’t lose information.  By the way in an estimation problem, this or reconstruction problem, this would be very good.  It means your sensor sweet or the measurements you proposed to make are good enough that collectively from your measurements you can deduce the parameters you want to deduce.
+
+</p><p>Okay, that’s what it means.  It’s a good thing in that context.  In the context of design, it’s maybe a bad thing, possibly.  Maybe not – in terms of your leisure time it’s good because basically it says there is no design problem.  Once someone specifies why, there’s only one X; it satisfies it.  There’s nothing for you to do.  So that’s bad, by the way, from an employment perspective.
+
+</p><p>Now, this also means the mapping from X to AX is 1 to 1.  It means basically that if you draw one of these pictures like this, and you show elements here in RN that get mapped to RN, it says that different things go to different ones and if you don’t have this, you can’t have two things landing on the same element.
+
+</p><p>Or another way to say it in a context like one of the things we look at, it would basically say something like this.  You can’t have – let’s go to geophysics, you can’t have two subterranean patterns of densities that produce the exact same gradiometer readings above earth.  That would be great if it were true.  It’s not, by the way.
+
+</p><p>But if it were true, it would be great.  It would mean in principle, you know, using some big computers you could reconstruct exactly what was below you, okay.
+
+</p><p>I’ll mention just a few things and then we’ll quit for today.  Another way to say that a matrix is 1 to 1 – that’s also slang for it, that the – it’s not slang; it’s okay.  It’s 0 null space or 1 to 1.  It says that the columns of A are independent, so it just rewording the same thing.
+
+</p><p>Why?  It basically says to say that the columns of A are independent, says that whenever you make a linear combination of A of the columns and it adds up to 0, then the linear combination of the columns, that’s linear vector multiplying.  So whenever you matrix vector multiply A by a vector and you get 0, the only possible way that could have happened is if that vector was 0.  That’s the vector of coefficient.  That’s just a restatement of the same thing.
+
+</p><p>We’ll start on this next time; this is kind of where it gets interesting.  And this is not obvious, this one.  Not remotely – this says that if a matrix is 1 to 1, it has a left inverse.  That’s really cool.  That’s a matrix.  You multiply on the left by the Matrix A and you get the identity.  Okay, so that’s the picture.
+
+</p><p>By the way, this is extremely important.  Let’s think about what it does.  If you have Y equals AX and let me multiply both sides of this equation by Y, I get BY equals BAX which is IX which is X, okay?
+
+</p><p>That says if you have a left inverse of a matrix you should think of it – what it is is it’s a decoder.  It is a perfect decoder, a left inverse is what it is.  If this is a channel in a communication system, this is a perfect equalizer.
+
+</p><p>If this is some kind of measurement – if this is a measurement system, this B is the matrix that processes your measurements and gives you what the parameters are.  It’s a perfect thing that undoes A.  It’s also linear anyway.  So we’ll continue with this next time.
+
+</p><p>We haven’t said how to find a left inverse, but you will know very shortly how to do that.
+</p><p>
+[End of Audio]
+</p><p>
+Duration:  80 minutes
+</p><p>
+
+</html>
