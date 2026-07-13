@@ -2,7 +2,7 @@
 
 Backend and platform architecture for the progressive-applied learning product built on this learning pack. Stack-agnostic; recommended default is a thin catalog API plus a React/Next-style SPA.
 
-Related: [CONTENT_CATALOG.md](CONTENT_CATALOG.md) · [FRONTEND_EXPERIENCE.md](FRONTEND_EXPERIENCE.md) · [AGENT_BUILDOUT.md](AGENT_BUILDOUT.md)
+Related: [CONTENT_CATALOG.md](CONTENT_CATALOG.md) · [FRONTEND_EXPERIENCE.md](FRONTEND_EXPERIENCE.md) · [AGENT_BUILDOUT.md](AGENT_BUILDOUT.md) · [ASK_CONVERSATIONAL_SEARCH.md](ASK_CONVERSATIONAL_SEARCH.md)
 
 ## Principles
 

@@ -72,6 +72,7 @@ Offline study ≠ fully self-contained. The platform should surface **offline av
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Backend agents | Bounded contexts, filter/suggest/Ask APIs, overlay rules |
 | [docs/FRONTEND_EXPERIENCE.md](docs/FRONTEND_EXPERIENCE.md) | Frontend agents | **UX source of truth**—minimalist guided experience, controls, product areas |
 | [docs/AGENT_BUILDOUT.md](docs/AGENT_BUILDOUT.md) | All parallel agents | Workstreams, contracts, definitions of done |
+| [docs/ASK_CONVERSATIONAL_SEARCH.md](docs/ASK_CONVERSATIONAL_SEARCH.md) | Ask / retrieval agents | Hybrid FTS+dense retrieval, synthesis modes, enhancement priorities |
 
 ## Roadmap stance
 
