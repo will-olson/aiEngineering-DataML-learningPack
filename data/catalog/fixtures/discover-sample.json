@@ -1,0 +1,364 @@
+{
+  "tracks": [
+    {
+      "id": "discover-data",
+      "title": "Discover Datasets & APIs",
+      "product_area": "discover",
+      "description": "Curated public datasets and APIs for projects\u2014plus a local Titanic sample for offline exploration.",
+      "module_ids": [
+        "apd-local-titanic",
+        "apd-ml-uci-repository",
+        "apd-ml-movielens",
+        "apd-ml-free-music-archive",
+        "apd-ml-million-song",
+        "apd-ml-delve",
+        "apd-social-ess",
+        "apd-social-gdelt",
+        "apd-social-gss",
+        "apd-social-hdx",
+        "apd-climate-noaa",
+        "apd-climate-open-meteo",
+        "apd-climate-ecad",
+        "apd-climate-caravan",
+        "apd-gov-canada",
+        "apd-gov-chicago",
+        "apd-gov-australia",
+        "apd-gov-austin",
+        "papi-ml-openvision",
+        "papi-ml-exude",
+        "papi-ml-deepcode",
+        "papi-ml-tensorfeed",
+        "papi-opendata-archive",
+        "papi-opendata-college",
+        "papi-opendata-nobel",
+        "papi-opendata-microlink",
+        "papi-opendata-wikipedia",
+        "papi-weather-open-meteo",
+        "papi-weather-pirate",
+        "papi-weather-us",
+        "papi-weather-wttrin",
+        "papi-weather-opensense",
+        "papi-dev-agify",
+        "papi-dev-bored",
+        "papi-dev-countapi",
+        "papi-dev-cdnjs",
+        "papi-dev-genderize"
+      ],
+      "default_level": "beginner"
+    }
+  ],
+  "modules": [
+    {
+      "id": "apd-local-titanic",
+      "title": "Titanic Survival Sample (local)",
+      "source_path": "forks/awesome-public-datasets/Datasets/titanic.csv.zip",
+      "source_fork": "awesome-public-datasets",
+      "product_area": "discover",
+      "modality": "reference",
+      "level": "beginner",
+      "skills": [
+        "dataset",
+        "pandas",
+        "beginner-ml"
+      ],
+      "prerequisites": [],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 15,
+      "track_ids": [
+        "discover-data"
+      ],
+      "next_ids": [
+        "apd-ml-uci-repository"
+      ],
+      "tags": [
+        "SocialSciences",
+        "dataset"
+      ],
+      "external_url": null,
+      "license_note": "See forks/awesome-public-datasets/LICENSE",
+      "summary": "Vendored Titanic CSV zip for offline exploration and beginner ML practice."
+    },
+    {
+      "id": "apd-ml-uci-repository",
+      "title": "UCI Machine Learning Repository",
+      "source_path": "forks/awesome-public-datasets/README.rst",
+      "source_fork": "awesome-public-datasets",
+      "product_area": "discover",
+      "modality": "reference",
+      "level": "beginner",
+      "skills": [
+        "dataset",
+        "ml",
+        "python"
+      ],
+      "prerequisites": [],
+      "offline_ok": false,
+      "availability": "link_only",
+      "estimated_minutes": 15,
+      "track_ids": [
+        "discover-data"
+      ],
+      "next_ids": [
+        "apd-ml-movielens"
+      ],
+      "tags": [
+        "MachineLearning",
+        "dataset"
+      ],
+      "external_url": "http://archive.ics.uci.edu/ml/",
+      "license_note": "See forks/awesome-public-datasets/LICENSE",
+      "summary": "Classic public ML datasets for classification and regression practice."
+    },
+    {
+      "id": "apd-ml-movielens",
+      "title": "MovieLens Data Sets",
+      "source_path": "forks/awesome-public-datasets/README.rst",
+      "source_fork": "awesome-public-datasets",
+      "product_area": "discover",
+      "modality": "reference",
+      "level": "beginner",
+      "skills": [
+        "dataset",
+        "recsys",
+        "ml"
+      ],
+      "prerequisites": [],
+      "offline_ok": false,
+      "availability": "link_only",
+      "estimated_minutes": 15,
+      "track_ids": [
+        "discover-data"
+      ],
+      "next_ids": [
+        "apd-ml-free-music-archive"
+      ],
+      "tags": [
+        "MachineLearning",
+        "dataset"
+      ],
+      "external_url": "http://grouplens.org/datasets/movielens/",
+      "license_note": "See forks/awesome-public-datasets/LICENSE",
+      "summary": "Movie rating datasets commonly used for recommendation systems."
+    },
+    {
+      "id": "apd-ml-free-music-archive",
+      "title": "Free Music Archive",
+      "source_path": "forks/awesome-public-datasets/README.rst",
+      "source_fork": "awesome-public-datasets",
+      "product_area": "discover",
+      "modality": "reference",
+      "level": "beginner",
+      "skills": [
+        "dataset",
+        "audio",
+        "ml"
+      ],
+      "prerequisites": [],
+      "offline_ok": false,
+      "availability": "link_only",
+      "estimated_minutes": 15,
+      "track_ids": [
+        "discover-data"
+      ],
+      "next_ids": [
+        "apd-ml-million-song"
+      ],
+      "tags": [
+        "MachineLearning",
+        "dataset"
+      ],
+      "external_url": "https://github.com/mdeff/fma",
+      "license_note": "See forks/awesome-public-datasets/LICENSE",
+      "summary": "Large music dataset for MIR and audio machine learning experiments."
+    },
+    {
+      "id": "apd-ml-million-song",
+      "title": "Million Song Dataset",
+      "source_path": "forks/awesome-public-datasets/README.rst",
+      "source_fork": "awesome-public-datasets",
+      "product_area": "discover",
+      "modality": "reference",
+      "level": "beginner",
+      "skills": [
+        "dataset",
+        "audio",
+        "ml"
+      ],
+      "prerequisites": [],
+      "offline_ok": false,
+      "availability": "link_only",
+      "estimated_minutes": 15,
+      "track_ids": [
+        "discover-data"
+      ],
+      "next_ids": [
+        "apd-ml-delve"
+      ],
+      "tags": [
+        "MachineLearning",
+        "dataset"
+      ],
+      "external_url": "http://labrosa.ee.columbia.edu/millionsong/",
+      "license_note": "See forks/awesome-public-datasets/LICENSE",
+      "summary": "Metadata and features for a million contemporary popular music tracks."
+    },
+    {
+      "id": "apd-ml-delve",
+      "title": "Delve Datasets",
+      "source_path": "forks/awesome-public-datasets/README.rst",
+      "source_fork": "awesome-public-datasets",
+      "product_area": "discover",
+      "modality": "reference",
+      "level": "beginner",
+      "skills": [
+        "dataset",
+        "ml"
+      ],
+      "prerequisites": [],
+      "offline_ok": false,
+      "availability": "link_only",
+      "estimated_minutes": 15,
+      "track_ids": [
+        "discover-data"
+      ],
+      "next_ids": [
+        "apd-social-ess"
+      ],
+      "tags": [
+        "MachineLearning",
+        "dataset"
+      ],
+      "external_url": "http://www.cs.toronto.edu/~delve/data/datasets.html",
+      "license_note": "See forks/awesome-public-datasets/LICENSE",
+      "summary": "University of Toronto datasets for classification and regression benchmarks."
+    },
+    {
+      "id": "papi-ml-openvision",
+      "title": "OpenVisionAPI",
+      "source_path": "forks/public-apis/README.md",
+      "source_fork": "public-apis",
+      "product_area": "discover",
+      "modality": "reference",
+      "level": "beginner",
+      "skills": [
+        "api",
+        "computer-vision",
+        "ml"
+      ],
+      "prerequisites": [],
+      "offline_ok": false,
+      "availability": "link_only",
+      "estimated_minutes": 10,
+      "track_ids": [
+        "discover-data"
+      ],
+      "next_ids": [
+        "papi-ml-exude"
+      ],
+      "tags": [
+        "MachineLearning",
+        "api",
+        "auth-no"
+      ],
+      "external_url": "https://openvisionapi.com",
+      "license_note": "See forks/public-apis/LICENSE",
+      "summary": "Open-source computer vision API based on open models."
+    },
+    {
+      "id": "papi-ml-exude",
+      "title": "EXUDE-API",
+      "source_path": "forks/public-apis/README.md",
+      "source_fork": "public-apis",
+      "product_area": "discover",
+      "modality": "reference",
+      "level": "beginner",
+      "skills": [
+        "api",
+        "nlp",
+        "ml"
+      ],
+      "prerequisites": [],
+      "offline_ok": false,
+      "availability": "link_only",
+      "estimated_minutes": 10,
+      "track_ids": [
+        "discover-data"
+      ],
+      "next_ids": [
+        "papi-ml-deepcode"
+      ],
+      "tags": [
+        "MachineLearning",
+        "api",
+        "auth-no"
+      ],
+      "external_url": "http://uttesh.com/exude-api/",
+      "license_note": "See forks/public-apis/LICENSE",
+      "summary": "Text preprocessing API for stopword filtering and stemming."
+    },
+    {
+      "id": "papi-ml-deepcode",
+      "title": "Deepcode",
+      "source_path": "forks/public-apis/README.md",
+      "source_fork": "public-apis",
+      "product_area": "discover",
+      "modality": "reference",
+      "level": "beginner",
+      "skills": [
+        "api",
+        "ml",
+        "code"
+      ],
+      "prerequisites": [],
+      "offline_ok": false,
+      "availability": "link_only",
+      "estimated_minutes": 10,
+      "track_ids": [
+        "discover-data"
+      ],
+      "next_ids": [
+        "papi-ml-tensorfeed"
+      ],
+      "tags": [
+        "MachineLearning",
+        "api",
+        "auth-no"
+      ],
+      "external_url": "https://www.deepcode.ai",
+      "license_note": "See forks/public-apis/LICENSE",
+      "summary": "AI-assisted code review API."
+    },
+    {
+      "id": "papi-ml-tensorfeed",
+      "title": "TensorFeed",
+      "source_path": "forks/public-apis/README.md",
+      "source_fork": "public-apis",
+      "product_area": "discover",
+      "modality": "reference",
+      "level": "beginner",
+      "skills": [
+        "api",
+        "ml"
+      ],
+      "prerequisites": [],
+      "offline_ok": false,
+      "availability": "link_only",
+      "estimated_minutes": 10,
+      "track_ids": [
+        "discover-data"
+      ],
+      "next_ids": [
+        "papi-opendata-archive"
+      ],
+      "tags": [
+        "MachineLearning",
+        "api",
+        "auth-no"
+      ],
+      "external_url": "https://tensorfeed.ai/developers",
+      "license_note": "See forks/public-apis/LICENSE",
+      "summary": "Real-time AI news, model pricing, and agent activity feeds."
+    }
+  ]
+}

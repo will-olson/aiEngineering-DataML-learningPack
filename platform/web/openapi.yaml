@@ -1,0 +1,236 @@
+openapi: 3.0.3
+info:
+  title: DataML Learning Pack Catalog API
+  version: 0.1.0
+  description: Catalog API for Learn, Build, and Discover MVP vertical slices.
+servers:
+  - url: /api/v1
+paths:
+  /tracks:
+    get:
+      summary: List tracks
+      parameters:
+        - name: product_area
+          in: query
+          schema:
+            type: string
+            enum: [learn, build, discover, read]
+      responses:
+        "200":
+          description: Track list
+  /tracks/{id}:
+    get:
+      summary: Track detail with module summaries
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Track and modules
+        "404":
+          description: Not found
+  /modules:
+    get:
+      summary: Filtered modules
+      parameters:
+        - name: product_area
+          in: query
+          schema:
+            type: string
+        - name: level
+          in: query
+          schema:
+            type: string
+        - name: offline_ok
+          in: query
+          schema:
+            type: string
+            enum: ["true", "false"]
+        - name: skill
+          in: query
+          schema:
+            type: string
+        - name: modality
+          in: query
+          schema:
+            type: string
+        - name: track_id
+          in: query
+          schema:
+            type: string
+        - name: availability
+          in: query
+          schema:
+            type: string
+            enum: [local, link_only, runtime_fetch]
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Category/tag filter (repeatable)
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [recommended, title, duration]
+        - name: limit
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Module summaries
+  /modules/{id}:
+    get:
+      summary: Full module record
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Module
+  /suggestions:
+    get:
+      summary: Rule-based suggestions (max 3)
+      parameters:
+        - name: product_area
+          in: query
+          schema:
+            type: string
+        - name: active_track_id
+          in: query
+          schema:
+            type: string
+        - name: last_module_id
+          in: query
+          schema:
+            type: string
+        - name: completed_ids
+          in: query
+          schema:
+            type: string
+          description: Comma-separated module ids
+        - name: selected_level
+          in: query
+          schema:
+            type: string
+        - name: offline_preference
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            maximum: 3
+      responses:
+        "200":
+          description: >
+            Suggestion items with reason and kind
+            (next_lesson | related_lab | matching_dataset | matching_api | related_reading)
+  /resolve/{id}:
+    get:
+      summary: Resolve local/external targets for a module (W4)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Resolve payload
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - module_id
+                  - product_area
+                  - open_kind
+                  - launch
+                properties:
+                  module_id:
+                    type: string
+                  title:
+                    type: string
+                  source_fork:
+                    type: string
+                  source_path:
+                    type: string
+                  local_path:
+                    type: string
+                    nullable: true
+                  external_url:
+                    type: string
+                    nullable: true
+                  offline_ok:
+                    type: boolean
+                  availability:
+                    type: string
+                  attribution:
+                    type: string
+                    nullable: true
+                  license_note:
+                    type: string
+                    nullable: true
+                  skills:
+                    type: array
+                    items:
+                      type: string
+                  tags:
+                    type: array
+                    items:
+                      type: string
+                  product_area:
+                    type: string
+                    enum: [learn, build, discover, read]
+                  local_exists:
+                    type: boolean
+                  open_kind:
+                    type: string
+                    enum: [external, local, unavailable]
+                  launch:
+                    nullable: true
+                    description: LabLauncher hints for build modules; null otherwise
+                    type: object
+                    properties:
+                      cwd_hint:
+                        type: string
+                      commands:
+                        type: array
+                        items:
+                          type: string
+                      requirements_path:
+                        type: string
+                        nullable: true
+                      entry_file:
+                        type: string
+                        nullable: true
+                      notes:
+                        type: string
+                        nullable: true
+        "404":
+          description: Module not found
+  /lessons/{id}:
+    get:
+      summary: Parsed notebook cells for a lesson module
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Lesson content

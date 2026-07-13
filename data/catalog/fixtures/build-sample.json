@@ -1,0 +1,229 @@
+{
+  "tracks": [
+    {
+      "id": "python-practice",
+      "title": "Python Practice Projects",
+      "product_area": "build",
+      "description": "Beginner-to-intermediate Python labs and projects from curated practice scripts.",
+      "module_ids": [
+        "pps-cli-todo",
+        "pps-csv-files",
+        "pps-pyjokes",
+        "pps-random-password",
+        "pps-password-strength",
+        "pps-countdown-timer",
+        "pps-digital-clock",
+        "pps-pomodoro",
+        "pps-age-calculator",
+        "pps-qr-code",
+        "pps-random-name",
+        "pps-fibonacci",
+        "pps-hex-base64",
+        "pps-spelling-corrector",
+        "pps-sorting",
+        "pps-search",
+        "pps-stack",
+        "pps-linked-list",
+        "pps-queues",
+        "pps-automove",
+        "pps-folder-sizes",
+        "pps-dedupe-files",
+        "pps-decision-tree",
+        "pps-heart-disease",
+        "pps-house-price",
+        "pps-movie-rec",
+        "pps-fake-news",
+        "pps-food-analysis",
+        "pps-stock-analysis",
+        "pps-resume-nlp",
+        "pps-weather",
+        "pps-wikipedia"
+      ],
+      "default_level": "beginner"
+    }
+  ],
+  "modules": [
+    {
+      "id": "pps-cli-todo",
+      "title": "CLI Todo App",
+      "source_path": "forks/Python-project-Scripts/PYTHON APPS/CLI-Based-TODO",
+      "source_fork": "Python-project-Scripts",
+      "product_area": "build",
+      "modality": "lab",
+      "level": "beginner",
+      "skills": [
+        "python",
+        "cli"
+      ],
+      "prerequisites": [],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 25,
+      "track_ids": [
+        "python-practice"
+      ],
+      "next_ids": [
+        "pps-csv-files"
+      ],
+      "tags": [
+        "cli"
+      ],
+      "external_url": null,
+      "license_note": "See forks/Python-project-Scripts/LICENSE",
+      "summary": "Build a simple command-line todo list in Python.",
+      "entry_file": "task.py",
+      "launch_commands": [
+        "python task.py"
+      ],
+      "requirements_path": null,
+      "launch_notes": null
+    },
+    {
+      "id": "pps-csv-files",
+      "title": "Working with CSV Files",
+      "source_path": "forks/Python-project-Scripts/PYTHON APPS/CSV_files",
+      "source_fork": "Python-project-Scripts",
+      "product_area": "build",
+      "modality": "lab",
+      "level": "beginner",
+      "skills": [
+        "python",
+        "pandas",
+        "csv"
+      ],
+      "prerequisites": [],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 30,
+      "track_ids": [
+        "python-practice"
+      ],
+      "next_ids": [
+        "pps-pyjokes"
+      ],
+      "tags": [
+        "cli",
+        "data"
+      ],
+      "external_url": null,
+      "license_note": "See forks/Python-project-Scripts/LICENSE",
+      "summary": "Read and write CSV files with Python.",
+      "entry_file": "read_csv.py",
+      "launch_commands": [
+        "pip install -r requirements.txt",
+        "python read_csv.py"
+      ],
+      "requirements_path": "forks/Python-project-Scripts/PYTHON APPS/CSV_files/requirements.txt",
+      "launch_notes": null
+    },
+    {
+      "id": "pps-pyjokes",
+      "title": "PyJokes CLI",
+      "source_path": "forks/Python-project-Scripts/PYTHON APPS/pyjokes",
+      "source_fork": "Python-project-Scripts",
+      "product_area": "build",
+      "modality": "lab",
+      "level": "beginner",
+      "skills": [
+        "python",
+        "cli"
+      ],
+      "prerequisites": [],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 15,
+      "track_ids": [
+        "python-practice"
+      ],
+      "next_ids": [
+        "pps-random-password"
+      ],
+      "tags": [
+        "cli"
+      ],
+      "external_url": null,
+      "license_note": "See forks/Python-project-Scripts/LICENSE",
+      "summary": "Print random programming jokes from the command line.",
+      "entry_file": "jokes.py",
+      "launch_commands": [
+        "pip install -r requirements.txt",
+        "python jokes.py"
+      ],
+      "requirements_path": "forks/Python-project-Scripts/PYTHON APPS/pyjokes/requirements.txt",
+      "launch_notes": null
+    },
+    {
+      "id": "pps-random-password",
+      "title": "Random Password Generator",
+      "source_path": "forks/Python-project-Scripts/PASSWORD RELATED/RandomPassword",
+      "source_fork": "Python-project-Scripts",
+      "product_area": "build",
+      "modality": "lab",
+      "level": "beginner",
+      "skills": [
+        "python",
+        "security"
+      ],
+      "prerequisites": [],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 20,
+      "track_ids": [
+        "python-practice"
+      ],
+      "next_ids": [
+        "pps-password-strength"
+      ],
+      "tags": [
+        "cli",
+        "security"
+      ],
+      "external_url": null,
+      "license_note": "See forks/Python-project-Scripts/LICENSE",
+      "summary": "Generate random passwords with Python.",
+      "entry_file": "password.py",
+      "launch_commands": [
+        "pip install -r requirements.txt",
+        "python password.py"
+      ],
+      "requirements_path": "forks/Python-project-Scripts/PASSWORD RELATED/RandomPassword/requirements.txt",
+      "launch_notes": null
+    },
+    {
+      "id": "pps-password-strength",
+      "title": "Password Strength Checker",
+      "source_path": "forks/Python-project-Scripts/PASSWORD RELATED/password-strength",
+      "source_fork": "Python-project-Scripts",
+      "product_area": "build",
+      "modality": "lab",
+      "level": "beginner",
+      "skills": [
+        "python",
+        "security"
+      ],
+      "prerequisites": [],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 20,
+      "track_ids": [
+        "python-practice"
+      ],
+      "next_ids": [
+        "pps-countdown-timer"
+      ],
+      "tags": [
+        "cli",
+        "security"
+      ],
+      "external_url": null,
+      "license_note": "See forks/Python-project-Scripts/LICENSE",
+      "summary": "Score password strength with simple heuristics.",
+      "entry_file": "password_strength_checker.py",
+      "launch_commands": [
+        "python password_strength_checker.py"
+      ],
+      "requirements_path": null,
+      "launch_notes": null
+    }
+  ]
+}

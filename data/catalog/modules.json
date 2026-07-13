@@ -1,0 +1,4397 @@
+[
+  {
+    "id": "pdsh-00-00-preface",
+    "title": "Preface",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/00.00-Preface.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "beginner",
+    "skills": [
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-01-00-ipython-beyond-normal-python"
+    ],
+    "tags": [
+      "chapter-00"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Preface"
+  },
+  {
+    "id": "pdsh-01-00-ipython-beyond-normal-python",
+    "title": "IPython Beyond Normal Python",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.00-IPython-Beyond-Normal-Python.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "ipython"
+    ],
+    "prerequisites": [
+      "pdsh-00-00-preface"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-01-01-help-and-documentation"
+    ],
+    "tags": [
+      "chapter-01"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 IPython Beyond Normal Python"
+  },
+  {
+    "id": "pdsh-01-01-help-and-documentation",
+    "title": "Help And Documentation",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.01-Help-And-Documentation.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "ipython"
+    ],
+    "prerequisites": [
+      "pdsh-01-00-ipython-beyond-normal-python"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-01-02-shell-keyboard-shortcuts"
+    ],
+    "tags": [
+      "chapter-01"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Help And Documentation"
+  },
+  {
+    "id": "pdsh-01-02-shell-keyboard-shortcuts",
+    "title": "Shell Keyboard Shortcuts",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.02-Shell-Keyboard-Shortcuts.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "ipython"
+    ],
+    "prerequisites": [
+      "pdsh-01-01-help-and-documentation"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-01-03-magic-commands"
+    ],
+    "tags": [
+      "chapter-01"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Shell Keyboard Shortcuts"
+  },
+  {
+    "id": "pdsh-01-03-magic-commands",
+    "title": "Magic Commands",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.03-Magic-Commands.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "ipython"
+    ],
+    "prerequisites": [
+      "pdsh-01-02-shell-keyboard-shortcuts"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-01-04-input-output-history"
+    ],
+    "tags": [
+      "chapter-01"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Magic Commands"
+  },
+  {
+    "id": "pdsh-01-04-input-output-history",
+    "title": "Input Output History",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.04-Input-Output-History.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "ipython"
+    ],
+    "prerequisites": [
+      "pdsh-01-03-magic-commands"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-01-05-ipython-and-shell-commands"
+    ],
+    "tags": [
+      "chapter-01"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Input Output History"
+  },
+  {
+    "id": "pdsh-01-05-ipython-and-shell-commands",
+    "title": "IPython And Shell Commands",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.05-IPython-And-Shell-Commands.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "ipython"
+    ],
+    "prerequisites": [
+      "pdsh-01-04-input-output-history"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-01-06-errors-and-debugging"
+    ],
+    "tags": [
+      "chapter-01"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 IPython And Shell Commands"
+  },
+  {
+    "id": "pdsh-01-06-errors-and-debugging",
+    "title": "Errors and Debugging",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.06-Errors-and-Debugging.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "ipython"
+    ],
+    "prerequisites": [
+      "pdsh-01-05-ipython-and-shell-commands"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-01-07-timing-and-profiling"
+    ],
+    "tags": [
+      "chapter-01"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Errors and Debugging"
+  },
+  {
+    "id": "pdsh-01-07-timing-and-profiling",
+    "title": "Timing and Profiling",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.07-Timing-and-Profiling.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "ipython"
+    ],
+    "prerequisites": [
+      "pdsh-01-06-errors-and-debugging"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-01-08-more-ipython-resources"
+    ],
+    "tags": [
+      "chapter-01"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Timing and Profiling"
+  },
+  {
+    "id": "pdsh-01-08-more-ipython-resources",
+    "title": "More IPython Resources",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.08-More-IPython-Resources.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "ipython"
+    ],
+    "prerequisites": [
+      "pdsh-01-07-timing-and-profiling"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-02-00-introduction-to-numpy"
+    ],
+    "tags": [
+      "chapter-01"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 More IPython Resources"
+  },
+  {
+    "id": "pdsh-02-00-introduction-to-numpy",
+    "title": "Introduction to NumPy",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/02.00-Introduction-to-NumPy.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy"
+    ],
+    "prerequisites": [
+      "pdsh-01-08-more-ipython-resources"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-02-01-understanding-data-types"
+    ],
+    "tags": [
+      "chapter-02"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Introduction to NumPy"
+  },
+  {
+    "id": "pdsh-02-01-understanding-data-types",
+    "title": "Understanding Data Types",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/02.01-Understanding-Data-Types.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy"
+    ],
+    "prerequisites": [
+      "pdsh-02-00-introduction-to-numpy"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-02-02-the-basics-of-numpy-arrays"
+    ],
+    "tags": [
+      "chapter-02"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Understanding Data Types"
+  },
+  {
+    "id": "pdsh-02-02-the-basics-of-numpy-arrays",
+    "title": "The Basics Of NumPy Arrays",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/02.02-The-Basics-Of-NumPy-Arrays.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy"
+    ],
+    "prerequisites": [
+      "pdsh-02-01-understanding-data-types"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-02-03-computation-on-arrays-ufuncs"
+    ],
+    "tags": [
+      "chapter-02"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 The Basics Of NumPy Arrays"
+  },
+  {
+    "id": "pdsh-02-03-computation-on-arrays-ufuncs",
+    "title": "Computation on arrays ufuncs",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/02.03-Computation-on-arrays-ufuncs.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy"
+    ],
+    "prerequisites": [
+      "pdsh-02-02-the-basics-of-numpy-arrays"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-02-04-computation-on-arrays-aggregates"
+    ],
+    "tags": [
+      "chapter-02"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Computation on arrays ufuncs"
+  },
+  {
+    "id": "pdsh-02-04-computation-on-arrays-aggregates",
+    "title": "Computation on arrays aggregates",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/02.04-Computation-on-arrays-aggregates.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy"
+    ],
+    "prerequisites": [
+      "pdsh-02-03-computation-on-arrays-ufuncs"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-02-05-computation-on-arrays-broadcasting"
+    ],
+    "tags": [
+      "chapter-02"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Computation on arrays aggregates"
+  },
+  {
+    "id": "pdsh-02-05-computation-on-arrays-broadcasting",
+    "title": "Computation on arrays broadcasting",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/02.05-Computation-on-arrays-broadcasting.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy"
+    ],
+    "prerequisites": [
+      "pdsh-02-04-computation-on-arrays-aggregates"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-02-06-boolean-arrays-and-masks"
+    ],
+    "tags": [
+      "chapter-02"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Computation on arrays broadcasting"
+  },
+  {
+    "id": "pdsh-02-06-boolean-arrays-and-masks",
+    "title": "Boolean Arrays and Masks",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/02.06-Boolean-Arrays-and-Masks.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy"
+    ],
+    "prerequisites": [
+      "pdsh-02-05-computation-on-arrays-broadcasting"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-02-07-fancy-indexing"
+    ],
+    "tags": [
+      "chapter-02"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Boolean Arrays and Masks"
+  },
+  {
+    "id": "pdsh-02-07-fancy-indexing",
+    "title": "Fancy Indexing",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/02.07-Fancy-Indexing.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy"
+    ],
+    "prerequisites": [
+      "pdsh-02-06-boolean-arrays-and-masks"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-02-08-sorting"
+    ],
+    "tags": [
+      "chapter-02"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Fancy Indexing"
+  },
+  {
+    "id": "pdsh-02-08-sorting",
+    "title": "Sorting",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/02.08-Sorting.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy"
+    ],
+    "prerequisites": [
+      "pdsh-02-07-fancy-indexing"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-02-09-structured-data-numpy"
+    ],
+    "tags": [
+      "chapter-02"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Sorting"
+  },
+  {
+    "id": "pdsh-02-09-structured-data-numpy",
+    "title": "Structured Data NumPy",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/02.09-Structured-Data-NumPy.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy"
+    ],
+    "prerequisites": [
+      "pdsh-02-08-sorting"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-00-introduction-to-pandas"
+    ],
+    "tags": [
+      "chapter-02"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Structured Data NumPy"
+  },
+  {
+    "id": "pdsh-03-00-introduction-to-pandas",
+    "title": "Introduction to Pandas",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.00-Introduction-to-Pandas.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-02-09-structured-data-numpy"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-01-introducing-pandas-objects"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Introduction to Pandas"
+  },
+  {
+    "id": "pdsh-03-01-introducing-pandas-objects",
+    "title": "Introducing Pandas Objects",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.01-Introducing-Pandas-Objects.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-00-introduction-to-pandas"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-02-data-indexing-and-selection"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Introducing Pandas Objects"
+  },
+  {
+    "id": "pdsh-03-02-data-indexing-and-selection",
+    "title": "Data Indexing and Selection",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.02-Data-Indexing-and-Selection.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-01-introducing-pandas-objects"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-03-operations-in-pandas"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Data Indexing and Selection"
+  },
+  {
+    "id": "pdsh-03-03-operations-in-pandas",
+    "title": "Operations in Pandas",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.03-Operations-in-Pandas.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-02-data-indexing-and-selection"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-04-missing-values"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Operations in Pandas"
+  },
+  {
+    "id": "pdsh-03-04-missing-values",
+    "title": "Missing Values",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.04-Missing-Values.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-03-operations-in-pandas"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-05-hierarchical-indexing"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Missing Values"
+  },
+  {
+    "id": "pdsh-03-05-hierarchical-indexing",
+    "title": "Hierarchical Indexing",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.05-Hierarchical-Indexing.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-04-missing-values"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-06-concat-and-append"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Hierarchical Indexing"
+  },
+  {
+    "id": "pdsh-03-06-concat-and-append",
+    "title": "Concat And Append",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.06-Concat-And-Append.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-05-hierarchical-indexing"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-07-merge-and-join"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Concat And Append"
+  },
+  {
+    "id": "pdsh-03-07-merge-and-join",
+    "title": "Merge and Join",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.07-Merge-and-Join.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-06-concat-and-append"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-08-aggregation-and-grouping"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Merge and Join"
+  },
+  {
+    "id": "pdsh-03-08-aggregation-and-grouping",
+    "title": "Aggregation and Grouping",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.08-Aggregation-and-Grouping.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-07-merge-and-join"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-09-pivot-tables"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Aggregation and Grouping"
+  },
+  {
+    "id": "pdsh-03-09-pivot-tables",
+    "title": "Pivot Tables",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.09-Pivot-Tables.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-08-aggregation-and-grouping"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-10-working-with-strings"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Pivot Tables"
+  },
+  {
+    "id": "pdsh-03-10-working-with-strings",
+    "title": "Working With Strings",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.10-Working-With-Strings.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-09-pivot-tables"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-11-working-with-time-series"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Working With Strings"
+  },
+  {
+    "id": "pdsh-03-11-working-with-time-series",
+    "title": "Working with Time Series",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.11-Working-with-Time-Series.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-10-working-with-strings"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-12-performance-eval-and-query"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Working with Time Series"
+  },
+  {
+    "id": "pdsh-03-12-performance-eval-and-query",
+    "title": "Performance Eval and Query",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.12-Performance-Eval-and-Query.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-11-working-with-time-series"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-03-13-further-resources"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Performance Eval and Query"
+  },
+  {
+    "id": "pdsh-03-13-further-resources",
+    "title": "Further Resources",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/03.13-Further-Resources.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [
+      "pdsh-03-12-performance-eval-and-query"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-00-introduction-to-matplotlib"
+    ],
+    "tags": [
+      "chapter-03"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Further Resources"
+  },
+  {
+    "id": "pdsh-04-00-introduction-to-matplotlib",
+    "title": "Introduction To Matplotlib",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.00-Introduction-To-Matplotlib.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-03-13-further-resources"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-01-simple-line-plots"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Introduction To Matplotlib"
+  },
+  {
+    "id": "pdsh-04-01-simple-line-plots",
+    "title": "Simple Line Plots",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.01-Simple-Line-Plots.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-00-introduction-to-matplotlib"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-02-simple-scatter-plots"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Simple Line Plots"
+  },
+  {
+    "id": "pdsh-04-02-simple-scatter-plots",
+    "title": "Simple Scatter Plots",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.02-Simple-Scatter-Plots.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-01-simple-line-plots"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-03-errorbars"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Simple Scatter Plots"
+  },
+  {
+    "id": "pdsh-04-03-errorbars",
+    "title": "Errorbars",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.03-Errorbars.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-02-simple-scatter-plots"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-04-density-and-contour-plots"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Errorbars"
+  },
+  {
+    "id": "pdsh-04-04-density-and-contour-plots",
+    "title": "Density and Contour Plots",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.04-Density-and-Contour-Plots.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-03-errorbars"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-05-histograms-and-binnings"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Density and Contour Plots"
+  },
+  {
+    "id": "pdsh-04-05-histograms-and-binnings",
+    "title": "Histograms and Binnings",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.05-Histograms-and-Binnings.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-04-density-and-contour-plots"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-06-customizing-legends"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Histograms and Binnings"
+  },
+  {
+    "id": "pdsh-04-06-customizing-legends",
+    "title": "Customizing Legends",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.06-Customizing-Legends.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-05-histograms-and-binnings"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-07-customizing-colorbars"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Customizing Legends"
+  },
+  {
+    "id": "pdsh-04-07-customizing-colorbars",
+    "title": "Customizing Colorbars",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.07-Customizing-Colorbars.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-06-customizing-legends"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-08-multiple-subplots"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Customizing Colorbars"
+  },
+  {
+    "id": "pdsh-04-08-multiple-subplots",
+    "title": "Multiple Subplots",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.08-Multiple-Subplots.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-07-customizing-colorbars"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-09-text-and-annotation"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Multiple Subplots"
+  },
+  {
+    "id": "pdsh-04-09-text-and-annotation",
+    "title": "Text and Annotation",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.09-Text-and-Annotation.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-08-multiple-subplots"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-10-customizing-ticks"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Text and Annotation"
+  },
+  {
+    "id": "pdsh-04-10-customizing-ticks",
+    "title": "Customizing Ticks",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.10-Customizing-Ticks.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-09-text-and-annotation"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-11-settings-and-stylesheets"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Customizing Ticks"
+  },
+  {
+    "id": "pdsh-04-11-settings-and-stylesheets",
+    "title": "Settings and Stylesheets",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.11-Settings-and-Stylesheets.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-10-customizing-ticks"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-12-three-dimensional-plotting"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Settings and Stylesheets"
+  },
+  {
+    "id": "pdsh-04-12-three-dimensional-plotting",
+    "title": "Three Dimensional Plotting",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.12-Three-Dimensional-Plotting.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-11-settings-and-stylesheets"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-13-geographic-data-with-basemap"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Three Dimensional Plotting"
+  },
+  {
+    "id": "pdsh-04-13-geographic-data-with-basemap",
+    "title": "Geographic Data With Basemap",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.13-Geographic-Data-With-Basemap.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-12-three-dimensional-plotting"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-14-visualization-with-seaborn"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Geographic Data With Basemap"
+  },
+  {
+    "id": "pdsh-04-14-visualization-with-seaborn",
+    "title": "Visualization With Seaborn",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.14-Visualization-With-Seaborn.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-13-geographic-data-with-basemap"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-04-15-further-resources"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Visualization With Seaborn"
+  },
+  {
+    "id": "pdsh-04-15-further-resources",
+    "title": "Further Resources",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/04.15-Further-Resources.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "matplotlib"
+    ],
+    "prerequisites": [
+      "pdsh-04-14-visualization-with-seaborn"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-00-machine-learning"
+    ],
+    "tags": [
+      "chapter-04"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Further Resources"
+  },
+  {
+    "id": "pdsh-05-00-machine-learning",
+    "title": "Machine Learning",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.00-Machine-Learning.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-04-15-further-resources"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-01-what-is-machine-learning"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Machine Learning"
+  },
+  {
+    "id": "pdsh-05-01-what-is-machine-learning",
+    "title": "What Is Machine Learning",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.01-What-Is-Machine-Learning.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-00-machine-learning"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-02-introducing-scikit-learn"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 What Is Machine Learning"
+  },
+  {
+    "id": "pdsh-05-02-introducing-scikit-learn",
+    "title": "Introducing Scikit Learn",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.02-Introducing-Scikit-Learn.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-01-what-is-machine-learning"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-03-hyperparameters-and-model-validation"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Introducing Scikit Learn"
+  },
+  {
+    "id": "pdsh-05-03-hyperparameters-and-model-validation",
+    "title": "Hyperparameters and Model Validation",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.03-Hyperparameters-and-Model-Validation.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-02-introducing-scikit-learn"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-04-feature-engineering"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Hyperparameters and Model Validation"
+  },
+  {
+    "id": "pdsh-05-04-feature-engineering",
+    "title": "Feature Engineering",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.04-Feature-Engineering.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-03-hyperparameters-and-model-validation"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-05-naive-bayes"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Feature Engineering"
+  },
+  {
+    "id": "pdsh-05-05-naive-bayes",
+    "title": "Naive Bayes",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.05-Naive-Bayes.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-04-feature-engineering"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-06-linear-regression"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Naive Bayes"
+  },
+  {
+    "id": "pdsh-05-06-linear-regression",
+    "title": "Linear Regression",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.06-Linear-Regression.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-05-naive-bayes"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-07-support-vector-machines"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Linear Regression"
+  },
+  {
+    "id": "pdsh-05-07-support-vector-machines",
+    "title": "Support Vector Machines",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.07-Support-Vector-Machines.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-06-linear-regression"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-08-random-forests"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Support Vector Machines"
+  },
+  {
+    "id": "pdsh-05-08-random-forests",
+    "title": "Random Forests",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.08-Random-Forests.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-07-support-vector-machines"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-09-principal-component-analysis"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Random Forests"
+  },
+  {
+    "id": "pdsh-05-09-principal-component-analysis",
+    "title": "Principal Component Analysis",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.09-Principal-Component-Analysis.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-08-random-forests"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-10-manifold-learning"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Principal Component Analysis"
+  },
+  {
+    "id": "pdsh-05-10-manifold-learning",
+    "title": "Manifold Learning",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.10-Manifold-Learning.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-09-principal-component-analysis"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-11-k-means"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Manifold Learning"
+  },
+  {
+    "id": "pdsh-05-11-k-means",
+    "title": "K Means",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.11-K-Means.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-10-manifold-learning"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-12-gaussian-mixtures"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 K Means"
+  },
+  {
+    "id": "pdsh-05-12-gaussian-mixtures",
+    "title": "Gaussian Mixtures",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.12-Gaussian-Mixtures.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-11-k-means"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-13-kernel-density-estimation"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Gaussian Mixtures"
+  },
+  {
+    "id": "pdsh-05-13-kernel-density-estimation",
+    "title": "Kernel Density Estimation",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.13-Kernel-Density-Estimation.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-12-gaussian-mixtures"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-14-image-features"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Kernel Density Estimation"
+  },
+  {
+    "id": "pdsh-05-14-image-features",
+    "title": "Image Features",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.14-Image-Features.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-13-kernel-density-estimation"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [
+      "pdsh-05-15-learning-more"
+    ],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Image Features"
+  },
+  {
+    "id": "pdsh-05-15-learning-more",
+    "title": "Learning More",
+    "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/05.15-Learning-More.ipynb",
+    "source_fork": "PythonDataScienceHandbook",
+    "product_area": "learn",
+    "modality": "lesson",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [
+      "pdsh-05-14-image-features"
+    ],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-ds"
+    ],
+    "next_ids": [],
+    "tags": [
+      "chapter-05"
+    ],
+    "external_url": null,
+    "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+    "summary": "Python Data Science Handbook \u2014 Learning More"
+  },
+  {
+    "id": "apd-local-titanic",
+    "title": "Titanic Survival Sample (local)",
+    "source_path": "forks/awesome-public-datasets/Datasets/titanic.csv.zip",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "pandas",
+      "python",
+      "beginner-ml",
+      "ml"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-ml-uci-repository"
+    ],
+    "tags": [
+      "SocialSciences",
+      "dataset"
+    ],
+    "external_url": null,
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Vendored Titanic CSV zip for offline exploration and beginner ML practice."
+  },
+  {
+    "id": "apd-ml-uci-repository",
+    "title": "UCI Machine Learning Repository",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "ml",
+      "python",
+      "pandas",
+      "scikit-learn"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-ml-movielens"
+    ],
+    "tags": [
+      "MachineLearning",
+      "dataset"
+    ],
+    "external_url": "http://archive.ics.uci.edu/ml/",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Classic public ML datasets for classification and regression practice."
+  },
+  {
+    "id": "apd-ml-movielens",
+    "title": "MovieLens Data Sets",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "recsys",
+      "ml",
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-ml-free-music-archive"
+    ],
+    "tags": [
+      "MachineLearning",
+      "dataset"
+    ],
+    "external_url": "http://grouplens.org/datasets/movielens/",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Movie rating datasets commonly used for recommendation systems."
+  },
+  {
+    "id": "apd-ml-free-music-archive",
+    "title": "Free Music Archive",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "audio",
+      "ml",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-ml-million-song"
+    ],
+    "tags": [
+      "MachineLearning",
+      "dataset"
+    ],
+    "external_url": "https://github.com/mdeff/fma",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Large music dataset for MIR and audio machine learning experiments."
+  },
+  {
+    "id": "apd-ml-million-song",
+    "title": "Million Song Dataset",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "audio",
+      "ml",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-ml-delve"
+    ],
+    "tags": [
+      "MachineLearning",
+      "dataset"
+    ],
+    "external_url": "http://labrosa.ee.columbia.edu/millionsong/",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Metadata and features for a million contemporary popular music tracks."
+  },
+  {
+    "id": "apd-ml-delve",
+    "title": "Delve Datasets",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "ml",
+      "python",
+      "scikit-learn"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-social-ess"
+    ],
+    "tags": [
+      "MachineLearning",
+      "dataset"
+    ],
+    "external_url": "http://www.cs.toronto.edu/~delve/data/datasets.html",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "University of Toronto datasets for classification and regression benchmarks."
+  },
+  {
+    "id": "apd-social-ess",
+    "title": "European Social Survey",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "social-science",
+      "pandas",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-social-gdelt"
+    ],
+    "tags": [
+      "SocialSciences",
+      "dataset"
+    ],
+    "external_url": "http://www.europeansocialsurvey.org/data/",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Cross-national survey data on attitudes, beliefs, and behaviour across Europe."
+  },
+  {
+    "id": "apd-social-gdelt",
+    "title": "GDELT Global Events Database",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "nlp",
+      "events",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-social-gss"
+    ],
+    "tags": [
+      "SocialSciences",
+      "dataset"
+    ],
+    "external_url": "http://gdeltproject.org/data.html",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Global event and media monitoring data for geopolitical analysis."
+  },
+  {
+    "id": "apd-social-gss",
+    "title": "General Social Survey (GSS)",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "social-science",
+      "pandas",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-social-hdx"
+    ],
+    "tags": [
+      "SocialSciences",
+      "dataset"
+    ],
+    "external_url": "http://gss.norc.org",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Longitudinal US social attitudes survey since 1972."
+  },
+  {
+    "id": "apd-social-hdx",
+    "title": "Humanitarian Data Exchange",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "humanitarian",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-climate-noaa"
+    ],
+    "tags": [
+      "SocialSciences",
+      "dataset"
+    ],
+    "external_url": "https://data.humdata.org/",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Open humanitarian datasets from NGOs and international organizations."
+  },
+  {
+    "id": "apd-climate-noaa",
+    "title": "NOAA Climate Datasets",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "climate",
+      "weather",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-climate-open-meteo"
+    ],
+    "tags": [
+      "Climate+Weather",
+      "dataset"
+    ],
+    "external_url": "http://www.ncdc.noaa.gov/data-access/quick-links",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "NOAA climate data access hub for historical and observational weather."
+  },
+  {
+    "id": "apd-climate-open-meteo",
+    "title": "Open-Meteo Weather Data",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "weather",
+      "api",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-climate-ecad"
+    ],
+    "tags": [
+      "Climate+Weather",
+      "dataset"
+    ],
+    "external_url": "https://open-meteo.com",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Open-source weather data and free non-commercial weather API."
+  },
+  {
+    "id": "apd-climate-ecad",
+    "title": "European Climate Assessment & Dataset",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "climate",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-climate-caravan"
+    ],
+    "tags": [
+      "Climate+Weather",
+      "dataset"
+    ],
+    "external_url": "https://www.ecad.eu/",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Daily station observations and climate indices across Europe."
+  },
+  {
+    "id": "apd-climate-caravan",
+    "title": "Caravan Hydrology Dataset",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "climate",
+      "hydrology",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-gov-canada"
+    ],
+    "tags": [
+      "Climate+Weather",
+      "dataset"
+    ],
+    "external_url": "https://zenodo.org/record/7540792",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Large-sample hydrology dataset for catchment modeling research."
+  },
+  {
+    "id": "apd-gov-canada",
+    "title": "Canada Open Data",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "government",
+      "open-data",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-gov-chicago"
+    ],
+    "tags": [
+      "Government",
+      "dataset"
+    ],
+    "external_url": "http://open.canada.ca/",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Federal open data portal for Canada."
+  },
+  {
+    "id": "apd-gov-chicago",
+    "title": "City of Chicago Data Portal",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "government",
+      "open-data",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-gov-australia"
+    ],
+    "tags": [
+      "Government",
+      "dataset"
+    ],
+    "external_url": "https://data.cityofchicago.org/",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Municipal open datasets for Chicago services and operations."
+  },
+  {
+    "id": "apd-gov-australia",
+    "title": "Australia data.gov.au",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "government",
+      "open-data",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "apd-gov-austin"
+    ],
+    "tags": [
+      "Government",
+      "dataset"
+    ],
+    "external_url": "https://data.gov.au/",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "Australian government open data catalog."
+  },
+  {
+    "id": "apd-gov-austin",
+    "title": "Austin, TX Open Data",
+    "source_path": "forks/awesome-public-datasets/README.rst",
+    "source_fork": "awesome-public-datasets",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "dataset",
+      "government",
+      "open-data",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-ml-openvision"
+    ],
+    "tags": [
+      "Government",
+      "dataset"
+    ],
+    "external_url": "https://data.austintexas.gov/",
+    "license_note": "See forks/awesome-public-datasets/LICENSE",
+    "summary": "City of Austin open data portal."
+  },
+  {
+    "id": "papi-ml-openvision",
+    "title": "OpenVisionAPI",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "computer-vision",
+      "ml",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-ml-exude"
+    ],
+    "tags": [
+      "MachineLearning",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://openvisionapi.com",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Open-source computer vision API based on open models."
+  },
+  {
+    "id": "papi-ml-exude",
+    "title": "EXUDE-API",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "nlp",
+      "ml",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-ml-deepcode"
+    ],
+    "tags": [
+      "MachineLearning",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "http://uttesh.com/exude-api/",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Text preprocessing API for stopword filtering and stemming."
+  },
+  {
+    "id": "papi-ml-deepcode",
+    "title": "Deepcode",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "ml",
+      "code",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-ml-tensorfeed"
+    ],
+    "tags": [
+      "MachineLearning",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://www.deepcode.ai",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "AI-assisted code review API."
+  },
+  {
+    "id": "papi-ml-tensorfeed",
+    "title": "TensorFeed",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "ml",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-opendata-archive"
+    ],
+    "tags": [
+      "MachineLearning",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://tensorfeed.ai/developers",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Real-time AI news, model pricing, and agent activity feeds."
+  },
+  {
+    "id": "papi-opendata-archive",
+    "title": "Internet Archive API",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "open-data",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-opendata-college"
+    ],
+    "tags": [
+      "OpenData",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://archive.readme.io/docs",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Programmatic access to Internet Archive collections."
+  },
+  {
+    "id": "papi-opendata-college",
+    "title": "College Scorecard",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "open-data",
+      "education",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-opendata-nobel"
+    ],
+    "tags": [
+      "OpenData",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://collegescorecard.ed.gov/data/",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "US higher-education institution data from the Department of Education."
+  },
+  {
+    "id": "papi-opendata-nobel",
+    "title": "Nobel Prize Open Data",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "open-data",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-opendata-microlink"
+    ],
+    "tags": [
+      "OpenData",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://www.nobelprize.org/about/developer-zone-2/",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Open data about Nobel prizes and related events."
+  },
+  {
+    "id": "papi-opendata-microlink",
+    "title": "Microlink.io",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "web",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-opendata-wikipedia"
+    ],
+    "tags": [
+      "OpenData",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://microlink.io",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Extract structured metadata from any URL."
+  },
+  {
+    "id": "papi-opendata-wikipedia",
+    "title": "Wikipedia / MediaWiki API",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "open-data",
+      "nlp",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-weather-open-meteo"
+    ],
+    "tags": [
+      "OpenData",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://www.mediawiki.org/wiki/API:Main_page",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Query Wikipedia and other MediaWiki sites programmatically."
+  },
+  {
+    "id": "papi-weather-open-meteo",
+    "title": "Open-Meteo",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "weather",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-weather-pirate"
+    ],
+    "tags": [
+      "Weather",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://open-meteo.com/",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Global weather forecast API for non-commercial use (no auth)."
+  },
+  {
+    "id": "papi-weather-pirate",
+    "title": "Pirate Weather",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "weather",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-weather-us"
+    ],
+    "tags": [
+      "Weather",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://pirateweather.net/en/latest/",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Free weather forecast API similar to Dark Sky."
+  },
+  {
+    "id": "papi-weather-us",
+    "title": "US National Weather Service",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "weather",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-weather-wttrin"
+    ],
+    "tags": [
+      "Weather",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://www.weather.gov/documentation/services-web-api",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Official US NWS weather services API."
+  },
+  {
+    "id": "papi-weather-wttrin",
+    "title": "wttr.in",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "weather",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-weather-opensense"
+    ],
+    "tags": [
+      "Weather",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://wttr.in/:help",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Terminal-friendly weather API with JSON output."
+  },
+  {
+    "id": "papi-weather-opensense",
+    "title": "openSenseMap",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "weather",
+      "iot",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-dev-agify"
+    ],
+    "tags": [
+      "Weather",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://api.opensensemap.org/",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Citizen science weather station (senseBox) observations."
+  },
+  {
+    "id": "papi-dev-agify",
+    "title": "Agify.io",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "development",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-dev-bored"
+    ],
+    "tags": [
+      "Development",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://agify.io",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Estimate age from a first name (no auth)."
+  },
+  {
+    "id": "papi-dev-bored",
+    "title": "Bored API",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "development",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-dev-countapi"
+    ],
+    "tags": [
+      "Development",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://www.boredapi.com/",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Random activity suggestions to fight boredom."
+  },
+  {
+    "id": "papi-dev-countapi",
+    "title": "CountAPI",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "development",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-dev-cdnjs"
+    ],
+    "tags": [
+      "Development",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://countapi.xyz",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Simple free counting service for page hits and events."
+  },
+  {
+    "id": "papi-dev-cdnjs",
+    "title": "CDNJS API",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "development",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-dev-genderize"
+    ],
+    "tags": [
+      "Development",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://api.cdnjs.com/libraries/jquery",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Library metadata from the CDNJS frontend CDN."
+  },
+  {
+    "id": "papi-dev-genderize",
+    "title": "Genderize.io",
+    "source_path": "forks/public-apis/README.md",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "beginner",
+    "skills": [
+      "api",
+      "development",
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [],
+    "tags": [
+      "Development",
+      "api",
+      "auth-no"
+    ],
+    "external_url": "https://genderize.io",
+    "license_note": "See forks/public-apis/LICENSE",
+    "summary": "Estimate gender from a first name (no auth)."
+  },
+  {
+    "id": "pps-cli-todo",
+    "title": "CLI Todo App",
+    "source_path": "forks/Python-project-Scripts/PYTHON APPS/CLI-Based-TODO",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "cli"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 25,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-csv-files"
+    ],
+    "tags": [
+      "cli"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Build a simple command-line todo list in Python.",
+    "entry_file": "task.py",
+    "launch_commands": [
+      "python task.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-csv-files",
+    "title": "Working with CSV Files",
+    "source_path": "forks/Python-project-Scripts/PYTHON APPS/CSV_files",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "pandas",
+      "csv"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 30,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-pyjokes"
+    ],
+    "tags": [
+      "cli",
+      "data"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Read and write CSV files with Python.",
+    "entry_file": "read_csv.py",
+    "launch_commands": [
+      "pip install -r requirements.txt",
+      "python read_csv.py"
+    ],
+    "requirements_path": "forks/Python-project-Scripts/PYTHON APPS/CSV_files/requirements.txt",
+    "launch_notes": null
+  },
+  {
+    "id": "pps-pyjokes",
+    "title": "PyJokes CLI",
+    "source_path": "forks/Python-project-Scripts/PYTHON APPS/pyjokes",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "cli"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-random-password"
+    ],
+    "tags": [
+      "cli"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Print random programming jokes from the command line.",
+    "entry_file": "jokes.py",
+    "launch_commands": [
+      "pip install -r requirements.txt",
+      "python jokes.py"
+    ],
+    "requirements_path": "forks/Python-project-Scripts/PYTHON APPS/pyjokes/requirements.txt",
+    "launch_notes": null
+  },
+  {
+    "id": "pps-random-password",
+    "title": "Random Password Generator",
+    "source_path": "forks/Python-project-Scripts/PASSWORD RELATED/RandomPassword",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "security"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-password-strength"
+    ],
+    "tags": [
+      "cli",
+      "security"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Generate random passwords with Python.",
+    "entry_file": "password.py",
+    "launch_commands": [
+      "pip install -r requirements.txt",
+      "python password.py"
+    ],
+    "requirements_path": "forks/Python-project-Scripts/PASSWORD RELATED/RandomPassword/requirements.txt",
+    "launch_notes": null
+  },
+  {
+    "id": "pps-password-strength",
+    "title": "Password Strength Checker",
+    "source_path": "forks/Python-project-Scripts/PASSWORD RELATED/password-strength",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "security"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-countdown-timer"
+    ],
+    "tags": [
+      "cli",
+      "security"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Score password strength with simple heuristics.",
+    "entry_file": "password_strength_checker.py",
+    "launch_commands": [
+      "python password_strength_checker.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-countdown-timer",
+    "title": "Countdown Timer",
+    "source_path": "forks/Python-project-Scripts/TIME SCRIPTS/Countdown Timer",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-digital-clock"
+    ],
+    "tags": [
+      "time"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "A simple countdown timer script.",
+    "entry_file": "timer.py",
+    "launch_commands": [
+      "python timer.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-digital-clock",
+    "title": "Digital Clock",
+    "source_path": "forks/Python-project-Scripts/TIME SCRIPTS/DigitalClock",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "gui"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 25,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-pomodoro"
+    ],
+    "tags": [
+      "time",
+      "gui"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Display a live digital clock UI.",
+    "entry_file": "clock.py",
+    "launch_commands": [
+      "pip install -r requirements.txt",
+      "python clock.py"
+    ],
+    "requirements_path": "forks/Python-project-Scripts/TIME SCRIPTS/DigitalClock/requirements.txt",
+    "launch_notes": null
+  },
+  {
+    "id": "pps-pomodoro",
+    "title": "Pomodoro Timer",
+    "source_path": "forks/Python-project-Scripts/TIME SCRIPTS/Pomodoro-App",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "project",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "gui"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-age-calculator"
+    ],
+    "tags": [
+      "time",
+      "gui"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Focus timer using the Pomodoro technique.",
+    "entry_file": "main.py",
+    "launch_commands": [
+      "python main.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-age-calculator",
+    "title": "Age Calculator",
+    "source_path": "forks/Python-project-Scripts/TIME SCRIPTS/Age calculator",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-qr-code"
+    ],
+    "tags": [
+      "time"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Calculate age from a birth date.",
+    "entry_file": "age.py",
+    "launch_commands": [
+      "python age.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-qr-code",
+    "title": "QR Code Generator",
+    "source_path": "forks/Python-project-Scripts/OTHERS/QrCodeGen",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-random-name"
+    ],
+    "tags": [
+      "cli"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Generate QR codes from text or URLs.",
+    "entry_file": "qr.py",
+    "launch_commands": [
+      "pip install -r requirements.txt",
+      "python qr.py"
+    ],
+    "requirements_path": "forks/Python-project-Scripts/OTHERS/QrCodeGen/requirements.txt",
+    "launch_notes": null
+  },
+  {
+    "id": "pps-random-name",
+    "title": "Random Name Generator",
+    "source_path": "forks/Python-project-Scripts/OTHERS/RandomNameGen",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-fibonacci"
+    ],
+    "tags": [
+      "cli"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Generate random usernames and names.",
+    "entry_file": "user_generator.py",
+    "launch_commands": [
+      "pip install -r requirements.txt",
+      "python user_generator.py"
+    ],
+    "requirements_path": "forks/Python-project-Scripts/OTHERS/RandomNameGen/requirements.txt",
+    "launch_notes": null
+  },
+  {
+    "id": "pps-fibonacci",
+    "title": "Fibonacci Sequence Generator",
+    "source_path": "forks/Python-project-Scripts/OTHERS/Fibonacci_Sequence_Generator",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "algorithms"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-hex-base64"
+    ],
+    "tags": [
+      "dsa"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Generate Fibonacci numbers interactively.",
+    "entry_file": "Fibonacci.py",
+    "launch_commands": [
+      "python Fibonacci.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-hex-base64",
+    "title": "Hex to Base64 Converter",
+    "source_path": "forks/Python-project-Scripts/CONVERSION SCRIPTS/Hex to Base64 Converter",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "encoding"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-spelling-corrector"
+    ],
+    "tags": [
+      "cli"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Convert hexadecimal strings to Base64.",
+    "entry_file": "Hex to Base64 Converter (condensed).py",
+    "launch_commands": [
+      "python \"Hex to Base64 Converter (condensed).py\""
+    ],
+    "requirements_path": "forks/Python-project-Scripts/CONVERSION SCRIPTS/Hex to Base64 Converter/requirements.txt",
+    "launch_notes": null
+  },
+  {
+    "id": "pps-spelling-corrector",
+    "title": "Spelling Corrector",
+    "source_path": "forks/Python-project-Scripts/PYTHON APPS/Spelling Corrector",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "nlp"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 25,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-sorting"
+    ],
+    "tags": [
+      "cli",
+      "nlp"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Correct misspelled words with a simple spellchecker.",
+    "entry_file": "spelling-corrector.py",
+    "launch_commands": [
+      "python spelling-corrector.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-sorting",
+    "title": "Sorting Algorithms",
+    "source_path": "forks/Python-project-Scripts/Data Structures and Algorithms/Sorting Algorithms",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "algorithms"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-search"
+    ],
+    "tags": [
+      "dsa"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Practice classic sorting algorithms in Python.",
+    "entry_file": "Bubble_sort.py",
+    "launch_commands": [
+      "python Bubble_sort.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-search",
+    "title": "Search Algorithms",
+    "source_path": "forks/Python-project-Scripts/Data Structures and Algorithms/Search Algorithms",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "algorithms"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 30,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-stack"
+    ],
+    "tags": [
+      "dsa"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Linear and binary search implementations.",
+    "entry_file": "binary_search.py",
+    "launch_commands": [
+      "python binary_search.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-stack",
+    "title": "Stack Data Structure",
+    "source_path": "forks/Python-project-Scripts/Data Structures and Algorithms/stack",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "algorithms"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 25,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-linked-list"
+    ],
+    "tags": [
+      "dsa"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Implement and exercise a stack.",
+    "entry_file": "stack.py",
+    "launch_commands": [
+      "pip install -r requirements.txt",
+      "python stack.py"
+    ],
+    "requirements_path": "forks/Python-project-Scripts/Data Structures and Algorithms/stack/requirements.txt",
+    "launch_notes": null
+  },
+  {
+    "id": "pps-linked-list",
+    "title": "Linked List",
+    "source_path": "forks/Python-project-Scripts/Data Structures and Algorithms/linked_list.py",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "algorithms"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 30,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-queues"
+    ],
+    "tags": [
+      "dsa"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Linked list operations in a single script.",
+    "entry_file": "linked_list.py",
+    "launch_commands": [
+      "python linked_list.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-queues",
+    "title": "Queues",
+    "source_path": "forks/Python-project-Scripts/Data Structures and Algorithms/queues.py",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "algorithms"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 25,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-automove"
+    ],
+    "tags": [
+      "dsa"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Queue data structure practice script.",
+    "entry_file": "queues.py",
+    "launch_commands": [
+      "python queues.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-automove",
+    "title": "Auto Move Files",
+    "source_path": "forks/Python-project-Scripts/AUTOMATION/AutoMoveFiles",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "project",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "automation"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-folder-sizes"
+    ],
+    "tags": [
+      "automation"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Automatically organize files into folders.",
+    "entry_file": "AutoMoveFiles.py",
+    "launch_commands": [
+      "pip install -r requirements.txt",
+      "python AutoMoveFiles.py"
+    ],
+    "requirements_path": "forks/Python-project-Scripts/AUTOMATION/AutoMoveFiles/requirements.txt",
+    "launch_notes": null
+  },
+  {
+    "id": "pps-folder-sizes",
+    "title": "Folder Size Reporter",
+    "source_path": "forks/Python-project-Scripts/AUTOMATION/Getting Files and Folders sizes",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "beginner",
+    "skills": [
+      "python",
+      "automation"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-dedupe-files"
+    ],
+    "tags": [
+      "automation"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Report sizes of files and folders.",
+    "entry_file": "GettingSizez.py",
+    "launch_commands": [
+      "pip install -r requirements.txt",
+      "python GettingSizez.py"
+    ],
+    "requirements_path": "forks/Python-project-Scripts/AUTOMATION/Getting Files and Folders sizes/requirements.txt",
+    "launch_notes": null
+  },
+  {
+    "id": "pps-dedupe-files",
+    "title": "Remove Duplicate Files",
+    "source_path": "forks/Python-project-Scripts/AUTOMATION/Remove Duplicate Files in Folder",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "automation"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 30,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-decision-tree"
+    ],
+    "tags": [
+      "automation"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Find and remove duplicate files in a folder.",
+    "entry_file": "entduplicate.py",
+    "launch_commands": [
+      "python entduplicate.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-decision-tree",
+    "title": "Decision Tree Classifier",
+    "source_path": "forks/Python-project-Scripts/MachineLearning Projects/Decision Tree",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "project",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 60,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-heart-disease"
+    ],
+    "tags": [
+      "ml"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Train a decision tree classifier notebook.",
+    "entry_file": "Prediction_using_Decision_Tree_Algorithm.ipynb",
+    "launch_commands": [
+      "jupyter notebook Prediction_using_Decision_Tree_Algorithm.ipynb"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-heart-disease",
+    "title": "Heart Disease Prediction",
+    "source_path": "forks/Python-project-Scripts/MachineLearning Projects/Heart-Disease-Prediction",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "project",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml",
+      "pandas"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 75,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-house-price"
+    ],
+    "tags": [
+      "ml"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Predict heart disease from tabular clinical features.",
+    "entry_file": "Script/Heart_disease_prediction.ipynb",
+    "launch_commands": [
+      "jupyter notebook Script/Heart_disease_prediction.ipynb"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-house-price",
+    "title": "House Price Predictor",
+    "source_path": "forks/Python-project-Scripts/MachineLearning Projects/House-Price-Predictor",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "project",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "scikit-learn",
+      "ml",
+      "flask"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 90,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-movie-rec"
+    ],
+    "tags": [
+      "ml"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Train and serve a house price prediction model.",
+    "entry_file": "main.py",
+    "launch_commands": [
+      "python main.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-movie-rec",
+    "title": "Movie Recommendation System",
+    "source_path": "forks/Python-project-Scripts/MachineLearning Projects/Movie recommendation system",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "project",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "ml",
+      "pandas",
+      "recsys"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 70,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-fake-news"
+    ],
+    "tags": [
+      "ml"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Build a content-based movie recommender.",
+    "entry_file": "Movie_recommendation_system.ipynb",
+    "launch_commands": [
+      "jupyter notebook Movie_recommendation_system.ipynb"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-fake-news",
+    "title": "Fake News Detection",
+    "source_path": "forks/Python-project-Scripts/MachineLearning Projects/Fakenews",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "project",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "ml",
+      "nlp",
+      "scikit-learn"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 80,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-food-analysis"
+    ],
+    "tags": [
+      "ml",
+      "nlp"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Classify news articles as real or fake.",
+    "entry_file": "fake_news_detection.py",
+    "launch_commands": [
+      "python fake_news_detection.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-food-analysis",
+    "title": "Food Menu Data Analysis",
+    "source_path": "forks/Python-project-Scripts/MachineLearning Projects/Food-Data-Analysis",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "project",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas",
+      "matplotlib"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 50,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-stock-analysis"
+    ],
+    "tags": [
+      "ml",
+      "data"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Explore and visualize food menu datasets.",
+    "entry_file": "foodanalysis.ipynb",
+    "launch_commands": [
+      "jupyter notebook foodanalysis.ipynb"
+    ],
+    "requirements_path": null,
+    "launch_notes": null
+  },
+  {
+    "id": "pps-stock-analysis",
+    "title": "Stock Analysis",
+    "source_path": "forks/Python-project-Scripts/MachineLearning Projects/Stock-Analysis",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "project",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas",
+      "matplotlib"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "local",
+    "estimated_minutes": 45,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-resume-nlp"
+    ],
+    "tags": [
+      "ml",
+      "data"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Analyze stock price series (may need network for data).",
+    "entry_file": "StockAnalysis.py",
+    "launch_commands": [
+      "python StockAnalysis.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": "This script may fetch live market data\u2014network required."
+  },
+  {
+    "id": "pps-resume-nlp",
+    "title": "Resume Parser (NLP)",
+    "source_path": "forks/Python-project-Scripts/MachineLearning Projects/Resume Parser using NLP",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "project",
+    "level": "advanced",
+    "skills": [
+      "python",
+      "nlp",
+      "ml"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 90,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-weather"
+    ],
+    "tags": [
+      "ml",
+      "nlp"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "NLP-based resume parsing with sample documents.",
+    "entry_file": "Alice Clark CV.txt",
+    "launch_commands": [
+      "# Explore sample CVs and nlp_model artifacts in this folder"
+    ],
+    "requirements_path": null,
+    "launch_notes": "Inspect the vendored model artifacts and sample CVs; adapt training scripts as needed."
+  },
+  {
+    "id": "pps-weather",
+    "title": "Weather Forecasting Scraper",
+    "source_path": "forks/Python-project-Scripts/WEB SCRAPING/Weather Forcasting",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "api",
+      "scraping"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "local",
+    "estimated_minutes": 35,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [
+      "pps-wikipedia"
+    ],
+    "tags": [
+      "automation"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Fetch and display weather forecasts (needs network).",
+    "entry_file": "code.py",
+    "launch_commands": [
+      "pip install -r requirements.txt",
+      "python code.py"
+    ],
+    "requirements_path": "forks/Python-project-Scripts/WEB SCRAPING/Weather Forcasting/requirements.txt",
+    "launch_notes": "Requires network access to weather sources."
+  },
+  {
+    "id": "pps-wikipedia",
+    "title": "Wikipedia Scraper Labs",
+    "source_path": "forks/Python-project-Scripts/WEB SCRAPING/wikipedia",
+    "source_fork": "Python-project-Scripts",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "scraping",
+      "api"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "local",
+    "estimated_minutes": 40,
+    "track_ids": [
+      "python-practice"
+    ],
+    "next_ids": [],
+    "tags": [
+      "automation"
+    ],
+    "external_url": null,
+    "license_note": "See forks/Python-project-Scripts/LICENSE",
+    "summary": "Practice scraping Wikipedia pages (needs network).",
+    "entry_file": "wiki1.py",
+    "launch_commands": [
+      "python wiki1.py"
+    ],
+    "requirements_path": null,
+    "launch_notes": "Requires network access to Wikipedia."
+  }
+]

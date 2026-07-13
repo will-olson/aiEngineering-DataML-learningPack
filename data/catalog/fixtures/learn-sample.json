@@ -1,0 +1,233 @@
+{
+  "tracks": [
+    {
+      "id": "python-ds",
+      "title": "Python Data Science",
+      "product_area": "learn",
+      "description": "Core libraries via the Python Data Science Handbook (IPython, NumPy, Pandas, Matplotlib, scikit-learn).",
+      "module_ids": [
+        "pdsh-00-00-preface",
+        "pdsh-01-00-ipython-beyond-normal-python",
+        "pdsh-01-01-help-and-documentation",
+        "pdsh-01-02-shell-keyboard-shortcuts",
+        "pdsh-01-03-magic-commands",
+        "pdsh-01-04-input-output-history",
+        "pdsh-01-05-ipython-and-shell-commands",
+        "pdsh-01-06-errors-and-debugging",
+        "pdsh-01-07-timing-and-profiling",
+        "pdsh-01-08-more-ipython-resources",
+        "pdsh-02-00-introduction-to-numpy",
+        "pdsh-02-01-understanding-data-types",
+        "pdsh-02-02-the-basics-of-numpy-arrays",
+        "pdsh-02-03-computation-on-arrays-ufuncs",
+        "pdsh-02-04-computation-on-arrays-aggregates",
+        "pdsh-02-05-computation-on-arrays-broadcasting",
+        "pdsh-02-06-boolean-arrays-and-masks",
+        "pdsh-02-07-fancy-indexing",
+        "pdsh-02-08-sorting",
+        "pdsh-02-09-structured-data-numpy",
+        "pdsh-03-00-introduction-to-pandas",
+        "pdsh-03-01-introducing-pandas-objects",
+        "pdsh-03-02-data-indexing-and-selection",
+        "pdsh-03-03-operations-in-pandas",
+        "pdsh-03-04-missing-values",
+        "pdsh-03-05-hierarchical-indexing",
+        "pdsh-03-06-concat-and-append",
+        "pdsh-03-07-merge-and-join",
+        "pdsh-03-08-aggregation-and-grouping",
+        "pdsh-03-09-pivot-tables",
+        "pdsh-03-10-working-with-strings",
+        "pdsh-03-11-working-with-time-series",
+        "pdsh-03-12-performance-eval-and-query",
+        "pdsh-03-13-further-resources",
+        "pdsh-04-00-introduction-to-matplotlib",
+        "pdsh-04-01-simple-line-plots",
+        "pdsh-04-02-simple-scatter-plots",
+        "pdsh-04-03-errorbars",
+        "pdsh-04-04-density-and-contour-plots",
+        "pdsh-04-05-histograms-and-binnings",
+        "pdsh-04-06-customizing-legends",
+        "pdsh-04-07-customizing-colorbars",
+        "pdsh-04-08-multiple-subplots",
+        "pdsh-04-09-text-and-annotation",
+        "pdsh-04-10-customizing-ticks",
+        "pdsh-04-11-settings-and-stylesheets",
+        "pdsh-04-12-three-dimensional-plotting",
+        "pdsh-04-13-geographic-data-with-basemap",
+        "pdsh-04-14-visualization-with-seaborn",
+        "pdsh-04-15-further-resources",
+        "pdsh-05-00-machine-learning",
+        "pdsh-05-01-what-is-machine-learning",
+        "pdsh-05-02-introducing-scikit-learn",
+        "pdsh-05-03-hyperparameters-and-model-validation",
+        "pdsh-05-04-feature-engineering",
+        "pdsh-05-05-naive-bayes",
+        "pdsh-05-06-linear-regression",
+        "pdsh-05-07-support-vector-machines",
+        "pdsh-05-08-random-forests",
+        "pdsh-05-09-principal-component-analysis",
+        "pdsh-05-10-manifold-learning",
+        "pdsh-05-11-k-means",
+        "pdsh-05-12-gaussian-mixtures",
+        "pdsh-05-13-kernel-density-estimation",
+        "pdsh-05-14-image-features",
+        "pdsh-05-15-learning-more"
+      ],
+      "default_level": "beginner"
+    }
+  ],
+  "modules": [
+    {
+      "id": "pdsh-00-00-preface",
+      "title": "Preface",
+      "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/00.00-Preface.ipynb",
+      "source_fork": "PythonDataScienceHandbook",
+      "product_area": "learn",
+      "modality": "lesson",
+      "level": "beginner",
+      "skills": [
+        "python"
+      ],
+      "prerequisites": [],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 20,
+      "track_ids": [
+        "python-ds"
+      ],
+      "next_ids": [
+        "pdsh-01-00-ipython-beyond-normal-python"
+      ],
+      "tags": [
+        "chapter-00"
+      ],
+      "external_url": null,
+      "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+      "summary": "Python Data Science Handbook \u2014 Preface"
+    },
+    {
+      "id": "pdsh-01-00-ipython-beyond-normal-python",
+      "title": "IPython Beyond Normal Python",
+      "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.00-IPython-Beyond-Normal-Python.ipynb",
+      "source_fork": "PythonDataScienceHandbook",
+      "product_area": "learn",
+      "modality": "lesson",
+      "level": "beginner",
+      "skills": [
+        "python",
+        "ipython"
+      ],
+      "prerequisites": [
+        "pdsh-00-00-preface"
+      ],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 35,
+      "track_ids": [
+        "python-ds"
+      ],
+      "next_ids": [
+        "pdsh-01-01-help-and-documentation"
+      ],
+      "tags": [
+        "chapter-01"
+      ],
+      "external_url": null,
+      "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+      "summary": "Python Data Science Handbook \u2014 IPython Beyond Normal Python"
+    },
+    {
+      "id": "pdsh-01-01-help-and-documentation",
+      "title": "Help And Documentation",
+      "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.01-Help-And-Documentation.ipynb",
+      "source_fork": "PythonDataScienceHandbook",
+      "product_area": "learn",
+      "modality": "lesson",
+      "level": "beginner",
+      "skills": [
+        "python",
+        "ipython"
+      ],
+      "prerequisites": [
+        "pdsh-01-00-ipython-beyond-normal-python"
+      ],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 35,
+      "track_ids": [
+        "python-ds"
+      ],
+      "next_ids": [
+        "pdsh-01-02-shell-keyboard-shortcuts"
+      ],
+      "tags": [
+        "chapter-01"
+      ],
+      "external_url": null,
+      "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+      "summary": "Python Data Science Handbook \u2014 Help And Documentation"
+    },
+    {
+      "id": "pdsh-01-02-shell-keyboard-shortcuts",
+      "title": "Shell Keyboard Shortcuts",
+      "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.02-Shell-Keyboard-Shortcuts.ipynb",
+      "source_fork": "PythonDataScienceHandbook",
+      "product_area": "learn",
+      "modality": "lesson",
+      "level": "beginner",
+      "skills": [
+        "python",
+        "ipython"
+      ],
+      "prerequisites": [
+        "pdsh-01-01-help-and-documentation"
+      ],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 35,
+      "track_ids": [
+        "python-ds"
+      ],
+      "next_ids": [
+        "pdsh-01-03-magic-commands"
+      ],
+      "tags": [
+        "chapter-01"
+      ],
+      "external_url": null,
+      "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+      "summary": "Python Data Science Handbook \u2014 Shell Keyboard Shortcuts"
+    },
+    {
+      "id": "pdsh-01-03-magic-commands",
+      "title": "Magic Commands",
+      "source_path": "forks/PythonDataScienceHandbook/notebooks_v1/01.03-Magic-Commands.ipynb",
+      "source_fork": "PythonDataScienceHandbook",
+      "product_area": "learn",
+      "modality": "lesson",
+      "level": "beginner",
+      "skills": [
+        "python",
+        "ipython"
+      ],
+      "prerequisites": [
+        "pdsh-01-02-shell-keyboard-shortcuts"
+      ],
+      "offline_ok": true,
+      "availability": "local",
+      "estimated_minutes": 35,
+      "track_ids": [
+        "python-ds"
+      ],
+      "next_ids": [
+        "pdsh-01-04-input-output-history"
+      ],
+      "tags": [
+        "chapter-01"
+      ],
+      "external_url": null,
+      "license_note": "See forks/PythonDataScienceHandbook/LICENSE-TEXT and LICENSE-CODE",
+      "summary": "Python Data Science Handbook \u2014 Magic Commands"
+    }
+  ]
+}

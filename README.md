@@ -71,8 +71,26 @@ Offline study ≠ fully self-contained. The platform should surface **offline av
 
 ## Roadmap stance
 
-1. **Now:** Vendored learning pack + documentation contracts for parallel agentic buildout.
-2. **Next:** Overlay catalog, catalog API (filters + suggestions), minimalist frontend shell.
-3. **Later (optional):** Local dataset cache, richer lab runtime, personalized recommendations beyond rule-based suggestions.
+1. **Now:** Vendored learning pack + Learn / Build / Discover MVP UI in `platform/web`.
+2. **Shared glue:** Cross-area suggestions close the loop—Learn/Discover → Build (`related_lab`), Build → Learn + Discover matches, Discover → **Use in a lab**, plus `last_product_area` bookmarks, shared `WhatNextPanel` / `ResourceBadge`, and per-area sticky filters.
+3. **Later:** Read area, local dataset cache, richer lab runtime, mobile filter sheet.
 
 Do not treat `forks/` as the primary user navigation surface. Curate through product areas and the catalog overlay.
+
+## Run the Learn, Build & Discover MVP
+
+Product slices in `platform/web`:
+
+| Area | Track | Routes |
+|------|-------|--------|
+| **Learn** | `python-ds` | `/learn`, handbook lessons; What next can link Build/Discover |
+| **Build** | `python-practice` | `/build`, `LabLauncher` (copyable commands + local-exists honesty); What next → next lab, Learn, or matching dataset/API |
+| **Discover** | `discover-data` | `/discover`, Datasets \| APIs; Resource detail can **Use in a lab** |
+
+```bash
+cd platform/web
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). Catalog data lives in [`data/catalog/`](data/catalog/) (read-only over `forks/`). API contract: [`platform/web/openapi.yaml`](platform/web/openapi.yaml) (`GET /api/v1/modules`, `GET /api/v1/resolve/{id}` with `launch` for Build, suggestions including `related_lab` / Discover matches).
