@@ -1,11 +1,83 @@
 openapi: 3.0.3
 info:
   title: DataML Learning Pack Catalog API
-  version: 0.1.0
-  description: Catalog API for Learn, Build, and Discover MVP vertical slices.
+  version: 0.2.0
+  description: Catalog API for Ask, Learn, Build, and Discover. Ask synthesis is gated by server-side OPENAI_API_KEY (never client-supplied).
 servers:
   - url: /api/v1
 paths:
+  /ask:
+    post:
+      summary: Conversational retrieval over Stanford lecture transcripts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query:
+                  type: string
+                course_ids:
+                  type: array
+                  items:
+                    type: string
+                history:
+                  type: array
+                  items:
+                    type: object
+      responses:
+        "200":
+          description: Structured Ask response (answer, definitions, excerpts, lectures, apply)
+  /ask/lectures:
+    get:
+      summary: Browse Stanford lecture modules
+      parameters:
+        - name: course_id
+          in: query
+          schema:
+            type: string
+        - name: q
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Courses + lecture summaries
+  /transcripts/{id}:
+    get:
+      summary: Parsed transcript turns for a Stanford lecture module
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: chunk
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Transcript content
+        "404":
+          description: Not found
+  /glossary:
+    get:
+      summary: Glossary term lookup from lecture definition cues
+      parameters:
+        - name: q
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Glossary entries
   /tracks:
     get:
       summary: List tracks
@@ -194,7 +266,7 @@ paths:
                       type: string
                   product_area:
                     type: string
-                    enum: [learn, build, discover, read]
+                    enum: [learn, build, discover, read, ask]
                   local_exists:
                     type: boolean
                   open_kind:

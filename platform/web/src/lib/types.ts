@@ -1,4 +1,4 @@
-export type ProductArea = "learn" | "build" | "discover" | "read";
+export type ProductArea = "learn" | "build" | "discover" | "read" | "ask";
 export type Modality = "lesson" | "lab" | "project" | "reference" | "reading";
 export type Level = "beginner" | "intermediate" | "advanced" | "production";
 export type Availability = "local" | "link_only" | "runtime_fetch";
@@ -30,6 +30,11 @@ export interface CatalogModule {
   requirements_path?: string | null;
   /** Build labs: freeform launch notes */
   launch_notes?: string | null;
+  /** Stanford lecture extras */
+  pdf_path?: string | null;
+  course_id?: string | null;
+  lecture_number?: number | null;
+  instructor?: string | null;
 }
 
 export interface LaunchHints {
@@ -110,4 +115,77 @@ export interface LessonContent {
   module: CatalogModule;
   cells: NotebookCellView[];
   toc: { id: string; text: string }[];
+}
+
+export interface TranscriptTurn {
+  id: string;
+  speaker: string;
+  role: string;
+  text: string;
+}
+
+export interface TranscriptContent {
+  module: CatalogModule;
+  turns: TranscriptTurn[];
+  duration_minutes: number | null;
+  highlight_chunk_id?: string | null;
+}
+
+export interface AskDefinition {
+  term: string;
+  text: string;
+  chunk_id: string;
+  module_id: string;
+}
+
+export interface AskExcerpt {
+  chunk_id: string;
+  module_id: string;
+  course_id: string;
+  lecture: number;
+  speaker: string;
+  role: string;
+  text: string;
+  score: number;
+  title?: string;
+  track_id?: string;
+}
+
+export interface AskLectureHit {
+  module_id: string;
+  title: string;
+  reason: string;
+  course_id?: string;
+  track_id?: string;
+  lecture_number?: number | null;
+}
+
+export interface AskResponse {
+  answer: string;
+  definitions: AskDefinition[];
+  excerpts: AskExcerpt[];
+  lectures: AskLectureHit[];
+  related_terms: string[];
+  apply: SuggestionItem[];
+  filters_applied: { course_ids: string[] };
+  mode: "retrieval" | "synthesized";
+  llm_available: boolean;
+}
+
+export interface GlossaryEntry {
+  term: string;
+  text: string;
+  chunk_id: string;
+  module_id: string;
+  course_id: string;
+  aliases: string[];
+}
+
+export interface AskCourse {
+  course_id: string;
+  track_id: string;
+  title: string;
+  instructor: string;
+  lecture_count: number;
+  folder: string;
 }

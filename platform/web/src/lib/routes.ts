@@ -5,6 +5,7 @@ export const DEFAULT_TRACK: Record<ProductArea, string> = {
   discover: "discover-data",
   build: "python-practice",
   read: "applied-ml-reading",
+  ask: "stanford-cs229",
 };
 
 export function trackForProductArea(area: ProductArea): string {
@@ -23,9 +24,17 @@ export function hrefForModule(
       return `/build/${trackId ?? DEFAULT_TRACK.build}/${moduleId}`;
     case "read":
       return `/read/${moduleId}`;
+    case "ask":
+      return `/ask`;
     case "learn":
-    default:
-      return `/learn/${trackId ?? DEFAULT_TRACK.learn}/${moduleId}`;
+    default: {
+      const inferred =
+        trackId ??
+        (moduleId.startsWith("stanford-")
+          ? `stanford-${moduleId.split("-")[1]}`
+          : DEFAULT_TRACK.learn);
+      return `/learn/${inferred}/${moduleId}`;
+    }
   }
 }
 

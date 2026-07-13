@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const areas = [
+  { href: "/ask", label: "Ask", enabled: true },
   { href: "/learn", label: "Learn", enabled: true },
   { href: "/build", label: "Build", enabled: true },
   { href: "/discover", label: "Discover", enabled: true },

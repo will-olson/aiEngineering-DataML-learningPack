@@ -12,13 +12,26 @@ export const CATEGORY_LABELS: Record<string, string> = {
 
 /** Map discover category tags → Learn/Build skill tokens for suggestion matching. */
 export const DISCOVER_BRIDGE: Record<string, string[]> = {
-  MachineLearning: ["ml", "scikit-learn", "python", "pandas", "recsys"],
+  MachineLearning: ["ml", "scikit-learn", "python", "pandas", "recsys", "optimization"],
   SocialSciences: ["pandas", "python", "dataset", "social-science"],
   "Climate+Weather": ["weather", "climate", "api", "python"],
   Government: ["open-data", "dataset", "python"],
   OpenData: ["open-data", "api", "dataset", "python"],
   Weather: ["weather", "api", "python"],
   Development: ["api", "development", "python"],
+};
+
+/** Stanford lecture tags → Build/Discover skill bridges */
+export const STANFORD_BRIDGE: Record<string, string[]> = {
+  cs229: ["ml", "scikit-learn", "python", "numpy", "pandas"],
+  cs106a: ["python", "programming", "algorithms"],
+  cs106b: ["python", "algorithms", "programming"],
+  cs107: ["programming", "algorithms"],
+  ee364a: ["ml", "math", "optimization", "python"],
+  ee364b: ["ml", "math", "optimization"],
+  ee263: ["ml", "math", "python"],
+  ee261: ["math", "signal-processing"],
+  cs223a: ["python", "robotics"],
 };
 
 export function categoryFromTags(tags: string[] | undefined): string | null {
@@ -36,6 +49,10 @@ export function bridgeSkillsForModule(skills: string[], tags: string[]): string[
     const bridged = DISCOVER_BRIDGE[tag];
     if (bridged) {
       for (const s of bridged) out.add(s);
+    }
+    const stanford = STANFORD_BRIDGE[tag];
+    if (stanford) {
+      for (const s of stanford) out.add(s);
     }
   }
   return [...out];

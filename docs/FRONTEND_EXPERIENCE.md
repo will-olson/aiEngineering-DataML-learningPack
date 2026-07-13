@@ -52,31 +52,34 @@ No decorative ambient motion.
 ```mermaid
 flowchart LR
   home[Home guided entry]
+  home --> ask[Ask]
   home --> learn[Learn]
   home --> build[Build]
   home --> discover[Discover]
   home --> read[Read]
+  ask --> transcript[Transcript reader]
   learn --> module[Module detail]
   build --> lab[Lab or project]
   discover --> resource[Dataset or API detail]
   read --> article[Reading detail]
   module --> lab
   lab --> resource
+  ask --> lab
 ```
 
 ### Global shell
 
-- Compact top or side nav: Learn / Build / Discover / Read.
+- Compact top or side nav: Ask / Learn / Build / Discover / Read.
 - Persistent **Continue** and entry to **Suggested** (rail or panel).
-- Global search combobox.
+- Global search combobox (catalog) plus dedicated **Ask** conversational surface.
 - Level control available from shell or sticky filter bar.
 
 ### Home
 
 - Brand / product name as hero-level signal.
 - One headline, one short supporting sentence.
-- Primary CTA: **Continue** (if progress exists) or **Start a path**.
-- Secondary CTA: **Browse by level**.
+- Primary CTA: **Ask a question**.
+- Secondary CTA: **Continue** (if progress exists) or **Start a path**.
 - Optional compact SuggestionRail (≤3)—no stats or secondary marketing blocks.
 
 ### Detail views
@@ -148,14 +151,22 @@ Current product area, selected level, last completed module, `offline_ok` prefer
 
 - Sequential module list with progress ticks (`ModuleList` / `ModuleRow`).
 - Level badge + prerequisite hint as quiet metadata.
-- Open → `LessonReader` (render notebook/markdown/Quarto-derived content as available).
-- TOC dropdown for long modules.
+- Open → `LessonReader` (notebook/markdown) or `TranscriptReader` (Stanford HTML lectures).
+- TOC dropdown for long modules; transcript highlight when arriving from Ask citations.
+
+### Ask
+
+- Conversational composer with course filter chips and example queries.
+- Structured results: answer, definitions, excerpts (with lecture deep-links), relevant lectures, related terms, Apply (Build/Discover).
+- Quiet mode badge: retrieval-only vs synthesized (OpenAI via server `.env`).
+- Never collect API keys in the UI.
 
 ### Build
 
 - Lab/project rows or choice cards with time estimate and offline/fetch badges.
 - Clear **Open lab** CTA (`LabLauncher`) showing path/commands/hints—not a fake IDE in v1.
 - Link “needs network” when runtime-fetch is required.
+- `stanford-applied` track mirrors CS229/CS106 themes for Explain-then-Build flows.
 
 ### Discover
 
@@ -186,11 +197,11 @@ Light touch only (e.g. after a Pandas lesson → one practice script + one datas
 
 ### Shell
 
-`AppNav`, `ProductAreaTabs`, `SuggestionRail`, `ContinueBanner`, `GlobalSearchCombobox`, `FilterBar`, `FilterChip`, `LevelSelect`, `TrackSelect`, `SortSelect`, `MobileFilterSheet`
+`AppNav`, `ProductAreaTabs`, `SuggestionRail`, `ContinueBanner`, `GlobalSearchCombobox`, `FilterBar`, `FilterChip`, `LevelSelect`, `TrackSelect`, `SortSelect`, `MobileFilterSheet`, `AskClient`
 
 ### Content
 
-`HomeHero`, `TrackList`, `ModuleList`, `ModuleRow`, `LessonReader`, `LabLauncher`, `ResourceDetail`, `ReadingList`, `ProgressRail`, `ResourceBadge`, `EmptyState`, `WhatNextPanel`
+`HomeHero`, `TrackList`, `ModuleList`, `ModuleRow`, `LessonReader`, `TranscriptReader`, `LabLauncher`, `ResourceDetail`, `ReadingList`, `ProgressRail`, `ResourceBadge`, `EmptyState`, `WhatNextPanel`
 
 ### Interaction notes (all groups)
 

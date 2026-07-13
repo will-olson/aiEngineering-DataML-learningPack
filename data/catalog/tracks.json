@@ -160,5 +160,26 @@
       "pps-wikipedia"
     ],
     "default_level": "beginner"
+  },
+  {
+    "id": "stanford-applied",
+    "title": "Stanford-Applied Practice",
+    "product_area": "build",
+    "description": "Curated practice labs that mirror CS229 / CS106 themes from Ask and Stanford lecture tracks.",
+    "module_ids": [
+      "pps-csv-files",
+      "pps-decision-tree",
+      "pps-heart-disease",
+      "pps-house-price",
+      "pps-movie-rec",
+      "pps-fake-news",
+      "pps-sorting",
+      "pps-search",
+      "pps-stack",
+      "pps-linked-list",
+      "pps-fibonacci",
+      "pps-food-analysis"
+    ],
+    "default_level": "intermediate"
   }
 ]

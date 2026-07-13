@@ -1,0 +1,1234 @@
+[
+  {
+    "term": "your term",
+    "text": "d it is. It\u2019s kinda a matter of how you define your term as to what you mean by close.",
+    "chunk_id": "stanford-cs106b-l19__c004",
+    "module_id": "stanford-cs106b-l19",
+    "course_id": "cs106b",
+    "aliases": []
+  },
+  {
+    "term": "gamma hat",
+    "text": "t to an entire training set is going to define gamma hat to be equal to min over all your training examples of gamma hat, I, right?",
+    "chunk_id": "stanford-cs229-l06__c025",
+    "module_id": "stanford-cs229-l06",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "its fourier transform",
+    "text": "ity less than T less than infinity, you define its Fourier transform by the formula that I just wrote down. The Fourier transform at S is this interval \u2013 minus infinity to infinity, E to the minus 2 PI I S T , F of T, D T. All right? So here, S also i",
+    "chunk_id": "stanford-ee261-l06__c005",
+    "module_id": "stanford-ee261-l06",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "probability",
+    "text": "al integral is equal to 1. And then you define probability by this sort of integral. And again, these things are probably familiar to you, and I apologize for not really talking about them \u2013 talking about the background too much. But I do wa",
+    "chunk_id": "stanford-ee261-l10__c007",
+    "module_id": "stanford-ee261-l10",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "defines the operation",
+    "text": "ed kernel for the operator \u2013 the things defines the operation is a function of two variables.",
+    "chunk_id": "stanford-ee261-l23__c012",
+    "module_id": "stanford-ee261-l23",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "program",
+    "text": "stinguishing between an algorithm and a program is an algorithm is essentially the recipe for doing something. The program is something that is valid syntactically according to the rules of the language. And so Karel actually has some specific",
+    "chunk_id": "stanford-cs106a-l02__c007",
+    "module_id": "stanford-cs106a-l02",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "interface",
+    "text": "interface. You basically just say, \u201cIf Interface is the set of stuff,\u201d and I\u2019ll tell you which classes actually provide that set of stuff. And they don\u2019t have to have any kind of hierarchical relationship, but just the way of decoupling th",
+    "chunk_id": "stanford-cs106a-l10__c022",
+    "module_id": "stanford-cs106a-l10",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "gfillable",
+    "text": "lled GFillable. That\u2019s an interface. So GFillable is a set of methods that a certain set of classes have, and the certain classes that have it are a GArch, a GOval, a GPolygon, and a GRect. So notice you might say, \u201cHey, Marilyn, yeah, th",
+    "chunk_id": "stanford-cs106a-l10__c022",
+    "module_id": "stanford-cs106a-l10",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "use that",
+    "text": "lity? Well, there is a little method we use that is a method of the string class called equals, and the way we write it is kind of funky. We take one of the strings and we say S1 dot equals and then we give it as a parameter the other strin",
+    "chunk_id": "stanford-cs106a-l12__c016",
+    "module_id": "stanford-cs106a-l12",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "gives you back",
+    "text": "ower case K, upper case S, so what that gives you back is a set of just the keys, so just the strings of the names in the phone book. And then you can ask that keyset dot \u2013 so this would all be on one line. \u201cHey, keyset. You\u2019re a collection. G",
+    "chunk_id": "stanford-cs106a-l19__c026",
+    "module_id": "stanford-cs106a-l19",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "object which",
+    "text": "e book dot keyset is returning to you a object which is a set of keys, and then to that object, you\u2019re sending it the iterator message which is giving you back this iterator of strings. Okay? So once I get back this keyset from the hashmap a",
+    "chunk_id": "stanford-cs106a-l19__c027",
+    "module_id": "stanford-cs106a-l19",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "object that",
+    "text": "erator. But it actually is returning an object that is a set, or it actually implements the set interface. Okay? All righty. So one last thing to see, and then I\u2019ll show you all of this kind of stuck together in some code. Java actually giv",
+    "chunk_id": "stanford-cs106a-l19__c028",
+    "module_id": "stanford-cs106a-l19",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "describe",
+    "text": "sort. And one of the easiest of them to describe is an algorithm called radix \u2013 or radix sort. And it comes from back in the days when we had these punch cards with holes in them to represent numbers. And \u2013 so say you had a bunch of three digit",
+    "chunk_id": "stanford-cs106a-l23__c027",
+    "module_id": "stanford-cs106a-l23",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "angle braces",
+    "text": "ers from the CS106 library. Anything in angle braces is a system standard header you\u2019d find everywhere. It matches what you do in import. You say I\u2019m going to be using these features in this class. Let me import its features into here so that t",
+    "chunk_id": "stanford-cs106b-l02__c006",
+    "module_id": "stanford-cs106b-l02",
+    "course_id": "cs106b",
+    "aliases": []
+  },
+  {
+    "term": "use",
+    "text": "I needed to make a list what I want to use is the vector. So we have a vector class in our class library that just solves this problem of you need to collect up this sequence of things, a bunch of scores on a test, a bunch of students w",
+    "chunk_id": "stanford-cs106b-l04__c031",
+    "module_id": "stanford-cs106b-l04",
+    "course_id": "cs106b",
+    "aliases": []
+  },
+  {
+    "term": "develop",
+    "text": "again, but partly what you\u2019re trying to develop is a set of examples you\u2019ve seen before that help you to kind of use those patterns to explore further problems in the future and so a very common way of dividing stuff is you have some co",
+    "chunk_id": "stanford-cs106b-l09__c003",
+    "module_id": "stanford-cs106b-l09",
+    "course_id": "cs106b",
+    "aliases": []
+  },
+  {
+    "term": "will store here",
+    "text": "value that go together, and then what I will store here is a vector of those pairs. They'll give me a key to value; I'll stick them together in that little struct, stick them into my vector, and hopefully be able to retrieve them later. So given t",
+    "chunk_id": "stanford-cs106b-l21__c019",
+    "module_id": "stanford-cs106b-l21",
+    "course_id": "cs106b",
+    "aliases": []
+  },
+  {
+    "term": "index and there",
+    "text": "plementation. The idea that there is an index and there is a vector is not really something that I would want to make part of my public interface. It's really just an internal detail of how I'm managing stuff. Something about what I did, oh yeah,",
+    "chunk_id": "stanford-cs106b-l21__c022",
+    "module_id": "stanford-cs106b-l21",
+    "course_id": "cs106b",
+    "aliases": []
+  },
+  {
+    "term": "vector",
+    "text": "ut conceptually, it's the same thing. A vector is a vector, no matter what language you write it in. The STL on top of that gives you these things called algorithms. I'll talk about this in a little bit. Basically, it's the best thing sin",
+    "chunk_id": "stanford-cs106b-l27__c012",
+    "module_id": "stanford-cs106b-l27",
+    "course_id": "cs106b",
+    "aliases": []
+  },
+  {
+    "term": "hand",
+    "text": "if you have this one function, okay, my hand is a function, this hand is another function, okay and you concern yourself with the execution of one of them and then when I do this you can just think about it reading the code and executing",
+    "chunk_id": "stanford-cs107-l01__c011",
+    "module_id": "stanford-cs107-l01",
+    "course_id": "cs107",
+    "aliases": []
+  },
+  {
+    "term": "means that this",
+    "text": "llocating space for four elements, that means that this is a function. It\u2019s gonna be able to run very, very quickly for the very first calls. And it\u2019s only when I actually push a fifth element, that I detect that allocated space has been saturated,",
+    "chunk_id": "stanford-cs107-l05__c020",
+    "module_id": "stanford-cs107-l05",
+    "course_id": "cs107",
+    "aliases": []
+  },
+  {
+    "term": "because there really",
+    "text": "ocate this array. Now, I say reallocate because there really is a function related to that word in the standard C library. In C++ you have to go ahead and allocate an array that\u2019s bigger.",
+    "chunk_id": "stanford-cs107-l06__c003",
+    "module_id": "stanford-cs107-l06",
+    "course_id": "cs107",
+    "aliases": []
+  },
+  {
+    "term": "assumes that this",
+    "text": "rd coded into the compiler. It actually assumes that this is a function call. This would now appear in the .O file. Does that make sense to people; yes, no? Okay, we compile fine, we compile fine, we compile fine, generates this, the link phase would",
+    "chunk_id": "stanford-cs107-l13__c009",
+    "module_id": "stanford-cs107-l13",
+    "course_id": "cs107",
+    "aliases": []
+  },
+  {
+    "term": "work because this",
+    "text": "ou\u2019re doing. In our system, it wouldn\u2019t work because this is a function blocks until all threads have been completed. So what would happen is you could it an int thread package, you would call one whole thread, but there wouldn\u2019t be any, so it would r",
+    "chunk_id": "stanford-cs107-l15__c018",
+    "module_id": "stanford-cs107-l15",
+    "course_id": "cs107",
+    "aliases": []
+  },
+  {
+    "term": "called and this",
+    "text": "g that run all threads has already been called and this is a function, it\u2019s actually running in some of the thread. And so what I really want to happen is this is a child thread of main to really be spawning grandchildren threads, okay? If run all t",
+    "chunk_id": "stanford-cs107-l17__c013",
+    "module_id": "stanford-cs107-l17",
+    "course_id": "cs107",
+    "aliases": []
+  },
+  {
+    "term": "your parser",
+    "text": "you need to rely on being available to your parser is the set content handler. You don't have to call it up, but then your parser wouldn't do very much, and the parse method which is kind of the method you would expect to send to your parser",
+    "chunk_id": "stanford-cs107-l26__c005",
+    "module_id": "stanford-cs107-l26",
+    "course_id": "cs107",
+    "aliases": []
+  },
+  {
+    "term": "direction cosines",
+    "text": "at matrix, these three vectors form the so-called direction cosines of this frame with respect to this frame. And we can use directly that matrix, that description. So we will have nine parameters only for the orientation plus the position three p",
+    "chunk_id": "stanford-cs223a-l02__c011",
+    "module_id": "stanford-cs223a-l02",
+    "course_id": "cs223a",
+    "aliases": []
+  },
+  {
+    "term": "still this vector",
+    "text": "But still this vector is the vector representing the velocity of point P moving with respect to frame A. Now, if you want, we can put it in C. So don\u2019t be confused about the vector and where we are expressing this v",
+    "chunk_id": "stanford-cs223a-l06__c014",
+    "module_id": "stanford-cs223a-l06",
+    "course_id": "cs223a",
+    "aliases": []
+  },
+  {
+    "term": "heavy motor here",
+    "text": "is heavy, and with the robot, putting a heavy motor here is a problem. So what do we do? We put higher and higher gear ratio reducing the size of the motor, and we can achieve the torque because we are using a high gear ratio.\r\n\r\n\n Now, I wanted to",
+    "chunk_id": "stanford-cs223a-l14__c031",
+    "module_id": "stanford-cs223a-l14",
+    "course_id": "cs223a",
+    "aliases": []
+  },
+  {
+    "term": "laplace smoothing",
+    "text": "Yeah, let\u2019s see. So LaPlace smoothing is a method to give you, sort of, hopefully, better estimates of their probability distribution over a multinomial, and so was I using X to Y in the previous lecture? So in trying to estimate",
+    "chunk_id": "stanford-cs229-l06__c010",
+    "module_id": "stanford-cs229-l06",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "kij",
+    "text": "ix multiplication, this is that, and so KIJ is a kernel function between XI and XJ, so that must equal to this. I assume that K is a valid kernel function, and so there must exist such a value for Phi. This is the inner product between",
+    "chunk_id": "stanford-cs229-l08__c006",
+    "module_id": "stanford-cs229-l08",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "these",
+    "text": "a, in each of these functions \u2013 each of these is a function mapping from the input domain X is the class zero-one. Each of these is a function, and as you vary the parameter\u2019s data, you get different functions. And so let me define the hyp",
+    "chunk_id": "stanford-cs229-l09__c005",
+    "module_id": "stanford-cs229-l09",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "theta",
+    "text": "n non-spam mail, say. So let\u2019s say A of theta is the optimization objective that you really care about, but Bayesian logistic regression is that it optimizes a quantity like that. Right? It\u2019s this sort of maximum likelihood thing and then with t",
+    "chunk_id": "stanford-cs229-l11__c019",
+    "module_id": "stanford-cs229-l11",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "figure out",
+    "text": "nna talk about is let\u2019s say you want to figure out is the algorithm converging, is the optimization algorithm converging, or is the problem with the optimization objective I chose in the first place? Okay? So here\u2019s the diagnostic you can use. Let",
+    "chunk_id": "stanford-cs229-l11__c019",
+    "module_id": "stanford-cs229-l11",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "structure",
+    "text": "b in the learning algorithm to discover so-called structure in the data and several algorithms like cluster analysis, K-means, a mixture of all the sort of the PCA, ICA, and so on. Today, I want to talk about a different class of learning",
+    "chunk_id": "stanford-cs229-l16__c000",
+    "module_id": "stanford-cs229-l16",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "policy",
+    "text": "and all a policy is, a definition of a policy is a function mapping from the states of the actions and so it goes to kind of a policy that tells us so for every state, what action it recommends we take in that state. So concretely, here is",
+    "chunk_id": "stanford-cs229-l16__c009",
+    "module_id": "stanford-cs229-l16",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "fundamental solution",
+    "text": "of convolution with a special solution, so-called fundamental solution, with the initial conditions, with the initial data. It\u2019s something you should expect to see. This is a pretty big major secret of the universe, all right. So take that to heart,",
+    "chunk_id": "stanford-ee261-l05__c009",
+    "module_id": "stanford-ee261-l05",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "function",
+    "text": "ransform for the Fourier transform of a function is the function.",
+    "chunk_id": "stanford-ee261-l06__c008",
+    "module_id": "stanford-ee261-l06",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "inverse fourier transform",
+    "text": "time. It\u2019s also useful to introduce the so-called inverse Fourier transform and let me call the function G. As the interval from minus infinity to infinity of either the plus 2 PI I S T, say G of S D S. All right, now be careful about how the variable \u2013 t",
+    "chunk_id": "stanford-ee261-l06__c008",
+    "module_id": "stanford-ee261-l06",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "stretch theorem",
+    "text": "al properties. I want to talk about the so-called stretch theorem, the shift theorem, and talk about convolution next time. So I want to move ahead a little bit, and make a little bit of a push to get some of the more general properties of this,",
+    "chunk_id": "stanford-ee261-l07__c019",
+    "module_id": "stanford-ee261-l07",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "problem they study",
+    "text": "es and good problems in it. And the one problem they study is the problem \u2013 they use as an example, actually of filtering, is the study of terbidity. Now, I think we actually had some people in earth sciences in the class at one point, I think I remembe",
+    "chunk_id": "stanford-ee261-l09__c001",
+    "module_id": "stanford-ee261-l09",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "jacobian transformation comes",
+    "text": "f variable in a multiple integral \u2013 the so-called Jacobian transformation comes in. But as I like to say, if you're gonna design transistors, chips with millions and millions of transistors on them, you can God damn learn how to change variables in a double i",
+    "chunk_id": "stanford-ee261-l10__c010",
+    "module_id": "stanford-ee261-l10",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "consider this",
+    "text": "e premise, you buy the gag. You want to consider this is a distribution. What does that mean? It always means the same thing. If you want to consider something as a distribution, that says you give me a test function or I give you a test function and",
+    "chunk_id": "stanford-ee261-l12__c017",
+    "module_id": "stanford-ee261-l12",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "prime",
+    "text": "ight now, again, t is a distribution, t prime is a distribution, so t prime has a Fourier transform. This says \u2013 this tells you how to find the Fourier transform of t prime, and how do you do this? Well the Fourier transform of t prime has to",
+    "chunk_id": "stanford-ee261-l14__c007",
+    "module_id": "stanford-ee261-l14",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "principal value distribution",
+    "text": "definition for the pairing, called the so-called principal value distribution, so I'm not gonna talk about that but that's discussed in more detail in the notes.",
+    "chunk_id": "stanford-ee261-l14__c008",
+    "module_id": "stanford-ee261-l14",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "scaling property",
+    "text": "his formula, all right? And that is the so-called scaling property of the delta function. Of delta. And that is \u2013 you wanna consider what is \u2013 let me put it this way, delta of a times x. Not delta shifted to a, but if I scale the independent vari",
+    "chunk_id": "stanford-ee261-l14__c019",
+    "module_id": "stanford-ee261-l14",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "near-field and far-field",
+    "text": "right? There the distinction is between so called near-field and far-field diffraction. So the distance of the image plane determines two kinds of diffraction. One is called far \u2013 one is called near-field, which means relative to the wave \u2013 and it\u2019s usua",
+    "chunk_id": "stanford-ee261-l15__c005",
+    "module_id": "stanford-ee261-l15",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "far-field",
+    "text": "iffraction. And the other is far-field, so called far-field, which is Fraunhoffer diffraction. I can only hope I\u2019m spelling those right. And, usually, when you talk about near-field or far-field, you talk about distances measured relative",
+    "chunk_id": "stanford-ee261-l15__c005",
+    "module_id": "stanford-ee261-l15",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "wave front for",
+    "text": "not essentially, you can assume it\u2019s a so called wave front for the wave, which means that every point here on the plane has the same phase, all right? So the fact that the source \u2013 so that\u2019s the first sort of simplifying assumption. A distant",
+    "chunk_id": "stanford-ee261-l15__c009",
+    "module_id": "stanford-ee261-l15",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "fraunhoffer approximation",
+    "text": "on comes in. And so now we bring in the so called Fraunhoffer approximation, and here\u2019s what that means. So let me, again, draw the picture over here. Here\u2019s the aperture plane over here, here\u2019s x, here\u2019s the origin of the aperture plane, here\u2019s the image",
+    "chunk_id": "stanford-ee261-l15__c017",
+    "module_id": "stanford-ee261-l15",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "double slit experiment",
+    "text": "t really got people freaked out was the so called double slit experiment of Young, and I won\u2019t talk about the experiment. I won\u2019t talk about the experiment or what the results were, but that was a famous early experiment in light, so Young\u2019s double sli",
+    "chunk_id": "stanford-ee261-l15__c025",
+    "module_id": "stanford-ee261-l15",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "phi",
+    "text": "f whatever distribution is operating on phi is the distribution operating on the Fourier transform of phi. So it\u2019s the Shaw function, again, operating on the Fourier transform of phi. This is the sum of shifted deltas. Each delta operates on t",
+    "chunk_id": "stanford-ee261-l16__c010",
+    "module_id": "stanford-ee261-l16",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "poisson summation formula",
+    "text": "ly is some magic here, you bring in the so-called Poisson summation formula. Okay? You need the Poisson summation formula. It is, as I say, one of my good friends who\u2019s a number theorist, analytic number theorist, refers to this as the deepest fact known",
+    "chunk_id": "stanford-ee261-l16__c011",
+    "module_id": "stanford-ee261-l16",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "interpolating function",
+    "text": "give you the function. That'll give the so called interpolating function. So what do you get? You get the inverse Fourier transform of that. That's easy. That's a cosine. That's another cosine.",
+    "chunk_id": "stanford-ee261-l18__c021",
+    "module_id": "stanford-ee261-l18",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "zero padding",
+    "text": "ys of understanding it or massaging it. So-called zero padding, you have a problem on that. You\u2019ll have other chances to experiment with that and other sorts of things, but it\u2019s built into the system. This sort of reciprocity relationship is",
+    "chunk_id": "stanford-ee261-l20__c004",
+    "module_id": "stanford-ee261-l20",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "simply what",
+    "text": "the matrix A? What is the matrix A? Or simply what is the matrix? Neo. A is one, two, three, four, that\u2019s the first column. The second column is, what do I have here, four, one, two three. Third column was three, four, one, two, four by four ma",
+    "chunk_id": "stanford-ee261-l25__c006",
+    "module_id": "stanford-ee261-l25",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "transform value",
+    "text": "urse, get via the convolution theory 4A transform value is the transform of H times the 4A transform of V, or as it is universally written in uppercase letters, capital W is equal to capital H of S times capital V of S. And in this context, in terminol",
+    "chunk_id": "stanford-ee261-l25__c007",
+    "module_id": "stanford-ee261-l25",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "matrix multiplication this",
+    "text": "on, the convolution is also realized by matrix multiplication this is the matrix, therefore, agin vectors of the system are agin vectors of the matrix. But I know the matrix corresponds to an LTI system so the agin vectors are power of complex exponentials one",
+    "chunk_id": "stanford-ee261-l25__c017",
+    "module_id": "stanford-ee261-l25",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "spacial variable",
+    "text": "nction of two variables. That'll be the so-called spacial variable. So you can think of it as just a pair of numbers, X1 and X2, but again, I'm going to write that as a vector in most cases.",
+    "chunk_id": "stanford-ee261-l26__c003",
+    "module_id": "stanford-ee261-l26",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "line impulse",
+    "text": "Now you can think of this \u2013 so this is so-called line impulse. So you can think of this intuitively as a delta function which is concentrated along the line, so it\u2019s infinite \u2013 we don\u2019t think these ways because we\u2019re very sophisticated. It\u2019s",
+    "chunk_id": "stanford-ee261-l30__c009",
+    "module_id": "stanford-ee261-l30",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "turns out this",
+    "text": "16 state single-output system. Now, it turns out this is a model of a lightly damped mechanical system, but it really doesn't matter what it is for now. But if you want a physical picture of what this is, it is a mechanical system with sort of",
+    "chunk_id": "stanford-ee263-l01__c017",
+    "module_id": "stanford-ee263-l01",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "trim condition",
+    "text": "hat. In aeronautics, you would have the so-called trim condition.",
+    "chunk_id": "stanford-ee263-l02__c020",
+    "module_id": "stanford-ee263-l02",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "jth unit vector",
+    "text": "have X is EJ, the jth unit vector, the jth unit vector is a vector with 0s everywhere and a 1 in the jth position, I do want to warn you about one thing. In some fields, I won\u2019t even name them, the vector e without a subscript is meant to be the",
+    "chunk_id": "stanford-ee263-l03__c008",
+    "module_id": "stanford-ee263-l03",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "say this",
+    "text": "een \u2013 you\u2019d say that the same way you\u2019d say this is a set of non-zero vectors. When I say this is a set of non-zero vectors, it means it\u2019s a set of vectors, each of which is non-zero. If you use the same expansion, for this is a set of i",
+    "chunk_id": "stanford-ee263-l03__c024",
+    "module_id": "stanford-ee263-l03",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "for this",
+    "text": "on-zero. If you use the same expansion, for this is a set of independent vectors, you mean something like it\u2019s a set of vectors, each of which is independent. I mean that has a meaning and it is absolutely not the same as what the person",
+    "chunk_id": "stanford-ee263-l03__c024",
+    "module_id": "stanford-ee263-l03",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "independent",
+    "text": "ear, it makes no sense, the argument of independent is a set of vectors; it\u2019s not a vector. Okay, so what does this mean? To say that the only way you can add some vectors up and make 0 is by plugging in 0 coefficients. It says basically th",
+    "chunk_id": "stanford-ee263-l03__c025",
+    "module_id": "stanford-ee263-l03",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "returns",
+    "text": "s, the data structure, the data type it returns is a set. In fact, it\u2019s a sub space \u2013 thus its name. It returns a sub space of the input space, okay. So it\u2019s easy to just look at this, but these are very complicated operators and that\u2019s",
+    "chunk_id": "stanford-ee263-l03__c029",
+    "module_id": "stanford-ee263-l03",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "left inverse",
+    "text": "nd only if it has a left inverse. Now a left inverse is a matrix B, which when multiplied on the left \u2013 Sorry, when it multiplies A on the left it gives you the identity. That\u2019s what BA is. Now you may or may not have seen this. You have probab",
+    "chunk_id": "stanford-ee263-l04__c002",
+    "module_id": "stanford-ee263-l04",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "audio clip",
+    "text": "s of different lengths. For example, an audio clip is a vector, but N depends on what the length of the audio segment is. And you want to talk about different things like that. Or it could be any other signal. It\u2019s extremely common to normali",
+    "chunk_id": "stanford-ee263-l04__c027",
+    "module_id": "stanford-ee263-l04",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "all you need",
+    "text": "All you need is a method to get \u2013 you just request columns, and you check against the other one. You could basically say you know what? If the ranks more than 20, forget it; this idea is not gonna fly. So",
+    "chunk_id": "stanford-ee263-l05__c024",
+    "module_id": "stanford-ee263-l05",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "orthogonality principle",
+    "text": "k at a couple of things here. There's a so-called Orthogonality Principle, and that says this: That the residual \u2013",
+    "chunk_id": "stanford-ee263-l06__c009",
+    "module_id": "stanford-ee263-l06",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "state two",
+    "text": "something like, the system is working. State two is the system is down, and state three is the system is being repaired. This is the Marvok chain. Now, of course, you could go through it and look at rows and columns, and figure out exactly wh",
+    "chunk_id": "stanford-ee263-l10__c008",
+    "module_id": "stanford-ee263-l10",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "phase variable trick",
+    "text": "ping matrix, and you do the same \u2013 this so-called phase variable trick that we just did, and you take a state is x is q and q dot, so \u2013 and you get \u2013 so you get positions and velocities, and you have x dot is q dot and q double dot, but q double dot",
+    "chunk_id": "stanford-ee263-l10__c021",
+    "module_id": "stanford-ee263-l10",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "itself",
+    "text": "ght to matrices from scalars. And so, Z itself is a function that maps non-negative scalars into P by Q matrices. So it\u2019s a P by Q matrix valued function on R plus; that\u2019s what Z is. Now the Laplace transform, that\u2019s written several ways. O",
+    "chunk_id": "stanford-ee263-l11__c003",
+    "module_id": "stanford-ee263-l11",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "jordan block",
+    "text": "ones on the superdiagonal. So that\u2019s a so-called Jordan block. By the way, a one by one Jordan block is a little matrix that looks like this. Okay? So a diagonal matrix is a special case of a Jordan form. It\u2019s the special case when there are",
+    "chunk_id": "stanford-ee263-l13__c019",
+    "module_id": "stanford-ee263-l13",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "have",
+    "text": ". Now, if I have a method, that's all I have is a method for matrix vector multiply. By the way, this is often associated with an inversion problem. This is a simulator. For example, let's do medical imaging. X is 10 million variables.",
+    "chunk_id": "stanford-ee263-l14__c011",
+    "module_id": "stanford-ee263-l14",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "diagonal form",
+    "text": "et something like this, and that is the so-called diagonal form of a linear dynamic system. That\u2019s the diagonal form, just as an example. Now, you might ask why would you want to change coordinates like this. Well, you might wanna change coord",
+    "chunk_id": "stanford-ee263-l15__c011",
+    "module_id": "stanford-ee263-l15",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "returned",
+    "text": "A bigger than or equal to zero, what is returned is a matrix of bullions that tells you which entries are positive and which is not. And that would be true pretty much in any reasonable high-level language library for doing linear algebra.",
+    "chunk_id": "stanford-ee263-l16__c021",
+    "module_id": "stanford-ee263-l16",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "look for",
+    "text": "the SVD expansion. What we're going to look for is a matrix of rank P, which is less than R. We want this to be a rank P approximation of A. How are we going to measure approximation? We're going to measure it by the norm of A minus A-half",
+    "chunk_id": "stanford-ee263-l18__c007",
+    "module_id": "stanford-ee263-l18",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "factor model",
+    "text": "w would you then actually calculate the so-called factor model in this case? How would you calculate an orthonormal basis of that three-dimensional subspace of the price subspace?",
+    "chunk_id": "stanford-ee263-l18__c022",
+    "module_id": "stanford-ee263-l18",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "guess there",
+    "text": "to maybe 10, and growing, inquiries. I guess there is a problem involving \u2013 the title is something like time compression equalizer, does this strike a bell? Vaguely. You look worn out. No? Okay. It\u2019s just early. Okay. All right. So we fielded",
+    "chunk_id": "stanford-ee263-l19__c000",
+    "module_id": "stanford-ee263-l19",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "say that everything",
+    "text": "ing \u2013 solving optimization problems. To say that everything is an optimization problem is a stupid tautology. It all comes down to this. How do you solve them? It turns out it\u2019s really hard, and basically in general, I think it\u2019s fair to say it can\u2019t be done",
+    "chunk_id": "stanford-ee364a-l01__c010",
+    "module_id": "stanford-ee364a-l01",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "linear programming",
+    "text": "s, you\u2019re going to know a lot about it. Linear programming is a problem that looks like this. Minimize a linear function subject to a bunch of linear inequalities. We\u2019re going to talk about it in horrible detail later in the class, so I\u2019m not going to",
+    "chunk_id": "stanford-ee364a-l01__c020",
+    "module_id": "stanford-ee364a-l01",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "p-norm for",
+    "text": "ater, by the way, using things like the so called p-norm for P less than one, but it\u2019s not a norm, so it\u2019s weird.",
+    "chunk_id": "stanford-ee364a-l03__c007",
+    "module_id": "stanford-ee364a-l03",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "dgdx which",
+    "text": "its G prime, that\u2019s of course \u2013 that\u2019s DGDX which is a vector times then the hessian evaluated G of X times G prime, so that\u2019s a quadratic form, and then plus this thing. And that\u2019s nothing but sum. This is partial H, partial whatever, it\u2019s",
+    "chunk_id": "stanford-ee364a-l04__c010",
+    "module_id": "stanford-ee364a-l04",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "perspective",
+    "text": "it actually does come up. So that\u2019s the so-called perspective of a function. So the perspective of a function is a transformation. It does this; it takes a function from RN to R and it\u2019s gonna produce a function which has one more argument,",
+    "chunk_id": "stanford-ee364a-l04__c021",
+    "module_id": "stanford-ee364a-l04",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "for example here",
+    "text": "Constant, okay. For example here is a function, 3 convex, let\u2019s keep going, anything else?",
+    "chunk_id": "stanford-ee364a-l04__c029",
+    "module_id": "stanford-ee364a-l04",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "conic form problem",
+    "text": "st general case and that\u2019s this. It\u2019s a so called conic form problem and you\u2019ll hear a lot about this. I don\u2019t think it\u2019s that interesting and I\u2019ll tell you why in a minute. Let me show you what is it. You\u2019ll hear a whole lot about it. It\u2019s a very",
+    "chunk_id": "stanford-ee364a-l07__c002",
+    "module_id": "stanford-ee364a-l07",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "dual function",
+    "text": "hat\u2019s a lagrangian. Then we look at the so-called dual function or the lagrange dual function, it\u2019s got other names, but let\u2019s look at it. So the lagrange dual function is actually very, very simple. It just says minimize this lagrangian over",
+    "chunk_id": "stanford-ee364a-l08__c001",
+    "module_id": "stanford-ee364a-l08",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "standard form",
+    "text": "at looks like this. Okay. So here\u2019s the so called standard form LP and then this is what it looks like when you have actually pulled out this implicit constraint. Technically speaking, this is not the lagrange dual of that. However, people wou",
+    "chunk_id": "stanford-ee364a-l08__c014",
+    "module_id": "stanford-ee364a-l08",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "analytical solution they",
+    "text": "e people say things like no \u2013 defending so called analytical solution they\u2019ll say things like, oh no, no, but an analytical is much faster. Actually, that\u2019s false in fact. That is just completely false. Actually, computational complexity, if you use \u2013 if",
+    "chunk_id": "stanford-ee364a-l09__c011",
+    "module_id": "stanford-ee364a-l09",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "analytic solution",
+    "text": "e faster than, in fact, doing it by the so-called analytic solution.",
+    "chunk_id": "stanford-ee364a-l09__c011",
+    "module_id": "stanford-ee364a-l09",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "two",
+    "text": "would see here is that, for example, F two is the constraint. If someone were gonna give you some more resources, and you wanted to ask for more resources, you\u2019d actually ask for F two \u2013 whatever F two represents, that\u2019s the resource you\u2019d",
+    "chunk_id": "stanford-ee364a-l09__c021",
+    "module_id": "stanford-ee364a-l09",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "equality form",
+    "text": "two STPs. By the way, this is an STP in so called equality form. And depending on a person\u2019s background, they\u2019ll either think of this one as the primal and this one as the dual, or this one is the primal, this is the dual.",
+    "chunk_id": "stanford-ee364a-l09__c042",
+    "module_id": "stanford-ee364a-l09",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "cost function that",
+    "text": "or each pair of points here, you have a cost function that is a function of the pair of distance. In fact, usually it\u2019s a function of a norm of the difference, but it could just be a function of the pair. And I\u2019ll give you some examples here. Let\u2019s do",
+    "chunk_id": "stanford-ee364a-l13__c013",
+    "module_id": "stanford-ee364a-l13",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "barrier for the",
+    "text": "show this. Other examples, this is the so-called barrier for the second order cone. There's plenty. We'll get to that.",
+    "chunk_id": "stanford-ee364a-l16__c010",
+    "module_id": "stanford-ee364a-l16",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "kkt matrix",
+    "text": "emi-definite 1 X 1 block. So that's the so called KKT matrix. It's non singular if and only if the following is true. On the null space of A, P is positive definite. That's the condition here. That's exactly the condition. And that's the sa",
+    "chunk_id": "stanford-ee364a-l16__c031",
+    "module_id": "stanford-ee364a-l16",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "kkt for minimizing",
+    "text": "So this, the so called KKT for minimizing a convex quadratic with equality constraints; it's a set of linear equations. By linear equations already with structure, it's got blocked structure. It's got this weird 2 x 2 blo",
+    "chunk_id": "stanford-ee364a-l16__c032",
+    "module_id": "stanford-ee364a-l16",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "constraint form",
+    "text": "a set of linear equalities, this is in so called constraint form. People call that constraint for, because it's a set of X that satisfies some equations. You can also write it in so called free parameter form. If you write it in free parameter",
+    "chunk_id": "stanford-ee364a-l16__c032",
+    "module_id": "stanford-ee364a-l16",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "free parameter form",
+    "text": "ome equations. You can also write it in so called free parameter form. If you write it in free parameter form, you write it this way, it's X hat or sometimes XP, well P collides with that one. But anyway, it means particular; it's a particular solut",
+    "chunk_id": "stanford-ee364a-l16__c032",
+    "module_id": "stanford-ee364a-l16",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "primal residual",
+    "text": "at things like a x minus b. That\u2019s the so-called primal residual, and the other thing you look at is the dual residual, which will give you the optimality conditions. So here, the way it works is this. In this case, it\u2019s no different, you simpl",
+    "chunk_id": "stanford-ee364a-l17__c003",
+    "module_id": "stanford-ee364a-l17",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "warm start",
+    "text": "s easy \u2013 for example, if you\u2019re doing a so-called warm start. Warm start means you\u2019ve solved a problem just like the last one, except now it changes a little bit. So you\u2019re doing \u2013 doesn\u2019t really matter what you\u2019re doing \u2013 but you just solv",
+    "chunk_id": "stanford-ee364a-l17__c007",
+    "module_id": "stanford-ee364a-l17",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "log barrier for",
+    "text": "imize minus the sum log x i. That\u2019s the so-called log barrier for x strictly positive subject to a x = b. We have a point x, which satisfies a x = b and x is positive. So we start with that, if we do the prime, the whatever you call it, the stan",
+    "chunk_id": "stanford-ee364a-l17__c012",
+    "module_id": "stanford-ee364a-l17",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "quasi-gradient",
+    "text": "ght do bisection, for example. Okay, so quasi-gradient is a vector that satisfies the following.",
+    "chunk_id": "stanford-ee364b-l02__c003",
+    "module_id": "stanford-ee364b-l02",
+    "course_id": "ee364b",
+    "aliases": []
+  },
+  {
+    "term": "optimal step size",
+    "text": "t, and I think, this is the Polyak, the so called optimal step size is this thing, and you can see it does as well as the \u2013 as any subgradient method is gonna do. And that\u2019s what this one is. Again, it\u2019s not terrible. That\u2019s what it is. Okay, so n",
+    "chunk_id": "stanford-ee364b-l03__c018",
+    "module_id": "stanford-ee364b-l03",
+    "course_id": "ee364b",
+    "aliases": []
+  },
+  {
+    "term": "your set",
+    "text": "he unit, the maximum singular value. So your set is the set of all matrices with maximum singular value or norm, less than or equal to one. Guess. I mean, if you know the answer, fine, but just go ahead and make a guess. How would you trun",
+    "chunk_id": "stanford-ee364b-l03__c024",
+    "module_id": "stanford-ee364b-l03",
+    "course_id": "ee364b",
+    "aliases": []
+  },
+  {
+    "term": "see that this",
+    "text": "or it. This is the uristic. And you can see that this is the distribution here. And you can see that the uristic is already doing a lot better. I guess this is the mean of this. So it\u2019s an estimate, well, modulo 100 Monte Carlo samples. That\u2019s an estima",
+    "chunk_id": "stanford-ee364b-l05__c011",
+    "module_id": "stanford-ee364b-l05",
+    "course_id": "ee364b",
+    "aliases": []
+  },
+  {
+    "term": "sine algorithm",
+    "text": "goes back into the \u201870s, maybe, is this so-called sine algorithm.",
+    "chunk_id": "stanford-ee364b-l05__c013",
+    "module_id": "stanford-ee364b-l05",
+    "course_id": "ee364b",
+    "aliases": []
+  },
+  {
+    "term": "epigraph cutting-plane method",
+    "text": "pen. Okay. Another variation on this is so-called epigraph cutting-plane method. If you have \u2013 it works like this. You put the problem into epigraph form like this, and what you\u2019re really going to do is get a cutting-plane oracle for this problem here. So thi",
+    "chunk_id": "stanford-ee364b-l06__c022",
+    "module_id": "stanford-ee364b-l06",
+    "course_id": "ee364b",
+    "aliases": []
+  },
+  {
+    "term": "concave and this",
+    "text": "vex problem, obviously, because this is concave and this is a set of linear inequalities. So it\u2019s obviously a convex problem. In fact, the interesting part is here, since we\u2019re taking the objective is completely separable. In fact, that\u2019s the hi",
+    "chunk_id": "stanford-ee364b-l10__c001",
+    "module_id": "stanford-ee364b-l10",
+    "course_id": "ee364b",
+    "aliases": []
+  },
+  {
+    "term": "problem because tau",
+    "text": "apply. This is an infinite dimensional problem because tau is a function here, but let\u2019s look at some of the parts. That\u2019s at least convex functional. These are all cool. This is cool too. So the only part that is un-cool is the dynamics equality const",
+    "chunk_id": "stanford-ee364b-l11__c023",
+    "module_id": "stanford-ee364b-l11",
+    "course_id": "ee364b",
+    "aliases": []
+  },
+  {
+    "term": "terminal constraint",
+    "text": "y the way, there are variations on this so-called terminal constraint, but the easiest is just to put that there. You\u2019ll do this planning exercise. Literally, at time T you will work out an optimal control that would take the state to zero in capita",
+    "chunk_id": "stanford-ee364b-l16__c012",
+    "module_id": "stanford-ee364b-l16",
+    "course_id": "ee364b",
+    "aliases": []
+  },
+  {
+    "term": "revenue management",
+    "text": ", although not called MPC. It\u2019s used in so-called revenue management. Do you know what that is? That\u2019s basically these sleazy ways companies get to part with most of your money possible and you\u2019ll be happy to know this is what\u2019s doing it. This is h",
+    "chunk_id": "stanford-ee364b-l16__c033",
+    "module_id": "stanford-ee364b-l16",
+    "course_id": "ee364b",
+    "aliases": []
+  },
+  {
+    "term": "bar",
+    "text": "e to people? So if I do this, if I just define bar to be this, to be the listification of A, B, C, and D, list just basically takes all of these elements and wraps an extra bookend of parentheses around it, okay? So if I call the bar fu",
+    "chunk_id": "stanford-cs107-l23__c006",
+    "module_id": "stanford-cs107-l23",
+    "course_id": "cs107",
+    "aliases": []
+  },
+  {
+    "term": "kxz",
+    "text": "ralizations to this. One is that if you define KXZ to be equal to X transpose Z plus C squared, so again, you can compute this kernel in order N time, then that turns out to correspond to a feature vector where I\u2019m just going to add a f",
+    "chunk_id": "stanford-cs229-l08__c004",
+    "module_id": "stanford-cs229-l08",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "training error",
+    "text": "e just write that down. So I\u2019m going to define training error as \u2013 so this is a training error of a hypothesis X subscript data. Write this epsilon hat of subscript data. If I want to make the dependence on a training set explicit, I\u2019ll write t",
+    "chunk_id": "stanford-cs229-l09__c004",
+    "module_id": "stanford-cs229-l09",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "phi hat",
+    "text": "an estimate or something else. So when we define Phi hat to be 1 over M, semper my equals one through MZI. Okay? So this is our attempt to estimate the mean of these Benuve random variables by sort of taking its average. And let any gamma be",
+    "chunk_id": "stanford-cs229-l09__c010",
+    "module_id": "stanford-cs229-l09",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "delta",
+    "text": "he origin. Turn that into a definition. Define Delta by Delta paired with Phi is what? Phi of zero. Phi is a class of test functions. That is given to you. You give me a test function. I have to tell you what Delta does to that test fu",
+    "chunk_id": "stanford-ee261-l12__c014",
+    "module_id": "stanford-ee261-l12",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "int and this",
+    "text": "\u2019re gonna call is something called Read INT and this is a method that\u2019s provided for you in console programs. All console programs can do this. The way it works is you give it some text between two double quotes. It writes that text on the scre",
+    "chunk_id": "stanford-cs106a-l05__c013",
+    "module_id": "stanford-cs106a-l05",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "length",
+    "text": "the length of the string, right. So STR.length is the method we use to get the length of the string, and then i++. And this is gonna loop through all the characters of the string. Okay, where actually it\u2019s gonna loop through some number of",
+    "chunk_id": "stanford-cs106a-l13__c005",
+    "module_id": "stanford-cs106a-l13",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "them",
+    "text": "ou can ask the string tokenizer. One of them is a method that returns a booleon, which is called has more tokens. And the way this puppy works is you just ask this string tokenizer, like you would say tokenizer dot has more tokens, like",
+    "chunk_id": "stanford-cs106a-l13__c014",
+    "module_id": "stanford-cs106a-l13",
+    "course_id": "cs106a",
+    "aliases": []
+  },
+  {
+    "term": "tell you there",
+    "text": "agedy because the compiler will usually tell you there is a problem, unless you're dealing with generics, right here. Okay? And then it says, \u201cOkay, I\u2019m just going to trust you because you told me that it was just a pointer. And I can't argue with",
+    "chunk_id": "stanford-cs107-l04__c012",
+    "module_id": "stanford-cs107-l04",
+    "course_id": "cs107",
+    "aliases": []
+  },
+  {
+    "term": "omega",
+    "text": "ing V as a function of V I and omega I. Omega is a function of omega. What do we need to do? Yes.",
+    "chunk_id": "stanford-cs223a-l07__c012",
+    "module_id": "stanford-cs223a-l07",
+    "course_id": "cs223a",
+    "aliases": []
+  },
+  {
+    "term": "will obtain",
+    "text": "nction of the joint angles, and what we will obtain is a set of expressions multiplying each other, and those will be the determinant. \r\n\r\n\n And those expressions are a function of Q, so when we are looking for the singularity all that we n",
+    "chunk_id": "stanford-cs223a-l08__c003",
+    "module_id": "stanford-cs223a-l08",
+    "course_id": "cs223a",
+    "aliases": []
+  },
+  {
+    "term": "are transforming",
+    "text": "e vector representation, so P \u2013 what we are transforming is the vector P in frame N, multiplied by the vector omega in frame N, and transforming them. This is correct. This is vector relationship. So now what we are going to do, we are going to take",
+    "chunk_id": "stanford-cs223a-l08__c025",
+    "module_id": "stanford-cs223a-l08",
+    "course_id": "cs223a",
+    "aliases": []
+  },
+  {
+    "term": "method",
+    "text": "ifferent. So it turns out that Newton\u2019s Method is an algorithm that enjoys extremely fast conversions. The technical term is that it enjoys a property called [inaudible] conversions. Don\u2019t know [inaudible] what that means, but just stated inf",
+    "chunk_id": "stanford-cs229-l04__c006",
+    "module_id": "stanford-cs229-l04",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "for when theta",
+    "text": ". The generalization to Newton\u2019s Method for when theta is a vector rather than when theta is just a row number is the following, which is that theta T plus one is theta T plus \u2013 and then we have the second derivative divided by the first \u2013 the fi",
+    "chunk_id": "stanford-cs229-l04__c006",
+    "module_id": "stanford-cs229-l04",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "choose",
+    "text": "her any function that you might want to choose is a kernel.",
+    "chunk_id": "stanford-cs229-l08__c007",
+    "module_id": "stanford-cs229-l08",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "sense",
+    "text": "ybe about two weeks ago, so called in a sense is the algorithm that we\u2019ll repeatedly [inaudible] with respect to C. Okay. So that\u2019s called [inaudible]. And so what you can prove is that k-means \u2013 the two steps of k-means, are exactly optimizi",
+    "chunk_id": "stanford-cs229-l12__c005",
+    "module_id": "stanford-cs229-l12",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "can ask what",
+    "text": "also worked this out last time. So you can ask what is the distribution of X under this model, and the answer is under this model X is Gaussian with mean mu and covariance lambda lambda [inaudible] plus psi. So let\u2019s just take the second block of the",
+    "chunk_id": "stanford-cs229-l14__c002",
+    "module_id": "stanford-cs229-l14",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "have now",
+    "text": "MDP. And so just to summarize, what we have now is a model, meaning a piece of code, where you can input a state and an action and get an ST+1. And so if you have a stochastic model, then to influence this model, you would actually sample",
+    "chunk_id": "stanford-cs229-l17__c018",
+    "module_id": "stanford-cs229-l17",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "plus one",
+    "text": "hat tells you what the next state is ST plus one is a function of previous state and action. And then you can choose a point around which to linearize this simulator, by which I mean that you choose a point, an approximate your \u2013 approximate",
+    "chunk_id": "stanford-cs229-l19__c017",
+    "module_id": "stanford-cs229-l19",
+    "course_id": "cs229",
+    "aliases": []
+  },
+  {
+    "term": "periodic",
+    "text": "n as a Fourier series. Now remember, if periodic is a function of X, so the [inaudible] on T is on the coefficient. K one from minus infinity to infinity, that\u2019s \u2013 I\u2019ll call it C\u2019s of K of T times the periodic term, either the two pi IKX, ano",
+    "chunk_id": "stanford-ee261-l05__c002",
+    "module_id": "stanford-ee261-l05",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "rectangle function",
+    "text": "just either on or off. And that is the so called rectangle function. PI of X, this is a notation I\u2019m going to use and I think of it as advocated by Bracewell, it\u2019s not bad. I\u2019ll explain \u2013 actually I\u2019ll call it variable T, why not. I\u2019ll tell you Y",
+    "chunk_id": "stanford-ee261-l06__c013",
+    "module_id": "stanford-ee261-l06",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "system",
+    "text": "ction stays that same. So you imagine a system is a system that convolves an input, which can vary, you know, one input, another input, another input, with a fixed function \u2013 or fixed signal. And the fixed signal is called the impulse res",
+    "chunk_id": "stanford-ee261-l09__c006",
+    "module_id": "stanford-ee261-l09",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "time invariants",
+    "text": "convolution. There are reasons for that so-called time invariants or spacial invariants of convolution as it's associated with the filters. This is not always the case, but it's, like, almost always the case. And the idea is that the filter is d",
+    "chunk_id": "stanford-ee261-l09__c006",
+    "module_id": "stanford-ee261-l09",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "operational calculus delta",
+    "text": "k, for example, where he introduced the so-called operational calculus delta functions and things like that, it was often in the context of differential equations \u2013 of solving differential equations, and he would work on solutions of differential equations",
+    "chunk_id": "stanford-ee261-l11__c016",
+    "module_id": "stanford-ee261-l11",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "sampling oscilloscope where",
+    "text": "on the problem set on the basis for the so-called sampling oscilloscope where you try to sample \u2013 if you have a very fast signal to sample, that\u2019s faster than \u2013 the frequencies are higher than an ordinary oscilloscope can actually handle, then there are way",
+    "chunk_id": "stanford-ee261-l19__c003",
+    "module_id": "stanford-ee261-l19",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "shift invariance",
+    "text": "ads this \u2013 and this property leads to a so-called shift invariance or time invariance. All right? So in particular, if we shift X and Y by the same amount \u2013 A, say \u2013 some number A \u2013 A. So X goes go X plus A or X minus A if I delay it by A. Y goes",
+    "chunk_id": "stanford-ee261-l23__c016",
+    "module_id": "stanford-ee261-l23",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "shift theorem that",
+    "text": "he one dimensional case and that is the so-called shift theorem that we\u2019ve seen and made much use of. Shift theorem. So again, I\u2019m gonna remind you of the one dimensional version. A shift in time is reflected by a phase shift in the frequency domai",
+    "chunk_id": "stanford-ee261-l28__c001",
+    "module_id": "stanford-ee261-l28",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "thee",
+    "text": "on paired with thee is thee of zero. So thee is a function of N variables and zero is just the origin. So delta operating on thee just pulled out the value of the origin. And I can look at a shifted delta function. I can write it as delta",
+    "chunk_id": "stanford-ee261-l28__c011",
+    "module_id": "stanford-ee261-l28",
+    "course_id": "ee261",
+    "aliases": []
+  },
+  {
+    "term": "some vectors",
+    "text": "span of some vectors where the span of some vectors is the set of all linear combinations of them. And these are some particular vectors in RN, and so that\u2019s \u2013 now you have to check that these are, in fact, that these are actually vector spac",
+    "chunk_id": "stanford-ee263-l03__c022",
+    "module_id": "stanford-ee263-l03",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "rank",
+    "text": "you do a rank 1 update. So this is the so-called rank 1 update formula. Actually, it's got a zillion other names, but this is a good enough one. And it's \u2013 the formula's this. It's p plus a, a transpose inverse is p inverse minus, an",
+    "chunk_id": "stanford-ee263-l07__c030",
+    "module_id": "stanford-ee263-l07",
+    "course_id": "ee263",
+    "aliases": []
+  },
+  {
+    "term": "hyperplane",
+    "text": "We start off with a definition. A hyperplane is a set where A transpose X is equal to some constant B. A is nonzero, because otherwise, we could have any point in the whole series. This is an example hyperplane. We parameterize it wi",
+    "chunk_id": "stanford-ee364a-l02__c004",
+    "module_id": "stanford-ee364a-l02",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "p-norms",
+    "text": "And examples are things like this; the so-called p-norms, which is the sum of the absolute value of XI and then to the one over P. Now for P equals one, that\u2019s the sum of the absolute values for P equals two. It\u2019s usually Euclidean norm",
+    "chunk_id": "stanford-ee364a-l03__c006",
+    "module_id": "stanford-ee364a-l03",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "log sum",
+    "text": "onvex functions. Here\u2019s another on; the so called log sum X function. That\u2019s the log of a sum of exponentials of variables. Actually, before we go on let me just say a little bit about this function; it\u2019s \u2013 first of all it\u2019s sort of like",
+    "chunk_id": "stanford-ee364a-l03__c020",
+    "module_id": "stanford-ee364a-l03",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "alpha sublevel set",
+    "text": "ve any function then the sublevel \u2013 the alpha sublevel set is the set of points with F value less than alpha. By the way, later in the course F will be an objective or it will be some type of objective, or something like that. And for example, if F",
+    "chunk_id": "stanford-ee364a-l03__c028",
+    "module_id": "stanford-ee364a-l03",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "semi-infinite problem",
+    "text": "t in C. Oh, if C is infinite, this is a so-called semi-infinite problem. Okay. Now, you may not be able to have a tractable representation of this semi-infinite constraint. In some cases you can. I mean one is a finite set, so here I give you a bunch",
+    "chunk_id": "stanford-ee364a-l12__c020",
+    "module_id": "stanford-ee364a-l12",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "analytic center",
+    "text": "ariant. So, okay. Another center is the so-called analytic center of a set of inequalities [inaudible]. That\u2019s a typo. So this we\u2019re gonna look at in great detail in two weeks from now so when we actually talk about [inaudible] point methods and",
+    "chunk_id": "stanford-ee364a-l12__c047",
+    "module_id": "stanford-ee364a-l12",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "log barrier function",
+    "text": "re the level curves of this \u2013 this is a so-called log barrier function for this thing, this set, and you can see the level curves here. When you get really high curves, they kind of hug the shape of the polyhedron. At the minimum, it\u2019s a smooth conve",
+    "chunk_id": "stanford-ee364a-l12__c048",
+    "module_id": "stanford-ee364a-l12",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "variable metric method",
+    "text": "be distances and things like that. So a variable metric method is a method that varies. It\u2019s essentially, the norm being used in steepest descent at each step and it adjusts it to the geometry of the particular problem instance. That\u2019s what a variable me",
+    "chunk_id": "stanford-ee364a-l15__c020",
+    "module_id": "stanford-ee364a-l15",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "damped newton phase",
+    "text": "how this works. Now, when you\u2019re in the so called damped Newton phase, damped Newton means, well, we\u2019ll see it, it means you actually require backtracking steps. It means that a full Newton step you actually have to backtrack from T equals one to wh",
+    "chunk_id": "stanford-ee364a-l15__c027",
+    "module_id": "stanford-ee364a-l15",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "quadratic convergence stage",
+    "text": "ke in this stage. Once you get into the so called quadratic convergence stage, it basically says the following.",
+    "chunk_id": "stanford-ee364a-l15__c027",
+    "module_id": "stanford-ee364a-l15",
+    "course_id": "ee364a",
+    "aliases": []
+  },
+  {
+    "term": "good subgradient",
+    "text": "you gain by being smart and returning a so-called good subgradient. So, okay. So anyway, now let's imagine and make it simple that you return plus one if you're positive, negative one if you're positive, and if you're at zero, you return plus one",
+    "chunk_id": "stanford-ee364b-l02__c033",
+    "module_id": "stanford-ee364b-l02",
+    "course_id": "ee364b",
+    "aliases": []
+  }
+]

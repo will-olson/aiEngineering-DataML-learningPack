@@ -1,0 +1,74 @@
+[
+  {
+    "course_id": "cs106a",
+    "track_id": "stanford-cs106a",
+    "title": "CS106A Programming Methodology",
+    "instructor": "Mehran Sahami",
+    "lecture_count": 28,
+    "folder": "106A_programmingMethodology"
+  },
+  {
+    "course_id": "cs106b",
+    "track_id": "stanford-cs106b",
+    "title": "CS106B Programming Abstractions",
+    "instructor": "Julie Zelenski",
+    "lecture_count": 27,
+    "folder": "106B_programmingAbstractions"
+  },
+  {
+    "course_id": "cs107",
+    "track_id": "stanford-cs107",
+    "title": "CS107 Programming Paradigms",
+    "instructor": "Jerry Cain",
+    "lecture_count": 27,
+    "folder": "107_programmingParadigms"
+  },
+  {
+    "course_id": "cs223a",
+    "track_id": "stanford-cs223a",
+    "title": "CS223A Introduction to Robotics",
+    "instructor": "Oussama Khatib",
+    "lecture_count": 16,
+    "folder": "223A_introRobotics"
+  },
+  {
+    "course_id": "cs229",
+    "track_id": "stanford-cs229",
+    "title": "CS229 Machine Learning",
+    "instructor": "Andrew Ng",
+    "lecture_count": 20,
+    "folder": "229_machineLearning"
+  },
+  {
+    "course_id": "ee261",
+    "track_id": "stanford-ee261",
+    "title": "EE261 Fourier Transform and Applications",
+    "instructor": "Brad Osgood",
+    "lecture_count": 30,
+    "folder": "261EE_fourierTransformApplications"
+  },
+  {
+    "course_id": "ee263",
+    "track_id": "stanford-ee263",
+    "title": "EE263 Linear Dynamical Systems",
+    "instructor": "Stephen Boyd",
+    "lecture_count": 20,
+    "folder": "263EE_linearDynamicalSystems"
+  },
+  {
+    "course_id": "ee364a",
+    "track_id": "stanford-ee364a",
+    "title": "EE364A Convex Optimization I",
+    "instructor": "Stephen Boyd",
+    "lecture_count": 19,
+    "folder": "346AEE_convexOptimization1"
+  },
+  {
+    "course_id": "ee364b",
+    "track_id": "stanford-ee364b",
+    "title": "EE364B Convex Optimization II",
+    "instructor": "Stephen Boyd",
+    "lecture_count": 18,
+    "folder": "346AEE_convexOptimization2"
+  }
+]

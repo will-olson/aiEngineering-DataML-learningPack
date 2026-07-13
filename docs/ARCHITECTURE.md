@@ -9,34 +9,43 @@ Related: [CONTENT_CATALOG.md](CONTENT_CATALOG.md) · [FRONTEND_EXPERIENCE.md](FR
 1. **`forks/` is read-only content.** Never mutate upstream licenses, READMEs, or sources for product metadata.
 2. **Overlay indexes own the product model.** Catalog, tracks, progress, and suggestion rules live under e.g. `data/catalog/` or `platform/` (paths TBD at implementation).
 3. **Honesty about availability.** APIs and UI must distinguish local, link-only, and runtime-fetch resources.
-4. **Rule-based suggestions first.** Level + progress + product area + filters; no ML requirement for v1.
-5. **Files first, DB later.** JSON/YAML catalog fixtures are acceptable until scale demands a store.
+4. **Rule-based suggestions first.** Level + progress + product area + filters for Learn/Build/Discover; Ask uses hybrid retrieval (FTS + dense) with optional LLM synthesis.
+5. **Files first, DB later.** JSON/YAML catalog fixtures are acceptable until scale demands a store. Ask uses SQLite FTS5 under `data/ask/` for transcript chunks.
+6. **Secrets stay local.** OpenAI keys live only in gitignored `.env` (never `NEXT_PUBLIC_*`, never client-supplied).
 
 ## Bounded contexts
 
 | Context | Responsibility |
 |---------|----------------|
 | **Content Catalog** | Tracks, modules, filters, search over overlay index |
+| **Ask / Lecture Retrieval** | Conversational query over Stanford transcripts; glossary; hybrid FTS+dense; optional LLM synthesis |
 | **Progress / Identity** | Anonymous or signed-in progress; last module; completed set |
 | **Suggestion / Recommendation** | `GET /suggestions` from progress + catalog graph |
 | **External Resource Resolver** | Normalize external URLs, health/check optional, attribution |
 | **Lab Runtime hints** | How to open a lab (path, commands, fetch URLs)—not full execution in v1 |
-| **Ingest / Sync** | Re-vendor forks; regenerate or diff overlay indexes |
+| **Ingest / Sync** | Re-vendor forks; regenerate catalog + Ask indexes (`platform/ingest/stanford/`) |
 
 ```mermaid
 flowchart LR
   forks[forks read-only]
+  transcripts[stanfordLectureTranscripts]
   overlay[Overlay catalog]
+  askIndex[Ask FTS index]
   catalogApi[Content Catalog API]
+  askApi[Ask API]
   suggest[Suggestion service]
   progress[Progress store]
   resolver[Resource resolver]
   clients[Frontend SPA]
   forks --> overlay
+  transcripts --> askIndex
+  transcripts --> overlay
   overlay --> catalogApi
   overlay --> suggest
+  askIndex --> askApi
   progress --> suggest
   catalogApi --> clients
+  askApi --> clients
   suggest --> clients
   resolver --> clients
   progress --> clients
@@ -47,12 +56,20 @@ flowchart LR
 ```text
 data/catalog/          # or platform/catalog/
   tracks.json
-  modules.json         # or modules/*.json
-  fixtures/            # small samples for FE stubs
-platform/              # optional app code later
+  modules.json
+  stanford-tracks.json
+  stanford-modules.json
+data/ask/
+  ask.sqlite           # FTS5 chunk index
+  chunks.jsonl
+  glossary.json
+  courses.json
+  embeddings.json      # optional; gitignored; regenerate via ingest
+platform/web/.env      # local OPENAI_API_KEY (gitignored)
+platform/web/.env.example
 ```
 
-Do not write product fields into `forks/**`.
+Do not write product fields into `forks/**` or mutate transcript HTML for metadata.
 
 ## Data model outline
 
@@ -155,6 +172,17 @@ Response shape:
 |--------|------|---------|
 | `GET` | `/resolve/{module_id}` | Local path and/or `external_url`, attribution, `offline_ok` |
 
+### Ask (Stanford lecture retrieval)
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| `POST` | `/ask` | Conversational query → structured answer (excerpts, definitions, lectures, apply) |
+| `GET` | `/ask/lectures` | Browse/filter Stanford lecture modules |
+| `GET` | `/transcripts/{id}` | Parsed transcript turns for a lecture |
+| `GET` | `/glossary` | Term lookup from ingest glossary |
+
+`POST /ask` uses server-side `OPENAI_API_KEY` when present for grounded synthesis; otherwise returns retrieval-only templated answers. Clients never send API keys.
+
 ## Suggestion algorithm (v1 rules)
 
 Priority order (stop when `limit` reached):
@@ -178,8 +206,8 @@ Future (out of scope for this doc pack): optional local dataset cache keyed by m
 ## Security and licensing
 
 - Retain and surface per-fork `LICENSE` attribution on module/resource detail.
-- Do not commit secrets (API keys for third-party APIs belong in user env, never in overlay).
-- Treat `forks/` paths as internal; do not require end users to know them (UI uses titles and product areas).
+- Do not commit secrets (API keys for third-party APIs belong in user env / `platform/web/.env`, never in overlay).
+- Treat `forks/` and `docs/stanfordLectureTranscripts/` paths as internal; do not require end users to know them (UI uses titles and product areas).
 - Validate/sanitize any user-provided search input; do not execute arbitrary paths from client input when resolving files.
 
 ## Implementation notes for agents

@@ -47,8 +47,9 @@ Every catalog record carries one primary `product_area`:
 | `build` | Applied labs and projects | `lab`, `project` |
 | `discover` | Datasets and APIs | `reference` |
 | `read` | Production ML literacy | `reading` |
+| `ask` | Conversational lecture retrieval (UI/API surface; lectures cataloged as `learn`) | n/a for module rows |
 
-`Progress` is a UI surface over progress + suggestions, not a content `product_area` tag.
+`Progress` is a UI surface over progress + suggestions, not a content `product_area` tag. Stanford lectures are stored as `product_area: "learn"` modules; the **Ask** area queries them via `data/ask/`.
 
 ## Progressive tracks
 
@@ -61,9 +62,11 @@ Suggested tracks for onboarding path pickers and Track dropdowns:
 | `de-zoomcamp` | Data Engineering Zoomcamp | `data-engineering-zoomcamp` | intermediate → advanced |
 | `applied-ml-reading` | Applied ML in Production | `applied-ml` | intermediate → production |
 | `python-practice` | Python Practice Projects | `Python-project-Scripts` | beginner → intermediate |
+| `stanford-applied` | Stanford-Applied Practice | curated `pps-*` labs | intermediate |
 | `discover-data` | Discover Datasets & APIs | `awesome-public-datasets`, `public-apis` | all |
+| `stanford-cs106a` … `stanford-ee364b` | Stanford lecture tracks | `docs/stanfordLectureTranscripts/` | beginner → advanced |
 
-Tracks are ordered lists of module `id`s in the overlay index (`tracks[].module_ids`).
+Tracks are ordered lists of module `id`s in the overlay index (`tracks[].module_ids`). Stanford spines live in `data/catalog/stanford-tracks.json` + `stanford-modules.json` (merged at load time).
 
 ## Per-fork inventory sketch
 
@@ -76,6 +79,7 @@ Tracks are ordered lists of module `id`s in the overlay index (`tracks[].module_
 | `Python-project-Scripts` | Categorized Python apps/scripts | Mostly **local** (some call live APIs) | `build` |
 | `public-apis` | Curated API list in `README.md` + validation scripts | **Link-only** (APIs need network) | `discover` |
 | `awesome-public-datasets` | `README.rst` index + sample `Datasets/titanic.csv.zip` | Index **link-only**; titanic sample **local** | `discover` |
+| `stanfordLectureTranscripts` (under `docs/`) | HTML/PDF lecture transcripts (9 courses) | **local** | `learn` (+ Ask index) |
 
 ## Catalog record schema
 

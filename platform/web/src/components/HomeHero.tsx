@@ -20,54 +20,59 @@ export function HomeHero() {
         ? "discover-data"
         : area === "build"
           ? "python-practice"
-          : "python-ds");
+          : area === "ask"
+            ? "stanford-cs229"
+            : "python-ds");
     setContinueHref(hrefForModule(area, p.last_module_id, track));
   }, []);
 
   return (
     <section className="hero">
       <p className="eyebrow">DataML Learning Pack</p>
-      <h1>Learn data and ML with a guided path</h1>
+      <h1>Ask lectures. Learn deeply. Build next.</h1>
       <p>
-        A calm, curated Learn experience over local handbook lessons—filters and
-        suggestions instead of raw repository trees.
+        Conversational search over open Stanford transcripts, plus guided Learn,
+        Build, and Discover paths—without raw repository trees.
       </p>
       <div className="hero-actions">
+        <Link className="btn btn-primary" href="/ask">
+          Ask a question
+        </Link>
         {continueHref ? (
-          <Link className="btn btn-primary" href={continueHref}>
+          <Link className="btn btn-secondary" href={continueHref}>
             Continue
           </Link>
         ) : (
-          <Link className="btn btn-primary" href="/learn/python-ds">
+          <Link className="btn btn-secondary" href="/learn/python-ds">
             Start a path
           </Link>
         )}
-        <Link className="btn btn-secondary" href="/build/python-practice">
-          Browse practice labs
-        </Link>
       </div>
       <div className="path-picker">
         <label htmlFor="path-select">I am new to…</label>
         <select
           id="path-select"
           className="field-select"
-          defaultValue="python"
+          defaultValue=""
           onChange={(e) => {
-            if (e.target.value === "python") {
-              window.location.href = "/learn/python-ds";
-            }
+            const v = e.target.value;
+            if (v === "python") window.location.href = "/learn/python-ds";
+            if (v === "ml") window.location.href = "/learn/stanford-cs229";
+            if (v === "ask") window.location.href = "/ask";
           }}
           aria-label="Onboarding path picker"
         >
-          <option value="python">Python</option>
+          <option value="" disabled>
+            Choose a starting point
+          </option>
+          <option value="ask">Asking lecture questions</option>
+          <option value="python">Python data science</option>
+          <option value="ml">Machine learning (CS229)</option>
           <option value="r" disabled>
             R (coming soon)
           </option>
           <option value="de" disabled>
             Data engineering (coming soon)
-          </option>
-          <option value="ml" disabled>
-            Production ML (coming soon)
           </option>
         </select>
       </div>

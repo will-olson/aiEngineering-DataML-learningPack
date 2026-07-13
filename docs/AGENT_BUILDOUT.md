@@ -14,9 +14,10 @@ Parallel agent orchestration contract for building the learning platform on this
 
 | ID | Workstream | Owns | Consumes |
 |----|------------|------|----------|
-| W1 | Content Indexing | Overlay tracks/modules JSON, fixtures | Forks (read-only), Content Catalog schema |
+| W1 | Content Indexing | Overlay tracks/modules JSON, fixtures, Stanford ingest | Forks + transcripts (read-only), Content Catalog schema |
 | W2 | Backend Catalog API | REST (or BFF) filters, resolve, progress, suggestions | Overlay JSON, Architecture API |
-| W3 | Frontend Shell & Usability | Product areas, filters, suggestions UI, home | API or fixtures, Frontend Experience |
+| W2b | Ask Retrieval | FTS/hybrid Ask API, glossary, transcript payloads, optional LLM | `data/ask/`, `.env` OpenAI key |
+| W3 | Frontend Shell & Usability | Product areas (incl. Ask), filters, suggestions UI, home | API or fixtures, Frontend Experience |
 | W4 | Resource Resolver | External URL normalization, attribution helpers | Module `external_url` / availability |
 | W5 | Docs / QA | Cross-doc consistency, DoD verification | All outputs |
 
@@ -107,8 +108,10 @@ Frontend **can and should** proceed in parallel with W2 using fixtures that matc
 | Artifact | Location (suggested) |
 |----------|----------------------|
 | Catalog fixtures | `data/catalog/fixtures/` |
-| Tracks / modules | `data/catalog/tracks.json`, `data/catalog/modules.json` |
-| OpenAPI | `platform/api/openapi.yaml` or equivalent |
+| Tracks / modules | `data/catalog/tracks.json`, `data/catalog/modules.json`, `stanford-*.json` |
+| Ask index | `data/ask/` (`ask.sqlite`, `glossary.json`, `chunks.jsonl`) |
+| OpenAI env template | `platform/web/.env.example` |
+| OpenAPI | `platform/api/openapi.yaml` or `platform/web/openapi.yaml` |
 | Component stubs / Storybook | Frontend app package (when created) |
 
 Until `platform/` exists, agents may place overlays under `data/catalog/` only and keep app code in a future directory agreed in implementation.
@@ -117,6 +120,7 @@ Until `platform/` exists, agents may place overlays under `data/catalog/` only a
 
 - **W1:** “Index forks into overlay catalog per docs/CONTENT_CATALOG.md; emit fixtures; do not modify forks/.”
 - **W2:** “Implement catalog API per docs/ARCHITECTURE.md against data/catalog; include filters and suggestions.”
-- **W3:** “Build minimalist shell per docs/FRONTEND_EXPERIENCE.md using fixtures; product areas Learn/Build/Discover/Read.”
+- **W2b:** “Implement Ask retrieval over data/ask; OPENAI_API_KEY only from gitignored .env.”
+- **W3:** “Build minimalist shell per docs/FRONTEND_EXPERIENCE.md using fixtures; product areas Ask/Learn/Build/Discover/Read.”
 - **W4:** “Implement resolve + attribution helpers; no dataset download.”
 - **W5:** “Verify DoD checklists and doc/schema consistency.”

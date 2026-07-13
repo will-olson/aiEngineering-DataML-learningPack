@@ -732,3 +732,177 @@ select,
     transform: none;
   }
 }
+
+/* Ask */
+.ask-page {
+  display: grid;
+  gap: 1.25rem;
+  animation: fadeIn 0.25s ease;
+}
+
+.ask-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.ask-header p,
+.muted {
+  color: var(--text-muted);
+}
+
+.ask-examples-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.ask-examples ul {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.chip-btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.chip-btn:hover,
+.chip-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.ask-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ask-input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 0.75rem 0.9rem;
+  font: inherit;
+  resize: vertical;
+  min-height: 5rem;
+}
+
+.ask-mode-badge {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.ask-section {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.ask-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.ask-list {
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.ask-excerpt-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.error-text {
+  color: var(--danger);
+}
+
+.attribution {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+/* Transcript reader */
+.transcript {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.transcript-turn {
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.transcript-turn.role-student,
+.transcript-turn.role-audience {
+  opacity: 0.92;
+  border-style: dashed;
+}
+
+.transcript-speaker {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.transcript-turn.highlight {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.ask-apply-hint {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.track-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.track-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}
+
+.track-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}

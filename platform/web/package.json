@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "ingest:stanford": "python3 ../../platform/ingest/stanford/ingest.py"
   },
   "dependencies": {
     "react": "19.1.0",

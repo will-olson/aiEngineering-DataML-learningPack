@@ -30,20 +30,44 @@ export function resolveRepoPath(relativePath: string): string {
 let tracksCache: Track[] | null = null;
 let modulesCache: CatalogModule[] | null = null;
 
+function readJsonArray<T>(filePath: string): T[] {
+  if (!existsSync(filePath)) return [];
+  return JSON.parse(readFileSync(filePath, "utf8")) as T[];
+}
+
 export function loadTracks(): Track[] {
   if (!tracksCache) {
-    const raw = readFileSync(path.join(catalogDir(), "tracks.json"), "utf8");
-    tracksCache = JSON.parse(raw) as Track[];
+    const base = readJsonArray<Track>(path.join(catalogDir(), "tracks.json"));
+    const stanford = readJsonArray<Track>(
+      path.join(catalogDir(), "stanford-tracks.json"),
+    );
+    tracksCache = [...base, ...stanford];
   }
   return tracksCache;
 }
 
 export function loadModules(): CatalogModule[] {
   if (!modulesCache) {
-    const raw = readFileSync(path.join(catalogDir(), "modules.json"), "utf8");
-    modulesCache = JSON.parse(raw) as CatalogModule[];
+    const base = readJsonArray<CatalogModule>(
+      path.join(catalogDir(), "modules.json"),
+    );
+    const stanford = readJsonArray<CatalogModule>(
+      path.join(catalogDir(), "stanford-modules.json"),
+    );
+    modulesCache = [...base, ...stanford];
   }
   return modulesCache;
+}
+
+export function askDir(): string {
+  return path.join(repoRoot(), "data", "ask");
+}
+
+export function isStanfordModule(m: CatalogModule): boolean {
+  return (
+    m.source_fork === "stanfordLectureTranscripts" ||
+    m.id.startsWith("stanford-")
+  );
 }
 
 export function getTrack(id: string): Track | undefined {

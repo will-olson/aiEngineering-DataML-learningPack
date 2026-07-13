@@ -3298,14 +3298,16 @@
     "availability": "local",
     "estimated_minutes": 30,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-pyjokes"
     ],
     "tags": [
       "cli",
-      "data"
+      "data",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -3655,13 +3657,16 @@
     "availability": "local",
     "estimated_minutes": 15,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-hex-base64"
     ],
     "tags": [
-      "dsa"
+      "cs106-bridge",
+      "dsa",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -3761,13 +3766,16 @@
     "availability": "local",
     "estimated_minutes": 40,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-search"
     ],
     "tags": [
-      "dsa"
+      "cs106-bridge",
+      "dsa",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -3796,13 +3804,16 @@
     "availability": "local",
     "estimated_minutes": 30,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-stack"
     ],
     "tags": [
-      "dsa"
+      "cs106-bridge",
+      "dsa",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -3831,13 +3842,16 @@
     "availability": "local",
     "estimated_minutes": 25,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-linked-list"
     ],
     "tags": [
-      "dsa"
+      "cs106-bridge",
+      "dsa",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -3867,13 +3881,16 @@
     "availability": "local",
     "estimated_minutes": 30,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-queues"
     ],
     "tags": [
-      "dsa"
+      "cs106-bridge",
+      "dsa",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -4045,13 +4062,16 @@
     "availability": "local",
     "estimated_minutes": 60,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-heart-disease"
     ],
     "tags": [
-      "ml"
+      "cs229-bridge",
+      "ml",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -4082,13 +4102,16 @@
     "availability": "local",
     "estimated_minutes": 75,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-house-price"
     ],
     "tags": [
-      "ml"
+      "cs229-bridge",
+      "ml",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -4119,13 +4142,16 @@
     "availability": "local",
     "estimated_minutes": 90,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-movie-rec"
     ],
     "tags": [
-      "ml"
+      "cs229-bridge",
+      "ml",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -4156,13 +4182,16 @@
     "availability": "local",
     "estimated_minutes": 70,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-fake-news"
     ],
     "tags": [
-      "ml"
+      "cs229-bridge",
+      "ml",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -4193,14 +4222,17 @@
     "availability": "local",
     "estimated_minutes": 80,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-food-analysis"
     ],
     "tags": [
+      "cs229-bridge",
       "ml",
-      "nlp"
+      "nlp",
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",
@@ -4230,14 +4262,16 @@
     "availability": "local",
     "estimated_minutes": 50,
     "track_ids": [
-      "python-practice"
+      "python-practice",
+      "stanford-applied"
     ],
     "next_ids": [
       "pps-stock-analysis"
     ],
     "tags": [
+      "data",
       "ml",
-      "data"
+      "stanford-applied"
     ],
     "external_url": null,
     "license_note": "See forks/Python-project-Scripts/LICENSE",

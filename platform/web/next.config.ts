@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  serverExternalPackages: ["node:sqlite"],
 };
 
 export default nextConfig;

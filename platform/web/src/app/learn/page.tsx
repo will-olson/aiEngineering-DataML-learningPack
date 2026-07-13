@@ -9,7 +9,7 @@ export default function LearnIndexPage() {
     <>
       <header className="page-header">
         <h1>Learn</h1>
-        <p>Instructive modules in curated tracks—start with Python Data Science.</p>
+        <p>Instructive modules and Stanford lecture tracks—browse a spine or Ask a question.</p>
       </header>
       <SuggestionRail />
       <ul style={{ listStyle: "none", display: "grid", gap: "0.75rem" }}>
