@@ -1,0 +1,116 @@
+[
+  {
+    "id": "events-labels",
+    "title": "Events, Features & Labels",
+    "principles": [
+      "supervised framing",
+      "feature vectors",
+      "train/test honesty",
+      "HTTP/JSON acquisition"
+    ],
+    "course_ids": [
+      "cs229",
+      "cs106a",
+      "cs106b"
+    ],
+    "module_ids": [
+      "ses-fs1-01-fetch-events",
+      "ses-fs1-02-features",
+      "ses-fs1-03-label-split",
+      "ses-fs1-04-baseline"
+    ],
+    "api_module_ids": [
+      "papi-nasa-eonet",
+      "papi-science-launch-library"
+    ]
+  },
+  {
+    "id": "state-tracking",
+    "title": "State, Dynamics & Tracking",
+    "principles": [
+      "state as evolving vector",
+      "observation vs state",
+      "tracking intuition"
+    ],
+    "course_ids": [
+      "ee263",
+      "cs223a"
+    ],
+    "module_ids": [
+      "ses-fs2-01-fetch-tle",
+      "ses-fs2-02-propagate",
+      "ses-fs2-03-track-event"
+    ],
+    "api_module_ids": [
+      "papi-science-tle",
+      "papi-nasa-eonet"
+    ]
+  },
+  {
+    "id": "schedule-constraints",
+    "title": "Scheduling, Windows & Constraints",
+    "principles": [
+      "feasible sets",
+      "soft vs hard constraints",
+      "ranking under prefs"
+    ],
+    "course_ids": [
+      "ee364a",
+      "ee364b",
+      "cs106a"
+    ],
+    "module_ids": [
+      "ses-fs3-01-upcoming",
+      "ses-fs3-02-filters",
+      "ses-fs3-03-rank"
+    ],
+    "api_module_ids": [
+      "papi-science-launch-library"
+    ]
+  },
+  {
+    "id": "signals-magnitudes",
+    "title": "Signals from Magnitudes",
+    "principles": [
+      "1-D signals",
+      "amplitude filtering",
+      "event-rate series"
+    ],
+    "course_ids": [
+      "ee261",
+      "cs229"
+    ],
+    "module_ids": [
+      "ses-fs4-01-quakes",
+      "ses-fs4-02-storms",
+      "ses-fs4-03-rate"
+    ],
+    "api_module_ids": [
+      "papi-nasa-eonet"
+    ]
+  },
+  {
+    "id": "earth-space-capstone",
+    "title": "Earth\u2013Space Capstone",
+    "principles": [
+      "multi-source fusion",
+      "shared schema",
+      "Ask\u2192Apply loop"
+    ],
+    "course_ids": [
+      "cs229",
+      "ee263",
+      "cs223a"
+    ],
+    "module_ids": [
+      "ses-fs5-01-bundle",
+      "ses-fs5-02-unified",
+      "ses-fs5-03-checklist"
+    ],
+    "api_module_ids": [
+      "papi-nasa-eonet",
+      "papi-science-tle",
+      "papi-science-launch-library"
+    ]
+  }
+]

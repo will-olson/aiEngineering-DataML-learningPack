@@ -59,6 +59,7 @@ export function HomeHero() {
             if (v === "python") window.location.href = "/learn/python-ds";
             if (v === "ml") window.location.href = "/learn/stanford-cs229";
             if (v === "ask") window.location.href = "/ask";
+            if (v === "earth") window.location.href = "/build/stanford-earth-space";
           }}
           aria-label="Onboarding path picker"
         >
@@ -66,6 +67,7 @@ export function HomeHero() {
             Choose a starting point
           </option>
           <option value="ask">Asking lecture questions</option>
+          <option value="earth">Earth & space feature sets</option>
           <option value="python">Python data science</option>
           <option value="ml">Machine learning (CS229)</option>
           <option value="r" disabled>

@@ -116,7 +116,10 @@
       "papi-dev-bored",
       "papi-dev-countapi",
       "papi-dev-cdnjs",
-      "papi-dev-genderize"
+      "papi-dev-genderize",
+      "papi-nasa-eonet",
+      "papi-science-tle",
+      "papi-science-launch-library"
     ],
     "default_level": "beginner"
   },
@@ -179,6 +182,31 @@
       "pps-linked-list",
       "pps-fibonacci",
       "pps-food-analysis"
+    ],
+    "default_level": "intermediate"
+  },
+  {
+    "id": "stanford-earth-space",
+    "title": "Stanford Earth & Space Feature Sets",
+    "product_area": "build",
+    "description": "Curated multi-concept labs: EONET, TLE, and Launch Library 2 demonstrating CS229/EE263/EE364/CS106 principles.",
+    "module_ids": [
+      "ses-fs1-01-fetch-events",
+      "ses-fs1-02-features",
+      "ses-fs1-03-label-split",
+      "ses-fs1-04-baseline",
+      "ses-fs2-01-fetch-tle",
+      "ses-fs2-02-propagate",
+      "ses-fs2-03-track-event",
+      "ses-fs3-01-upcoming",
+      "ses-fs3-02-filters",
+      "ses-fs3-03-rank",
+      "ses-fs4-01-quakes",
+      "ses-fs4-02-storms",
+      "ses-fs4-03-rate",
+      "ses-fs5-01-bundle",
+      "ses-fs5-02-unified",
+      "ses-fs5-03-checklist"
     ],
     "default_level": "intermediate"
   }

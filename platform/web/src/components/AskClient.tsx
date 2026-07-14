@@ -6,10 +6,12 @@ import type { AskCourse, AskResponse } from "@/lib/types";
 import { hrefForModule, hrefForSuggestion } from "@/lib/routes";
 
 const EXAMPLES = [
+  "How does CS229 turn raw observations into labeled features for classification?",
+  "What is state evolution in a linear dynamical system (EE263)?",
+  "How do constraints and feasible windows show up outside the homework (EE364)?",
+  "How can event magnitudes be treated as a signal (EE261)?",
+  "How do Earth events, orbits, and launches share one applied story?",
   "What is the dual of a convex optimization problem according to Boyd?",
-  "How does Andrew Ng introduce supervised learning vs unsupervised?",
-  "Explain recursion vs iteration as taught in CS106B",
-  "What are linear dynamical systems used for in EE263?",
 ];
 
 export function AskClient({ courses }: { courses: AskCourse[] }) {

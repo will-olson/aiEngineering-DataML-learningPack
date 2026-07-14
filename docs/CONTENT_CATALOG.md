@@ -63,7 +63,8 @@ Suggested tracks for onboarding path pickers and Track dropdowns:
 | `applied-ml-reading` | Applied ML in Production | `applied-ml` | intermediate → production |
 | `python-practice` | Python Practice Projects | `Python-project-Scripts` | beginner → intermediate |
 | `stanford-applied` | Stanford-Applied Practice | curated `pps-*` labs | intermediate |
-| `discover-data` | Discover Datasets & APIs | `awesome-public-datasets`, `public-apis` | all |
+| `stanford-earth-space` | Stanford Earth & Space Feature Sets | `platform/labs/stanford-earth-space` + EONET/TLE/LL2 | intermediate |
+| `discover-data` | Discover Datasets & APIs | `awesome-public-datasets`, `public-apis`, apiIntegrations | all |
 | `stanford-cs106a` … `stanford-ee364b` | Stanford lecture tracks | `docs/stanfordLectureTranscripts/` | beginner → advanced |
 
 Tracks are ordered lists of module `id`s in the overlay index (`tracks[].module_ids`). Stanford spines live in `data/catalog/stanford-tracks.json` + `stanford-modules.json` (merged at load time).
@@ -80,6 +81,7 @@ Tracks are ordered lists of module `id`s in the overlay index (`tracks[].module_
 | `public-apis` | Curated API list in `README.md` + validation scripts | **Link-only** (APIs need network) | `discover` |
 | `awesome-public-datasets` | `README.rst` index + sample `Datasets/titanic.csv.zip` | Index **link-only**; titanic sample **local** | `discover` |
 | `stanfordLectureTranscripts` (under `docs/`) | HTML/PDF lecture transcripts (9 courses) | **local** | `learn` (+ Ask index) |
+| `apiIntegrations` (under `docs/`) | NASA EONET / TLE / LL2 kits | **link-only** docs; live fetch in labs | `discover` (+ Build runtime-fetch) |
 
 ## Catalog record schema
 

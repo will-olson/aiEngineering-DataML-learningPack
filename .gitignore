@@ -15,4 +15,5 @@ data/ask/embeddings.json
 .cursor/
 platform/web/.next/
 platform/web/out/
+platform/labs/**/out/
 *.tsbuildinfo

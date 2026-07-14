@@ -4427,5 +4427,742 @@
     ],
     "requirements_path": null,
     "launch_notes": "Requires network access to Wikipedia."
+  },
+  {
+    "id": "papi-nasa-eonet",
+    "title": "NASA EONET Natural Events",
+    "source_path": "",
+    "source_fork": "apiIntegrations",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "api",
+      "geospatial",
+      "dataset"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-science-tle"
+    ],
+    "tags": [
+      "Science & Math",
+      "Climate+Weather",
+      "api",
+      "auth-no",
+      "eonet"
+    ],
+    "external_url": "https://eonet.gsfc.nasa.gov/api/v3/events",
+    "license_note": "See docs/apiIntegrations/nasa/ \u2014 NASA EONET open data.",
+    "summary": "Near-real-time curated Earth events (wildfires, storms, quakes) via EONET v3."
+  },
+  {
+    "id": "papi-science-tle",
+    "title": "TLE Satellite Orbits",
+    "source_path": "",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "numpy",
+      "math",
+      "api"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-science-launch-library"
+    ],
+    "tags": [
+      "Science & Math",
+      "api",
+      "auth-no",
+      "tle"
+    ],
+    "external_url": "https://tle.ivanstanojevic.me/#/docs",
+    "license_note": "See docs/apiIntegrations/tle/ \u2014 public TLE API.",
+    "summary": "Two-line elements and SGP4 propagation for satellites (ISS demo)."
+  },
+  {
+    "id": "papi-science-launch-library",
+    "title": "Launch Library 2",
+    "source_path": "",
+    "source_fork": "public-apis",
+    "product_area": "discover",
+    "modality": "reference",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "api",
+      "dataset"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "link_only",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [],
+    "tags": [
+      "Science & Math",
+      "api",
+      "auth-no",
+      "launch-library"
+    ],
+    "external_url": "https://thespacedevs.com/llapi",
+    "license_note": "See docs/apiIntegrations/launch-library/ \u2014 The Space Devs LL2.",
+    "summary": "Spaceflight launches, windows, agencies, and statuses."
+  },
+  {
+    "id": "ses-fs1-01-fetch-events",
+    "title": "FS1 \u00b7 Fetch open EONET events",
+    "source_path": "platform/labs/stanford-earth-space/fs1_events_labels",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "api",
+      "dataset"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs1-02-features"
+    ],
+    "tags": [
+      "feature-set:events-labels",
+      "cs229",
+      "cs106",
+      "eonet",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Acquire live open events as JSON/CSV.",
+    "entry_file": "01_fetch_open_events.py",
+    "launch_commands": [
+      "python 01_fetch_open_events.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs1-02-features",
+    "title": "FS1 \u00b7 Build event feature table",
+    "source_path": "platform/labs/stanford-earth-space/fs1_events_labels",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas",
+      "ml"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 25,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs1-03-label-split"
+    ],
+    "tags": [
+      "feature-set:events-labels",
+      "cs229",
+      "cs106",
+      "eonet",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Engineer category and geometry features.",
+    "entry_file": "02_build_feature_table.py",
+    "launch_commands": [
+      "python 02_build_feature_table.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs1-03-label-split",
+    "title": "FS1 \u00b7 Label and train/test split",
+    "source_path": "platform/labs/stanford-earth-space/fs1_events_labels",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "ml",
+      "scikit-learn"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs1-04-baseline"
+    ],
+    "tags": [
+      "feature-set:events-labels",
+      "cs229",
+      "eonet",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Define wildfire label and stratified split.",
+    "entry_file": "03_label_and_split.py",
+    "launch_commands": [
+      "python 03_label_and_split.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs1-04-baseline",
+    "title": "FS1 \u00b7 Baseline classifier",
+    "source_path": "platform/labs/stanford-earth-space/fs1_events_labels",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "ml",
+      "scikit-learn"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 25,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs2-01-fetch-tle"
+    ],
+    "tags": [
+      "feature-set:events-labels",
+      "cs229",
+      "eonet",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Tiny decision tree; handoff to pps-decision-tree.",
+    "entry_file": "04_baseline_classify.py",
+    "launch_commands": [
+      "python 04_baseline_classify.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs2-01-fetch-tle",
+    "title": "FS2 \u00b7 Fetch ISS TLE",
+    "source_path": "platform/labs/stanford-earth-space/fs2_state_tracking",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "api",
+      "math",
+      "numpy"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs2-02-propagate"
+    ],
+    "tags": [
+      "feature-set:state-tracking",
+      "ee263",
+      "cs223a",
+      "tle",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Pull ISS two-line elements.",
+    "entry_file": "01_fetch_tle.py",
+    "launch_commands": [
+      "python 01_fetch_tle.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs2-02-propagate",
+    "title": "FS2 \u00b7 Propagate state trajectory",
+    "source_path": "platform/labs/stanford-earth-space/fs2_state_tracking",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "math",
+      "numpy",
+      "api"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 25,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs2-03-track-event"
+    ],
+    "tags": [
+      "feature-set:state-tracking",
+      "ee263",
+      "cs223a",
+      "tle",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "SGP4 samples over time as discrete state.",
+    "entry_file": "02_propagate_sample.py",
+    "launch_commands": [
+      "python 02_propagate_sample.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs2-03-track-event",
+    "title": "FS2 \u00b7 Track vs Earth events",
+    "source_path": "platform/labs/stanford-earth-space/fs2_state_tracking",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "api",
+      "geospatial"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs3-01-upcoming"
+    ],
+    "tags": [
+      "feature-set:state-tracking",
+      "ee263",
+      "cs223a",
+      "tle",
+      "eonet",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Overlay ISS trajectory with open EONET events.",
+    "entry_file": "03_track_vs_event.py",
+    "launch_commands": [
+      "python 03_track_vs_event.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs3-01-upcoming",
+    "title": "FS3 \u00b7 Upcoming launches",
+    "source_path": "platform/labs/stanford-earth-space/fs3_schedule_constraints",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "api",
+      "dataset"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 15,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs3-02-filters"
+    ],
+    "tags": [
+      "feature-set:schedule-constraints",
+      "ee364",
+      "cs106",
+      "launch-library",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Fetch Launch Library upcoming launches.",
+    "entry_file": "01_upcoming_launches.py",
+    "launch_commands": [
+      "python 01_upcoming_launches.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs3-02-filters",
+    "title": "FS3 \u00b7 Window and agency filters",
+    "source_path": "platform/labs/stanford-earth-space/fs3_schedule_constraints",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs3-03-rank"
+    ],
+    "tags": [
+      "feature-set:schedule-constraints",
+      "ee364",
+      "cs106",
+      "launch-library",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Feasible set under agency/status constraints.",
+    "entry_file": "02_window_filters.py",
+    "launch_commands": [
+      "python 02_window_filters.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs3-03-rank",
+    "title": "FS3 \u00b7 Rank under preferences",
+    "source_path": "platform/labs/stanford-earth-space/fs3_schedule_constraints",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "math",
+      "optimization"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs4-01-quakes"
+    ],
+    "tags": [
+      "feature-set:schedule-constraints",
+      "ee364",
+      "launch-library",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Toy ranking objective without a CVX solver.",
+    "entry_file": "03_rank_under_prefs.py",
+    "launch_commands": [
+      "python 03_rank_under_prefs.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs4-01-quakes",
+    "title": "FS4 \u00b7 Quake magnitude series",
+    "source_path": "platform/labs/stanford-earth-space/fs4_signals_magnitudes",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "api",
+      "math"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs4-02-storms"
+    ],
+    "tags": [
+      "feature-set:signals-magnitudes",
+      "ee261",
+      "cs229",
+      "eonet",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "USGS_EHP magnitudes as a time series.",
+    "entry_file": "01_quake_magnitude_series.py",
+    "launch_commands": [
+      "python 01_quake_magnitude_series.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs4-02-storms",
+    "title": "FS4 \u00b7 Storm wind series",
+    "source_path": "platform/labs/stanford-earth-space/fs4_signals_magnitudes",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "api",
+      "math"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs4-03-rate"
+    ],
+    "tags": [
+      "feature-set:signals-magnitudes",
+      "ee261",
+      "eonet",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "severeStorms wind magnitudes (mag_kts).",
+    "entry_file": "02_storm_wind_series.py",
+    "launch_commands": [
+      "python 02_storm_wind_series.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs4-03-rate",
+    "title": "FS4 \u00b7 Event-rate signal",
+    "source_path": "platform/labs/stanford-earth-space/fs4_signals_magnitudes",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas",
+      "math"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs5-01-bundle"
+    ],
+    "tags": [
+      "feature-set:signals-magnitudes",
+      "ee261",
+      "cs229",
+      "eonet",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Daily event counts + moving average.",
+    "entry_file": "03_event_rate_signal.py",
+    "launch_commands": [
+      "python 03_event_rate_signal.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs5-01-bundle",
+    "title": "FS5 \u00b7 Multi-source bundle",
+    "source_path": "platform/labs/stanford-earth-space/fs5_capstone",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "api",
+      "dataset"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 25,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs5-02-unified"
+    ],
+    "tags": [
+      "feature-set:earth-space-capstone",
+      "cs229",
+      "ee263",
+      "cs223a",
+      "eonet",
+      "tle",
+      "launch-library",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Fetch EONET + LL2 + TLE together.",
+    "entry_file": "01_multi_source_bundle.py",
+    "launch_commands": [
+      "python 01_multi_source_bundle.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs5-02-unified",
+    "title": "FS5 \u00b7 Unified feature bundle",
+    "source_path": "platform/labs/stanford-earth-space/fs5_capstone",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "pandas",
+      "ml"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 20,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [
+      "ses-fs5-03-checklist"
+    ],
+    "tags": [
+      "feature-set:earth-space-capstone",
+      "cs229",
+      "ee263",
+      "cs223a",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Provenance-aware flat feature table.",
+    "entry_file": "02_unified_feature_bundle.py",
+    "launch_commands": [
+      "python 02_unified_feature_bundle.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
+  },
+  {
+    "id": "ses-fs5-03-checklist",
+    "title": "FS5 \u00b7 Ask\u2192Apply checklist",
+    "source_path": "platform/labs/stanford-earth-space/fs5_capstone",
+    "source_fork": "stanford-earth-space",
+    "product_area": "build",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python"
+    ],
+    "prerequisites": [],
+    "offline_ok": false,
+    "availability": "runtime_fetch",
+    "estimated_minutes": 10,
+    "track_ids": [
+      "stanford-earth-space"
+    ],
+    "next_ids": [],
+    "tags": [
+      "feature-set:earth-space-capstone",
+      "cs229",
+      "ee263",
+      "cs223a",
+      "stanford-applied"
+    ],
+    "external_url": null,
+    "license_note": "First-party lab; cite docs/apiIntegrations for upstream APIs.",
+    "summary": "Print lecture principle \u2194 data field checklist.",
+    "entry_file": "03_ask_to_apply_checklist.py",
+    "launch_commands": [
+      "python 03_ask_to_apply_checklist.py"
+    ],
+    "requirements_path": "platform/labs/stanford-earth-space/requirements.txt",
+    "launch_notes": "Requires network. cd to source_path; pip install -r requirements.txt first."
   }
 ]

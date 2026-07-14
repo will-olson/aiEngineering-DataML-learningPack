@@ -3,7 +3,7 @@ import { existsSync, readFileSync } from "fs";
 import path from "path";
 import { DatabaseSync } from "node:sqlite";
 import { askDir, getModule, loadModules } from "./catalog";
-import { skillsOverlap } from "./discover";
+import { skillsOverlap, COURSE_FEATURE_SETS } from "./discover";
 import type {
   AskCourse,
   AskDefinition,
@@ -278,24 +278,41 @@ function relatedTerms(query: string, definitions: AskDefinition[]): string[] {
 
 function applySuggestions(seed: CatalogModule | null): SuggestionItem[] {
   if (!seed) return [];
+  const course = seed.course_id ?? "";
+  const preferSets = COURSE_FEATURE_SETS[course] ?? [];
   const prefer =
-    seed.course_id === "cs229" ||
-    seed.course_id === "ee364a" ||
-    seed.course_id === "ee364b" ||
-    seed.course_id === "ee263"
-      ? ["ml", "scikit-learn", "numpy", "pandas", "nlp", "recsys"]
-      : seed.course_id?.startsWith("cs106") || seed.course_id === "cs107"
-        ? ["algorithms", "python", "programming"]
-        : seed.skills;
+    course === "cs229" ||
+    course === "ee364a" ||
+    course === "ee364b" ||
+    course === "ee263"
+      ? ["ml", "scikit-learn", "numpy", "pandas", "api", "geospatial", "math"]
+      : course.startsWith("cs106") || course === "cs107"
+        ? ["algorithms", "python", "programming", "api"]
+        : course === "cs223a"
+          ? ["python", "robotics", "math", "numpy", "api"]
+          : course === "ee261"
+            ? ["math", "signal-processing", "python", "api"]
+            : seed.skills;
 
   const scored: { m: CatalogModule; score: number; kind: SuggestionItem["kind"] }[] =
     [];
   for (const m of loadModules()) {
     if (m.product_area !== "build" && m.product_area !== "discover") continue;
-    if (!skillsOverlap(seed, m)) continue;
+    if (!skillsOverlap(seed, m) && !m.track_ids.includes("stanford-earth-space")) {
+      // Still allow earth-space labs tagged for this course
+      if (!preferSets.some((fs) => m.tags?.includes(fs))) continue;
+    }
     const overlap = m.skills.filter((s) => prefer.includes(s)).length;
-    const tagBonus = m.tags?.includes("stanford-applied") ? 2 : 0;
-    const score = overlap * 2 + tagBonus + (m.product_area === "build" ? 1 : 0);
+    let score = overlap * 2 + (m.product_area === "build" ? 1 : 0);
+    if (m.tags?.includes("stanford-applied")) score += 2;
+    if (m.track_ids.includes("stanford-earth-space")) score += 3;
+    if (preferSets.some((fs) => m.tags?.includes(fs))) score += 4;
+    if (
+      m.tags?.some((t) => ["eonet", "tle", "launch-library"].includes(t)) &&
+      preferSets.length
+    ) {
+      score += 2;
+    }
     scored.push({
       m,
       score,
@@ -313,7 +330,9 @@ function applySuggestions(seed: CatalogModule | null): SuggestionItem[] {
     title: m.title,
     reason:
       kind === "related_lab"
-        ? `Practice ${prefer.slice(0, 2).join(" / ")} from this lecture path`
+        ? m.track_ids.includes("stanford-earth-space")
+          ? "Earth & Space feature-set lab for this lecture grouping"
+          : `Practice ${prefer.slice(0, 2).join(" / ")} from this lecture path`
         : "Related dataset or API for applied work",
     kind,
   }));

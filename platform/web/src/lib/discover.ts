@@ -8,30 +8,44 @@ export const CATEGORY_LABELS: Record<string, string> = {
   OpenData: "Open data",
   Weather: "Weather",
   Development: "Development",
+  "Science & Math": "Science & math",
 };
 
 /** Map discover category tags → Learn/Build skill tokens for suggestion matching. */
 export const DISCOVER_BRIDGE: Record<string, string[]> = {
   MachineLearning: ["ml", "scikit-learn", "python", "pandas", "recsys", "optimization"],
   SocialSciences: ["pandas", "python", "dataset", "social-science"],
-  "Climate+Weather": ["weather", "climate", "api", "python"],
+  "Climate+Weather": ["weather", "climate", "api", "python", "geospatial"],
   Government: ["open-data", "dataset", "python"],
   OpenData: ["open-data", "api", "dataset", "python"],
   Weather: ["weather", "api", "python"],
   Development: ["api", "development", "python"],
+  "Science & Math": ["python", "math", "numpy", "api", "geospatial", "dataset"],
 };
 
 /** Stanford lecture tags → Build/Discover skill bridges */
 export const STANFORD_BRIDGE: Record<string, string[]> = {
-  cs229: ["ml", "scikit-learn", "python", "numpy", "pandas"],
-  cs106a: ["python", "programming", "algorithms"],
-  cs106b: ["python", "algorithms", "programming"],
+  cs229: ["ml", "scikit-learn", "python", "numpy", "pandas", "geospatial"],
+  cs106a: ["python", "programming", "algorithms", "api"],
+  cs106b: ["python", "algorithms", "programming", "api"],
   cs107: ["programming", "algorithms"],
-  ee364a: ["ml", "math", "optimization", "python"],
-  ee364b: ["ml", "math", "optimization"],
-  ee263: ["ml", "math", "python"],
-  ee261: ["math", "signal-processing"],
-  cs223a: ["python", "robotics"],
+  ee364a: ["ml", "math", "optimization", "python", "api"],
+  ee364b: ["ml", "math", "optimization", "api"],
+  ee263: ["ml", "math", "python", "numpy", "api"],
+  ee261: ["math", "signal-processing", "python"],
+  cs223a: ["python", "robotics", "math", "numpy"],
+};
+
+/** Course id → preferred feature-set tag prefixes for Earth–Space Apply. */
+export const COURSE_FEATURE_SETS: Record<string, string[]> = {
+  cs229: ["feature-set:events-labels", "feature-set:earth-space-capstone", "feature-set:signals-magnitudes"],
+  cs106a: ["feature-set:events-labels", "feature-set:schedule-constraints"],
+  cs106b: ["feature-set:events-labels", "feature-set:schedule-constraints"],
+  ee263: ["feature-set:state-tracking", "feature-set:earth-space-capstone"],
+  cs223a: ["feature-set:state-tracking", "feature-set:earth-space-capstone"],
+  ee364a: ["feature-set:schedule-constraints"],
+  ee364b: ["feature-set:schedule-constraints"],
+  ee261: ["feature-set:signals-magnitudes"],
 };
 
 export function categoryFromTags(tags: string[] | undefined): string | null {

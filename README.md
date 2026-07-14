@@ -1,56 +1,148 @@
 # aiEngineering-DataML-learningPack
 
-Foundation for a **unified progressive-applied learning platform**: instructive modules and applied experiences for learners at every level, built on a curated aggregation of Data/ML engineering resources—plus **Ask**, conversational retrieval over open Stanford lecture transcripts.
+Foundation for a **unified progressive-applied learning platform**: instructive modules and applied experiences for learners at every level—built on curated Data/ML resources, **Ask** over open Stanford lecture transcripts, and **Earth & Space feature sets** that use live APIs to demonstrate lecture principles.
 
-This repository is the **content substrate**. The product experience—catalog, progress, guided navigation across Ask / Learn / Build / Discover / Read—is designed to be built on top of it. See [docs/FRONTEND_EXPERIENCE.md](docs/FRONTEND_EXPERIENCE.md) for the UX source of truth.
+This repository is the **content substrate**. Product UX lives in `platform/web`. See [docs/FRONTEND_EXPERIENCE.md](docs/FRONTEND_EXPERIENCE.md).
 
-## Experience vision
-
-A sleek, responsive, polished **minimalist** product that guides users with suggestions and clear filters—hiding multi-repo complexity. Users explore product areas, not raw GitHub trees:
+## Experience map
 
 | Product area | User intent |
 |--------------|-------------|
 | **Ask** | PhD-style questions over Stanford lecture transcripts |
-| **Learn** | Instructive modules and lecture tracks |
-| **Build** | Applied labs and practice projects |
-| **Discover** | Datasets and APIs for projects |
-| **Read** | Production ML case studies |
-| **Progress** | Continue where you left off / next step |
+| **Learn** | Handbook lessons + Stanford lecture tracks (`TranscriptReader`) |
+| **Build** | Practice scripts + **Earth & Space feature-set labs** (runtime-fetch) |
+| **Discover** | Datasets/APIs—including EONET, TLE, Launch Library 2 |
+| **Read** | Production ML case studies (coming soon) |
+| **Progress** | Continue / What next |
 
-## What this repo is today
+## Stanford → live data loop
 
-Vendored snapshots under [`forks/`](forks/). These are **copies at HEAD** (not git submodules). Nested `.git` directories were removed so this remains a single repository. Shallow clone discarded history only; working-tree content matches upstream HEAD.
+Lecture concepts are not only searchable—they become **applied** with real-time (or near-real-time) public APIs:
 
-Open Stanford Engineering Everywhere lecture transcripts live under [`docs/stanfordLectureTranscripts/`](docs/stanfordLectureTranscripts/) (9 courses, 205 lectures). Product indexes for those lectures live in `data/catalog/stanford-*.json` and `data/ask/`.
+1. **Ask** a question grounded in CS229 / EE263 / EE364 / EE261 / CS106 / CS223A.
+2. Open the **cited transcript** under Learn.
+3. **Apply** → a lab on Build track `stanford-earth-space` (feature set matched to the course).
+4. **Discover** API cards link to offline-friendly kits in [`docs/apiIntegrations/`](docs/apiIntegrations/).
 
-Upstream updates must be re-cloned manually into `forks/<name>/`.
+```mermaid
+flowchart LR
+  ask[Ask lectures]
+  learn[Learn transcript]
+  build[Build feature-set lab]
+  disc[Discover API]
+  kits[apiIntegrations]
+  ask --> learn
+  ask --> build
+  build --> kits
+  disc --> kits
+```
 
-Each fork retains its own `LICENSE` and `README` inside its subfolder. Product metadata must live in overlay indexes (see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md))—never rewrite fork contents for platform concerns.
+Deep dive: [docs/STANFORD_EARTH_SPACE.md](docs/STANFORD_EARTH_SPACE.md).
 
-## Learning pillars
+## API integration kits
 
-| Pillar | Role | Path |
-|--------|------|------|
-| Fundamentals | R and Python data science books/notebooks | [`forks/r4ds/`](forks/r4ds/), [`forks/PythonDataScienceHandbook/`](forks/PythonDataScienceHandbook/) |
-| Data engineering path | End-to-end pipeline course (9 weeks) | [`forks/data-engineering-zoomcamp/`](forks/data-engineering-zoomcamp/) |
-| Production ML literacy | Curated papers and industry case studies | [`forks/applied-ml/`](forks/applied-ml/) |
-| Hands-on practice | Beginner-to-intermediate Python project scripts | [`forks/Python-project-Scripts/`](forks/Python-project-Scripts/) |
-| Discovery catalogs | Public APIs and public datasets indexes | [`forks/public-apis/`](forks/public-apis/), [`forks/awesome-public-datasets/`](forks/awesome-public-datasets/) |
-| Stanford lectures | Open courseware transcripts (CS106A/B, CS107, CS229, EE*) | [`docs/stanfordLectureTranscripts/`](docs/stanfordLectureTranscripts/) |
+Local docs mirror the NASA EONET pattern (links + field docs + snapshots). Auth: **none** for these three.
 
-## Content availability model
+| Kit | Folder | Data | Feature sets |
+|-----|--------|------|----------------|
+| NASA EONET v3 | [docs/apiIntegrations/nasa/](docs/apiIntegrations/nasa/) | Open Earth events, GeoJSON, magnitudes | FS1, FS4, FS5 |
+| TLE | [docs/apiIntegrations/tle/](docs/apiIntegrations/tle/) | Orbital elements + SGP4 propagate | FS2, FS5 |
+| Launch Library 2 | [docs/apiIntegrations/launch-library/](docs/apiIntegrations/launch-library/) | Launches, windows, agencies, statuses | FS3, FS5 (+ FS1 labels) |
 
-Thin-looking forks (e.g. `applied-ml`, `public-apis`, `awesome-public-datasets`) are **complete catalogs** on GitHub—not incomplete imports. They primarily link outward.
+Index: [docs/apiIntegrations/README.md](docs/apiIntegrations/README.md). Starter URLs live in each folder’s `*Links.md`.
 
-| Availability | Meaning | Examples |
-|--------------|---------|----------|
-| **Local** | Content usable offline from this repo | Book/notebook sources, many practice scripts, zoomcamp course materials, Stanford transcripts |
-| **Link-only** | Index local; payload on the open web | Most entries in `awesome-public-datasets` and `public-apis`; readings in `applied-ml` |
-| **Runtime-fetch** | Labs download data when you run them | NYC TLC taxi CSVs referenced by data-engineering-zoomcamp |
+## Feature sets at a glance
 
-**Rough scale:** ~1.3 GB on disk (forks) plus Ask index under `data/ask/`. Large footprint is mostly `Python-project-Scripts`; catalog forks are intentionally small.
+Curated multi-concept labs under [`platform/labs/stanford-earth-space/`](platform/labs/stanford-earth-space/) (first-party—**does not mutate** `forks/`):
 
-Offline study ≠ fully self-contained. The platform should surface **offline available** vs **needs network** badges and filters (see frontend and architecture docs). Ask retrieval works offline; optional answer synthesis needs an OpenAI key.
+| Set | Principles | Lecture grouping | APIs |
+|-----|------------|------------------|------|
+| **FS1** Events & Labels | Features, labels, acquisition | CS229 + CS106 | EONET |
+| **FS2** State & Tracking | State trajectories, tracking | EE263 + CS223A | TLE (+ EONET) |
+| **FS3** Schedule & Constraints | Windows, ranking | EE364 + CS106 | Launch Library 2 |
+| **FS4** Signals & Magnitudes | 1-D signals, event rate | EE261 + CS229 | EONET |
+| **FS5** Capstone | Multi-source fusion | CS229 + EE263 + CS223A | All three |
+
+Catalog: track `stanford-earth-space`, metadata [`data/catalog/feature-sets.json`](data/catalog/feature-sets.json).
+
+## How to run
+
+### Web app
+
+```bash
+cd platform/web
+cp .env.example .env   # optional: OPENAI_API_KEY for Ask synthesis
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000):
+
+| Area | Routes |
+|------|--------|
+| Ask | `/ask` |
+| Learn | `/learn` (`python-ds`, `stanford-*`) |
+| Build | `/build` (`python-practice`, `stanford-applied`, **`stanford-earth-space`**) |
+| Discover | `/discover` |
+
+### Earth & Space labs (network required)
+
+```bash
+cd platform/labs/stanford-earth-space
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python fs1_events_labels/01_fetch_open_events.py
+```
+
+Outputs → `out/` (gitignored). Or use **LabLauncher** in the Build UI for copyable `cd` / `python` commands.
+
+## Regenerate / refresh
+
+| Asset | Command / action |
+|-------|------------------|
+| Stanford Ask index | `python3 platform/ingest/stanford/ingest.py` |
+| apiIntegrations snapshots | Manual re-`curl` of `*Links.md` endpoints when schemas change (not request-path) |
+
+Ask retrieval works offline from `data/ask/`; synthesis needs `OPENAI_API_KEY` in `platform/web/.env` (never commit).
+
+## What this repo contains
+
+Vendored snapshots under [`forks/`](forks/) (not submodules). Stanford transcripts: [`docs/stanfordLectureTranscripts/`](docs/stanfordLectureTranscripts/) (9 courses, 205 lectures). Overlay catalogs: [`data/catalog/`](data/catalog/). Ask FTS index: [`data/ask/`](data/ask/).
+
+**Do not** rewrite forks or transcripts for product metadata—use overlays.
+
+### Learning pillars
+
+| Pillar | Path |
+|--------|------|
+| Fundamentals | [`forks/r4ds/`](forks/r4ds/), [`forks/PythonDataScienceHandbook/`](forks/PythonDataScienceHandbook/) |
+| Data engineering | [`forks/data-engineering-zoomcamp/`](forks/data-engineering-zoomcamp/) |
+| Production ML literacy | [`forks/applied-ml/`](forks/applied-ml/) |
+| Hands-on practice | [`forks/Python-project-Scripts/`](forks/Python-project-Scripts/) |
+| Discovery catalogs | [`forks/public-apis/`](forks/public-apis/), [`forks/awesome-public-datasets/`](forks/awesome-public-datasets/) |
+| Stanford lectures | [`docs/stanfordLectureTranscripts/`](docs/stanfordLectureTranscripts/) |
+| Live API kits | [`docs/apiIntegrations/`](docs/apiIntegrations/) |
+| Earth–Space labs | [`platform/labs/stanford-earth-space/`](platform/labs/stanford-earth-space/) |
+
+### Availability
+
+| Availability | Meaning |
+|--------------|---------|
+| **Local** | Usable offline from the repo |
+| **Link-only** | Index local; payload on the open web |
+| **Runtime-fetch** | Labs/scripts fetch live data when run (Earth–Space labs, some zoomcamp labs) |
+
+## Platform documentation
+
+| Document | Purpose |
+|----------|---------|
+| [docs/STANFORD_EARTH_SPACE.md](docs/STANFORD_EARTH_SPACE.md) | Feature sets ↔ lectures ↔ APIs |
+| [docs/ASK_CONVERSATIONAL_SEARCH.md](docs/ASK_CONVERSATIONAL_SEARCH.md) | Ask retrieval & synthesis |
+| [docs/CONTENT_CATALOG.md](docs/CONTENT_CATALOG.md) | Catalog ontology |
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | APIs & bounded contexts |
+| [docs/FRONTEND_EXPERIENCE.md](docs/FRONTEND_EXPERIENCE.md) | UX source of truth |
+| [docs/AGENT_BUILDOUT.md](docs/AGENT_BUILDOUT.md) | Parallel agent contracts |
+| [platform/web/openapi.yaml](platform/web/openapi.yaml) | HTTP API contract |
 
 ## Included forks
 
@@ -63,49 +155,3 @@ Offline study ≠ fully self-contained. The platform should surface **offline av
 | [`forks/applied-ml/`](forks/applied-ml/) | [will-olson/applied-ml](https://github.com/will-olson/applied-ml) |
 | [`forks/Python-project-Scripts/`](forks/Python-project-Scripts/) | [will-olson/Python-project-Scripts](https://github.com/will-olson/Python-project-Scripts) |
 | [`forks/PythonDataScienceHandbook/`](forks/PythonDataScienceHandbook/) | [will-olson/PythonDataScienceHandbook](https://github.com/will-olson/PythonDataScienceHandbook) |
-
-## Platform documentation
-
-| Document | Audience | Purpose |
-|----------|----------|---------|
-| [docs/CONTENT_CATALOG.md](docs/CONTENT_CATALOG.md) | Content / indexing agents | Fork → module ontology, levels, tracks, catalog schema |
-| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Backend agents | Bounded contexts, filter/suggest/Ask APIs, overlay rules |
-| [docs/FRONTEND_EXPERIENCE.md](docs/FRONTEND_EXPERIENCE.md) | Frontend agents | **UX source of truth**—minimalist guided experience, controls, product areas |
-| [docs/AGENT_BUILDOUT.md](docs/AGENT_BUILDOUT.md) | All parallel agents | Workstreams, contracts, definitions of done |
-| [docs/ASK_CONVERSATIONAL_SEARCH.md](docs/ASK_CONVERSATIONAL_SEARCH.md) | Ask / retrieval agents | Hybrid FTS+dense retrieval, synthesis modes, enhancement priorities |
-
-## Roadmap stance
-
-1. **Now:** Vendored learning pack + Ask / Learn / Build / Discover UI in `platform/web`.
-2. **Shared glue:** Cross-area suggestions close the loop—Ask/Learn/Discover → Build (`related_lab`), Build → Learn + Discover matches, Discover → **Use in a lab**, plus `last_product_area` bookmarks, shared `WhatNextPanel` / `ResourceBadge`, and per-area sticky filters.
-3. **Later:** Read area, local dataset cache, richer lab runtime, mobile filter sheet.
-
-Do not treat `forks/` as the primary user navigation surface. Curate through product areas and the catalog overlay.
-
-## Run the platform
-
-Product slices in `platform/web`:
-
-| Area | Track / surface | Routes |
-|------|-----------------|--------|
-| **Ask** | Stanford transcript retrieval | `/ask` |
-| **Learn** | `python-ds` + `stanford-*` tracks | `/learn`, handbook + lecture readers |
-| **Build** | `python-practice`, `stanford-applied` | `/build`, `LabLauncher` |
-| **Discover** | `discover-data` | `/discover`, Datasets \| APIs |
-
-```bash
-cd platform/web
-cp .env.example .env   # optional: set OPENAI_API_KEY for synthesized Ask answers
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000). Catalog data lives in [`data/catalog/`](data/catalog/) (read-only over `forks/` + Stanford transcripts). Ask index: [`data/ask/`](data/ask/). API contract: [`platform/web/openapi.yaml`](platform/web/openapi.yaml).
-
-### Regenerate Stanford Ask indexes
-
-```bash
-python3 platform/ingest/stanford/ingest.py
-```
-
-This refreshes `data/catalog/stanford-*.json` and `data/ask/*` (FTS SQLite, chunks, glossary). Optional dense embeddings file is gitignored and regenerated by ingest when run locally.
