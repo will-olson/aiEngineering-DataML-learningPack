@@ -43,13 +43,13 @@ Deep dive: [docs/STANFORD_EARTH_SPACE.md](docs/STANFORD_EARTH_SPACE.md).
 
 Local docs mirror the NASA EONET pattern (links + field docs + snapshots). Auth: **none** for these three.
 
-| Kit | Folder | Data | Feature sets |
-|-----|--------|------|----------------|
-| NASA EONET v3 | [docs/apiIntegrations/nasa/](docs/apiIntegrations/nasa/) | Open Earth events, GeoJSON, magnitudes | FS1, FS4, FS5 |
-| TLE | [docs/apiIntegrations/tle/](docs/apiIntegrations/tle/) | Orbital elements + SGP4 propagate | FS2, FS5 |
-| Launch Library 2 | [docs/apiIntegrations/launch-library/](docs/apiIntegrations/launch-library/) | Launches, windows, agencies, statuses | FS3, FS5 (+ FS1 labels) |
+| Kit | Folder | Data | Feature sets | In-app |
+|-----|--------|------|----------------|--------|
+| NASA EONET v3 | [docs/apiIntegrations/nasa/](docs/apiIntegrations/nasa/) | Open Earth events, GeoJSON, magnitudes, layers | FS1, FS4, FS5 | `/discover/kits/nasa` |
+| TLE | [docs/apiIntegrations/tle/](docs/apiIntegrations/tle/) | Search, orbital elements, SGP4 propagate (+ velocity) | FS2, FS5 | `/discover/kits/tle` |
+| Launch Library 2 | [docs/apiIntegrations/launch-library/](docs/apiIntegrations/launch-library/) | Statuses, agencies, pads, upcoming launches | FS3, FS5 | `/discover/kits/launch-library` |
 
-Index: [docs/apiIntegrations/README.md](docs/apiIntegrations/README.md). Starter URLs live in each folder’s `*Links.md`.
+Index: [docs/apiIntegrations/README.md](docs/apiIntegrations/README.md). Starter URLs live in each folder’s `*Links.md`. Tag filters: `/discover/apis?tag=eonet` (also `tle`, `launch-library`).
 
 ## Feature sets at a glance
 
@@ -63,7 +63,7 @@ Curated multi-concept labs under [`platform/labs/stanford-earth-space/`](platfor
 | **FS4** Signals & Magnitudes | 1-D signals, event rate | EE261 + CS229 | EONET |
 | **FS5** Capstone | Multi-source fusion | CS229 + EE263 + CS223A | All three |
 
-Catalog: track `stanford-earth-space`, metadata [`data/catalog/feature-sets.json`](data/catalog/feature-sets.json).
+Catalog: track `stanford-earth-space`, metadata [`data/catalog/feature-sets.json`](data/catalog/feature-sets.json) (loaded by the web app). Feature-set hubs: `/build/stanford-earth-space/sets/{setId}`.
 
 ## How to run
 
@@ -82,8 +82,8 @@ Open [http://localhost:3000](http://localhost:3000):
 |------|--------|
 | Ask | `/ask` |
 | Learn | `/learn` (`python-ds`, `stanford-*`) |
-| Build | `/build` (`python-practice`, `stanford-applied`, **`stanford-earth-space`**) |
-| Discover | `/discover` |
+| Build | `/build` (`python-practice`, `stanford-applied`, **`stanford-earth-space`**, `/sets/{setId}`) |
+| Discover | `/discover` (APIs `?tag=`, kits `/discover/kits/{slug}`) |
 
 ### Earth & Space labs (network required)
 

@@ -4,16 +4,28 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { CatalogModule, ResolvePayload, SuggestionItem } from "@/lib/types";
 import {
+  API_KITS,
   CATEGORY_LABELS,
   categoryFromTags,
   discoverListHref,
 } from "@/lib/discover";
 import { bookmarkDiscover, readProgress } from "@/lib/progress";
-import { hrefForModule, hrefForSuggestion } from "@/lib/routes";
+import {
+  hrefForApiKit,
+  hrefForFeatureSet,
+  hrefForModule,
+  hrefForSuggestion,
+} from "@/lib/routes";
 import { ResourceBadge } from "./ResourceBadge";
 import { WhatNextPanel } from "./WhatNextPanel";
 
-export function ResourceDetail({ module }: { module: CatalogModule }) {
+export function ResourceDetail({
+  module,
+  featureSetLinks = [],
+}: {
+  module: CatalogModule;
+  featureSetLinks?: { id: string; title: string }[];
+}) {
   const [resolved, setResolved] = useState<ResolvePayload | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [labLink, setLabLink] = useState<SuggestionItem | null>(null);
@@ -103,6 +115,10 @@ export function ResourceDetail({ module }: { module: CatalogModule }) {
     ? "dataset"
     : "api";
   const similarHref = discoverListHref(browseKind, cat);
+
+  const kitSlug = Object.entries(API_KITS).find(([, kit]) =>
+    kit.module_ids.includes(module.id),
+  )?.[0];
 
   return (
     <article className="resource-detail">
@@ -194,6 +210,28 @@ export function ResourceDetail({ module }: { module: CatalogModule }) {
           <dd>{module.source_fork}</dd>
         </div>
       </dl>
+
+      {(featureSetLinks.length > 0 || kitSlug) && (
+        <section style={{ marginBottom: "1.25rem" }}>
+          <h2>Earth–Space links</h2>
+          <ul>
+            {featureSetLinks.map((s) => (
+              <li key={s.id}>
+                <Link href={hrefForFeatureSet("stanford-earth-space", s.id)}>
+                  Use in feature set: {s.title}
+                </Link>
+              </li>
+            ))}
+            {kitSlug && (
+              <li>
+                <Link href={hrefForApiKit(kitSlug)}>
+                  API kit: {API_KITS[kitSlug]?.title ?? kitSlug}
+                </Link>
+              </li>
+            )}
+          </ul>
+        </section>
+      )}
 
       {(labLink || nextDiscover) && (
         <WhatNextPanel

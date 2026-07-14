@@ -1,16 +1,35 @@
 #!/usr/bin/env python3
-"""FS4 step 2 — Storm wind magnitude series (mag_kts)."""
+"""FS4 step 2 — Storm wind magnitude series (mag_kts) with optional mag filter."""
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from _common import EONET, get_json, save_csv
 
+
 def main() -> None:
-    data = get_json(
+    filtered = get_json(
         f"{EONET}/events",
-        {"category": "severeStorms", "status": "all", "days": 60, "limit": 50},
+        {
+            "category": "severeStorms",
+            "status": "all",
+            "days": 60,
+            "limit": 50,
+            "magID": "mag_kts",
+            "magMin": 35,
+        },
+        expect_keys=["events"],
+        optional=True,
     )
+    if filtered and filtered.get("events"):
+        data = filtered
+        print(f"mag_kts magMin=35 → {len(data['events'])} events")
+    else:
+        data = get_json(
+            f"{EONET}/events",
+            {"category": "severeStorms", "status": "all", "days": 60, "limit": 50},
+            expect_keys=["events"],
+        )
     rows = []
     for ev in data.get("events", []):
         for g in ev.get("geometry") or []:
@@ -25,6 +44,7 @@ def main() -> None:
             )
     save_csv("fs4_storm_series.csv", rows)
     print(f"Storm geometry samples: {len(rows)}. Next: 03_event_rate_signal.py")
+
 
 if __name__ == "__main__":
     main()

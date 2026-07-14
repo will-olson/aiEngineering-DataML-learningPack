@@ -5,17 +5,21 @@ import { DatabaseSync } from "node:sqlite";
 import { askDir, getModule, loadModules } from "./catalog";
 import { skillsOverlap, COURSE_FEATURE_SETS } from "./discover";
 import type {
+  AskContext,
   AskCourse,
+  AskCitation,
   AskDefinition,
   AskExcerpt,
   AskLectureHit,
   AskResponse,
   CatalogModule,
+  EvidenceStrength,
   GlossaryEntry,
   SuggestionItem,
 } from "./types";
 
 const EMBED_DIM = 384;
+const OPENAI_EMBED_MODEL = "text-embedding-3-small";
 
 type ChunkRow = {
   chunk_id: string;
@@ -28,10 +32,20 @@ type ChunkRow = {
   text: string;
 };
 
+type EmbeddingsStore = {
+  model: string;
+  dim: number;
+  vectors: Record<string, number[]>;
+};
+
 let db: DatabaseSync | null = null;
 let glossaryCache: GlossaryEntry[] | null = null;
 let coursesCache: AskCourse[] | null = null;
-let embeddingsCache: Record<string, number[]> | null | undefined;
+let embeddingsStore: EmbeddingsStore | null | undefined;
+let denseIndexCache:
+  | { ids: string[]; courseIds: string[]; weights: number[]; vectors: number[][] }
+  | null
+  | undefined;
 
 function getDb(): DatabaseSync {
   if (!db) {
@@ -61,18 +75,44 @@ export function loadGlossary(): GlossaryEntry[] {
   return glossaryCache;
 }
 
-function loadEmbeddings(): Record<string, number[]> | null {
-  if (embeddingsCache !== undefined) return embeddingsCache;
+function loadEmbeddingsStore(): EmbeddingsStore | null {
+  if (embeddingsStore !== undefined) return embeddingsStore;
   const p = path.join(askDir(), "embeddings.json");
   if (!existsSync(p)) {
-    embeddingsCache = null;
+    embeddingsStore = null;
     return null;
   }
-  embeddingsCache = JSON.parse(readFileSync(p, "utf8")) as Record<
-    string,
-    number[]
-  >;
-  return embeddingsCache;
+  const raw = JSON.parse(readFileSync(p, "utf8")) as unknown;
+  if (
+    raw &&
+    typeof raw === "object" &&
+    "vectors" in raw &&
+    (raw as { vectors?: unknown }).vectors &&
+    typeof (raw as { vectors: unknown }).vectors === "object"
+  ) {
+    const wrapped = raw as {
+      model?: string;
+      dim?: number;
+      vectors: Record<string, number[]>;
+    };
+    embeddingsStore = {
+      model: wrapped.model ?? "unknown",
+      dim:
+        wrapped.dim ??
+        Object.values(wrapped.vectors)[0]?.length ??
+        EMBED_DIM,
+      vectors: wrapped.vectors,
+    };
+  } else {
+    const vectors = raw as Record<string, number[]>;
+    const first = Object.values(vectors)[0];
+    embeddingsStore = {
+      model: "legacy-flat",
+      dim: first?.length ?? EMBED_DIM,
+      vectors,
+    };
+  }
+  return embeddingsStore;
 }
 
 function tokenize(text: string): string[] {
@@ -102,8 +142,34 @@ function cosine(a: number[], b: number[]): number {
   return s;
 }
 
-function ftsQuery(raw: string): string {
+/** Glossary alias / multi-word expansion tokens for FTS (capped). */
+export function expandQueryTokens(query: string, cap = 8): string[] {
+  const qLow = query.toLowerCase();
+  const qToks = new Set(tokenize(query));
+  const extras: string[] = [];
+  for (const g of loadGlossary()) {
+    const gToks = tokenize(g.term);
+    const hit =
+      qLow.includes(g.term) || gToks.some((t) => qToks.has(t));
+    if (!hit) continue;
+    for (const piece of [g.term, ...(g.aliases ?? [])]) {
+      for (const t of tokenize(piece)) {
+        if (!qToks.has(t) && !extras.includes(t) && t.length > 1) {
+          extras.push(t);
+        }
+        if (extras.length >= cap) return extras;
+      }
+    }
+  }
+  return extras;
+}
+
+function ftsQuery(raw: string, extraTokens: string[] = []): string {
   const tokens = tokenize(raw).filter((t) => t.length > 1).slice(0, 12);
+  for (const t of extraTokens) {
+    if (!tokens.includes(t) && t.length > 1) tokens.push(t);
+    if (tokens.length >= 20) break;
+  }
   if (!tokens.length) return '""';
   return tokens.map((t) => `"${t.replace(/"/g, "")}"`).join(" OR ");
 }
@@ -112,8 +178,9 @@ function searchFts(
   query: string,
   courseIds: string[],
   limit: number,
+  extraTokens: string[] = [],
 ): ChunkRow[] {
-  const match = ftsQuery(query);
+  const match = ftsQuery(query, extraTokens);
   const database = getDb();
   let sql = `
     SELECT c.chunk_id, c.module_id, c.course_id, c.lecture, c.speaker, c.role, c.weight, c.text,
@@ -157,33 +224,91 @@ function chunkMeta(): Map<string, { course_id: string; weight: number }> {
   return chunkMetaCache;
 }
 
-/** Dense scores: prefer precomputed embeddings; else hash-embed FTS candidate texts. */
-function denseCandidates(
+function getDenseIndex(): {
+  ids: string[];
+  courseIds: string[];
+  weights: number[];
+  vectors: number[][];
+} | null {
+  if (denseIndexCache !== undefined) return denseIndexCache;
+  const store = loadEmbeddingsStore();
+  if (!store) {
+    denseIndexCache = null;
+    return null;
+  }
+  const meta = chunkMeta();
+  const ids: string[] = [];
+  const courseIds: string[] = [];
+  const weights: number[] = [];
+  const vectors: number[][] = [];
+  for (const [chunkId, vec] of Object.entries(store.vectors)) {
+    const m = meta.get(chunkId);
+    if (!m) continue;
+    ids.push(chunkId);
+    courseIds.push(m.course_id);
+    weights.push(m.weight ?? 1);
+    vectors.push(vec);
+  }
+  denseIndexCache = { ids, courseIds, weights, vectors };
+  return denseIndexCache;
+}
+
+async function embedQuery(text: string): Promise<number[]> {
+  const store = loadEmbeddingsStore();
+  const model = store?.model ?? "feature-hash-384";
+  const useOpenAI =
+    llmConfigured() &&
+    (model === OPENAI_EMBED_MODEL || model.startsWith("text-embedding"));
+  if (useOpenAI) {
+    const vec = await openaiEmbed(text);
+    if (vec) return vec;
+  }
+  return featureHashEmbed(text, store?.dim ?? EMBED_DIM);
+}
+
+async function openaiEmbed(text: string): Promise<number[] | null> {
+  const key = process.env.OPENAI_API_KEY?.trim();
+  if (!key) return null;
+  try {
+    const res = await fetch("https://api.openai.com/v1/embeddings", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: OPENAI_EMBED_MODEL,
+        input: text.slice(0, 8000),
+      }),
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as {
+      data?: { embedding?: number[] }[];
+    };
+    return data.data?.[0]?.embedding ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** Exact top-k dense search over all embeddings (course-filtered). */
+async function denseCandidates(
   query: string,
   courseIds: string[],
   limit: number,
   ftsRows: ChunkRow[],
-): { chunk_id: string; score: number }[] {
-  const q = featureHashEmbed(query);
-  const embeddings = loadEmbeddings();
+): Promise<{ chunk_id: string; score: number }[]> {
+  const q = await embedQuery(query);
+  const index = getDenseIndex();
   const scored: { chunk_id: string; score: number }[] = [];
+  const courseFilter = new Set(courseIds);
 
-  if (embeddings) {
-    const meta = chunkMeta();
-    const courseFilter = new Set(courseIds);
-    // Score embedding space but only keep top `limit` (sample via FTS-first + global top)
-    const candidateIds = new Set(ftsRows.map((r) => r.chunk_id));
-    // Add a sparse global pass: every 17th embedding for recall without full scan cost
-    let i = 0;
-    for (const chunkId of Object.keys(embeddings)) {
-      i += 1;
-      if (!candidateIds.has(chunkId) && i % 17 !== 0) continue;
-      const m = meta.get(chunkId);
-      if (!m) continue;
-      if (courseFilter.size && !courseFilter.has(m.course_id)) continue;
+  if (index) {
+    for (let i = 0; i < index.ids.length; i++) {
+      if (courseFilter.size && !courseFilter.has(index.courseIds[i])) continue;
       scored.push({
-        chunk_id: chunkId,
-        score: cosine(q, embeddings[chunkId]) * (m.weight ?? 1),
+        chunk_id: index.ids[i],
+        score: cosine(q, index.vectors[i]) * index.weights[i],
       });
     }
   } else {
@@ -199,7 +324,6 @@ function denseCandidates(
   return scored.slice(0, limit);
 }
 
-/** Reciprocal rank fusion of FTS + dense lists. */
 function fuse(
   fts: ChunkRow[],
   dense: { chunk_id: string; score: number }[],
@@ -235,6 +359,15 @@ function trackForModule(m: CatalogModule): string | undefined {
   return m.track_ids[0];
 }
 
+export function evidenceStrengthFromScore(
+  topScore: number | undefined,
+): EvidenceStrength {
+  if (topScore === undefined || topScore <= 0) return "weak";
+  if (topScore >= 0.045) return "strong";
+  if (topScore >= 0.025) return "moderate";
+  return "weak";
+}
+
 function glossaryHits(query: string, limit = 3): AskDefinition[] {
   const qLow = query.toLowerCase();
   const terms = tokenize(query);
@@ -251,7 +384,6 @@ function glossaryHits(query: string, limit = 3): AskDefinition[] {
     }
     if (overlap === gTokens.length && gTokens.length >= 1) score += 3;
     else if (overlap > 0) score += overlap * 0.75;
-    // Require at least a meaningful hit
     if (score >= 3) hits.push({ score, entry: g });
   }
   hits.sort((a, b) => b.score - a.score);
@@ -294,12 +426,17 @@ function applySuggestions(seed: CatalogModule | null): SuggestionItem[] {
             ? ["math", "signal-processing", "python", "api"]
             : seed.skills;
 
-  const scored: { m: CatalogModule; score: number; kind: SuggestionItem["kind"] }[] =
-    [];
+  const scored: {
+    m: CatalogModule;
+    score: number;
+    kind: SuggestionItem["kind"];
+  }[] = [];
   for (const m of loadModules()) {
     if (m.product_area !== "build" && m.product_area !== "discover") continue;
-    if (!skillsOverlap(seed, m) && !m.track_ids.includes("stanford-earth-space")) {
-      // Still allow earth-space labs tagged for this course
+    if (
+      !skillsOverlap(seed, m) &&
+      !m.track_ids.includes("stanford-earth-space")
+    ) {
       if (!preferSets.some((fs) => m.tags?.includes(fs))) continue;
     }
     const overlap = m.skills.filter((s) => prefer.includes(s)).length;
@@ -335,7 +472,26 @@ function applySuggestions(seed: CatalogModule | null): SuggestionItem[] {
           : `Practice ${prefer.slice(0, 2).join(" / ")} from this lecture path`
         : "Related dataset or API for applied work",
     kind,
+    track_id:
+      m.track_ids.find((t) => t === "stanford-earth-space") ??
+      m.track_ids[0] ??
+      null,
   }));
+}
+
+function clarificationAnswer(query: string, courseIds: string[]): string {
+  const courses = loadCourses();
+  const suggestions = (courseIds.length
+    ? courses.filter((c) => courseIds.includes(c.course_id))
+    : courses.slice(0, 4)
+  )
+    .map((c) => c.course_id.toUpperCase())
+    .join(", ");
+  return (
+    `No strong lecture matches for “${query}”. ` +
+    `Try a course filter (${suggestions || "CS229, EE364A"}), ask to define a key term, ` +
+    `or browse Stanford tracks under Learn.`
+  );
 }
 
 function templateAnswer(
@@ -344,7 +500,7 @@ function templateAnswer(
   definitions: AskDefinition[],
 ): string {
   if (!excerpts.length && !definitions.length) {
-    return `No strong matches for “${query}”. Try narrowing to a course (e.g. CS229) or asking for a definition of a key term.`;
+    return clarificationAnswer(query, []);
   }
   const parts: string[] = [];
   if (excerpts.length) {
@@ -370,14 +526,150 @@ export function llmConfigured(): boolean {
   return Boolean(key);
 }
 
-export async function synthesizeAnswer(
+function heuristicRewrite(
   query: string,
-  excerpts: AskExcerpt[],
-  definitions: AskDefinition[],
+  history: { role: string; content: string }[],
+  context?: AskContext,
+): string {
+  const lastUser = [...history]
+    .reverse()
+    .find((h) => h.role === "user" && h.content.trim() !== query);
+  const parts: string[] = [];
+  if (context?.last_module_ids?.length) {
+    const mod = getModule(context.last_module_ids[0]);
+    if (mod?.course_id) {
+      parts.push(mod.course_id.toUpperCase());
+    }
+    if (mod?.title) parts.push(mod.title);
+  }
+  if (lastUser) {
+    const prior = lastUser.content.trim().slice(0, 160);
+    if (prior) parts.push(prior);
+  }
+  parts.push(query);
+  return parts.join(" ").replace(/\s+/g, " ").trim();
+}
+
+async function llmRewriteQuery(
+  query: string,
+  history: { role: string; content: string }[],
+  context?: AskContext,
 ): Promise<string | null> {
   if (!llmConfigured()) return null;
   const key = process.env.OPENAI_API_KEY!.trim();
   const model = process.env.OPENAI_MODEL?.trim() || "gpt-4o-mini";
+  const hist = history
+    .slice(-6)
+    .map((h) => `${h.role}: ${h.content.slice(0, 400)}`)
+    .join("\n");
+  const ctx = context?.last_module_ids?.length
+    ? `Prior modules: ${context.last_module_ids.join(", ")}`
+    : "";
+  try {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model,
+        temperature: 0,
+        messages: [
+          {
+            role: "system",
+            content:
+              "Rewrite the latest user question into a standalone search query over Stanford lecture transcripts. Resolve pronouns using history. Output only the rewritten query, no quotes.",
+          },
+          {
+            role: "user",
+            content: `${ctx}\nHistory:\n${hist}\n\nLatest question: ${query}`,
+          },
+        ],
+      }),
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as {
+      choices?: { message?: { content?: string } }[];
+    };
+    const out = data.choices?.[0]?.message?.content?.trim();
+    return out || null;
+  } catch {
+    return null;
+  }
+}
+
+async function llmRerank(
+  query: string,
+  candidates: AskExcerpt[],
+): Promise<AskExcerpt[]> {
+  if (!llmConfigured() || candidates.length < 2) return candidates;
+  const key = process.env.OPENAI_API_KEY!.trim();
+  const model = process.env.OPENAI_MODEL?.trim() || "gpt-4o-mini";
+  const payload = candidates.slice(0, 20).map((c, i) => ({
+    i,
+    chunk_id: c.chunk_id,
+    preview: c.text.slice(0, 280),
+  }));
+  try {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model,
+        temperature: 0,
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content:
+              'Score each excerpt 0-1 for relevance to the question. Return JSON {"scores":[{"i":0,"score":0.9},...]}.',
+          },
+          {
+            role: "user",
+            content: `Question: ${query}\n\nExcerpts:\n${JSON.stringify(payload)}`,
+          },
+        ],
+      }),
+    });
+    if (!res.ok) return candidates;
+    const data = (await res.json()) as {
+      choices?: { message?: { content?: string } }[];
+    };
+    const raw = data.choices?.[0]?.message?.content?.trim();
+    if (!raw) return candidates;
+    const parsed = JSON.parse(raw) as {
+      scores?: { i: number; score: number }[];
+    };
+    const scoreMap = new Map<number, number>();
+    for (const s of parsed.scores ?? []) {
+      scoreMap.set(s.i, s.score);
+    }
+    return [...candidates]
+      .map((c, i) => ({
+        ...c,
+        score: scoreMap.has(i)
+          ? c.score * 0.3 + (scoreMap.get(i) ?? 0) * 0.7
+          : c.score,
+      }))
+      .sort((a, b) => b.score - a.score);
+  } catch {
+    return candidates;
+  }
+}
+
+export async function synthesizeAnswer(
+  query: string,
+  excerpts: AskExcerpt[],
+  definitions: AskDefinition[],
+): Promise<{ answer: string; citations: AskCitation[] } | null> {
+  if (!llmConfigured()) return null;
+  const key = process.env.OPENAI_API_KEY!.trim();
+  const model = process.env.OPENAI_MODEL?.trim() || "gpt-4o-mini";
+  const allowed = new Set(excerpts.map((e) => e.chunk_id));
   const context = [
     ...definitions.map(
       (d) => `DEFINITION (${d.term}) [chunk ${d.chunk_id}]: ${d.text}`,
@@ -397,11 +689,12 @@ export async function synthesizeAnswer(
     body: JSON.stringify({
       model,
       temperature: 0.2,
+      response_format: { type: "json_object" },
       messages: [
         {
           role: "system",
           content:
-            "You answer questions using only the provided Stanford lecture transcript excerpts and definitions. Cite chunk ids in parentheses. Keep answers to 2–4 sentences. If evidence is insufficient, say so.",
+            'Answer using only the provided Stanford lecture excerpts and definitions. Return JSON {"answer":"2-4 sentences","citations":[{"chunk_id":"..."}]}. Only cite chunk_ids from the evidence. If evidence is insufficient, say so in answer and use an empty citations array.',
         },
         {
           role: "user",
@@ -414,25 +707,74 @@ export async function synthesizeAnswer(
   const data = (await res.json()) as {
     choices?: { message?: { content?: string } }[];
   };
-  return data.choices?.[0]?.message?.content?.trim() || null;
+  const raw = data.choices?.[0]?.message?.content?.trim();
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as {
+      answer?: string;
+      citations?: { chunk_id?: string }[];
+    };
+    const answer = parsed.answer?.trim();
+    if (!answer) return null;
+    const citations: AskCitation[] = [];
+    for (const c of parsed.citations ?? []) {
+      const id = c.chunk_id?.trim();
+      if (id && allowed.has(id) && !citations.some((x) => x.chunk_id === id)) {
+        citations.push({ chunk_id: id });
+      }
+    }
+    return { answer, citations };
+  } catch {
+    return null;
+  }
+}
+
+function boostFromContext(
+  scores: Map<string, number>,
+  context?: AskContext,
+): void {
+  if (!context) return;
+  const preferredChunks = new Set(context.last_chunk_ids ?? []);
+  const preferredMods = new Set(context.last_module_ids ?? []);
+  for (const [chunkId, score] of scores) {
+    const row = chunkById(chunkId);
+    if (!row) continue;
+    let boost = 1;
+    if (preferredChunks.has(chunkId)) boost *= 1.25;
+    else if (preferredMods.has(row.module_id)) boost *= 1.12;
+    if (boost !== 1) scores.set(chunkId, score * boost);
+  }
 }
 
 export async function runAsk(params: {
   query: string;
   course_ids?: string[];
   history?: { role: string; content: string }[];
+  context?: AskContext;
 }): Promise<AskResponse> {
-  const query = params.query.trim();
+  const originalQuery = params.query.trim();
   const courseIds = params.course_ids?.filter(Boolean) ?? [];
-  const fts = searchFts(query, courseIds, 40);
-  const dense = denseCandidates(query, courseIds, 40, fts);
+  const history = params.history ?? [];
+  const context = params.context;
+
+  let searchQuery = originalQuery;
+  if (history.length > 0 || context?.last_module_ids?.length) {
+    const rewritten = await llmRewriteQuery(originalQuery, history, context);
+    searchQuery = rewritten ?? heuristicRewrite(originalQuery, history, context);
+  }
+
+  const extraTokens = expandQueryTokens(searchQuery);
+  const fts = searchFts(searchQuery, courseIds, 40, extraTokens);
+  const dense = await denseCandidates(searchQuery, courseIds, 40, fts);
   const fused = fuse(fts, dense);
+  boostFromContext(fused, context);
+
   const ranked = [...fused.entries()]
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 8)
+    .slice(0, 20)
     .map(([chunk_id, score]) => ({ chunk_id, score }));
 
-  const excerpts: AskExcerpt[] = [];
+  let excerpts: AskExcerpt[] = [];
   for (const { chunk_id, score } of ranked) {
     const row = chunkById(chunk_id);
     if (!row) continue;
@@ -451,7 +793,15 @@ export async function runAsk(params: {
     });
   }
 
-  const definitions = glossaryHits(query, 3);
+  excerpts = await llmRerank(originalQuery, excerpts);
+  excerpts = excerpts.slice(0, 5);
+
+  const topScore = excerpts[0]?.score;
+  const evidence_strength = evidenceStrengthFromScore(topScore);
+  const needs_clarification =
+    evidence_strength === "weak" || excerpts.length === 0;
+
+  const definitions = glossaryHits(searchQuery, 3);
   const lectureMap = new Map<string, AskLectureHit>();
   for (const e of excerpts) {
     if (lectureMap.has(e.module_id)) continue;
@@ -467,30 +817,73 @@ export async function runAsk(params: {
   }
 
   const seed =
-    getModule(excerpts[0]?.module_id ?? definitions[0]?.module_id ?? "") ?? null;
-  const apply = applySuggestions(seed);
+    getModule(excerpts[0]?.module_id ?? definitions[0]?.module_id ?? "") ??
+    null;
+  const apply = needs_clarification ? [] : applySuggestions(seed);
 
-  let answer = templateAnswer(query, excerpts, definitions);
+  const nextContext: AskContext = {
+    last_module_ids: excerpts
+      .map((e) => e.module_id)
+      .filter((id, i, arr) => arr.indexOf(id) === i)
+      .slice(0, 5),
+    last_chunk_ids: excerpts.map((e) => e.chunk_id).slice(0, 5),
+  };
+
+  const clarification_suggestions = needs_clarification
+    ? loadCourses()
+        .slice(0, 6)
+        .map((c) => ({
+          course_id: c.course_id,
+          label: c.course_id.toUpperCase(),
+          title: c.title,
+        }))
+    : [];
+
+  let answer = needs_clarification
+    ? clarificationAnswer(originalQuery, courseIds)
+    : templateAnswer(originalQuery, excerpts, definitions);
   let mode: AskResponse["mode"] = "retrieval";
+  let citations: AskCitation[] = excerpts.slice(0, 3).map((e) => ({
+    chunk_id: e.chunk_id,
+  }));
   const available = llmConfigured();
-  if (available) {
-    const synth = await synthesizeAnswer(query, excerpts.slice(0, 4), definitions);
+
+  if (available && !needs_clarification) {
+    const synth = await synthesizeAnswer(
+      originalQuery,
+      excerpts.slice(0, 4),
+      definitions,
+    );
     if (synth) {
-      answer = synth;
+      answer = synth.answer;
       mode = "synthesized";
+      citations =
+        synth.citations.length > 0
+          ? synth.citations
+          : excerpts.slice(0, 3).map((e) => ({ chunk_id: e.chunk_id }));
     }
   }
 
   return {
     answer,
-    definitions,
-    excerpts: excerpts.slice(0, 5),
-    lectures: [...lectureMap.values()].slice(0, 5),
-    related_terms: relatedTerms(query, definitions),
+    definitions: needs_clarification ? [] : definitions,
+    excerpts: needs_clarification ? [] : excerpts,
+    lectures: needs_clarification
+      ? []
+      : [...lectureMap.values()].slice(0, 5),
+    related_terms: needs_clarification
+      ? []
+      : relatedTerms(searchQuery, definitions),
     apply,
     filters_applied: { course_ids: courseIds },
     mode,
     llm_available: available,
+    evidence_strength,
+    needs_clarification,
+    search_query_used: searchQuery,
+    context: nextContext,
+    citations: needs_clarification ? [] : citations,
+    clarification_suggestions,
   };
 }
 

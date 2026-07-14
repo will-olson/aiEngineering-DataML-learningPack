@@ -153,7 +153,8 @@ Entry point: `platform/web/src/lib/ask.ts` → `runAsk({ query, course_ids?, his
 {
   "query": "How does Andrew Ng introduce supervised learning?",
   "course_ids": ["cs229"],
-  "history": [{ "role": "user", "content": "..." }, { "role": "assistant", "content": "..." }]
+  "history": [{ "role": "user", "content": "..." }, { "role": "assistant", "content": "..." }],
+  "context": { "last_module_ids": ["stanford-cs229-l01"], "last_chunk_ids": ["stanford-cs229-l01__c012"] }
 }
 ```
 
@@ -169,9 +170,14 @@ Entry point: `platform/web/src/lib/ask.ts` → `runAsk({ query, course_ids?, his
 | `apply` | Up to 2 Build/Discover suggestions by skill overlap |
 | `mode` | `"retrieval"` \| `"synthesized"` |
 | `llm_available` | Whether `OPENAI_API_KEY` is configured |
+| `evidence_strength` | `"strong"` \| `"moderate"` \| `"weak"` from fused top score |
+| `needs_clarification` | True when evidence is weak / empty |
+| `search_query_used` | Query after rewrite (may differ from typed text) |
+| `context` | `last_module_ids` / `last_chunk_ids` for the next turn |
+| `citations` | Validated chunk ids for answer footnotes |
 | `filters_applied` | Echo of `course_ids` |
 
-**Note:** `history` is accepted by the API but **not yet consumed** in `runAsk()`—each request is effectively stateless on the server.
+`history` and `context` drive heuristic or LLM query rewriting before retrieval.
 
 ### 4.2 Hybrid retrieval
 
@@ -321,77 +327,34 @@ OpenAPI fragment: `platform/web/openapi.yaml`.
 
 ## 7. Known limitations (as of current implementation)
 
-1. **No conversational memory** — `history` is POSTed but not used for query rewriting or context carry-over.
-2. **Hash embeddings, not semantic** — dense retrieval is approximate; synonyms and paraphrase miss without FTS overlap.
-3. **Sparse dense scan** — when `embeddings.json` exists, only FTS seeds + every 17th global key are scored; true nearest-neighbor recall is incomplete.
-4. **No cross-encoder rerank** — fusion order is RRF only; no second-stage relevance model.
-5. **Template answers are excerpt-forward** — without LLM, the “answer” is often a quote lead-in, not a synthesized explanation.
-6. **No streaming** — full response waits for retrieval + optional OpenAI.
-7. **No explicit confidence / abstention UI** — weak matches are not surfaced distinctly from strong ones.
-8. **Glossary is ingest-heuristic** — not curated; false positives possible on loose “X is a …” patterns.
+1. **Semantic quality still limited offline** — without OpenAI embeddings at ingest, dense vectors are feature-hash; paraphrases can miss.
+2. **LLM rewrite/rerank/synthesis require a key** — offline path remains FTS + hash dense + template answers.
+3. **No streaming** — full response waits for retrieval + optional OpenAI (SSE deferred).
+4. **Glossary is ingest-heuristic** — not curated; false positives possible on loose “X is a …” patterns.
+5. **Eval golden set is approximate** — expected lecture ranges are curated heuristics, not human-labeled spans.
+
+### Shipped improvements (strengthen pass)
+
+- Eval harness: `data/ask/eval/queries.jsonl` + `platform/ingest/stanford/eval_ask.py` (baseline Recall@5 ≈ 0.67 / MRR ≈ 0.48).
+- Full in-memory dense top-k (no “every 17th” sampling); glossary FTS expansion; `evidence_strength`.
+- Multi-turn: `history` + `context` consumed; heuristic/LLM query rewrite; related terms keep session context.
+- Clarification UI when evidence is weak.
+- Optional OpenAI embeddings at ingest; LLM rerank of fused top-20; structured JSON synthesis with validated `citations`.
+- Answer footnotes → excerpt cards → transcript deep-links.
 
 ---
 
 ## 8. Three recommended priority focus areas
 
-These are ordered by impact on **conversational search quality** and alignment with the product’s grounded-learning mission.
+Status after strengthen implementation:
 
-### Priority 1 — Multi-turn conversation and query understanding
+| Priority | Status |
+|----------|--------|
+| **P1 Multi-turn** | Shipped (history/context rewrite, clarification, related-term continuity) |
+| **P2 Retrieval** | Shipped offline wins + optional OpenAI embeddings/rerank; eval harness in place |
+| **P3 Trust UX** | Shipped citations + evidence badge + abstention; **SSE streaming still deferred** |
 
-**Problem:** Follow-up questions (“What about the unsupervised case?”) lack lecture context because `history` is discarded server-side. Users experience Ask as repeated single-shot search, not a dialogue.
-
-**Recommended work:**
-
-| Item | Detail |
-|------|--------|
-| **Query rewriting** | Before retrieval, condense `history + query` into a standalone search query (small LLM call or heuristic last-N-turn merge). |
-| **Server-side session** | Accept `session_id` or use signed cookie; store last excerpts/module ids for pronoun resolution. |
-| **Clarifying questions** | When fused top score is below a threshold, return `needs_clarification` with suggested course or term disambiguation instead of a weak template answer. |
-| **Related terms as threads** | Wire `related_terms` chips to preserve session context rather than isolated `Define {term}` queries. |
-
-**Success metrics:** Follow-up recall@5 improves on a small eval set; user can complete a 3-turn conceptual thread without re-stating course names.
-
-**Primary touchpoints:** `lib/ask.ts` (`runAsk`), `AskClient.tsx`, OpenAPI `history` schema, optional `docs/ask/eval-queries.jsonl` for regression.
-
----
-
-### Priority 2 — Retrieval quality: embeddings, reranking, and eval harness
-
-**Problem:** Feature-hash cosine + partial global scan limits semantic recall. Instructor-weighted RRF helps but cannot fix vocabulary mismatch (e.g. “SVM” vs “support vector machine” without FTS overlap).
-
-**Recommended work:**
-
-| Item | Detail |
-|------|--------|
-| **Real dense embeddings** | Extend ingest to emit `text-embedding-3-small` (or local `sentence-transformers`) vectors; store in SQLite `vec0` extension, flat file, or LanceDB. |
-| **Full ANN or brute-force at scale** | 205 lectures × ~N chunks is small enough for exact top-k cosine in memory at startup; remove the “every 17th key” sampling shortcut. |
-| **Cross-encoder rerank** | After fusion top-20, rerank with a lightweight cross-encoder (or LLM relevance grade) before excerpt selection. |
-| **Query expansion** | Inject glossary aliases and course-specific synonyms into FTS (e.g. “dual problem” → “Lagrange dual”). |
-| **Eval loop** | Curate 50–100 `(query, expected_course, expected_lecture)` pairs; CI script reports MRR/recall; block regressions on ingest changes. |
-
-**Success metrics:** Recall@5 on eval set ≥ 0.8 for course-filtered queries; subjective review of top excerpt relevance improves on paraphrased questions.
-
-**Primary touchpoints:** `platform/ingest/stanford/ingest.py`, `lib/ask.ts` (`denseCandidates`, `fuse`), new `platform/ingest/stanford/eval.py` or `scripts/ask-eval.sh`.
-
----
-
-### Priority 3 — Grounded synthesis, citations, and trust UX
-
-**Problem:** Template mode feels like search results, not answers. Synthesized mode exists but lacks inline citations, streaming, and explicit grounding guarantees in the UI.
-
-**Recommended work:**
-
-| Item | Detail |
-|------|--------|
-| **Structured synthesis schema** | Require JSON output: `{ answer, citations: [{ chunk_id, span }] }` with validation against retrieved set only. |
-| **Inline citations in UI** | Render `[1]` footnotes in Answer linking to excerpt cards; highlight matching spans in `TranscriptReader`. |
-| **Streaming responses** | SSE or `ReadableStream` from `/api/v1/ask` for answer token stream; excerpts/lectures sent first. |
-| **Evidence strength indicator** | Show fused score band (strong / moderate / weak) and hide synthesis when top score < threshold. |
-| **Abstention copy** | Standard empty state: suggest course filter, glossary term, or Browse lectures — per FRONTEND_EXPERIENCE empty-state rules. |
-
-**Success metrics:** Citation click-through rate; reduced “hallucination” reports in manual review; time-to-first-token < 1s with streaming.
-
-**Primary touchpoints:** `synthesizeAnswer()`, `AskClient.tsx`, `TranscriptReader.tsx`, `FRONTEND_EXPERIENCE.md` § Ask patterns.
+Further work: larger labeled eval set, curated glossary aliases, streaming responses.
 
 ---
 
@@ -423,10 +386,14 @@ P2 eval harness should land **before** large retrieval refactors so improvements
 # Run platform
 cd platform/web && npm install && npm run dev
 
-# Regenerate Ask index
+# Regenerate Ask index (optional OpenAI embeddings when OPENAI_API_KEY is set)
 python3 platform/ingest/stanford/ingest.py
 
-# Optional synthesis
+# Offline retrieval eval (Recall@5 / MRR)
+python3 platform/ingest/stanford/eval_ask.py
+# → writes data/ask/eval/last_baseline.json
+
+# Optional synthesis / rewrite / rerank
 cp platform/web/.env.example platform/web/.env
 # set OPENAI_API_KEY=...
 
@@ -442,5 +409,7 @@ curl -s -X POST http://localhost:3000/api/v1/ask \
 | Retrieval logic | `platform/web/src/lib/ask.ts` |
 | Ask UI | `platform/web/src/components/AskClient.tsx` |
 | Ingest | `platform/ingest/stanford/ingest.py` |
+| Eval harness | `platform/ingest/stanford/eval_ask.py` |
+| Golden queries | `data/ask/eval/queries.jsonl` |
 | FTS database | `data/ask/ask.sqlite` |
 | Transcript reader | `platform/web/src/components/TranscriptReader.tsx` |

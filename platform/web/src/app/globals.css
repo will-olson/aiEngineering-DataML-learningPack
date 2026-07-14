@@ -812,7 +812,55 @@ select,
 .ask-mode-badge {
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+
+.ask-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
   margin-bottom: 0.75rem;
+  align-items: center;
+}
+
+.ask-evidence-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.ask-evidence-badge.evidence-strong {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--badge);
+}
+
+.ask-evidence-badge.evidence-moderate {
+  color: var(--text-muted);
+}
+
+.ask-evidence-badge.evidence-weak {
+  color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger) 40%, var(--border));
+}
+
+.ask-cite {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.85em;
+  margin-left: 0.15rem;
+}
+
+.ask-rewrite {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.ask-clarify .chip-btn {
+  text-decoration: none;
 }
 
 .ask-section {

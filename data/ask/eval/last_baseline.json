@@ -1,0 +1,9 @@
+{
+  "recall_at_5": 0.6667,
+  "mrr": 0.4833,
+  "scored": 45,
+  "hits": 30,
+  "embeddings_model": "feature-hash-384",
+  "weak_ok": 1,
+  "weak_n": 1
+}

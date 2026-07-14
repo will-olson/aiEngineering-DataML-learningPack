@@ -2,6 +2,7 @@ import { existsSync, readFileSync, statSync } from "fs";
 import path from "path";
 import type {
   CatalogModule,
+  FeatureSet,
   LaunchHints,
   ModuleSummary,
   SuggestionItem,
@@ -29,6 +30,7 @@ export function resolveRepoPath(relativePath: string): string {
 
 let tracksCache: Track[] | null = null;
 let modulesCache: CatalogModule[] | null = null;
+let featureSetsCache: FeatureSet[] | null = null;
 
 function readJsonArray<T>(filePath: string): T[] {
   if (!existsSync(filePath)) return [];
@@ -76,6 +78,29 @@ export function getTrack(id: string): Track | undefined {
 
 export function getModule(id: string): CatalogModule | undefined {
   return loadModules().find((m) => m.id === id);
+}
+
+export function loadFeatureSets(): FeatureSet[] {
+  if (!featureSetsCache) {
+    featureSetsCache = readJsonArray<FeatureSet>(
+      path.join(catalogDir(), "feature-sets.json"),
+    );
+  }
+  return featureSetsCache;
+}
+
+export function getFeatureSet(id: string): FeatureSet | undefined {
+  return loadFeatureSets().find((s) => s.id === id);
+}
+
+/** Feature sets that list this Discover API module in api_module_ids. */
+export function featureSetsForApiModule(moduleId: string): FeatureSet[] {
+  return loadFeatureSets().filter((s) => s.api_module_ids.includes(moduleId));
+}
+
+/** Feature set that owns a build lab module_id, if any. */
+export function featureSetForModule(moduleId: string): FeatureSet | undefined {
+  return loadFeatureSets().find((s) => s.module_ids.includes(moduleId));
 }
 
 export function toSummary(m: CatalogModule): ModuleSummary {
@@ -254,6 +279,10 @@ export function buildSuggestions(params: {
       title: m.title,
       reason,
       kind,
+      track_id:
+        m.track_ids.find((t) => t === "stanford-earth-space") ??
+        m.track_ids[0] ??
+        null,
     });
   };
 

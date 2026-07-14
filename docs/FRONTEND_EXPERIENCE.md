@@ -157,8 +157,10 @@ Current product area, selected level, last completed module, `offline_ok` prefer
 ### Ask
 
 - Conversational composer with course filter chips and example queries.
-- Structured results: answer, definitions, excerpts (with lecture deep-links), relevant lectures, related terms, Apply (Build/Discover).
+- Structured results: answer (with citation footnotes), definitions, excerpts (lecture deep-links), relevant lectures, related terms, Apply (Build/Discover).
 - Quiet mode badge: retrieval-only vs synthesized (OpenAI via server `.env`).
+- Quiet **evidence** badge (`strong` / `moderate` / `weak`); weak matches show clarification (course chips / Browse Learn) instead of misleading excerpts.
+- Multi-turn: client sends `history` + last `context`; related-term chips preserve course filters and session context.
 - Never collect API keys in the UI.
 
 ### Build

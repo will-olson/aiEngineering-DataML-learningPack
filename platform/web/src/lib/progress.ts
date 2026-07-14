@@ -83,6 +83,7 @@ export interface BuildFilters {
 
 export interface DiscoverFilters {
   category: string;
+  tag: string;
   availability: "" | "local" | "link_only";
   sort: "recommended" | "title";
   q: string;
@@ -97,7 +98,7 @@ type AreaFilters = {
 const defaultAreaFilters: AreaFilters = {
   learn: { level: "", offline_ok: "", sort: "recommended" },
   build: { level: "", modality: "", offline_ok: "", sort: "recommended" },
-  discover: { category: "", availability: "", sort: "recommended", q: "" },
+  discover: { category: "", tag: "", availability: "", sort: "recommended", q: "" },
 };
 
 export function readAreaFilters<A extends keyof AreaFilters>(
@@ -149,6 +150,7 @@ export function writeDiscoverFilters(f: DiscoverFilters): void {
 
 const defaultDiscoverFilters = (): DiscoverFilters => ({
   category: "",
+  tag: "",
   availability: "",
   sort: "recommended",
   q: "",

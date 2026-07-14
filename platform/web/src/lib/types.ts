@@ -93,6 +93,17 @@ export interface SuggestionItem {
   title: string;
   reason: string;
   kind: "next_lesson" | "related_lab" | "matching_dataset" | "matching_api" | "related_reading";
+  /** Preferred track for routing (esp. build labs on stanford-earth-space) */
+  track_id?: string | null;
+}
+
+export interface FeatureSet {
+  id: string;
+  title: string;
+  principles: string[];
+  course_ids: string[];
+  module_ids: string[];
+  api_module_ids: string[];
 }
 
 export interface LearnerProgress {
@@ -160,6 +171,23 @@ export interface AskLectureHit {
   lecture_number?: number | null;
 }
 
+export type EvidenceStrength = "strong" | "moderate" | "weak";
+
+export interface AskContext {
+  last_module_ids?: string[];
+  last_chunk_ids?: string[];
+}
+
+export interface AskCitation {
+  chunk_id: string;
+}
+
+export interface AskClarificationSuggestion {
+  course_id: string;
+  label: string;
+  title: string;
+}
+
 export interface AskResponse {
   answer: string;
   definitions: AskDefinition[];
@@ -170,6 +198,12 @@ export interface AskResponse {
   filters_applied: { course_ids: string[] };
   mode: "retrieval" | "synthesized";
   llm_available: boolean;
+  evidence_strength: EvidenceStrength;
+  needs_clarification: boolean;
+  search_query_used: string;
+  context: AskContext;
+  citations: AskCitation[];
+  clarification_suggestions: AskClarificationSuggestion[];
 }
 
 export interface GlossaryEntry {

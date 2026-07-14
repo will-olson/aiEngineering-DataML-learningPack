@@ -7,6 +7,7 @@ import { LabLauncher } from "@/components/LabLauncher";
 import { WhatNextPanel } from "@/components/WhatNextPanel";
 import { ResourceBadge } from "@/components/ResourceBadge";
 import { markComplete, readProgress } from "@/lib/progress";
+import { hrefForApiKit, hrefForFeatureSet, hrefForModule } from "@/lib/routes";
 
 export function BuildLabView({
   trackId,
@@ -15,6 +16,9 @@ export function BuildLabView({
   launch,
   nextModule,
   localExists,
+  featureSet,
+  relatedApis = [],
+  kitSlug,
 }: {
   trackId: string;
   trackTitle: string;
@@ -22,6 +26,9 @@ export function BuildLabView({
   launch: LaunchHints;
   nextModule: { id: string; title: string } | null;
   localExists: boolean;
+  featureSet?: { id: string; title: string } | null;
+  relatedApis?: { id: string; title: string }[];
+  kitSlug?: string | null;
 }) {
   const [done, setDone] = useState(false);
   const [showLauncher, setShowLauncher] = useState(true);
@@ -122,6 +129,31 @@ export function BuildLabView({
           availability={module.availability}
           localExists={localExists}
         />
+      )}
+
+      {(featureSet || relatedApis.length > 0 || kitSlug) && (
+        <section style={{ marginBottom: "1.25rem" }}>
+          <h2>Related Discover / kits</h2>
+          <ul>
+            {featureSet && (
+              <li>
+                <Link href={hrefForFeatureSet(trackId, featureSet.id)}>
+                  Feature set: {featureSet.title}
+                </Link>
+              </li>
+            )}
+            {relatedApis.map((a) => (
+              <li key={a.id}>
+                <Link href={hrefForModule("discover", a.id)}>{a.title}</Link>
+              </li>
+            ))}
+            {kitSlug && (
+              <li>
+                <Link href={hrefForApiKit(kitSlug)}>API kit ({kitSlug})</Link>
+              </li>
+            )}
+          </ul>
+        </section>
       )}
 
       {showWhatNext && (

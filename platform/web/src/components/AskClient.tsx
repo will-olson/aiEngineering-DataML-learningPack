@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useMemo, useState } from "react";
-import type { AskCourse, AskResponse } from "@/lib/types";
+import { useCallback, useMemo, useState, type ReactNode } from "react";
+import type { AskContext, AskCourse, AskResponse } from "@/lib/types";
 import { hrefForModule, hrefForSuggestion } from "@/lib/routes";
 
 const EXAMPLES = [
@@ -23,11 +23,19 @@ export function AskClient({ courses }: { courses: AskCourse[] }) {
   const [history, setHistory] = useState<{ role: string; content: string }[]>(
     [],
   );
+  const [askContext, setAskContext] = useState<AskContext | undefined>();
 
   const courseLabel = useMemo(() => {
     const map = new Map(courses.map((c) => [c.course_id, c.title]));
     return (id: string) => map.get(id) ?? id.toUpperCase();
   }, [courses]);
+
+  const excerptIndex = useMemo(() => {
+    if (!result?.excerpts.length) return new Map<string, number>();
+    const m = new Map<string, number>();
+    result.excerpts.forEach((e, i) => m.set(e.chunk_id, i + 1));
+    return m;
+  }, [result]);
 
   const toggleCourse = (id: string) => {
     setCourseIds((prev) =>
@@ -49,6 +57,7 @@ export function AskClient({ courses }: { courses: AskCourse[] }) {
             query: trimmed,
             course_ids: courseIds,
             history,
+            context: askContext,
           }),
         });
         if (!res.ok) {
@@ -56,6 +65,7 @@ export function AskClient({ courses }: { courses: AskCourse[] }) {
         }
         const data = (await res.json()) as AskResponse;
         setResult(data);
+        setAskContext(data.context);
         setHistory((h) => [
           ...h,
           { role: "user", content: trimmed },
@@ -67,8 +77,38 @@ export function AskClient({ courses }: { courses: AskCourse[] }) {
         setLoading(false);
       }
     },
-    [courseIds, history],
+    [courseIds, history, askContext],
   );
+
+  const renderAnswer = (data: AskResponse) => {
+    if (!data.citations.length) {
+      return <p>{data.answer}</p>;
+    }
+    const parts: ReactNode[] = [];
+    // Append footnote markers for each citation after the answer prose
+    parts.push(<span key="body">{data.answer}</span>);
+    parts.push(" ");
+    data.citations.forEach((c, i) => {
+      const n = excerptIndex.get(c.chunk_id) ?? i + 1;
+      parts.push(
+        <a
+          key={c.chunk_id}
+          className="ask-cite"
+          href={`#excerpt-${c.chunk_id}`}
+          onClick={(e) => {
+            e.preventDefault();
+            document
+              .getElementById(`excerpt-${c.chunk_id}`)
+              ?.scrollIntoView({ behavior: "smooth", block: "center" });
+          }}
+        >
+          [{n}]
+        </a>,
+      );
+      parts.push(" ");
+    });
+    return <p>{parts}</p>;
+  };
 
   return (
     <div className="ask-page">
@@ -154,18 +194,59 @@ export function AskClient({ courses }: { courses: AskCourse[] }) {
 
       {result && (
         <section className="ask-results" aria-live="polite">
-          <div className="ask-mode-badge">
-            {result.mode === "synthesized"
-              ? "Synthesized answer (OpenAI)"
-              : result.llm_available
-                ? "Grounded excerpts (synthesis unavailable)"
-                : "Grounded excerpts only — add OPENAI_API_KEY in .env for synthesized answers"}
+          <div className="ask-badges">
+            <div className="ask-mode-badge">
+              {result.mode === "synthesized"
+                ? "Synthesized answer (OpenAI)"
+                : result.llm_available
+                  ? "Grounded excerpts (synthesis unavailable)"
+                  : "Grounded excerpts only — add OPENAI_API_KEY in .env for synthesized answers"}
+            </div>
+            <div
+              className={`ask-evidence-badge evidence-${result.evidence_strength}`}
+            >
+              Evidence: {result.evidence_strength}
+            </div>
           </div>
+
+          {result.search_query_used &&
+            result.search_query_used.trim() !== query.trim() && (
+              <p className="ask-rewrite muted">
+                Searching as: {result.search_query_used}
+              </p>
+            )}
 
           <section className="ask-section">
             <h2>Answer</h2>
-            <p>{result.answer}</p>
+            {renderAnswer(result)}
           </section>
+
+          {result.needs_clarification && (
+            <section className="ask-section ask-clarify">
+              <h2>Try narrowing</h2>
+              <p className="muted">
+                Pick a course filter, ask to define a key term, or browse
+                lectures.
+              </p>
+              <div className="filter-chips">
+                {result.clarification_suggestions.map((s) => (
+                  <button
+                    key={s.course_id}
+                    type="button"
+                    className="chip-btn"
+                    onClick={() => {
+                      setCourseIds([s.course_id]);
+                    }}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+                <Link className="chip-btn" href="/learn">
+                  Browse Learn
+                </Link>
+              </div>
+            </section>
+          )}
 
           {result.definitions.length > 0 && (
             <section className="ask-section">
@@ -190,11 +271,11 @@ export function AskClient({ courses }: { courses: AskCourse[] }) {
             <section className="ask-section">
               <h2>Conceptual excerpts</h2>
               <ul className="ask-list">
-                {result.excerpts.map((e) => (
-                  <li key={e.chunk_id}>
+                {result.excerpts.map((e, i) => (
+                  <li key={e.chunk_id} id={`excerpt-${e.chunk_id}`}>
                     <div className="ask-excerpt-meta">
-                      {courseLabel(e.course_id)} · Lecture {e.lecture} ·{" "}
-                      {e.role}
+                      [{i + 1}] {courseLabel(e.course_id)} · Lecture{" "}
+                      {e.lecture} · {e.role}
                     </div>
                     <p>“{e.text}”</p>
                     <Link

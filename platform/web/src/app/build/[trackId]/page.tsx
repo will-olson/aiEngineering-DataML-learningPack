@@ -1,7 +1,12 @@
 import { notFound } from "next/navigation";
 import { BuildModuleListClient } from "@/components/BuildModuleListClient";
 import { SuggestionRail } from "@/components/SuggestionRail";
-import { getTrack, loadModules, toSummary } from "@/lib/catalog";
+import {
+  getTrack,
+  loadFeatureSets,
+  loadModules,
+  toSummary,
+} from "@/lib/catalog";
 
 export default async function BuildTrackPage({
   params,
@@ -18,6 +23,15 @@ export default async function BuildTrackPage({
     .filter(Boolean)
     .map((m) => toSummary(m!));
 
+  const featureSets =
+    trackId === "stanford-earth-space"
+      ? loadFeatureSets().map((s) => ({
+          id: s.id,
+          title: s.title,
+          module_ids: s.module_ids,
+        }))
+      : [];
+
   return (
     <>
       <header className="page-header">
@@ -25,7 +39,11 @@ export default async function BuildTrackPage({
         <p>{track.description}</p>
       </header>
       <SuggestionRail trackId={trackId} productArea="build" />
-      <BuildModuleListClient trackId={trackId} initialModules={modules} />
+      <BuildModuleListClient
+        trackId={trackId}
+        initialModules={modules}
+        featureSets={featureSets}
+      />
     </>
   );
 }

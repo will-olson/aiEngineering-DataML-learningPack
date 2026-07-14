@@ -8,7 +8,7 @@ Writes:
   data/ask/glossary.json
   data/ask/courses.json
   data/ask/ask.sqlite  (FTS5)
-  data/ask/embeddings.json  (feature-hashed dense vectors)
+  data/ask/embeddings.json  (dense vectors: OpenAI text-embedding-3-small when OPENAI_API_KEY set, else feature-hash-384)
 
 Run from repo root: python3 platform/ingest/stanford/ingest.py
 """
@@ -18,6 +18,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import os
 import re
 import sqlite3
 from collections import Counter, defaultdict
@@ -353,6 +354,68 @@ def feature_hash_embed(text: str, dim: int = EMBED_DIM) -> list[float]:
     return [v / norm for v in vec]
 
 
+OPENAI_EMBED_MODEL = "text-embedding-3-small"
+
+
+def openai_embed_batch(texts: list[str], api_key: str) -> list[list[float]] | None:
+    """Embed texts with OpenAI; returns None on failure."""
+    import json as _json
+    import urllib.error
+    import urllib.request
+
+    out: list[list[float]] = []
+    # Batch in chunks of 64
+    for i in range(0, len(texts), 64):
+        batch = [t[:8000] for t in texts[i : i + 64]]
+        body = _json.dumps({"model": OPENAI_EMBED_MODEL, "input": batch}).encode(
+            "utf-8"
+        )
+        req = urllib.request.Request(
+            "https://api.openai.com/v1/embeddings",
+            data=body,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                payload = _json.loads(resp.read().decode("utf-8"))
+        except (urllib.error.URLError, TimeoutError, _json.JSONDecodeError) as e:
+            print(f"OpenAI embeddings failed: {e}")
+            return None
+        data = sorted(payload.get("data") or [], key=lambda d: d.get("index", 0))
+        if len(data) != len(batch):
+            print("OpenAI embeddings: unexpected batch size")
+            return None
+        for item in data:
+            emb = item.get("embedding")
+            if not emb:
+                return None
+            out.append(emb)
+    return out
+
+
+def build_embeddings(chunks: list[dict]) -> tuple[str, int, dict[str, list[float]]]:
+    """Return (model, dim, vectors). Prefer OpenAI when OPENAI_API_KEY is set."""
+    api_key = (os.environ.get("OPENAI_API_KEY") or "").strip()
+    if api_key:
+        print(f"Embedding {len(chunks)} chunks with {OPENAI_EMBED_MODEL}…")
+        texts = [ch["text"] for ch in chunks]
+        vectors_list = openai_embed_batch(texts, api_key)
+        if vectors_list is not None:
+            vectors = {
+                ch["chunk_id"]: vectors_list[i] for i, ch in enumerate(chunks)
+            }
+            dim = len(vectors_list[0]) if vectors_list else 0
+            return OPENAI_EMBED_MODEL, dim, vectors
+        print("Falling back to feature-hash embeddings")
+
+    vectors = {ch["chunk_id"]: feature_hash_embed(ch["text"]) for ch in chunks}
+    return "feature-hash-384", EMBED_DIM, vectors
+
+
 def extract_glossary(chunks: list[dict]) -> list[dict]:
     # term -> best (score, entry)
     best: dict[str, tuple[float, dict]] = {}
@@ -528,7 +591,6 @@ def main() -> None:
     tracks: list[dict] = []
     courses_meta: list[dict] = []
     all_chunks: list[dict] = []
-    embeddings: dict[str, list[float]] = {}
 
     for folder, meta in COURSES.items():
         course_dir = TRANSCRIPTS / folder
@@ -587,8 +649,6 @@ def main() -> None:
             )
 
             chunks = chunk_turns(module_id, meta["course_id"], lec, turns)
-            for ch in chunks:
-                embeddings[ch["chunk_id"]] = feature_hash_embed(ch["text"])
             all_chunks.extend(chunks)
 
         course_mods = [m for m in modules if meta["track_id"] in m["track_ids"]]
@@ -640,16 +700,20 @@ def main() -> None:
         for ch in all_chunks:
             f.write(json.dumps(ch, ensure_ascii=False) + "\n")
 
-    # Compact embeddings as lists (file may be large but manageable)
+    emb_model, emb_dim, embeddings = build_embeddings(all_chunks)
     (OUT_ASK / "embeddings.json").write_text(
-        json.dumps(embeddings), encoding="utf-8"
+        json.dumps(
+            {"model": emb_model, "dim": emb_dim, "vectors": embeddings},
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
     )
 
     build_sqlite(all_chunks, OUT_ASK / "ask.sqlite")
 
     print(
         f"Done: {len(modules)} modules, {len(all_chunks)} chunks, "
-        f"{len(glossary)} glossary terms → {OUT_ASK}"
+        f"{len(glossary)} glossary terms, embeddings={emb_model} → {OUT_ASK}"
     )
 
 

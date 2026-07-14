@@ -27,9 +27,27 @@ paths:
                   type: array
                   items:
                     type: object
+                    properties:
+                      role:
+                        type: string
+                      content:
+                        type: string
+                context:
+                  type: object
+                  properties:
+                    last_module_ids:
+                      type: array
+                      items:
+                        type: string
+                    last_chunk_ids:
+                      type: array
+                      items:
+                        type: string
       responses:
         "200":
-          description: Structured Ask response (answer, definitions, excerpts, lectures, apply)
+          description: >
+            Structured Ask response with answer, definitions, excerpts, lectures,
+            apply, evidence_strength, citations, search_query_used, and context for the next turn.
   /ask/lectures:
     get:
       summary: Browse Stanford lecture modules

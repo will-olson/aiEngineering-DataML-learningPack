@@ -176,12 +176,14 @@ Response shape:
 
 | Method | Path | Purpose |
 |--------|------|---------|
-| `POST` | `/ask` | Conversational query → structured answer (excerpts, definitions, lectures, apply) |
+| `POST` | `/ask` | Conversational query → structured answer (excerpts, definitions, lectures, apply, citations, evidence_strength, context) |
 | `GET` | `/ask/lectures` | Browse/filter Stanford lecture modules |
 | `GET` | `/transcripts/{id}` | Parsed transcript turns for a lecture |
 | `GET` | `/glossary` | Term lookup from ingest glossary |
 
-`POST /ask` uses server-side `OPENAI_API_KEY` when present for grounded synthesis; otherwise returns retrieval-only templated answers. Clients never send API keys.
+`POST /ask` accepts `history` and `context` for multi-turn rewrite. Hybrid retrieval uses full dense top-k + glossary FTS expansion; optional OpenAI embeddings/rerank/synthesis when `OPENAI_API_KEY` is set. Weak evidence skips synthesis and returns clarification. Clients never send API keys.
+
+Eval: `python3 platform/ingest/stanford/eval_ask.py` (golden set in `data/ask/eval/queries.jsonl`).
 
 ## Suggestion algorithm (v1 rules)
 

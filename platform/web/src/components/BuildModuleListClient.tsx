@@ -11,12 +11,58 @@ import {
 } from "@/lib/progress";
 import { ResourceBadge } from "@/components/ResourceBadge";
 
+type FeatureSetGroup = {
+  id: string;
+  title: string;
+  module_ids: string[];
+};
+
+function ModuleRow({
+  m,
+  trackId,
+  done,
+}: {
+  m: ModuleSummary;
+  trackId: string;
+  done: boolean;
+}) {
+  return (
+    <Link href={`/build/${trackId}/${m.id}`} className="module-row">
+      <span
+        className={`tick${done ? " done" : ""}`}
+        aria-label={done ? "Practiced" : "Not practiced"}
+      />
+      <div>
+        <h3>{m.title}</h3>
+        <div className="module-meta">
+          <span className="badge">{m.level}</span>
+          <span className="badge">{m.modality}</span>
+          <ResourceBadge
+            availability={m.availability}
+            offlineOk={m.offline_ok}
+          />
+          {m.skills.slice(0, 2).map((s) => (
+            <span key={s} className="badge">
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+      <span className="mins" style={{ color: "var(--text-muted)" }}>
+        {m.estimated_minutes ? `${m.estimated_minutes} min` : ""}
+      </span>
+    </Link>
+  );
+}
+
 export function BuildModuleListClient({
   trackId,
   initialModules,
+  featureSets = [],
 }: {
   trackId: string;
   initialModules: ModuleSummary[];
+  featureSets?: FeatureSetGroup[];
 }) {
   const [filters, setFilters] = useState<BuildFilters>({
     level: "",
@@ -58,6 +104,23 @@ export function BuildModuleListClient({
     }
     return list;
   }, [initialModules, filters]);
+
+  const byId = useMemo(
+    () => new Map(modules.map((m) => [m.id, m])),
+    [modules],
+  );
+
+  const grouped =
+    featureSets.length > 0 && filters.sort === "recommended"
+      ? featureSets
+          .map((fs) => ({
+            ...fs,
+            modules: fs.module_ids
+              .map((id) => byId.get(id))
+              .filter(Boolean) as ModuleSummary[],
+          }))
+          .filter((g) => g.modules.length > 0)
+      : null;
 
   const chips: { key: keyof BuildFilters; label: string }[] = [];
   if (filters.level)
@@ -189,43 +252,49 @@ export function BuildModuleListClient({
             Clear filters
           </button>
         </div>
+      ) : grouped ? (
+        <div className="feature-set-groups">
+          {grouped.map((g) => (
+            <section key={g.id} style={{ marginBottom: "1.75rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "baseline",
+                  gap: "1rem",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                <h2 style={{ fontSize: "1.1rem", margin: 0 }}>{g.title}</h2>
+                <Link href={`/build/${trackId}/sets/${g.id}`}>
+                  Feature-set hub →
+                </Link>
+              </div>
+              <ul className="module-list">
+                {g.modules.map((m) => (
+                  <li key={m.id}>
+                    <ModuleRow
+                      m={m}
+                      trackId={trackId}
+                      done={completed.includes(m.id)}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
       ) : (
         <ul className="module-list">
-          {modules.map((m) => {
-            const done = completed.includes(m.id);
-            return (
-              <li key={m.id}>
-                <Link
-                  href={`/build/${trackId}/${m.id}`}
-                  className="module-row"
-                >
-                  <span
-                    className={`tick${done ? " done" : ""}`}
-                    aria-label={done ? "Practiced" : "Not practiced"}
-                  />
-                  <div>
-                    <h3>{m.title}</h3>
-                    <div className="module-meta">
-                      <span className="badge">{m.level}</span>
-                      <span className="badge">{m.modality}</span>
-                      <ResourceBadge
-                        availability={m.availability}
-                        offlineOk={m.offline_ok}
-                      />
-                      {m.skills.slice(0, 2).map((s) => (
-                        <span key={s} className="badge">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <span className="mins" style={{ color: "var(--text-muted)" }}>
-                    {m.estimated_minutes ? `${m.estimated_minutes} min` : ""}
-                  </span>
-                </Link>
-              </li>
-            );
-          })}
+          {modules.map((m) => (
+            <li key={m.id}>
+              <ModuleRow
+                m={m}
+                trackId={trackId}
+                done={completed.includes(m.id)}
+              />
+            </li>
+          ))}
         </ul>
       )}
     </div>

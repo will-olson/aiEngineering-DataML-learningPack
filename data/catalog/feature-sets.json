@@ -20,8 +20,7 @@
       "ses-fs1-04-baseline"
     ],
     "api_module_ids": [
-      "papi-nasa-eonet",
-      "papi-science-launch-library"
+      "papi-nasa-eonet"
     ]
   },
   {

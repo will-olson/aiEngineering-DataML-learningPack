@@ -5,9 +5,10 @@ import { filterModules, toSummary } from "@/lib/catalog";
 export default async function DiscoverApisPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; tag?: string }>;
 }) {
-  const { category: initialCategory = "" } = await searchParams;
+  const { category: initialCategory = "", tag: initialTag = "" } =
+    await searchParams;
   const modules = filterModules({
     product_area: "discover",
     skill: "api",
@@ -18,7 +19,14 @@ export default async function DiscoverApisPage({
     new Set(
       modules.flatMap((m) =>
         m.tags.filter(
-          (t) => t !== "dataset" && t !== "api" && !t.startsWith("auth-"),
+          (t) =>
+            t !== "dataset" &&
+            t !== "api" &&
+            !t.startsWith("auth-") &&
+            t !== "eonet" &&
+            t !== "tle" &&
+            t !== "launch-library" &&
+            t !== "nasa",
         ),
       ),
     ),
@@ -35,7 +43,14 @@ export default async function DiscoverApisPage({
         <h1>APIs</h1>
         <p>
           Curated public APIs from public-apis—prefer no-auth entries for easy
-          demos.
+          demos. Earth–Space kits:{" "}
+          <Link href="/discover/kits/nasa">NASA</Link>
+          {" · "}
+          <Link href="/discover/kits/tle">TLE</Link>
+          {" · "}
+          <Link href="/discover/kits/launch-library">Launch Library</Link>
+          {" · "}
+          <Link href="/discover/apis?tag=eonet">?tag=eonet</Link>
         </p>
       </header>
       <DiscoverListClient
@@ -47,6 +62,7 @@ export default async function DiscoverApisPage({
         }))}
         categories={categories}
         initialCategory={initialCategory}
+        initialTag={initialTag}
       />
     </>
   );

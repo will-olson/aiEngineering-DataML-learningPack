@@ -11,19 +11,24 @@ import {
 import { CATEGORY_LABELS, categoryFromTags } from "@/lib/discover";
 import { ResourceBadge } from "./ResourceBadge";
 
+const KIT_TAGS = new Set(["eonet", "tle", "launch-library", "nasa"]);
+
 export function DiscoverListClient({
   kind,
   initialModules,
   categories,
   initialCategory = "",
+  initialTag = "",
 }: {
   kind: "dataset" | "api";
   initialModules: ModuleSummary[];
   categories: string[];
   initialCategory?: string;
+  initialTag?: string;
 }) {
   const [filters, setFilters] = useState<DiscoverFilters>({
     category: "",
+    tag: "",
     availability: "",
     sort: "recommended",
     q: "",
@@ -32,26 +37,42 @@ export function DiscoverListClient({
 
   useEffect(() => {
     const stored = readDiscoverKindFilters(kind);
-    const next =
-      initialCategory && categories.includes(initialCategory)
-        ? { ...stored, category: initialCategory }
-        : stored;
-    setFilters(next);
+    let next = { ...stored };
     if (initialCategory && categories.includes(initialCategory)) {
-      writeDiscoverKindFilters(kind, next);
+      next = { ...next, category: initialCategory };
     }
+    if (initialTag) {
+      next = { ...next, tag: initialTag };
+    }
+    setFilters(next);
+    writeDiscoverKindFilters(kind, next);
     setHydrated(true);
-  }, [kind, initialCategory, categories]);
+  }, [kind, initialCategory, initialTag, categories]);
 
   const update = (next: DiscoverFilters) => {
     setFilters(next);
     writeDiscoverKindFilters(kind, next);
   };
 
+  const tagOptions = useMemo(() => {
+    const fromModules = new Set<string>();
+    for (const m of initialModules) {
+      for (const t of m.tags ?? []) {
+        if (KIT_TAGS.has(t) || t === "eonet" || t === "tle" || t === "launch-library") {
+          fromModules.add(t);
+        }
+      }
+    }
+    return Array.from(fromModules).sort();
+  }, [initialModules]);
+
   const modules = useMemo(() => {
     let list = [...initialModules];
     if (filters.category) {
       list = list.filter((m) => m.tags?.includes(filters.category));
+    }
+    if (filters.tag) {
+      list = list.filter((m) => m.tags?.includes(filters.tag));
     }
     if (filters.availability) {
       list = list.filter((m) => m.availability === filters.availability);
@@ -78,6 +99,12 @@ export function DiscoverListClient({
       label: `Category: ${CATEGORY_LABELS[filters.category] ?? filters.category}`,
     });
   }
+  if (filters.tag) {
+    chips.push({
+      key: "tag",
+      label: `Tag: ${CATEGORY_LABELS[filters.tag] ?? filters.tag}`,
+    });
+  }
   if (filters.availability === "local")
     chips.push({ key: "availability", label: "Offline only" });
   if (filters.availability === "link_only")
@@ -90,7 +117,7 @@ export function DiscoverListClient({
   const clearChip = (key: keyof DiscoverFilters) => {
     const next = { ...filters };
     if (key === "sort") next.sort = "recommended";
-    else if (key === "category" || key === "q") next[key] = "";
+    else if (key === "category" || key === "q" || key === "tag") next[key] = "";
     else next.availability = "";
     update(next);
   };
@@ -114,6 +141,24 @@ export function DiscoverListClient({
             ))}
           </select>
         </label>
+        {kind === "api" && tagOptions.length > 0 && (
+          <label className="field">
+            <span>Tag</span>
+            <select
+              className="field-select"
+              value={filters.tag}
+              onChange={(e) => update({ ...filters, tag: e.target.value })}
+              aria-label="Filter by tag"
+            >
+              <option value="">Any</option>
+              {tagOptions.map((t) => (
+                <option key={t} value={t}>
+                  {CATEGORY_LABELS[t] ?? t}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         <label className="field">
           <span>Availability</span>
           <select
@@ -192,6 +237,7 @@ export function DiscoverListClient({
             onClick={() =>
               update({
                 category: "",
+                tag: "",
                 availability: "",
                 sort: "recommended",
                 q: "",
@@ -205,6 +251,7 @@ export function DiscoverListClient({
         <ul className="module-list">
           {modules.map((m) => {
             const cat = categoryFromTags(m.tags);
+            const kitTag = (m.tags ?? []).find((t) => KIT_TAGS.has(t));
             return (
               <li key={m.id}>
                 <Link href={`/discover/${m.id}`} className="module-row discover-row">
@@ -221,6 +268,11 @@ export function DiscoverListClient({
                       {cat && (
                         <span className="badge">
                           {CATEGORY_LABELS[cat] ?? cat}
+                        </span>
+                      )}
+                      {kitTag && (
+                        <span className="badge">
+                          {CATEGORY_LABELS[kitTag] ?? kitTag}
                         </span>
                       )}
                     </div>

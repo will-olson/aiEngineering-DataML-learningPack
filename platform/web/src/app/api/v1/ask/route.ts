@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { runAsk } from "@/lib/ask";
+import type { AskContext } from "@/lib/types";
 
 export const runtime = "nodejs";
 
@@ -9,6 +10,7 @@ export async function POST(req: Request) {
       query?: string;
       course_ids?: string[];
       history?: { role: string; content: string }[];
+      context?: AskContext;
     };
     const query = body.query?.trim();
     if (!query) {
@@ -18,6 +20,7 @@ export async function POST(req: Request) {
       query,
       course_ids: body.course_ids,
       history: body.history,
+      context: body.context,
     });
     return NextResponse.json(result);
   } catch (e) {

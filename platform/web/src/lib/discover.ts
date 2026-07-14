@@ -9,6 +9,51 @@ export const CATEGORY_LABELS: Record<string, string> = {
   Weather: "Weather",
   Development: "Development",
   "Science & Math": "Science & math",
+  eonet: "EONET",
+  tle: "TLE",
+  "launch-library": "Launch Library 2",
+  nasa: "NASA",
+};
+
+/** Discover API kit slug → related module ids / doc paths. */
+export const API_KITS: Record<
+  string,
+  {
+    title: string;
+    blurb: string;
+    module_ids: string[];
+    doc_readme: string;
+    links_doc: string;
+    tags: string[];
+  }
+> = {
+  nasa: {
+    title: "NASA EONET kit",
+    blurb:
+      "Earth Observatory Natural Event Tracker — open natural events as JSON/GeoJSON for Earth–Space labs.",
+    module_ids: ["papi-nasa-eonet"],
+    doc_readme: "docs/apiIntegrations/nasa/README.md",
+    links_doc: "docs/apiIntegrations/nasa/NasaEonetLinks.md",
+    tags: ["eonet", "nasa"],
+  },
+  tle: {
+    title: "TLE kit",
+    blurb:
+      "Two-line element sets and on-orbit propagation for ISS and other satellites.",
+    module_ids: ["papi-science-tle"],
+    doc_readme: "docs/apiIntegrations/tle/README.md",
+    links_doc: "docs/apiIntegrations/tle/TleLinks.md",
+    tags: ["tle"],
+  },
+  "launch-library": {
+    title: "Launch Library 2 kit",
+    blurb:
+      "Upcoming launches, statuses, agencies, and pads from The Space Devs.",
+    module_ids: ["papi-science-launch-library"],
+    doc_readme: "docs/apiIntegrations/launch-library/README.md",
+    links_doc: "docs/apiIntegrations/launch-library/LaunchLibraryLinks.md",
+    tags: ["launch-library"],
+  },
 };
 
 /** Map discover category tags → Learn/Build skill tokens for suggestion matching. */
@@ -86,8 +131,15 @@ export function skillsOverlap(
   return bSkills.some((s) => aSkills.has(s));
 }
 
-export function discoverListHref(kind: "dataset" | "api", category?: string | null): string {
+export function discoverListHref(
+  kind: "dataset" | "api",
+  category?: string | null,
+  tag?: string | null,
+): string {
   const base = kind === "api" ? "/discover/apis" : "/discover/datasets";
-  if (!category) return base;
-  return `${base}?category=${encodeURIComponent(category)}`;
+  const params = new URLSearchParams();
+  if (category) params.set("category", category);
+  if (tag) params.set("tag", tag);
+  const qs = params.toString();
+  return qs ? `${base}?${qs}` : base;
 }

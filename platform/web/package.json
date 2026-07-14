@@ -7,7 +7,8 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "ingest:stanford": "python3 ../../platform/ingest/stanford/ingest.py"
+    "ingest:stanford": "python3 ../../platform/ingest/stanford/ingest.py",
+    "eval:ask": "python3 ../../platform/ingest/stanford/eval_ask.py"
   },
   "dependencies": {
     "react": "19.1.0",

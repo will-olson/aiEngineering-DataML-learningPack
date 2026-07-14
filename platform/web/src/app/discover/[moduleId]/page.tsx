@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ResourceDetail } from "@/components/ResourceDetail";
-import { getModule } from "@/lib/catalog";
+import { featureSetsForApiModule, getModule } from "@/lib/catalog";
 
 export default async function DiscoverResourcePage({
   params,
@@ -17,6 +17,10 @@ export default async function DiscoverResourcePage({
   const isApi = catalogModule.skills.includes("api");
   const listHref = isApi ? "/discover/apis" : "/discover/datasets";
   const listLabel = isApi ? "APIs" : "Datasets";
+  const featureSetLinks = featureSetsForApiModule(moduleId).map((s) => ({
+    id: s.id,
+    title: s.title,
+  }));
 
   return (
     <>
@@ -27,7 +31,10 @@ export default async function DiscoverResourcePage({
         {" / "}
         <span>{catalogModule.title}</span>
       </nav>
-      <ResourceDetail module={catalogModule} />
+      <ResourceDetail
+        module={catalogModule}
+        featureSetLinks={featureSetLinks}
+      />
     </>
   );
 }
