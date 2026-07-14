@@ -445,7 +445,9 @@ function applySuggestions(seed: CatalogModule | null): SuggestionItem[] {
     if (m.track_ids.includes("stanford-earth-space")) score += 3;
     if (preferSets.some((fs) => m.tags?.includes(fs))) score += 4;
     if (
-      m.tags?.some((t) => ["eonet", "tle", "launch-library"].includes(t)) &&
+      m.tags?.some((t) =>
+        ["eonet", "tle", "launch-library", "logica"].includes(t),
+      ) &&
       preferSets.length
     ) {
       score += 2;

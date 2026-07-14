@@ -11,7 +11,14 @@ import {
 import { CATEGORY_LABELS, categoryFromTags } from "@/lib/discover";
 import { ResourceBadge } from "./ResourceBadge";
 
-const KIT_TAGS = new Set(["eonet", "tle", "launch-library", "nasa"]);
+const KIT_TAGS = new Set([
+  "eonet",
+  "tle",
+  "launch-library",
+  "nasa",
+  "logica",
+  "logic",
+]);
 
 export function DiscoverListClient({
   kind,
@@ -58,7 +65,7 @@ export function DiscoverListClient({
     const fromModules = new Set<string>();
     for (const m of initialModules) {
       for (const t of m.tags ?? []) {
-        if (KIT_TAGS.has(t) || t === "eonet" || t === "tle" || t === "launch-library") {
+        if (KIT_TAGS.has(t)) {
           fromModules.add(t);
         }
       }

@@ -13,6 +13,8 @@ export const CATEGORY_LABELS: Record<string, string> = {
   tle: "TLE",
   "launch-library": "Launch Library 2",
   nasa: "NASA",
+  logica: "Logica",
+  logic: "Logic",
 };
 
 /** Discover API kit slug → related module ids / doc paths. */
@@ -33,7 +35,7 @@ export const API_KITS: Record<
       "Earth Observatory Natural Event Tracker — open natural events as JSON/GeoJSON for Earth–Space labs.",
     module_ids: ["papi-nasa-eonet"],
     doc_readme: "docs/apiIntegrations/nasa/README.md",
-    links_doc: "docs/apiIntegrations/nasa/NasaEonetLinks.md",
+    links_doc: "docs/apiIntegrations/nasa/nasaLinks.md",
     tags: ["eonet", "nasa"],
   },
   tle: {
@@ -42,7 +44,7 @@ export const API_KITS: Record<
       "Two-line element sets and on-orbit propagation for ISS and other satellites.",
     module_ids: ["papi-science-tle"],
     doc_readme: "docs/apiIntegrations/tle/README.md",
-    links_doc: "docs/apiIntegrations/tle/TleLinks.md",
+    links_doc: "docs/apiIntegrations/tle/tleLinks.md",
     tags: ["tle"],
   },
   "launch-library": {
@@ -51,8 +53,17 @@ export const API_KITS: Record<
       "Upcoming launches, statuses, agencies, and pads from The Space Devs.",
     module_ids: ["papi-science-launch-library"],
     doc_readme: "docs/apiIntegrations/launch-library/README.md",
-    links_doc: "docs/apiIntegrations/launch-library/LaunchLibraryLinks.md",
+    links_doc: "docs/apiIntegrations/launch-library/ll2Links.md",
     tags: ["launch-library"],
+  },
+  logica: {
+    title: "Logica logic kit",
+    blurb:
+      "Logica-inspired CLI tools (truth tables, CNF, SAT, unify) over Earth–Space API snapshot worlds — pairs with CS157 Intrologic.",
+    module_ids: ["papi-logic-logica"],
+    doc_readme: "docs/apiIntegrations/logica/README.md",
+    links_doc: "docs/apiIntegrations/logica/logicaLinks.md",
+    tags: ["logica", "logic"],
   },
 };
 
@@ -79,6 +90,7 @@ export const STANFORD_BRIDGE: Record<string, string[]> = {
   ee263: ["ml", "math", "python", "numpy", "api"],
   ee261: ["math", "signal-processing", "python"],
   cs223a: ["python", "robotics", "math", "numpy"],
+  cs157: ["logic", "python", "api"],
 };
 
 /** Course id → preferred feature-set tag prefixes for Earth–Space Apply. */

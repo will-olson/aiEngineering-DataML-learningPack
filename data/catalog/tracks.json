@@ -119,7 +119,8 @@
       "papi-dev-genderize",
       "papi-nasa-eonet",
       "papi-science-tle",
-      "papi-science-launch-library"
+      "papi-science-launch-library",
+      "papi-logic-logica"
     ],
     "default_level": "beginner"
   },

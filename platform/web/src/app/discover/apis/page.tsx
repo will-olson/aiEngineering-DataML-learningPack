@@ -26,7 +26,9 @@ export default async function DiscoverApisPage({
             t !== "eonet" &&
             t !== "tle" &&
             t !== "launch-library" &&
-            t !== "nasa",
+            t !== "nasa" &&
+            t !== "logica" &&
+            t !== "logic",
         ),
       ),
     ),
@@ -49,6 +51,8 @@ export default async function DiscoverApisPage({
           <Link href="/discover/kits/tle">TLE</Link>
           {" · "}
           <Link href="/discover/kits/launch-library">Launch Library</Link>
+          {" · "}
+          <Link href="/discover/kits/logica">Logica</Link>
           {" · "}
           <Link href="/discover/apis?tag=eonet">?tag=eonet</Link>
         </p>

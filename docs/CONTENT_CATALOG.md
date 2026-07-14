@@ -81,7 +81,7 @@ Tracks are ordered lists of module `id`s in the overlay index (`tracks[].module_
 | `public-apis` | Curated API list in `README.md` + validation scripts | **Link-only** (APIs need network) | `discover` |
 | `awesome-public-datasets` | `README.rst` index + sample `Datasets/titanic.csv.zip` | Index **link-only**; titanic sample **local** | `discover` |
 | `stanfordLectureTranscripts` (under `docs/`) | HTML/PDF lecture transcripts (9 courses) | **local** | `learn` (+ Ask index) |
-| `apiIntegrations` (under `docs/`) | NASA EONET / TLE / LL2 kits | **link-only** docs; live fetch in labs | `discover` (+ Build runtime-fetch) |
+| `apiIntegrations` (under `docs/`) | NASA EONET / TLE / LL2 / Logica kits | **link-only** docs (Logica labs are **local**); live fetch in Earth–Space labs | `discover` (+ Build runtime-fetch) |
 
 ## Catalog record schema
 

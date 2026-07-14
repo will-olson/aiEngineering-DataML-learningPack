@@ -64,7 +64,8 @@
       "ses-fs3-03-rank"
     ],
     "api_module_ids": [
-      "papi-science-launch-library"
+      "papi-science-launch-library",
+      "papi-logic-logica"
     ]
   },
   {

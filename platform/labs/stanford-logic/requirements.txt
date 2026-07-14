@@ -1,0 +1,2 @@
+# stanford-logic labs — stdlib for offline demos; requests only for --live
+requests>=2.28.0

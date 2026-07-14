@@ -4529,6 +4529,40 @@
     "summary": "Spaceflight launches, windows, agencies, and statuses."
   },
   {
+    "id": "papi-logic-logica",
+    "title": "Logica Logic Tools",
+    "source_path": "platform/labs/stanford-logic",
+    "source_fork": "apiIntegrations",
+    "product_area": "discover",
+    "modality": "lab",
+    "level": "intermediate",
+    "skills": [
+      "python",
+      "logic",
+      "api"
+    ],
+    "prerequisites": [],
+    "offline_ok": true,
+    "availability": "local",
+    "estimated_minutes": 30,
+    "track_ids": [
+      "discover-data"
+    ],
+    "next_ids": [
+      "papi-science-launch-library"
+    ],
+    "tags": [
+      "Science & Math",
+      "api",
+      "auth-no",
+      "logica",
+      "logic"
+    ],
+    "external_url": "http://intrologic.stanford.edu/logica/homepage/index.php",
+    "license_note": "See docs/apiIntegrations/logica/ \u2014 Logica-inspired CLI labs; upstream Tools for Thought.",
+    "summary": "Truth tables, evaluation, CNF, SAT, and unification over Earth\u2013Space API snapshot worlds (CS157 / Intrologic)."
+  },
+  {
     "id": "ses-fs1-01-fetch-events",
     "title": "FS1 \u00b7 Fetch open EONET events",
     "source_path": "platform/labs/stanford-earth-space/fs1_events_labels",

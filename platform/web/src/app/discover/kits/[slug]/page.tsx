@@ -79,7 +79,7 @@ export default async function DiscoverKitPage({
 
       {uniqueSets.length > 0 && (
         <section>
-          <h2>Use in Earth–Space feature sets</h2>
+          <h2>Related feature sets</h2>
           <ul className="module-list">
             {uniqueSets.map((s) => (
               <li key={s.id}>

@@ -41,15 +41,18 @@ Deep dive: [docs/STANFORD_EARTH_SPACE.md](docs/STANFORD_EARTH_SPACE.md).
 
 ## API integration kits
 
-Local docs mirror the NASA EONET pattern (links + field docs + snapshots). Auth: **none** for these three.
+Local docs mirror the NASA EONET pattern (links + field docs + snapshots). Auth: **none** for the live APIs; Logica labs are local/offline.
 
 | Kit | Folder | Data | Feature sets | In-app |
 |-----|--------|------|----------------|--------|
 | NASA EONET v3 | [docs/apiIntegrations/nasa/](docs/apiIntegrations/nasa/) | Open Earth events, GeoJSON, magnitudes, layers | FS1, FS4, FS5 | `/discover/kits/nasa` |
 | TLE | [docs/apiIntegrations/tle/](docs/apiIntegrations/tle/) | Search, orbital elements, SGP4 propagate (+ velocity) | FS2, FS5 | `/discover/kits/tle` |
 | Launch Library 2 | [docs/apiIntegrations/launch-library/](docs/apiIntegrations/launch-library/) | Statuses, agencies, pads, upcoming launches | FS3, FS5 | `/discover/kits/launch-library` |
+| Logica (logic tools) | [docs/apiIntegrations/logica/](docs/apiIntegrations/logica/) | Truth tables / CNF / SAT / unify over API worlds | FS3 bridge + CS157 | `/discover/kits/logica` |
 
-Index: [docs/apiIntegrations/README.md](docs/apiIntegrations/README.md). Starter URLs live in each folder’s `*Links.md`. Tag filters: `/discover/apis?tag=eonet` (also `tle`, `launch-library`).
+Index: [docs/apiIntegrations/README.md](docs/apiIntegrations/README.md). Starter URLs live in each folder’s `*Links.md`. Tag filters: `/discover/apis?tag=eonet` (also `tle`, `launch-library`, `logica`).
+
+Logic course mirror: [docs/stanfordLectureTranscripts/157_introToLogic/](docs/stanfordLectureTranscripts/157_introToLogic/) — see [docs/STANFORD_INTROLOGIC.md](docs/STANFORD_INTROLOGIC.md).
 
 ## Feature sets at a glance
 
@@ -123,6 +126,7 @@ Vendored snapshots under [`forks/`](forks/) (not submodules). Stanford transcrip
 | Stanford lectures | [`docs/stanfordLectureTranscripts/`](docs/stanfordLectureTranscripts/) |
 | Live API kits | [`docs/apiIntegrations/`](docs/apiIntegrations/) |
 | Earth–Space labs | [`platform/labs/stanford-earth-space/`](platform/labs/stanford-earth-space/) |
+| Logic labs (Logica) | [`platform/labs/stanford-logic/`](platform/labs/stanford-logic/) |
 
 ### Availability
 
@@ -137,6 +141,7 @@ Vendored snapshots under [`forks/`](forks/) (not submodules). Stanford transcrip
 | Document | Purpose |
 |----------|---------|
 | [docs/STANFORD_EARTH_SPACE.md](docs/STANFORD_EARTH_SPACE.md) | Feature sets ↔ lectures ↔ APIs |
+| [docs/STANFORD_INTROLOGIC.md](docs/STANFORD_INTROLOGIC.md) | CS157 Intrologic ↔ Logica kit ↔ API worlds |
 | [docs/ASK_CONVERSATIONAL_SEARCH.md](docs/ASK_CONVERSATIONAL_SEARCH.md) | Ask retrieval & synthesis |
 | [docs/CONTENT_CATALOG.md](docs/CONTENT_CATALOG.md) | Catalog ontology |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | APIs & bounded contexts |
